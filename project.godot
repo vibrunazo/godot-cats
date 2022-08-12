@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "PathFollow2D",
+"class": "Mouse",
+"language": "GDScript",
+"path": "res://scenes/Mouse.gd"
+} ]
+_global_script_class_icons={
+"Mouse": "res://assets/mouse01.png"
+}
+
 [application]
 
 config/name="Cats"
