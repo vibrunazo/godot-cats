@@ -75,6 +75,7 @@ tile_data = PoolIntArray( 5, 0, 1, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 2, 65538, 0,
 curve = SubResource( 3 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

@@ -18,8 +18,15 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func end():
+	print('daed mouse')
+	queue_free()
+
 func _physics_process(delta):
+#	print("I'm a mouse at %s" % unit_offset)
+	if unit_offset >= 1.0:
+		end()
+		return
 	t += delta * speed
 	offset = t
-#	print("I'm a mouse at %s" % position)
 

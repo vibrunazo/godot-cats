@@ -4,7 +4,9 @@
 [ext_resource path="res://scenes/Mouse.gd" type="Script" id=2]
 
 [node name="Mouse" type="PathFollow2D"]
+loop = false
 script = ExtResource( 2 )
+speed = 200
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
