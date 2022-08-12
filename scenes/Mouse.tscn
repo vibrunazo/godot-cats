@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/mouse01.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Mouse.gd" type="Script" id=2]
 
-[node name="Mouse" type="Node2D"]
+[node name="Mouse" type="PathFollow2D"]
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
