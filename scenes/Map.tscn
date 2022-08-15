@@ -77,14 +77,12 @@ curve = SubResource( 3 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
 autostart = true
 
 [node name="Cats" type="Node2D" parent="."]
 
-[node name="Cat2" parent="Cats" instance=ExtResource( 2 )]
-position = Vector2( 480, 360 )
-
 [node name="Cat" parent="Cats" instance=ExtResource( 2 )]
-position = Vector2( 288, 296 )
+position = Vector2( 288, 416 )
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
