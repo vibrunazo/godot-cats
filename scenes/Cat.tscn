@@ -27,5 +27,8 @@ position = Vector2( 0, 24 )
 [node name="Sprite" type="Sprite" parent="Turret/Sprite/Position2D"]
 texture = ExtResource( 2 )
 
+[node name="Cooldown" type="Timer" parent="."]
+
 [connection signal="area_entered" from="AggroRange" to="." method="_on_AggroRange_area_entered"]
 [connection signal="area_exited" from="AggroRange" to="." method="_on_AggroRange_area_exited"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]

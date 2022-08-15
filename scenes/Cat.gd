@@ -24,15 +24,27 @@ func _physics_process(delta):
 		
 func follow_target():
 	var pos = target.position
-	print('looking at %s at %s' % [target, pos])
+#	print('looking at %s at %s' % [target, pos])
 	$Turret.look_at(pos)
 
+func acquire_new_target(new_target: Node):
+	target = new_target
+	if $Cooldown.time_left > 0:
+		return
+	shoot()
+	$Cooldown.start()
+
+func shoot():
+	if !target:
+		$Cooldown.stop()
+		return
+	print('shooting at target')
 
 func _on_AggroRange_area_entered(area: Node):
 	if !area.get_parent().is_in_group("mice"):
 		return
 	print('entered range %s' % area.get_parent().is_in_group("mice"))
-	target = area.get_parent()
+	acquire_new_target(area.get_parent())
 
 
 func _on_AggroRange_area_exited(area: Node):
@@ -41,3 +53,7 @@ func _on_AggroRange_area_exited(area: Node):
 	print('exited range')
 	if area.get_parent() == target:
 		target = null
+
+
+func _on_Cooldown_timeout():
+	shoot()
