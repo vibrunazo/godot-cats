@@ -18,6 +18,15 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func _physics_process(delta):
+	if (target):
+		follow_target()
+		
+func follow_target():
+	var pos = target.position
+	print('looking at %s at %s' % [target, pos])
+	$Turret.look_at(pos)
+
 
 func _on_AggroRange_area_entered(area: Node):
 	if !area.get_parent().is_in_group("mice"):
@@ -26,7 +35,9 @@ func _on_AggroRange_area_entered(area: Node):
 	target = area.get_parent()
 
 
-func _on_AggroRange_area_exited(area):
+func _on_AggroRange_area_exited(area: Node):
 	if !area.get_parent().is_in_group("mice"):
 		return
 	print('exited range')
+	if area.get_parent() == target:
+		target = null

@@ -10,19 +10,22 @@ radius = 250.0
 [node name="Cat" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-
-[node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 0, 24 )
-
-[node name="Sprite" type="Sprite" parent="Position2D"]
-texture = ExtResource( 2 )
-
 [node name="AggroRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AggroRange"]
 shape = SubResource( 1 )
+
+[node name="Turret" type="Position2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Turret"]
+rotation = -1.5708
+texture = ExtResource( 1 )
+
+[node name="Position2D" type="Position2D" parent="Turret/Sprite"]
+position = Vector2( 0, 24 )
+
+[node name="Sprite" type="Sprite" parent="Turret/Sprite/Position2D"]
+texture = ExtResource( 2 )
 
 [connection signal="area_entered" from="AggroRange" to="." method="_on_AggroRange_area_entered"]
 [connection signal="area_exited" from="AggroRange" to="." method="_on_AggroRange_area_exited"]
