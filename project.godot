@@ -9,12 +9,24 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Bullet",
+"language": "GDScript",
+"path": "res://scenes/Bullet.gd"
+}, {
+"base": "Node2D",
+"class": "Cat",
+"language": "GDScript",
+"path": "res://scenes/Cat.gd"
+}, {
 "base": "PathFollow2D",
 "class": "Mouse",
 "language": "GDScript",
 "path": "res://scenes/Mouse.gd"
 } ]
 _global_script_class_icons={
+"Bullet": "res://assets/ball.png",
+"Cat": "res://assets/cat01.png",
 "Mouse": "res://assets/mouse01.png"
 }
 

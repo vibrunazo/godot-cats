@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Cat, "res://assets/cat01.png"
+
 
 # Declare member variables here. Examples:
 # var a = 2
