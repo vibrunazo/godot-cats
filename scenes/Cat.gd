@@ -7,6 +7,7 @@ extends Node2D
 
 var aggro_list = []
 var target: Mouse
+var bullet_scene = preload("res://scenes/Bullet.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -29,6 +30,7 @@ func follow_target():
 
 func acquire_new_target(new_target: Node):
 	target = new_target
+	follow_target()
 	if $Cooldown.time_left > 0:
 		return
 	shoot()
@@ -38,6 +40,10 @@ func shoot():
 	if !target:
 		$Cooldown.stop()
 		return
+	var bullet = bullet_scene.instance()
+	bullet.position = $Turret/Sprite/SpawnPosition.global_position
+	bullet.set_target(target)
+	get_tree().root.add_child(bullet)
 	print('shooting at target')
 
 func _on_AggroRange_area_entered(area: Node):

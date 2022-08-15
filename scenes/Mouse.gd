@@ -6,7 +6,7 @@ class_name Mouse, "res://assets/mouse01.png"
 # var a = 2
 # var b = "text"
 var t = 0
-export var speed := 100
+export var speed := 30
 
 
 # Called when the node enters the scene tree for the first time.
