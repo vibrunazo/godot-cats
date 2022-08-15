@@ -24,7 +24,7 @@ func set_target(new_target: Node2D):
 #	pass
 
 func _physics_process(delta):
-	if target:
+	if is_instance_valid(target):
 		look_at(target.position)
 	position += Vector2(speed * delta, 0).rotated(rotation)
 

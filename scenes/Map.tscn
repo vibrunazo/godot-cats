@@ -88,4 +88,7 @@ position = Vector2( 288, 416 )
 [node name="Cat2" parent="Cats" instance=ExtResource( 2 )]
 position = Vector2( 416, 288 )
 
+[node name="Cat3" parent="Cats" instance=ExtResource( 2 )]
+position = Vector2( 864, 224 )
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
