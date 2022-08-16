@@ -6,7 +6,9 @@ class_name Mouse, "res://assets/mouse01.png"
 # var a = 2
 # var b = "text"
 var t = 0
-export var speed := 20
+export var speed := 50
+export var max_health := 100
+var health := 100
 
 
 # Called when the node enters the scene tree for the first time.
@@ -31,4 +33,8 @@ func _physics_process(delta):
 	offset = t
 
 func on_hit(bullet: Node2D):
+	health -= bullet.damage
+	if health <= 0:
+		health = 0
+		end()
 	print('mouse got hit')

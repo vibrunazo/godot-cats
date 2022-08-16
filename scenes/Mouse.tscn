@@ -8,8 +8,8 @@ extents = Vector2( 20, 10 )
 
 [node name="Mouse" type="PathFollow2D" groups=["mice"]]
 loop = false
+lookahead = 8.0
 script = ExtResource( 2 )
-speed = 200
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

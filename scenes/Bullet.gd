@@ -25,8 +25,10 @@ func set_target(new_target: Node2D):
 
 func _physics_process(delta):
 	if is_instance_valid(target):
-		look_at(target.position)
-	position += Vector2(speed * delta, 0).rotated(rotation)
+		look_at(target.global_position)
+		position += Vector2(speed * delta, 0).rotated(rotation)
+	else:
+		queue_free()
 
 
 func _on_Area2D_area_entered(area: Node2D):

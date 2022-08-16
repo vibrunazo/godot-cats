@@ -26,7 +26,7 @@ func _physics_process(delta):
 		follow_target()
 		
 func follow_target():
-	var pos = target.position
+	var pos = target.global_position
 #	print('looking at %s at %s' % [target, pos])
 	$Turret.look_at(pos)
 

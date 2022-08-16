@@ -22,7 +22,7 @@ rotation = -1.5708
 texture = ExtResource( 1 )
 
 [node name="SpawnPosition" type="Position2D" parent="Turret/Sprite"]
-position = Vector2( 0, 24 )
+position = Vector2( 0, 44 )
 
 [node name="Sprite" type="Sprite" parent="Turret/Sprite/SpawnPosition"]
 texture = ExtResource( 2 )
