@@ -37,4 +37,3 @@ func on_hit(bullet: Node2D):
 	if health <= 0:
 		health = 0
 		end()
-	print('mouse got hit')

@@ -26,8 +26,7 @@ func _physics_process(delta):
 		follow_target()
 		
 func follow_target():
-	var pos = target.global_position
-#	print('looking at %s at %s' % [target, pos])
+	var pos = target.position
 	$Turret.look_at(pos)
 
 func acquire_new_target(new_target: Node):
@@ -46,19 +45,16 @@ func shoot():
 	bullet.position = $Turret/Sprite/SpawnPosition.global_position
 	bullet.set_target(target)
 	get_tree().root.add_child(bullet)
-	print('shooting at target')
 
 func _on_AggroRange_area_entered(area: Node):
 	if !area.get_parent().is_in_group("mice"):
 		return
-	print('entered range %s' % area.get_parent().is_in_group("mice"))
 	acquire_new_target(area.get_parent())
 
 
 func _on_AggroRange_area_exited(area: Node):
 	if !area.get_parent().is_in_group("mice"):
 		return
-	print('exited range')
 	if area.get_parent() == target:
 		target = null
 

@@ -56,7 +56,7 @@
 
 [sub_resource type="Curve2D" id=3]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 192, 128, 0, 0, 0, 0, 320, 128, 0, 0, 0, 0, 320, 640, 0, 0, 0, 0, 576, 640, 0, 0, 0, 0, 576, 128, 0, 0, 0, 0, 1088, 128, 0, 0, 0, 0, 1088, 512, 0, 0, 0, 0, 832, 512, 0, 0, 0, 0, 832, 768, 0, 0, 0, 0, 1344, 768, 0, 0, 0, 0, 1344, 512, 0, 0, 0, 0, 1728, 512 )
+"points": PoolVector2Array( 0, 0, 0, 0, 64, 128, 0, 0, 0, 0, 320, 128, 0, 0, 0, 0, 320, 640, 0, 0, 0, 0, 576, 640, 0, 0, 0, 0, 576, 128, 0, 0, 0, 0, 1088, 128, 0, 0, 0, 0, 1088, 512, 0, 0, 0, 0, 832, 512, 0, 0, 0, 0, 832, 640, 0, 0, 0, 0, 1344, 640, 0, 0, 0, 0, 1344, 512, 0, 0, 0, 0, 1728, 512 )
 }
 
 [node name="Map" type="Node2D"]
@@ -72,7 +72,7 @@ tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -6
 tile_set = SubResource( 2 )
 cell_size = Vector2( 128, 128 )
 format = 1
-tile_data = PoolIntArray( 65538, 0, 131072, 65539, 0, 2, 65541, 0, 1, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 2, 131075, 0, 65536, 131077, 0, 65536, 131081, 0, 65536, 196611, 0, 65536, 196613, 0, 65536, 196617, 0, 65536, 262147, 0, 65536, 262149, 0, 65536, 262151, 0, 1, 262152, 0, 0, 262153, 0, 65538, 262155, 0, 1, 262156, 0, 0, 262157, 0, 0, 262158, 0, 131073, 327683, 0, 65537, 327684, 0, 0, 327685, 0, 65538, 327687, 0, 65536, 327691, 0, 65536, 393223, 0, 65537, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 65538 )
+tile_data = PoolIntArray( 65537, 0, 131072, 65538, 0, 0, 65539, 0, 2, 65541, 0, 1, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 2, 131075, 0, 65536, 131077, 0, 65536, 131081, 0, 65536, 196611, 0, 65536, 196613, 0, 65536, 196617, 0, 65536, 262147, 0, 65536, 262149, 0, 65536, 262151, 0, 1, 262152, 0, 0, 262153, 0, 65538, 262155, 0, 1, 262156, 0, 0, 262157, 0, 0, 262158, 0, 131073, 327683, 0, 65537, 327684, 0, 0, 327685, 0, 65538, 327687, 0, 65537, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 65538 )
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2( 128, 64 )
@@ -92,5 +92,33 @@ position = Vector2( 576, 192 )
 
 [node name="Cat3" parent="Cats" instance=ExtResource( 2 )]
 position = Vector2( 1088, 448 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ActionBar" type="VBoxContainer" parent="UI/HUD"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -300.0
+margin_bottom = 300.0
+
+[node name="Cat1" type="Button" parent="UI/HUD/ActionBar" groups=["action_button"]]
+margin_right = 200.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+text = "Cat1"
+
+[node name="Cat2" type="Button" parent="UI/HUD/ActionBar" groups=["action_button"]]
+margin_top = 54.0
+margin_right = 200.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 50, 50 )
+text = "Cat2"
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
