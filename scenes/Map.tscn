@@ -86,18 +86,22 @@ autostart = true
 
 [node name="Cat" parent="Cats" instance=ExtResource( 2 )]
 position = Vector2( 320, 704 )
+building = false
 
 [node name="Cat2" parent="Cats" instance=ExtResource( 2 )]
 position = Vector2( 576, 192 )
+building = false
 
 [node name="Cat3" parent="Cats" instance=ExtResource( 2 )]
 position = Vector2( 1088, 448 )
+building = false
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="HUD" type="Control" parent="UI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 
 [node name="ActionBar" type="VBoxContainer" parent="UI/HUD"]
 anchor_left = 1.0

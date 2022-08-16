@@ -21,7 +21,6 @@ func _ready():
 #	pass
 
 func end():
-	print('daed mouse')
 	queue_free()
 
 func _physics_process(delta):

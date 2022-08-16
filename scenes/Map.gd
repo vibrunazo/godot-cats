@@ -3,6 +3,10 @@ extends Node2D
 
 var el_path: Path2D
 var mouse_scene = preload("res://scenes/Mouse.tscn")
+var cat_scene = preload("res://scenes/Cat.tscn")
+
+# the cat currently being built and dragged by the mouse
+var cat_building: Cat = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,11 +17,21 @@ func _ready():
 		
 func action_pressed(name):
 	print("pressed action %s" % name)
+	if cat_building:
+		return
+	cat_building = cat_scene.instance()
+	$UI.add_child(cat_building)
 
+func _unhandled_input(event):
+	if event.is_action_released("ui_accept"):
+		if cat_building:
+			print('new event %s' % event)
+			cat_building.done_building()
+			cat_building = null
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _physics_process(delta):
+	if cat_building != null:
+		cat_building.position = get_global_mouse_position()
 
 func spawn_new_mouse():
 	var mouse = mouse_scene.instance()

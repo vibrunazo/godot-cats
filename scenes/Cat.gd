@@ -10,11 +10,17 @@ class_name Cat, "res://assets/cat01.png"
 var aggro_list = []
 var target: Mouse
 var bullet_scene = preload("res://scenes/Bullet.tscn")
+export var building = true
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if !building:
+		done_building()
+	
+func done_building():
+	building = false
+	$AggroRange.monitoring = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
