@@ -23,9 +23,13 @@ func action_pressed(name):
 	$UI.add_child(cat_building)
 
 func _unhandled_input(event):
-	if event.is_action_released("ui_accept"):
+#	event == InputEventScreenTouch
+#	InputEventMouseButton.pressed
+#	print('new event %s' % event)
+	if event is InputEventMouseButton && !event.is_pressed():
+		print('is click event %s' % event)
+#	if event.is_action_released("ui_accept"):
 		if cat_building:
-			print('new event %s' % event)
 			cat_building.done_building()
 			cat_building = null
 
