@@ -14,6 +14,7 @@ func _ready():
 	for b in get_tree().get_nodes_in_group("action_button"):
 		print("found action button %s" % b.get_name())
 		b.connect("pressed", self, "action_pressed", [b.get_name()])
+		b.connect("button_up", self, "action_released", [b.get_name()])
 		
 func action_pressed(name):
 	print("pressed action %s" % name)
@@ -22,7 +23,14 @@ func action_pressed(name):
 	cat_building = cat_scene.instance()
 	$UI.add_child(cat_building)
 
+func action_released(name):
+	print('action released')
+	if cat_building:
+		cat_building.done_building()
+		cat_building = null
+
 func _unhandled_input(event):
+	return
 #	event == InputEventScreenTouch
 #	InputEventMouseButton.pressed
 #	print('new event %s' % event)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/terrain.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Cat.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Map.gd" type="Script" id=3]
+[ext_resource path="res://scenes/UI.gd" type="Script" id=4]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass"
@@ -97,11 +98,12 @@ position = Vector2( 1088, 448 )
 building = false
 
 [node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource( 4 )
 
 [node name="HUD" type="Control" parent="UI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
+mouse_filter = 1
 
 [node name="ActionBar" type="VBoxContainer" parent="UI/HUD"]
 anchor_left = 1.0
@@ -111,11 +113,14 @@ anchor_bottom = 0.5
 margin_left = -200.0
 margin_top = -300.0
 margin_bottom = 300.0
+mouse_filter = 2
 
 [node name="Cat1" type="Button" parent="UI/HUD/ActionBar" groups=["action_button"]]
 margin_right = 200.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
+mouse_filter = 1
+action_mode = 0
 text = "Cat1"
 
 [node name="Cat2" type="Button" parent="UI/HUD/ActionBar" groups=["action_button"]]
@@ -123,6 +128,8 @@ margin_top = 54.0
 margin_right = 200.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 50, 50 )
+mouse_filter = 1
+action_mode = 0
 text = "Cat2"
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
