@@ -29,17 +29,8 @@ func action_released(name):
 		cat_building.done_building()
 		cat_building = null
 
-func _unhandled_input(event):
-	return
-#	event == InputEventScreenTouch
-#	InputEventMouseButton.pressed
+#func _unhandled_input(event):
 #	print('new event %s' % event)
-	if event is InputEventMouseButton && !event.is_pressed():
-		print('is click event %s' % event)
-#	if event.is_action_released("ui_accept"):
-		if cat_building:
-			cat_building.done_building()
-			cat_building = null
 
 func _physics_process(delta):
 	if cat_building != null:
