@@ -32,7 +32,7 @@ func _physics_process(delta):
 		follow_target()
 		
 func follow_target():
-	var pos = target.position
+	var pos = target.global_position
 	$Turret.look_at(pos)
 
 func acquire_new_target(new_target: Node):
