@@ -36,6 +36,10 @@ config/name="Cats"
 run/main_scene="res://scenes/Map.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameData="*res://scripts/GameData.gd"
+
 [display]
 
 window/size/width=1536
