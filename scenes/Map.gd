@@ -30,6 +30,8 @@ func action_pressed(name):
 func action_released(name):
 	print('action released')
 	if cat_building:
+		$UI.remove_child(cat_building)
+		$Cats.add_child(cat_building)
 		cat_building.done_building()
 		cat_building = null
 		add_coins(-10)
