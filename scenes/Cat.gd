@@ -10,6 +10,7 @@ class_name Cat, "res://assets/cat01.png"
 var aggro_list = []
 var target: Mouse
 var bullet_scene = preload("res://scenes/Bullet.tscn")
+onready var bullet_sprite: Sprite = $Turret/Sprite/SpawnPosition/BulletSprite
 export var building = true
 
 
@@ -71,6 +72,12 @@ func shoot():
 	bullet.position = $Turret/Sprite/SpawnPosition.global_position
 	bullet.set_target(target)
 	get_tree().root.add_child(bullet)
+	play_bullet_anim()
+
+func play_bullet_anim():
+	bullet_sprite.visible = false
+	yield(get_tree().create_timer(.4), "timeout")
+	bullet_sprite.visible = true
 
 func _on_AggroRange_area_entered(area: Node):
 	if !area.get_parent().is_in_group("mice"):
