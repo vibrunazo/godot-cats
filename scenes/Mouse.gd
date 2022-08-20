@@ -25,6 +25,7 @@ func end():
 	queue_free()
 
 func show_target_index(show: bool, index: String = ''):
+#	if !Global.DEBUG: return
 	$TargetIndexLabel.visible = show
 	$TargetIndexLabel.text = index
 

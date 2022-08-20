@@ -38,11 +38,13 @@ func select():
 func unselect():
 	selected = false
 	$SelectionCircle.visible = false
+	if !Global.DEBUG: return
 	for m in aggro_list:
 		var mouse: Mouse = m
 		mouse.show_target_index(false)
 		
 func update_aggro_labels():
+	if !Global.DEBUG: return
 	var i := 0
 	for m in aggro_list:
 		var mouse: Mouse = m
