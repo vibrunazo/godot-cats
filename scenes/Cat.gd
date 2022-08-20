@@ -64,7 +64,7 @@ func follow_target():
 
 func acquire_new_target(new_target: Mouse):
 	target = new_target
-	target.connect("killed", self, "_on_target_died")
+	target.connect("killed", self, "_on_target_died", [target])
 	follow_target()
 	if $Cooldown.time_left > 0:
 		return
@@ -84,10 +84,11 @@ func gain_aggro(mouse: Mouse):
 	
 	
 
-func _on_target_died():
+func _on_target_died(dead_mouse: Mouse):
 #	print('target died')
-	lose_aggro(target)
-	target = null
+	lose_aggro(dead_mouse)
+	if dead_mouse == target:
+		target = null
 	search_new_target()
 
 func search_new_target():
