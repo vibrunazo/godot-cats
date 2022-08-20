@@ -14,6 +14,7 @@ var bullet_scene = preload("res://scenes/Bullet.tscn")
 onready var bullet_sprite: Sprite = $Turret/Sprite/SpawnPosition/BulletSprite
 export var building = true
 export var SELECTION_SIZE := 400
+export var selected = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -30,12 +31,23 @@ func done_building():
 	unselect()
 	
 func select():
+	selected = true
 	$SelectionCircle.visible = true
-	print('cat selected')
+	update_aggro_labels()
 	
 func unselect():
+	selected = false
 	$SelectionCircle.visible = false
-	print('cat unselected')
+	for m in aggro_list:
+		var mouse: Mouse = m
+		mouse.show_target_index(false)
+		
+func update_aggro_labels():
+	var i := 0
+	for m in aggro_list:
+		var mouse: Mouse = m
+		mouse.show_target_index(true, str(i))
+		i += 1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -59,9 +71,22 @@ func acquire_new_target(new_target: Mouse):
 	shoot()
 	$Cooldown.start()
 
+func lose_aggro(mouse: Mouse):
+	aggro_list.erase(mouse)
+	if selected:
+		mouse.show_target_index(false)
+		update_aggro_labels()
+
+func gain_aggro(mouse: Mouse):
+	aggro_list.append(mouse)
+	if selected:
+		update_aggro_labels()
+	
+	
+
 func _on_target_died():
 #	print('target died')
-	aggro_list.erase(target)
+	lose_aggro(target)
 	target = null
 	search_new_target()
 
@@ -97,7 +122,7 @@ func _on_AggroRange_area_entered(area: Node):
 	if !area.get_parent().is_in_group("mice"):
 		return
 	var mouse: Mouse = area.get_parent()
-	aggro_list.append(mouse)
+	gain_aggro(mouse)
 	if !target:
 		search_new_target()
 #		acquire_new_target(mouse)
@@ -108,7 +133,7 @@ func _on_AggroRange_area_exited(area: Node):
 	if !area.get_parent().is_in_group("mice"):
 		return
 	var mouse: Mouse = area.get_parent()
-	aggro_list.erase(mouse)
+	lose_aggro(mouse)
 	if mouse == target:
 		target = null
 		search_new_target()

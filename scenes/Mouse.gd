@@ -24,6 +24,10 @@ func _ready():
 func end():
 	queue_free()
 
+func show_target_index(show: bool, index: String = ''):
+	$TargetIndexLabel.visible = show
+	$TargetIndexLabel.text = index
+
 func _physics_process(delta):
 #	print("I'm a mouse at %s" % unit_offset)
 	if unit_offset >= 1.0:

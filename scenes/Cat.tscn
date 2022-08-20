@@ -29,6 +29,7 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Turret"]
 rotation = -1.5708
+z_index = 10
 texture = ExtResource( 1 )
 
 [node name="SpawnPosition" type="Position2D" parent="Turret/Sprite"]
