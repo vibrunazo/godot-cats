@@ -1,19 +1,28 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/cat01.png" type="Texture" id=1]
 [ext_resource path="res://assets/ball.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Cat.gd" type="Script" id=3]
+[ext_resource path="res://scenes/CatClickArea.gd" type="Script" id=4]
+[ext_resource path="res://assets/selection_circle.png" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 350.0
+radius = 200.0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 64, 64 )
 
 [node name="Cat" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="SelectionCircle" type="Sprite" parent="."]
+modulate = Color( 0.45, 0.75, 0.9, 0.901961 )
+texture = ExtResource( 5 )
+
 [node name="AggroRange" type="Area2D" parent="."]
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroRange"]
+[node name="AggroShape" type="CollisionShape2D" parent="AggroRange"]
 shape = SubResource( 1 )
 
 [node name="Turret" type="Position2D" parent="."]
@@ -30,6 +39,12 @@ texture = ExtResource( 2 )
 
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="ClickArea" type="Area2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
+shape = SubResource( 2 )
 
 [connection signal="area_entered" from="AggroRange" to="." method="_on_AggroRange_area_entered"]
 [connection signal="area_exited" from="AggroRange" to="." method="_on_AggroRange_area_exited"]

@@ -7,6 +7,7 @@ var cat_scene = preload("res://scenes/Cat.tscn")
 
 # the cat currently being built and dragged by the mouse
 var cat_building: Cat = null
+var cat_selected: Cat = null
 export var coins = 20
 
 # Called when the node enters the scene tree for the first time.
@@ -32,6 +33,7 @@ func action_released(name):
 	if cat_building:
 		$UI.remove_child(cat_building)
 		$Cats.add_child(cat_building)
+		cat_building.connect("clicked", self, "_on_cat_clicked", [cat_building])
 		cat_building.done_building()
 		cat_building = null
 		add_coins(-10)
@@ -42,7 +44,7 @@ func add_coins(ammount):
 
 func update_coins():
 	$UI/HUD/ActionBar/CoinLabel.text = "$%s" % coins
-
+	
 #func _unhandled_input(event):
 #	print('new event %s' % event)
 
@@ -64,5 +66,17 @@ func _on_SpawnTimer_timeout():
 	
 func _on_mouse_killed(mouse: Mouse):
 	add_coins(1)
+
+func _on_cat_clicked(cat: Cat):
+	print('clicked cat %s' % cat.name)
+	if cat == cat_selected:
+		cat_selected = null
+		cat.unselect()
+	else:
+		if is_instance_valid(cat_selected):
+			cat_selected.unselect()
+		cat.select()
+		cat_selected = cat
+		
 	
 

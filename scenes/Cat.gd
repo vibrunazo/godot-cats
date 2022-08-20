@@ -1,6 +1,7 @@
 extends Node2D
 
 class_name Cat, "res://assets/cat01.png"
+signal clicked
 
 
 # Declare member variables here. Examples:
@@ -12,16 +13,29 @@ var target: Mouse
 var bullet_scene = preload("res://scenes/Bullet.tscn")
 onready var bullet_sprite: Sprite = $Turret/Sprite/SpawnPosition/BulletSprite
 export var building = true
+export var SELECTION_SIZE := 400
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var selection_scale = ($AggroRange/AggroShape.shape.radius * 2) / SELECTION_SIZE
+#	print("radius is %s, scale is %s" % [$AggroRange/AggroShape.shape.radius, selection_scale])
+	$SelectionCircle.scale = Vector2(selection_scale, selection_scale)
 	if !building:
 		done_building()
 	
 func done_building():
 	building = false
 	$AggroRange.monitoring = true
+	unselect()
+	
+func select():
+	$SelectionCircle.visible = true
+	print('cat selected')
+	
+func unselect():
+	$SelectionCircle.visible = false
+	print('cat unselected')
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
