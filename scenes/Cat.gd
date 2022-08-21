@@ -11,7 +11,8 @@ signal clicked
 var aggro_list = []
 var target: Mouse
 var bullet_scene = preload("res://scenes/Bullet.tscn")
-onready var bullet_sprite: Sprite = $Turret/Sprite/SpawnPosition/BulletSprite
+onready var spawn_position: Position2D = $Turret/cat_body/SpawnPosition
+onready var bullet_sprite: Sprite = $Turret/cat_body/SpawnPosition/BulletSprite
 export var building = true
 export var SELECTION_SIZE := 400
 export var selected = true
@@ -29,6 +30,7 @@ func done_building():
 	building = false
 	$AggroRange.monitoring = true
 	unselect()
+	$AnimationPlayer.play("idle")
 	
 func select():
 	selected = true
@@ -111,15 +113,19 @@ func shoot():
 		$Cooldown.stop()
 		return
 	var bullet = bullet_scene.instance()
-	bullet.position = $Turret/Sprite/SpawnPosition.global_position
+	bullet.position = spawn_position.global_position
 	bullet.set_target(target)
 	get_tree().root.add_child(bullet)
-	play_bullet_anim()
+	play_attack_anim()
 
-func play_bullet_anim():
-	bullet_sprite.visible = false
-	yield(get_tree().create_timer(.4), "timeout")
-	bullet_sprite.visible = true
+func play_attack_anim():
+	$AnimationPlayer.stop(true)
+	$AnimationPlayer.play("attack")
+	yield($AnimationPlayer, "animation_finished")
+	$AnimationPlayer.play("idle")
+#	bullet_sprite.visible = false
+#	yield(get_tree().create_timer(.4), "timeout")
+#	bullet_sprite.visible = true
 
 func _on_AggroRange_area_entered(area: Node):
 	if !area.get_parent().is_in_group("mice"):
