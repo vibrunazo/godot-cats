@@ -1,6 +1,6 @@
 extends Node2D
 
-class_name Cat, "res://assets/cat01.png"
+class_name Cat, "res://icon.png"
 signal clicked
 
 
@@ -11,8 +11,8 @@ signal clicked
 var aggro_list = []
 var target: Mouse
 var bullet_scene = preload("res://scenes/Bullet.tscn")
-onready var spawn_position: Position2D = $Turret/cat_body/SpawnPosition
-onready var bullet_sprite: Sprite = $Turret/cat_body/SpawnPosition/BulletSprite
+onready var spawn_position: Position2D = $Turret/SpawnPosition
+onready var bullet_sprite: Sprite = $Turret/SpawnPosition/BulletSprite
 export var building = true
 export var SELECTION_SIZE := 400
 export var selected = true

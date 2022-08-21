@@ -26,7 +26,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Bullet": "res://assets/ball.png",
-"Cat": "res://assets/cat01.png",
+"Cat": "res://icon.png",
 "Mouse": "res://assets/mouse01.png"
 }
 
