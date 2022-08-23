@@ -65,12 +65,12 @@ tracks/1/keys = {
 
 [node name="Mouse" type="PathFollow2D" groups=["mice"]]
 loop = false
-lookahead = 8.0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 z_index = 10
 texture = ExtResource( 1 )
+offset = Vector2( -20, 0 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
