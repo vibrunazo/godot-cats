@@ -5,10 +5,10 @@ extends Node
 # var a = 2
 # var b = "text"
 var DEBUG = false
+var rng = RandomNumberGenerator.new()
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	rng.randomize()
 	print('global script is ready, DEBUG is %s' % DEBUG)
 
 

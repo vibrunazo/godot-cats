@@ -9,13 +9,18 @@ signal killed
 var t = 0
 export var speed := 50
 export var max_health := 100
+export var OFFSET_RANGE := 15
 var health := 100
 var alive := true
+
+var rng: RandomNumberGenerator = Global.rng
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play("walk")
+	h_offset = rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE) * 2
+	v_offset = rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
