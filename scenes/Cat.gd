@@ -20,9 +20,12 @@ export var selected = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var selection_scale = ($AggroRange/AggroShape.shape.radius * 2) / SELECTION_SIZE
-#	print("radius is %s, scale is %s" % [$AggroRange/AggroShape.shape.radius, selection_scale])
-	$SelectionCircle.scale = Vector2(selection_scale, selection_scale)
+	if selected:
+		var selection_scale = ($AggroRange/AggroShape.shape.radius * 2) / SELECTION_SIZE
+		$SelectionCircle.scale = Vector2(selection_scale, selection_scale)
+		$SelectionCircle.visible = true
+	else:
+		$SelectionCircle.visible = false
 	if !building:
 		done_building()
 	
