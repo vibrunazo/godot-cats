@@ -10,18 +10,19 @@ var t = 0
 export var speed := 50
 export var max_health := 100
 var health := 100
+var alive := true
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	$AnimationPlayer.play("walk")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
 func end():
+	alive = false
 	queue_free()
 
 func show_target_index(show: bool, index: String = ''):
@@ -39,7 +40,8 @@ func _physics_process(delta):
 
 func on_hit(bullet: Node2D):
 	health -= bullet.damage
-	if health <= 0:
+	if health <= 0 and alive:
 		health = 0
+		alive = false
 		emit_signal("killed")
 		end()
