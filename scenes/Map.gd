@@ -31,12 +31,22 @@ func action_pressed(name):
 func action_released(name):
 	print('action released')
 	if cat_building:
-		$UI.remove_child(cat_building)
-		$Cats.add_child(cat_building)
-		cat_building.connect("clicked", self, "_on_cat_clicked", [cat_building])
-		cat_building.done_building()
-		cat_building = null
-		add_coins(-10)
+		if can_build(get_global_mouse_position()):
+			build_cat(name)
+		else:
+			cancel_build()
+		
+func build_cat(name):
+	$UI.remove_child(cat_building)
+	$Cats.add_child(cat_building)
+	cat_building.connect("clicked", self, "_on_cat_clicked", [cat_building])
+	cat_building.done_building()
+	cat_building = null
+	add_coins(-10)
+	
+func cancel_build():
+	cat_building.queue_free()
+	cat_building = null
 
 func add_coins(ammount):
 	coins += ammount
@@ -55,10 +65,18 @@ func _physics_process(delta):
 func snap_to_grid(position: Vector2):
 #	var local_position = $TileMap.to_local(position)
 	var map_position = $TileMap.world_to_map(position)
-	var cell_position = $TileMap.map_to_world(Vector2(map_position.x, map_position.y))
-	var cell_world_position = $TileMap.to_global(cell_position)
+	var cell_position = $TileMap.map_to_world(map_position)
+#	var cell_world_position = $TileMap.to_global(cell_position)
 #	print('cell id: %s' % cell_world_position)
-	return Vector2(cell_world_position.x + 64, cell_world_position.y + 64)
+	return Vector2(cell_position.x + 64, cell_position.y + 64)
+
+func can_build(position: Vector2):
+#	var cell_position = snap_to_grid(position)
+	var map_position = $TileRoad.world_to_map(position)
+	var id = $TileRoad.get_cellv(map_position)
+	print("cell id: %s, map: %s, mouse: %s" % [id, map_position, position])
+	if id == 0 : return false
+	return true
 
 func spawn_new_mouse():
 	var mouse = mouse_scene.instance()
