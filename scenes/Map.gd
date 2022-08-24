@@ -60,9 +60,19 @@ func spawn_new_mouse():
 
 func _on_SpawnTimer_timeout():
 	spawn_new_mouse()
-	if $SpawnTimer.wait_time >= 0.6:
-		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.03
+	if $SpawnTimer.wait_time >= 2.5:
+		$SpawnTimer.wait_time -= 0.1#$SpawnTimer.wait_time * 0.05
 		print("new spawn timer is %f" % $SpawnTimer.wait_time)
+	elif $SpawnTimer.wait_time >= 1.5:
+		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.02
+		print("new spawn timer is %f" % $SpawnTimer.wait_time)
+	elif $SpawnTimer.wait_time >= 1.0:
+		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.01
+		print("new spawn timer is %f" % $SpawnTimer.wait_time)
+	elif $SpawnTimer.wait_time >= 0.5:
+		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.005
+		print("new spawn timer is %f" % $SpawnTimer.wait_time)
+	
 	
 func _on_mouse_killed(mouse: Mouse):
 	add_coins(1)
