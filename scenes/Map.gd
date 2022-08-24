@@ -9,6 +9,10 @@ var cat_scene = preload("res://scenes/Cat.tscn")
 var cat_building: Cat = null
 var cat_selected: Cat = null
 export var coins = 20
+var cats_dict = {
+#	[0, 0]: "cat1",
+#	[1, 2]: "cat2"
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,6 +41,14 @@ func action_released(name):
 			cancel_build()
 		
 func build_cat(name):
+	var cell_pos = $TileMap.world_to_map(cat_building.global_position)
+	if cats_dict.get([int(cell_pos.x), int(cell_pos.y)]):
+		print("already a cat at %s is %s" % [cell_pos, cats_dict.get(cell_pos)])
+		return
+	else:
+#		print("no cat at %s" % cell_pos)
+		cats_dict[cell_pos] = cat_building
+		
 	$UI.remove_child(cat_building)
 	$Cats.add_child(cat_building)
 	cat_building.connect("clicked", self, "_on_cat_clicked", [cat_building])
@@ -76,6 +88,14 @@ func can_build(position: Vector2):
 	var id = $TileRoad.get_cellv(map_position)
 	print("cell id: %s, map: %s, mouse: %s" % [id, map_position, position])
 	if id == 0 : return false
+	
+	var cell_pos = $TileMap.world_to_map(position)
+	if cats_dict.get(cell_pos):
+#		print("yes cat at %s is %s" % [cell_pos, cats_dict.get(cell_pos)])
+		return false
+#	else:
+#		print("no cat at %s" % cell_pos)
+#		print(cats_dict.get(cell_pos))
 	return true
 
 func spawn_new_mouse():
