@@ -18,7 +18,7 @@ var rng: RandomNumberGenerator = Global.rng
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimationPlayer.play("walk")
+	$AnimationPlayer.play("walk", 0, 1.4)
 	h_offset = rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE) * 2
 	v_offset = rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE)
 #	$Sprite.offset = Vector2(rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE) * 2, rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE))
@@ -26,6 +26,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func get_bullet_target():
+	return $BulletTarget.global_position
 
 func end():
 	alive = false
@@ -37,11 +40,15 @@ func show_target_index(show: bool, index: String = ''):
 	$TargetIndexLabel.text = index
 
 func _physics_process(delta):
-#	print("I'm a mouse at %s" % unit_offset)
 	if unit_offset >= 1.0:
 		end()
 		return
-	t += delta * speed
+	var final_speed := speed
+	if $AnimationPlayer.current_animation_position < 0.125:
+		final_speed = speed * 4
+	else:
+		final_speed = speed * 0.25
+	t += delta * final_speed
 	offset = t
 
 func on_hit(bullet: Node2D):

@@ -5,7 +5,7 @@
 [ext_resource path="res://resources/Merienda_font.tres" type="DynamicFont" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 20, 10 )
+extents = Vector2( 30, 15 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -38,6 +38,7 @@ tracks/1/keys = {
 resource_name = "walk"
 length = 0.4
 loop = true
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
 tracks/0/interp = 1
@@ -45,10 +46,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3 ),
+"times": PoolRealArray( 0, 0.1, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.2, 0.9 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 0.85 ), Vector2( 1, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:position")
@@ -60,22 +61,27 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 8, 0 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( -10, 0 ), Vector2( 0, 0 ) ]
 }
 
 [node name="Mouse" type="PathFollow2D" groups=["mice"]]
 loop = false
+lookahead = 40.0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 z_index = 10
 texture = ExtResource( 1 )
-offset = Vector2( -20, 0 )
+offset = Vector2( 8, 0 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 30, 0 )
 shape = SubResource( 1 )
+
+[node name="BulletTarget" type="Position2D" parent="."]
+position = Vector2( 20, 0 )
 
 [node name="TargetIndexLabel" type="Label" parent="."]
 visible = false
