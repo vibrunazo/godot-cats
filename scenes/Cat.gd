@@ -1,6 +1,6 @@
 extends Node2D
 
-class_name Cat, "res://assets/cat01.png"
+class_name Cat, "res://assets/cat02.png"
 signal clicked
 
 
@@ -16,6 +16,8 @@ onready var bullet_sprite: Sprite = $Turret/SpawnPosition/BulletSprite
 export var building = true
 export var SELECTION_SIZE := 400
 export var selected = true
+export var damage = 10
+export var shot_speed = 400
 
 
 # Called when the node enters the scene tree for the first time.
@@ -118,6 +120,8 @@ func shoot():
 		return
 	var bullet = bullet_scene.instance()
 	bullet.position = spawn_position.global_position
+	bullet.damage = damage
+	bullet.speed = shot_speed
 	bullet.set_target(target)
 	get_tree().root.add_child(bullet)
 	play_attack_anim()
