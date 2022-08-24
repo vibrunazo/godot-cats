@@ -8,9 +8,9 @@ signal killed
 # var b = "text"
 var t = 0
 export var speed := 50
-export var max_health := 100
+export var max_health := 50
 export var OFFSET_RANGE := 15
-var health := 100
+var health := 0
 var alive := true
 
 var rng: RandomNumberGenerator = Global.rng
@@ -21,6 +21,7 @@ func _ready():
 	$AnimationPlayer.play("walk", 0, 1.4)
 	h_offset = rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE) * 2
 	v_offset = rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE)
+	health = max_health
 #	$Sprite.offset = Vector2(rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE) * 2, rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

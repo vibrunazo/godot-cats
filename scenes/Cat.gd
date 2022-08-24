@@ -34,6 +34,7 @@ func done_building():
 	$AggroRange.monitoring = true
 	unselect()
 	$AnimationPlayer.play("idle")
+	modulate = Color.white
 	
 func select():
 	selected = true

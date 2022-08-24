@@ -46,9 +46,9 @@ func build_cat(name):
 		print("already a cat at %s is %s" % [cell_pos, cats_dict.get(cell_pos)])
 		return
 	else:
-#		print("no cat at %s" % cell_pos)
+#		print("building cat at %s" % cell_pos)
 		cats_dict[cell_pos] = cat_building
-		
+	
 	$UI.remove_child(cat_building)
 	$Cats.add_child(cat_building)
 	cat_building.connect("clicked", self, "_on_cat_clicked", [cat_building])
@@ -73,6 +73,10 @@ func update_coins():
 func _physics_process(delta):
 	if cat_building != null:
 		cat_building.position = snap_to_grid(get_global_mouse_position())
+		if can_build(get_global_mouse_position()):
+			cat_building.modulate = Color.yellow#("ff55ff99")
+		else:
+			cat_building.modulate = Color.red#("bbaa2222")
 		
 func snap_to_grid(position: Vector2):
 #	var local_position = $TileMap.to_local(position)
@@ -82,20 +86,22 @@ func snap_to_grid(position: Vector2):
 #	print('cell id: %s' % cell_world_position)
 	return Vector2(cell_position.x + 64, cell_position.y + 64)
 
-func can_build(position: Vector2):
-#	var cell_position = snap_to_grid(position)
-	var map_position = $TileRoad.world_to_map(position)
-	var id = $TileRoad.get_cellv(map_position)
-	print("cell id: %s, map: %s, mouse: %s" % [id, map_position, position])
-	if id == 0 : return false
-	
+func can_build(position: Vector2) -> bool:
 	var cell_pos = $TileMap.world_to_map(position)
-	if cats_dict.get(cell_pos):
-#		print("yes cat at %s is %s" % [cell_pos, cats_dict.get(cell_pos)])
-		return false
-#	else:
-#		print("no cat at %s" % cell_pos)
-#		print(cats_dict.get(cell_pos))
+	var id = $TileRoad.get_cellv(cell_pos)
+	
+	if id == 0 : return false
+	if cats_dict.get(cell_pos): return false
+	if !is_inside_map(cell_pos): return false
+	return true
+
+func is_inside_map(cell_pos: Vector2):
+	var x1 = 0
+	var y1 = 0
+	var x2 = 10
+	var y2 = 5
+	if cell_pos.x < x1 or cell_pos.x > x2: return false
+	if cell_pos.y < y1 or cell_pos.y > y2: return false
 	return true
 
 func spawn_new_mouse():
@@ -107,15 +113,15 @@ func spawn_new_mouse():
 func _on_SpawnTimer_timeout():
 	spawn_new_mouse()
 	if $SpawnTimer.wait_time >= 2.2:
-		$SpawnTimer.wait_time -= 0.14#$SpawnTimer.wait_time * 0.05
+		$SpawnTimer.wait_time -= 0.2#$SpawnTimer.wait_time * 0.05
 		print("new spawn timer is %f" % $SpawnTimer.wait_time)
 	elif $SpawnTimer.wait_time >= 1.5:
-		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.02
+		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.03
 		print("new spawn timer is %f" % $SpawnTimer.wait_time)
 	elif $SpawnTimer.wait_time >= 1.0:
-		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.01
+		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.02
 		print("new spawn timer is %f" % $SpawnTimer.wait_time)
-	elif $SpawnTimer.wait_time >= 0.5:
+	elif $SpawnTimer.wait_time >= 0.3:
 		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.005
 		print("new spawn timer is %f" % $SpawnTimer.wait_time)
 	

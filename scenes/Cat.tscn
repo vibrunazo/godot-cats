@@ -454,7 +454,7 @@ z_index = 10
 texture = ExtResource( 7 )
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 0.8
+wait_time = 1.1
 
 [node name="ClickArea" type="Area2D" parent="."]
 script = ExtResource( 4 )
