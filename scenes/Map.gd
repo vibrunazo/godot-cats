@@ -50,7 +50,15 @@ func update_coins():
 
 func _physics_process(delta):
 	if cat_building != null:
-		cat_building.position = get_global_mouse_position()
+		cat_building.position = snap_to_grid(get_global_mouse_position())
+		
+func snap_to_grid(position: Vector2):
+#	var local_position = $TileMap.to_local(position)
+	var map_position = $TileMap.world_to_map(position)
+	var cell_position = $TileMap.map_to_world(Vector2(map_position.x, map_position.y))
+	var cell_world_position = $TileMap.to_global(cell_position)
+#	print('cell id: %s' % cell_world_position)
+	return Vector2(cell_world_position.x + 64, cell_world_position.y + 64)
 
 func spawn_new_mouse():
 	var mouse = mouse_scene.instance()
@@ -60,8 +68,8 @@ func spawn_new_mouse():
 
 func _on_SpawnTimer_timeout():
 	spawn_new_mouse()
-	if $SpawnTimer.wait_time >= 2.5:
-		$SpawnTimer.wait_time -= 0.1#$SpawnTimer.wait_time * 0.05
+	if $SpawnTimer.wait_time >= 2.2:
+		$SpawnTimer.wait_time -= 0.14#$SpawnTimer.wait_time * 0.05
 		print("new spawn timer is %f" % $SpawnTimer.wait_time)
 	elif $SpawnTimer.wait_time >= 1.5:
 		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.02
