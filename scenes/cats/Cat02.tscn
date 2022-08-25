@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://scenes/cats/Cat.gd" type="Script" id=1]
-[ext_resource path="res://scenes/CatClickArea.gd" type="Script" id=2]
+[ext_resource path="res://scenes/cats/Cat02.gd" type="Script" id=1]
+[ext_resource path="res://scenes/cats/CatClickArea.gd" type="Script" id=2]
 [ext_resource path="res://assets/ball.png" type="Texture" id=3]
 [ext_resource path="res://assets/selection_circle.png" type="Texture" id=4]
 [ext_resource path="res://assets/cat02_head.png" type="Texture" id=5]
@@ -396,7 +396,7 @@ tracks/6/keys = {
 [node name="Cat" type="Node2D"]
 script = ExtResource( 1 )
 damage = 25
-shot_speed = 250
+shot_speed = 200
 
 [node name="SelectionCircle" type="Sprite" parent="."]
 visible = false
@@ -415,9 +415,10 @@ rotation = 1.5708
 [node name="SpawnPosition" type="Position2D" parent="Turret"]
 position = Vector2( 41.8, -0.000151316 )
 rotation = -1.5708
-scale = Vector2( 1.15, 0.95 )
+scale = Vector2( 1.6, 1.6 )
 
 [node name="BulletSprite" type="Sprite" parent="Turret/SpawnPosition"]
+modulate = Color( 0.784314, 0.160784, 0.913725, 0.717647 )
 z_index = 9
 texture = ExtResource( 3 )
 

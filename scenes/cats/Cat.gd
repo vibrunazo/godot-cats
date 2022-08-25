@@ -1,6 +1,6 @@
 extends Node2D
 
-class_name Cat, "res://assets/cat02.png"
+class_name Cat, "res://assets/cat01.png"
 signal clicked
 
 
