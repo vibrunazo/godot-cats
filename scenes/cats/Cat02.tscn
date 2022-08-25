@@ -1,16 +1,16 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://assets/cat01_body.png" type="Texture" id=1]
-[ext_resource path="res://assets/ball.png" type="Texture" id=2]
-[ext_resource path="res://scenes/Cat.gd" type="Script" id=3]
-[ext_resource path="res://scenes/CatClickArea.gd" type="Script" id=4]
-[ext_resource path="res://assets/selection_circle.png" type="Texture" id=5]
-[ext_resource path="res://assets/cat01_hand.png" type="Texture" id=6]
-[ext_resource path="res://assets/cat01_head.png" type="Texture" id=7]
-[ext_resource path="res://assets/cat01_tail.png" type="Texture" id=8]
+[ext_resource path="res://scenes/cats/Cat.gd" type="Script" id=1]
+[ext_resource path="res://scenes/CatClickArea.gd" type="Script" id=2]
+[ext_resource path="res://assets/ball.png" type="Texture" id=3]
+[ext_resource path="res://assets/selection_circle.png" type="Texture" id=4]
+[ext_resource path="res://assets/cat02_head.png" type="Texture" id=5]
+[ext_resource path="res://assets/cat02_hand.png" type="Texture" id=6]
+[ext_resource path="res://assets/cat02_body.png" type="Texture" id=7]
+[ext_resource path="res://assets/cat02_tail.png" type="Texture" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 200.0
+radius = 300.0
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 64, 64 )
@@ -161,7 +161,6 @@ tracks/11/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "attack"
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Turret/cat_body/hand_r:rotation_degrees")
@@ -309,7 +308,6 @@ tracks/11/keys = {
 }
 
 [sub_resource type="Animation" id=5]
-resource_name = "idle"
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -396,15 +394,16 @@ tracks/6/keys = {
 }
 
 [node name="Cat" type="Node2D"]
-script = ExtResource( 3 )
+script = ExtResource( 1 )
+damage = 25
+shot_speed = 250
 
 [node name="SelectionCircle" type="Sprite" parent="."]
 visible = false
 modulate = Color( 0.45, 0.75, 0.9, 0.901961 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 
 [node name="AggroRange" type="Area2D" parent="."]
-visible = false
 monitoring = false
 
 [node name="AggroShape" type="CollisionShape2D" parent="AggroRange"]
@@ -420,7 +419,7 @@ scale = Vector2( 1.15, 0.95 )
 
 [node name="BulletSprite" type="Sprite" parent="Turret/SpawnPosition"]
 z_index = 9
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="tail" type="Sprite" parent="Turret"]
 position = Vector2( -39.074, -0.406708 )
@@ -432,7 +431,7 @@ offset = Vector2( 0, 40 )
 [node name="cat_body" type="Sprite" parent="Turret"]
 rotation = -1.5708
 z_index = 10
-texture = ExtResource( 1 )
+texture = ExtResource( 7 )
 
 [node name="hand_l" type="Sprite" parent="Turret/cat_body"]
 show_behind_parent = true
@@ -451,13 +450,13 @@ offset = Vector2( 0, 8 )
 [node name="head" type="Sprite" parent="Turret"]
 rotation = -1.5708
 z_index = 10
-texture = ExtResource( 7 )
+texture = ExtResource( 5 )
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 1.1
+wait_time = 2.0
 
 [node name="ClickArea" type="Area2D" parent="."]
-script = ExtResource( 4 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }

@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Cat",
 "language": "GDScript",
-"path": "res://scenes/Cat.gd"
+"path": "res://scenes/cats/Cat.gd"
 }, {
 "base": "PathFollow2D",
 "class": "Mouse",
@@ -26,7 +26,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Bullet": "res://assets/ball.png",
-"Cat": "res://assets/cat02.png",
+"Cat": "",
 "Mouse": "res://assets/mouse01.png"
 }
 
