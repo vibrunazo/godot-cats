@@ -112,18 +112,15 @@ func spawn_new_mouse():
 
 func _on_SpawnTimer_timeout():
 	spawn_new_mouse()
-	if $SpawnTimer.wait_time >= 2.2:
+	if $SpawnTimer.wait_time >= 3.0:
 		$SpawnTimer.wait_time -= 0.2#$SpawnTimer.wait_time * 0.05
-		print("new spawn timer is %f" % $SpawnTimer.wait_time)
 	elif $SpawnTimer.wait_time >= 1.5:
-		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.03
-		print("new spawn timer is %f" % $SpawnTimer.wait_time)
+		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.025
 	elif $SpawnTimer.wait_time >= 1.0:
-		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.02
-		print("new spawn timer is %f" % $SpawnTimer.wait_time)
+		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.01
 	elif $SpawnTimer.wait_time >= 0.3:
 		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.005
-		print("new spawn timer is %f" % $SpawnTimer.wait_time)
+	print("new spawn timer is %f" % $SpawnTimer.wait_time)
 	
 	
 func _on_mouse_killed(mouse: Mouse):

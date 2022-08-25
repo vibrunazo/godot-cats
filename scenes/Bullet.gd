@@ -31,6 +31,8 @@ func _physics_process(delta):
 		var target_pos = target.get_bullet_target() + target_offset
 		look_at(target_pos)
 		position += Vector2(speed * delta, 0).rotated(rotation)
+		$Sprite.global_rotation_degrees = 0
+#		print($Sprite.global_rotation_degrees)
 	else:
 		queue_free()
 
