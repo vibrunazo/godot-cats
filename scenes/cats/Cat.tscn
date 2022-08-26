@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/cats/Cat.gd" type="Script" id=1]
 [ext_resource path="res://scenes/cats/CatClickArea.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/cat01_tail.png" type="Texture" id=6]
 [ext_resource path="res://assets/selection_circle.png" type="Texture" id=7]
 [ext_resource path="res://assets/cat01_head.png" type="Texture" id=8]
+[ext_resource path="res://scenes/CatActions.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 200.0
@@ -399,12 +400,10 @@ tracks/6/keys = {
 script = ExtResource( 1 )
 
 [node name="SelectionCircle" type="Sprite" parent="."]
-visible = false
 modulate = Color( 0.45, 0.75, 0.9, 0.901961 )
 texture = ExtResource( 7 )
 
 [node name="AggroRange" type="Area2D" parent="."]
-visible = false
 monitoring = false
 
 [node name="AggroShape" type="CollisionShape2D" parent="AggroRange"]
@@ -474,6 +473,24 @@ anims/RESET = SubResource( 3 )
 anims/attack = SubResource( 4 )
 anims/idle = SubResource( 5 )
 
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 0, 128 )
+z_index = 100
+
+[node name="UI" type="Control" parent="Node2D"]
+margin_left = -128.0
+margin_top = -256.0
+margin_right = 128.0
+mouse_filter = 2
+
+[node name="CatActions" parent="Node2D/UI" instance=ExtResource( 9 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+
 [connection signal="area_entered" from="AggroRange" to="." method="_on_AggroRange_area_entered"]
 [connection signal="area_exited" from="AggroRange" to="." method="_on_AggroRange_area_exited"]
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
+[connection signal="delete_pressed" from="Node2D/UI/CatActions" to="." method="_on_delete_pressed"]
+[connection signal="up2_pressed" from="Node2D/UI/CatActions" to="." method="_on_up2_pressed"]
+[connection signal="up_pressed" from="Node2D/UI/CatActions" to="." method="_on_up_pressed"]

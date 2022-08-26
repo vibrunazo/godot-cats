@@ -23,13 +23,7 @@ func _ready():
 
 func set_target(new_target: Mouse):
 	target = new_target
-	var target_pos = target.get_bullet_target() + target_offset
-	look_at(target_pos)
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
 func _physics_process(delta):
 	if is_instance_valid(target):
 		target_pos = target.get_bullet_target() + target_offset
@@ -41,6 +35,7 @@ func _physics_process(delta):
 #		print($Sprite.global_rotation_degrees)
 #	else:
 #		queue_free()
+
 func hit_target():
 	if !ready: return
 	ready = false
@@ -50,14 +45,13 @@ func hit_target():
 			if t.get_parent() is Mouse && is_instance_valid(t.get_parent()):
 				t.get_parent().on_hit(self)
 		var blast = blast_scene.instance()
-		get_parent().add_child(blast)
 		blast.position = global_position
+		get_parent().add_child(blast)
 		blast.start($Area2D/CollisionShape2D.shape.radius)
 	else:
 		if is_instance_valid(target):
 			target.on_hit(self)
 	queue_free()
-	
 
 #func _on_Area2D_area_entered(area: Node2D):
 #	if (area.get_parent() == target):

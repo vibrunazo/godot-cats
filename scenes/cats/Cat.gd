@@ -2,6 +2,7 @@ extends Node2D
 
 class_name Cat, "res://assets/cat01.png"
 signal clicked
+signal sold
 
 
 # Declare member variables here. Examples:
@@ -14,22 +15,32 @@ var bullet_scene = preload("res://scenes/Bullet.tscn")
 onready var spawn_position: Position2D = $Turret/SpawnPosition
 onready var bullet_sprite: Sprite = $Turret/SpawnPosition/BulletSprite
 export var building = true
-export var SELECTION_SIZE := 400
 export var selected = true
 export var damage = 10
+export var aggro_range := 200.0
 export var shot_speed = 400
+onready var el_UI = $Node2D/UI
+var SELECTION_SIZE := 400.0
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	el_UI.visible = false
 	if selected:
-		var selection_scale = ($AggroRange/AggroShape.shape.radius * 2) / SELECTION_SIZE
-		$SelectionCircle.scale = Vector2(selection_scale, selection_scale)
+		update_range(aggro_range)
 		$SelectionCircle.visible = true
 	else:
 		$SelectionCircle.visible = false
 	if !building:
 		done_building()
+
+func update_range(new_range):
+	aggro_range = new_range
+	$AggroRange/AggroShape.shape.radius = new_range
+	var selection_scale = (aggro_range * 2.0) / SELECTION_SIZE
+	$SelectionCircle.scale = Vector2(selection_scale, selection_scale)
+#	$SelectionCircle.scale = Vector2(2,2)
+	print("range is now %s. radius is %s" % [aggro_range, $AggroRange/AggroShape.shape.radius])
 	
 func done_building():
 	building = false
@@ -41,11 +52,14 @@ func done_building():
 func select():
 	selected = true
 	$SelectionCircle.visible = true
+	if !building:
+		el_UI.visible = true
 	update_aggro_labels()
 	
 func unselect():
 	selected = false
 	$SelectionCircle.visible = false
+	el_UI.visible = false
 	if !Global.DEBUG: return
 	for m in aggro_list:
 		var mouse: Mouse = m
@@ -119,11 +133,12 @@ func shoot():
 		$Cooldown.stop()
 		return
 	var bullet = bullet_scene.instance()
+#	get_tree().root.add_child(bullet)
+	get_tree().root.call_deferred("add_child", bullet)
 	bullet.position = spawn_position.global_position
 	bullet.damage = damage
 	bullet.speed = shot_speed
 	bullet.set_target(target)
-	get_tree().root.add_child(bullet)
 	play_attack_anim()
 
 func play_attack_anim():
@@ -160,3 +175,14 @@ func _on_AggroRange_area_exited(area: Node):
 
 func _on_Cooldown_timeout():
 	shoot()
+
+func _on_up_pressed():
+	update_range(aggro_range + 20.0)
+	
+
+func _on_up2_pressed():
+	damage += 10
+
+func _on_delete_pressed():
+	emit_signal("sold")
+	queue_free()
