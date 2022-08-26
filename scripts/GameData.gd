@@ -11,7 +11,7 @@ var cat_data = {
 	}
 }
 var cat_scenes = [
-	preload("res://scenes/cats/Cat.tscn"),
+	preload("res://scenes/cats/Cat01.tscn"),
 	preload("res://scenes/cats/Cat02.tscn")
 	]
 

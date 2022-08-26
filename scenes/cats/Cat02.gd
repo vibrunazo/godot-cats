@@ -3,7 +3,6 @@ extends "res://scenes/cats/Cat.gd"
 class_name Cat2, "res://assets/cat02.png"
 
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	._ready()
