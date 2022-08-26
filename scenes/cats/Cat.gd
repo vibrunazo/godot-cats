@@ -88,7 +88,8 @@ func follow_target():
 
 func acquire_new_target(new_target: Mouse):
 	target = new_target
-	target.connect("killed", self, "_on_target_died", [target])
+	if !target.is_connected("killed", self, "_on_target_died"):
+		target.connect("killed", self, "_on_target_died", [target])
 	follow_target()
 	if $Cooldown.time_left > 0:
 		return
@@ -129,7 +130,7 @@ func search_new_target():
 	acquire_new_target(best)
 
 func shoot():
-	if !target:
+	if !target or !is_instance_valid(target):
 		$Cooldown.stop()
 		return
 	var bullet = bullet_scene.instance()

@@ -23,6 +23,7 @@ func _ready():
 
 func set_target(new_target: Mouse):
 	target = new_target
+	target_pos = target.get_bullet_target()
 	
 func _physics_process(delta):
 	if is_instance_valid(target):

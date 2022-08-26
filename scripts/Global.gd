@@ -4,7 +4,7 @@ extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var DEBUG = false
+var DEBUG = true
 var rng = RandomNumberGenerator.new()
 
 func _ready():
