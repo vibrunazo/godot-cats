@@ -14,6 +14,8 @@ var cats_dict = {
 #	[1, 2]: "cat2"
 }
 
+var spawn_count := 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	el_path = $Path2D
@@ -105,8 +107,15 @@ func is_inside_map(cell_pos: Vector2):
 	return true
 
 func spawn_new_mouse():
+	spawn_count += 1
 	var mouse = mouse_scene.instance()
 	mouse.position = Vector2(0, 0)
+	var min_size = 30
+	var max_size = 30 + spawn_count * 0.2
+	var min_speed = 40
+	var max_speed = min(100, 30 + spawn_count * 0.3)
+	mouse.max_health = rand_range(min_size, max_size)
+	mouse.speed = rand_range(min_speed, max_speed)
 	el_path.add_child(mouse)
 	mouse.connect("killed", self, "_on_mouse_killed", [mouse])
 
@@ -115,12 +124,13 @@ func _on_SpawnTimer_timeout():
 	if $SpawnTimer.wait_time >= 3.0:
 		$SpawnTimer.wait_time -= 0.2#$SpawnTimer.wait_time * 0.05
 	elif $SpawnTimer.wait_time >= 1.5:
-		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.025
+		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.03
 	elif $SpawnTimer.wait_time >= 1.0:
-		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.01
+		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.02
 	elif $SpawnTimer.wait_time >= 0.3:
-		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.005
-	print("new spawn timer is %f" % $SpawnTimer.wait_time)
+		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.01
+	if $SpawnTimer.wait_time >= 0.3:
+		print("new spawn timer is %f" % $SpawnTimer.wait_time)
 	
 	
 func _on_mouse_killed(mouse: Mouse):

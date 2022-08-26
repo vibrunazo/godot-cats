@@ -396,7 +396,7 @@ tracks/6/keys = {
 
 [node name="Cat" type="Node2D"]
 script = ExtResource( 1 )
-damage = 12
+damage = 8
 shot_speed = 200
 
 [node name="SelectionCircle" type="Sprite" parent="."]
