@@ -12,6 +12,7 @@ var target: Mouse = null setget set_target
 var target_offset: Vector2 = Vector2(0, 0)
 var target_pos: Vector2 = Vector2(0, 0)
 var ready = true
+var blast_scene = preload("res://scenes/Blast.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -48,6 +49,10 @@ func hit_target():
 		for t in targets:
 			if t.get_parent() is Mouse && is_instance_valid(t.get_parent()):
 				t.get_parent().on_hit(self)
+		var blast = blast_scene.instance()
+		get_parent().add_child(blast)
+		blast.position = global_position
+		blast.start($Area2D/CollisionShape2D.shape.radius)
 	else:
 		if is_instance_valid(target):
 			target.on_hit(self)

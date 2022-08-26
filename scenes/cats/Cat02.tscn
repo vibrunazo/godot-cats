@@ -396,7 +396,7 @@ tracks/6/keys = {
 
 [node name="Cat" type="Node2D"]
 script = ExtResource( 1 )
-damage = 25
+damage = 12
 shot_speed = 200
 
 [node name="SelectionCircle" type="Sprite" parent="."]
@@ -461,7 +461,7 @@ z_index = 10
 texture = ExtResource( 5 )
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 2.1
 
 [node name="ClickArea" type="Area2D" parent="."]
 script = ExtResource( 2 )

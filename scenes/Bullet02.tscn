@@ -4,8 +4,8 @@
 [ext_resource path="res://scenes/Bullet.gd" type="Script" id=2]
 [ext_resource path="res://assets/radial.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 100, 100 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 80.0
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource( 2 )
