@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/cats/Cat02.gd" type="Script" id=1]
 [ext_resource path="res://scenes/cats/CatClickArea.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/cat02_hand.png" type="Texture" id=6]
 [ext_resource path="res://assets/cat02_body.png" type="Texture" id=7]
 [ext_resource path="res://assets/cat02_tail.png" type="Texture" id=8]
+[ext_resource path="res://assets/radial.png" type="Texture" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 300.0
@@ -415,12 +416,18 @@ rotation = 1.5708
 [node name="SpawnPosition" type="Position2D" parent="Turret"]
 position = Vector2( 41.8, -0.000151316 )
 rotation = -1.5708
-scale = Vector2( 1.6, 1.6 )
+scale = Vector2( 0.8, 0.8 )
 
 [node name="BulletSprite" type="Sprite" parent="Turret/SpawnPosition"]
-modulate = Color( 0.784314, 0.160784, 0.913725, 0.717647 )
+self_modulate = Color( 0.784314, 0.160784, 0.913725, 0.588235 )
 z_index = 9
 texture = ExtResource( 3 )
+
+[node name="BulletGlowSprite" type="Sprite" parent="Turret/SpawnPosition/BulletSprite"]
+modulate = Color( 0.984314, 0.596078, 0.976471, 1 )
+show_behind_parent = true
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 9 )
 
 [node name="tail" type="Sprite" parent="Turret"]
 position = Vector2( -39.074, -0.406708 )
