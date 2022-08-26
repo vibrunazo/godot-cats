@@ -5,11 +5,12 @@
 [ext_resource path="res://assets/radial.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 20, 20 )
+extents = Vector2( 100, 100 )
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource( 2 )
 damage = 25
+aoe = true
 
 [node name="Sprite" type="Sprite" parent="."]
 self_modulate = Color( 0.886275, 0.313726, 0.85098, 0.737255 )
