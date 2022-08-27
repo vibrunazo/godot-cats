@@ -73,6 +73,8 @@ func add_coins(ammount):
 
 func update_coins():
 	$UI/HUD/ActionBar/CoinLabel.text = "$%s" % coins
+	if is_instance_valid(cat_selected):
+		cat_selected.on_map_coins_changed(coins)
 	
 #func _unhandled_input(event):
 #	print('new event %s' % event)

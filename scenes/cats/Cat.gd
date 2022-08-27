@@ -58,6 +58,7 @@ func done_building(new_cell = Vector2(0, 0)):
 	
 func select():
 	selected = true
+	on_map_coins_changed(map_ref.coins)
 	$SelectionCircle.visible = true
 	if !building:
 		el_UI.visible = true
@@ -205,3 +206,13 @@ func _on_delete_pressed():
 	map_ref.add_coins(int(cost * 0.75))
 	map_ref.remove_cat_at_cell(cell_pos)
 	queue_free()
+
+func on_map_coins_changed(coins: int):
+	if coins < 5:
+		$Node2D/UI/CatActions/HBoxContainer/UpButton.disabled = true
+	else:
+		$Node2D/UI/CatActions/HBoxContainer/UpButton.disabled = false
+	if coins < 20:
+		$Node2D/UI/CatActions/HBoxContainer/Up2Button.disabled = true
+	else:
+		$Node2D/UI/CatActions/HBoxContainer/Up2Button.disabled = false

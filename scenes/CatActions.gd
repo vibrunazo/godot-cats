@@ -1,9 +1,10 @@
 extends Control
 
+class_name CatActions
+
 signal up_pressed
 signal up2_pressed
 signal delete_pressed
-
 
 func _ready():
 	pass # Replace with function body.
