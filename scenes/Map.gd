@@ -1,5 +1,6 @@
 extends Node2D
 
+class_name Map
 
 var el_path: Path2D
 var mouse_scene = preload("res://scenes/Mouse.tscn")
@@ -32,6 +33,7 @@ func action_pressed(name):
 	if coins < GameData.cat_data[name]['cost']:
 		return
 	cat_building = GameData.get_cat_scene(name).instance()
+	cat_building.init(self)
 	$UI.add_child(cat_building)
 
 func action_released(name):
@@ -54,13 +56,16 @@ func build_cat(name):
 	$UI.remove_child(cat_building)
 	$Cats.add_child(cat_building)
 	cat_building.connect("clicked", self, "_on_cat_clicked", [cat_building])
-	cat_building.done_building()
+	cat_building.done_building(cell_pos)
 	cat_building = null
 	add_coins(-data[name]['cost'])
 	
 func cancel_build():
 	cat_building.queue_free()
 	cat_building = null
+	
+func remove_cat_at_cell(cell_pos: Vector2):
+	cats_dict[cell_pos] = null
 
 func add_coins(ammount):
 	coins += ammount

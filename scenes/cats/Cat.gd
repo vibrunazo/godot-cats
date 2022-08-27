@@ -16,13 +16,19 @@ onready var spawn_position: Position2D = $Turret/SpawnPosition
 onready var bullet_sprite: Sprite = $Turret/SpawnPosition/BulletSprite
 export var building = true
 export var selected = true
+export var cat_name = "Cat1"
 export var damage = 10
 export var aggro_range := 200.0
 export var shot_speed = 400
 onready var el_UI = $Node2D/UI
 var SELECTION_SIZE := 400.0
+var map_ref: Node2D = null
+var cell_pos: Vector2 = Vector2(0, 0)
 
 
+func init(map):
+	map_ref = map
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	el_UI.visible = false
@@ -42,8 +48,9 @@ func update_range(new_range):
 #	$SelectionCircle.scale = Vector2(2,2)
 	print("range is now %s. radius is %s" % [aggro_range, $AggroRange/AggroShape.shape.radius])
 	
-func done_building():
+func done_building(new_cell = Vector2(0, 0)):
 	building = false
+	cell_pos = new_cell
 	$AggroRange.monitoring = true
 	unselect()
 	$AnimationPlayer.play("idle")
@@ -186,4 +193,7 @@ func _on_up2_pressed():
 
 func _on_delete_pressed():
 	emit_signal("sold")
+	var cost = map_ref.data[cat_name]['cost']
+	map_ref.add_coins(int(cost * 0.75))
+	map_ref.remove_cat_at_cell(cell_pos)
 	queue_free()
