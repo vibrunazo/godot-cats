@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/cats/Cat02.gd"
 }, {
-"base": "Control",
-"class": "CatActions",
-"language": "GDScript",
-"path": "res://scenes/CatActions.gd"
-}, {
 "base": "Node2D",
 "class": "Map",
 "language": "GDScript",
@@ -43,7 +38,6 @@ _global_script_class_icons={
 "Bullet": "res://assets/ball.png",
 "Cat": "res://assets/cat01.png",
 "Cat2": "res://assets/cat02.png",
-"CatActions": "",
 "Map": "",
 "Mouse": "res://assets/mouse01.png"
 }

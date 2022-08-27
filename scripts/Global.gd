@@ -5,6 +5,8 @@ extends Node
 # var a = 2
 # var b = "text"
 var DEBUG = false
+var DEBUG_MAP_TIMER = true
+var DEBUG_MOUSE = false
 var rng = RandomNumberGenerator.new()
 
 func _ready():

@@ -16,9 +16,13 @@ var cats_dict = {
 }
 
 var spawn_count := 0
+var start_time := 0
+var ellapsed := 0
+var max_size := 30.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	start_time = Time.get_ticks_msec()
 	el_path = $Path2D
 	for b in get_tree().get_nodes_in_group("action_button"):
 		print("found action button %s" % b.get_name())
@@ -117,10 +121,11 @@ func spawn_new_mouse():
 	spawn_count += 1
 	var mouse = mouse_scene.instance()
 	mouse.position = Vector2(0, 0)
+	ellapsed = (Time.get_ticks_msec() - start_time) / 1000
 	var min_size = 30
-	var max_size = 30 + spawn_count * 0.2
+	max_size = min_size + pow(ellapsed, 1.3) * 0.3
 	var min_speed = 40
-	var max_speed = min(100, 30 + spawn_count * 0.3)
+	var max_speed = min(100, min_speed + ellapsed * 0.18)
 	mouse.max_health = rand_range(min_size, max_size)
 	mouse.speed = rand_range(min_speed, max_speed)
 	el_path.add_child(mouse)
@@ -130,18 +135,21 @@ func _on_SpawnTimer_timeout():
 	spawn_new_mouse()
 	if $SpawnTimer.wait_time >= 3.0:
 		$SpawnTimer.wait_time -= 0.2#$SpawnTimer.wait_time * 0.05
-	elif $SpawnTimer.wait_time >= 1.5:
-		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.03
-	elif $SpawnTimer.wait_time >= 1.0:
-		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.02
-	elif $SpawnTimer.wait_time >= 0.3:
+	elif $SpawnTimer.wait_time >= 2.0:
 		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.01
-	if $SpawnTimer.wait_time >= 0.3:
+	elif $SpawnTimer.wait_time >= 1.2:
+		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.005
+	elif $SpawnTimer.wait_time >= 0.5:
+		$SpawnTimer.wait_time -= $SpawnTimer.wait_time * 0.002
+	if $SpawnTimer.wait_time >= 0.5 and Global.DEBUG_MAP_TIMER:
 		print("new spawn timer is %f" % $SpawnTimer.wait_time)
 	
 	
 func _on_mouse_killed(mouse: Mouse):
-	add_coins(1)
+	var hp = mouse.max_health
+	# 80hp is 2 coins, 253hp is 3 coins, 504 is 4 coins
+	var worth = 1 + floor(pow(hp, 0.6) / 13.8)
+	add_coins(worth)
 
 func _on_cat_clicked(cat: Cat):
 	print('clicked cat %s' % cat.name)

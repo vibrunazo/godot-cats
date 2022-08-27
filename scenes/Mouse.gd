@@ -23,7 +23,8 @@ func _ready():
 	update_scale()
 	h_offset = rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE) * 2
 	v_offset = rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE)
-#	print("mouse ready with %s health and %s speed" % [health, speed])
+	if Global.DEBUG_MOUSE:
+		print("mouse ready with %s health and %s speed" % [health, speed])
 #	$Sprite.offset = Vector2(rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE) * 2, rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -61,7 +62,7 @@ func _physics_process(delta):
 	offset = t
 
 func update_scale():
-	var size = 0.625 + health * 0.0075
+	var size = 0.6 + pow(health, 0.75) * 0.02
 	size = min(size, 1.6)
 	scale = Vector2(size, size)
 

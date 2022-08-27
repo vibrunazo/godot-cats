@@ -18,6 +18,7 @@ margin_right = 213.5
 custom_constants/separation = 20
 
 [node name="UpButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
 margin_right = 129.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )

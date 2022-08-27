@@ -2,24 +2,20 @@ extends Node2D
 
 class_name Cat, "res://assets/cat01.png"
 signal clicked
-signal sold
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
 var aggro_list = []
 var target: Mouse
 var bullet_scene = preload("res://scenes/Bullet.tscn")
 onready var spawn_position: Position2D = $Turret/SpawnPosition
 onready var bullet_sprite: Sprite = $Turret/SpawnPosition/BulletSprite
+enum FocusType {FURTHEST, HEALTH}
 export var building = true
 export var selected = true
 export var cat_name = "Cat1"
 export var damage = 10
 export var aggro_range := 200.0
 export var shot_speed = 400
+export(FocusType) var focus = 0
 onready var el_UI = $Node2D/UI
 var SELECTION_SIZE := 400.0
 var map_ref: Node2D = null
@@ -127,6 +123,15 @@ func _on_target_died(dead_mouse: Mouse):
 func search_new_target():
 #	print(aggro_list)
 	if aggro_list.size() == 0: return
+	var best: Mouse = aggro_list[0]
+	if focus == FocusType.FURTHEST:
+		best = search_furthest()
+	if focus == FocusType.HEALTH:
+		best = search_health()
+#	print('best is %s' % best)
+	acquire_new_target(best)
+
+func search_furthest() -> Mouse:
 	var best_score := 0
 	var best: Mouse = aggro_list[0]
 	for m in aggro_list:
@@ -134,8 +139,17 @@ func search_new_target():
 		if mouse.offset > best_score:
 			best_score = mouse.offset
 			best = mouse
-#	print('best is %s' % best)
-	acquire_new_target(best)
+	return best
+
+func search_health() -> Mouse:
+	var best_score := 0
+	var best: Mouse = aggro_list[0]
+	for m in aggro_list:
+		var mouse: Mouse = m
+		if mouse.health > best_score:
+			best_score = mouse.health
+			best = mouse
+	return best
 
 func shoot():
 	if !target or !is_instance_valid(target):
@@ -201,7 +215,6 @@ func _on_up2_pressed():
 	damage += 10
 
 func _on_delete_pressed():
-	emit_signal("sold")
 	var cost = map_ref.data[cat_name]['cost']
 	map_ref.add_coins(int(cost * 0.75))
 	map_ref.remove_cat_at_cell(cell_pos)
@@ -209,7 +222,9 @@ func _on_delete_pressed():
 
 func on_map_coins_changed(coins: int):
 	if coins < 5:
-		$Node2D/UI/CatActions/HBoxContainer/UpButton.disabled = true
+#		$Node2D/UI/CatActions/HBoxContainer/UpButton.disabled = true
+		$Node2D/UI/CatActions.get_node("%UpButton").disabled = true
+#		get_node("%UpButton").disabled = true
 	else:
 		$Node2D/UI/CatActions/HBoxContainer/UpButton.disabled = false
 	if coins < 20:
