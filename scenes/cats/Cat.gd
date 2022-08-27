@@ -185,10 +185,18 @@ func _on_Cooldown_timeout():
 	shoot()
 
 func _on_up_pressed():
+	var cost = 5
+	if map_ref.coins < cost:
+		return
+	map_ref.add_coins(-cost)
 	update_range(aggro_range + 20.0)
 	
 
 func _on_up2_pressed():
+	var cost = 20
+	if map_ref.coins < cost:
+		return
+	map_ref.add_coins(-cost)
 	damage += 10
 
 func _on_delete_pressed():
