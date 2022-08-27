@@ -485,6 +485,7 @@ margin_right = 128.0
 mouse_filter = 2
 
 [node name="CatActions" parent="Node2D/UI" instance=ExtResource( 9 )]
+unique_name_in_owner = true
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5

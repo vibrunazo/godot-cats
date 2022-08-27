@@ -58,12 +58,14 @@ func select():
 	$SelectionCircle.visible = true
 	if !building:
 		el_UI.visible = true
+		$Node2D/UI/CatActions/AnimationPlayer.play("start")
 	update_aggro_labels()
 	
 func unselect():
 	selected = false
 	$SelectionCircle.visible = false
 	el_UI.visible = false
+#	get_node("%CatAction/AnimationPlayer").play("start")
 	if !Global.DEBUG: return
 	for m in aggro_list:
 		var mouse: Mouse = m

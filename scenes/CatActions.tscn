@@ -1,6 +1,54 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://resources/cats_theme.tres" type="Theme" id=1]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("HBoxContainer:rect_scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("HBoxContainer:rect_scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "start"
+length = 0.8
+step = 0.02
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("HBoxContainer:rect_scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1e-05, -0.06, -0.622926, 0.06, 0.622926, 1.2, -0.06, 0.000520945, 0.06, -0.000520945, 0.95, -0.06, 0.00385034, 0.06, -0.00385034, 1, -0.06, 0.129595, 0.06, -0.00143737, 1, -0.14, 0.000415325, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.8 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("HBoxContainer:rect_scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1e-05, -0.06, -0.5181, 0.06, 0.5181, 1.2, -0.06, 0.00925648, 0.06, -0.00925648, 0.95, -0.02, -0.00488514, 0.02, 0.00488514, 1, -0.06, 0.12086, 0.06, -0.0101728, 1, -0.16, 0.0131519, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.8 )
+}
 
 [node name="CatActions" type="Control"]
 anchor_right = 1.0
@@ -12,10 +60,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -213.5
-margin_top = -80.0
-margin_right = 213.5
+margin_left = -224.0
+margin_top = -88.0
+margin_right = 203.0
+margin_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 200, 0 )
+size_flags_horizontal = 5
+size_flags_vertical = 5
 custom_constants/separation = 20
+alignment = 1
 
 [node name="UpButton" type="Button" parent="HBoxContainer"]
 unique_name_in_owner = true
@@ -41,3 +96,5 @@ rect_min_size = Vector2( 80, 80 )
 text = "X"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/start = SubResource( 2 )
