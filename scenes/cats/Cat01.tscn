@@ -10,3 +10,5 @@ radius = 200.0
 
 [node name="AggroShape" parent="AggroRange" index="0"]
 shape = SubResource( 1 )
+
+[editable path="Node2D/UI/CatActions"]
