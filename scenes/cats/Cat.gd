@@ -16,6 +16,7 @@ export var damage = 10
 export var aggro_range := 200.0
 export var shot_speed = 400
 export(FocusType) var focus = 0
+var total_cost = 10
 onready var el_UI = $Node2D/UI
 var SELECTION_SIZE := 400.0
 var map_ref: Node2D = null
@@ -28,6 +29,7 @@ func init(map):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	el_UI.visible = false
+	total_cost = map_ref.data[cat_name]['cost']
 	if selected:
 		update_range(aggro_range)
 		$SelectionCircle.visible = true
@@ -206,6 +208,7 @@ func _on_up_pressed():
 	if map_ref.coins < cost:
 		return
 	map_ref.add_coins(-cost)
+	total_cost += cost
 	update_range(aggro_range + 20.0)
 	
 
@@ -214,11 +217,12 @@ func _on_up2_pressed():
 	if map_ref.coins < cost:
 		return
 	map_ref.add_coins(-cost)
+	total_cost += cost
 	damage += 10
 
 func _on_delete_pressed():
-	var cost = map_ref.data[cat_name]['cost']
-	map_ref.add_coins(int(cost * 0.75))
+	var cost = total_cost
+	map_ref.add_coins(int(cost * 0.8))
 	map_ref.remove_cat_at_cell(cell_pos)
 	queue_free()
 
