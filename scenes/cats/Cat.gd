@@ -17,7 +17,7 @@ export var aggro_range := 200.0
 export var shot_speed = 400
 export(FocusType) var focus = 0
 var total_cost = 10
-onready var el_UI = $Node2D/UI
+onready var el_UI = $UIroot/UI
 var SELECTION_SIZE := 400.0
 var map_ref: Node2D = null
 var cell_pos: Vector2 = Vector2(0, 0)
@@ -57,11 +57,13 @@ func done_building(new_cell = Vector2(0, 0)):
 func select():
 	selected = true
 	on_map_coins_changed(map_ref.coins)
-	$SelectionCircle.visible = true
-	if !building:
-		el_UI.visible = true
-		$Node2D/UI/CatActions/AnimationPlayer.play("start")
+	el_UI.visible = true
 	update_aggro_labels()
+	if !building:
+#		yield(get_tree().create_timer(0.5),"timeout")
+		$UIAnimations.play("select")
+		$UIroot/UI/CatActions/AnimationPlayer.play("start")
+		$SelectionCircle.visible = true
 	
 func unselect():
 	selected = false
@@ -229,11 +231,11 @@ func _on_delete_pressed():
 func on_map_coins_changed(coins: int):
 	if coins < 5:
 #		$Node2D/UI/CatActions/HBoxContainer/UpButton.disabled = true
-		$Node2D/UI/CatActions.get_node("%UpButton").disabled = true
+		$UIroot/UI/CatActions.get_node("%UpButton").disabled = true
 #		get_node("%UpButton").disabled = true
 	else:
-		$Node2D/UI/CatActions/HBoxContainer/UpButton.disabled = false
+		$UIroot/UI/CatActions/HBoxContainer/UpButton.disabled = false
 	if coins < 20:
-		$Node2D/UI/CatActions/HBoxContainer/Up2Button.disabled = true
+		$UIroot/UI/CatActions/HBoxContainer/Up2Button.disabled = true
 	else:
-		$Node2D/UI/CatActions/HBoxContainer/Up2Button.disabled = false
+		$UIroot/UI/CatActions/HBoxContainer/Up2Button.disabled = false

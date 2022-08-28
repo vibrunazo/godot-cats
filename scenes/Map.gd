@@ -123,7 +123,7 @@ func spawn_new_mouse():
 	mouse.position = Vector2(0, 0)
 	ellapsed = (Time.get_ticks_msec() - start_time) / 1000
 	var min_size = 30
-	max_size = min_size + pow(ellapsed, 1.3) * 0.25
+	max_size = min_size + pow(ellapsed, 1.35) * 0.2
 	var min_speed = 35
 	var max_speed = min(100, min_speed + ellapsed * 0.15)
 	mouse.max_health = rand_range(min_size, max_size)
