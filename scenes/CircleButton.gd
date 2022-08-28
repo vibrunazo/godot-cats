@@ -10,13 +10,30 @@ class_name CircleButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print('circle ready')
 	pass # Replace with function body.
 
+func _set(property: String, value) -> bool:
+	if property == "disabled":
+		print('disabled is now %s' % value)
+		if disabled != value:
+			disabled = value
+			if disabled:
+				$AnimationPlayer.play("disabled")
+			else:
+				$AnimationPlayer.play("enabled")
+#		apply_changes()
+		return true
+	return false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-func _on_CircleButton_toggled(button_pressed):
+func _on_CircleButton_button_down():
 	pass # Replace with function body.
+
+func _on_CircleButton_button_up():
+	pass # Replace with function body.
+
+func _on_CircleButton_pressed():
+	$AnimationPlayer.play("pressed")
+	yield($AnimationPlayer,"animation_finished")
+	if disabled:
+		$AnimationPlayer.play("disabled")
