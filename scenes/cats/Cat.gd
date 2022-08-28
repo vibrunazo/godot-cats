@@ -18,6 +18,7 @@ export var shot_speed = 400
 export(FocusType) var focus = 0
 var total_cost = 10
 onready var el_UI = $UIroot/UI
+onready var el_circle = $SelectRoot/SelectionCircle
 var SELECTION_SIZE := 400.0
 var map_ref: Node2D = null
 var cell_pos: Vector2 = Vector2(0, 0)
@@ -32,9 +33,9 @@ func _ready():
 	total_cost = map_ref.data[cat_name]['cost']
 	if selected:
 		update_range(aggro_range)
-		$SelectionCircle.visible = true
+		el_circle.visible = true
 	else:
-		$SelectionCircle.visible = false
+		el_circle.visible = false
 	if !building:
 		done_building()
 
@@ -42,15 +43,15 @@ func update_range(new_range):
 	aggro_range = new_range
 	$AggroRange/AggroShape.shape.radius = new_range
 	var selection_scale = (aggro_range * 2.0) / SELECTION_SIZE
-	$SelectionCircle.scale = Vector2(selection_scale, selection_scale)
-#	$SelectionCircle.scale = Vector2(2,2)
+	$SelectRoot.scale = Vector2(selection_scale, selection_scale)
 	print("range is now %s. radius is %s" % [aggro_range, $AggroRange/AggroShape.shape.radius])
 	
 func done_building(new_cell = Vector2(0, 0)):
 	building = false
 	cell_pos = new_cell
 	$AggroRange.monitoring = true
-	unselect()
+#	unselect()
+	el_circle.visible = false
 	$AnimationPlayer.play("idle")
 	modulate = Color.white
 	
@@ -63,12 +64,12 @@ func select():
 #		yield(get_tree().create_timer(0.5),"timeout")
 		$UIAnimations.play("select")
 		$UIroot/UI/CatActions/AnimationPlayer.play("start")
-		$SelectionCircle.visible = true
+		el_circle.visible = true
 	
 func unselect():
 	selected = false
-	$SelectionCircle.visible = false
-	el_UI.visible = false
+	$UIAnimations.play("unselect", 0, 2)
+#	el_UI.visible = false
 #	get_node("%CatAction/AnimationPlayer").play("start")
 	if !Global.DEBUG: return
 	for m in aggro_list:
