@@ -122,11 +122,17 @@ func spawn_new_mouse():
 	var mouse = mouse_scene.instance()
 	mouse.position = Vector2(0, 0)
 	ellapsed = (Time.get_ticks_msec() - start_time) / 1000
+	
 	var min_size = 30
 	max_size = min_size + pow(ellapsed, 1.35) * 0.2
+	var h = rand_range(min_size, max_size)
+	# makes it exponential distribution, so big sizes are more rare, 
+	# while keeping same min and max sizes
+	h = min_size + pow(h, 2) * (min_size + max_size) / pow(max_size + min_size, 2)
+	mouse.max_health = h
+	
 	var min_speed = 35
 	var max_speed = min(100, min_speed + ellapsed * 0.15)
-	mouse.max_health = rand_range(min_size, max_size)
 	mouse.speed = rand_range(min_speed, max_speed)
 	el_path.add_child(mouse)
 	mouse.connect("killed", self, "_on_mouse_killed", [mouse])
