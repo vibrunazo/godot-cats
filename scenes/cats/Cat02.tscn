@@ -53,4 +53,4 @@ texture = ExtResource( 5 )
 [node name="Cooldown" parent="." index="3"]
 wait_time = 2.1
 
-[editable path="Node2D/UI/CatActions"]
+[editable path="UIroot/UI/CatActions"]

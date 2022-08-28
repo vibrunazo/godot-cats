@@ -451,6 +451,18 @@ tracks/4/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("UI/CatActions:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "select"
@@ -508,6 +520,18 @@ tracks/4/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("UI/CatActions:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "unselect"
@@ -549,7 +573,7 @@ tracks/3/path = NodePath(".:scale:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.4, 0.8 )
@@ -559,10 +583,22 @@ tracks/4/path = NodePath(".:scale:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.4, 0.8 )
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("UI/CatActions:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
 }
 
 [node name="Cat" type="Node2D"]
@@ -652,7 +688,7 @@ anims/select = SubResource( 7 )
 anims/unselect = SubResource( 8 )
 
 [node name="UIroot" type="Node2D" parent="."]
-position = Vector2( 0, 128 )
+position = Vector2( 0, 160 )
 z_index = 100
 
 [node name="UI" type="Control" parent="UIroot"]
@@ -666,6 +702,7 @@ unique_name_in_owner = true
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
+rect_pivot_offset = Vector2( 0, -160 )
 
 [connection signal="area_entered" from="AggroRange" to="." method="_on_AggroRange_area_entered"]
 [connection signal="area_exited" from="AggroRange" to="." method="_on_AggroRange_area_exited"]
@@ -675,3 +712,6 @@ anchor_right = 0.5
 [connection signal="pressed" from="UIroot/UI/CatActions/HBoxContainer/DeleteButton" to="." method="_on_delete_pressed"]
 
 [editable path="UIroot/UI/CatActions"]
+[editable path="UIroot/UI/CatActions/HBoxContainer/UpButton"]
+[editable path="UIroot/UI/CatActions/HBoxContainer/Up2Button"]
+[editable path="UIroot/UI/CatActions/HBoxContainer/DeleteButton"]

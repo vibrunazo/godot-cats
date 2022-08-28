@@ -499,6 +499,3 @@ anchor_right = 0.5
 [connection signal="area_entered" from="AggroRange" to="." method="_on_AggroRange_area_entered"]
 [connection signal="area_exited" from="AggroRange" to="." method="_on_AggroRange_area_exited"]
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
-[connection signal="delete_pressed" from="Node2D/UI/CatActions" to="." method="_on_delete_pressed"]
-[connection signal="up2_pressed" from="Node2D/UI/CatActions" to="." method="_on_up2_pressed"]
-[connection signal="up_pressed" from="Node2D/UI/CatActions" to="." method="_on_up_pressed"]
