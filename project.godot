@@ -61,7 +61,7 @@ Global="*res://scripts/Global.gd"
 
 [display]
 
-window/size/width=1536
+window/size/width=1664
 window/size/height=768
 window/size/test_width=800
 window/size/test_height=400

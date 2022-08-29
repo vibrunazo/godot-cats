@@ -54,6 +54,18 @@ func done_building(new_cell = Vector2(0, 0)):
 	el_circle.visible = false
 	$AnimationPlayer.play("idle")
 	modulate = Color.white
+	adjust_UI()
+
+func adjust_UI():
+	if cell_pos.x == 0:
+		get_node("%CatActions").rect_position.x += 200
+		get_node("%CatActions").rect_pivot_offset.x -= 200
+	if cell_pos.x == map_ref.max_cell_x:
+		get_node("%CatActions").rect_position.x -= 200
+		get_node("%CatActions").rect_pivot_offset.x += 200
+	if cell_pos.y == map_ref.max_cell_y:
+		get_node("%CatActions").rect_position.y -= 200
+		get_node("%CatActions").rect_pivot_offset.y += 200
 	
 func select():
 	selected = true
@@ -90,7 +102,7 @@ func update_aggro_labels():
 #	pass
 
 func _physics_process(delta):
-	if (target):
+	if is_instance_valid(target):
 		follow_target()
 		
 func follow_target():

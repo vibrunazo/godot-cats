@@ -10,6 +10,8 @@ var data = GameData.cat_data
 var cat_building: Cat = null
 var cat_selected: Cat = null
 export var coins = 20
+export var max_cell_x = 10
+export var max_cell_y = 5
 var cats_dict = {
 #	[0, 0]: "cat1",
 #	[1, 2]: "cat2"
@@ -92,12 +94,11 @@ func _physics_process(delta):
 			cat_building.modulate = Color.red#("bbaa2222")
 		
 func snap_to_grid(position: Vector2):
-#	var local_position = $TileMap.to_local(position)
 	var map_position = $TileMap.world_to_map(position)
 	var cell_position = $TileMap.map_to_world(map_position)
-#	var cell_world_position = $TileMap.to_global(cell_position)
-#	print('cell id: %s' % cell_world_position)
-	return Vector2(cell_position.x + 64, cell_position.y + 64)
+	var pos_x = (cell_position.x + 64)
+	var pos_y = (cell_position.y + 64)
+	return Vector2(pos_x, pos_y)
 
 func can_build(position: Vector2) -> bool:
 	var cell_pos = $TileMap.world_to_map(position)
@@ -111,8 +112,8 @@ func can_build(position: Vector2) -> bool:
 func is_inside_map(cell_pos: Vector2):
 	var x1 = 0
 	var y1 = 0
-	var x2 = 10
-	var y2 = 5
+	var x2 = max_cell_x
+	var y2 = max_cell_y
 	if cell_pos.x < x1 or cell_pos.x > x2: return false
 	if cell_pos.y < y1 or cell_pos.y > y2: return false
 	return true
@@ -124,15 +125,15 @@ func spawn_new_mouse():
 	ellapsed = (Time.get_ticks_msec() - start_time) / 1000
 	
 	var min_size = 30
-	max_size = min_size + pow(ellapsed, 1.35) * 0.2
+	max_size = min_size + pow(ellapsed, 1.45) * 0.15
 	var h = rand_range(min_size, max_size)
 	# makes it exponential distribution, so big sizes are more rare, 
 	# while keeping same min and max sizes
-	h = min_size + pow(h, 2) * (min_size + max_size) / pow(max_size + min_size, 2)
+	h = min_size + pow(h, 4) * (min_size + max_size) / pow(max_size + min_size, 4)
 	mouse.max_health = h
 	
 	var min_speed = 35
-	var max_speed = min(100, min_speed + ellapsed * 0.15)
+	var max_speed = min(100, min_speed + ellapsed * 0.14)
 	mouse.speed = rand_range(min_speed, max_speed)
 	el_path.add_child(mouse)
 	mouse.connect("killed", self, "_on_mouse_killed", [mouse])
@@ -168,5 +169,3 @@ func _on_cat_clicked(cat: Cat):
 		cat.select()
 		cat_selected = cat
 		
-	
-
