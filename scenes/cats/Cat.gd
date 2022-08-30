@@ -44,7 +44,7 @@ func update_range(new_range):
 	$AggroRange/AggroShape.shape.radius = new_range
 	var selection_scale = (aggro_range * 2.0) / SELECTION_SIZE
 	$SelectRoot.scale = Vector2(selection_scale, selection_scale)
-	print("range is now %s. radius is %s" % [aggro_range, $AggroRange/AggroShape.shape.radius])
+#	print("range is now %s. radius is %s" % [aggro_range, $AggroRange/AggroShape.shape.radius])
 	
 func done_building(new_cell = Vector2(0, 0)):
 	building = false
@@ -106,6 +106,7 @@ func _physics_process(delta):
 		follow_target()
 		
 func follow_target():
+	if !target or !is_instance_valid(target): return
 	var pos = target.global_position
 	$Turret.look_at(pos)
 

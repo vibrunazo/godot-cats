@@ -134,7 +134,9 @@ func spawn_new_mouse():
 	
 	var min_speed = 35
 	var max_speed = min(100, min_speed + ellapsed * 0.14)
-	mouse.speed = rand_range(min_speed, max_speed)
+	var s = rand_range(min_speed, max_speed)
+	s = min_speed + pow(s, 3) * (min_speed + max_speed) / pow(min_speed + max_speed, 3)
+	mouse.speed = s
 	el_path.add_child(mouse)
 	mouse.connect("killed", self, "_on_mouse_killed", [mouse])
 
