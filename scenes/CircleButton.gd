@@ -46,7 +46,7 @@ func _on_pressed_mid_point():
 		$Tween.interpolate_property(self, "self_modulate", self_modulate, Color.white, time)
 		$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(0.8, 0.8), time)
 		
-#		$Tween.start()
+		$Tween.start()
 #		self_modulate = Color.white
 #		modulate = Color("cc9c9c9c")
 
