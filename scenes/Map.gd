@@ -24,6 +24,7 @@ var max_size := 30.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Engine.time_scale = 2
 	start_time = Time.get_ticks_msec()
 	el_path = $Path2D
 	for b in get_tree().get_nodes_in_group("action_button"):
@@ -129,7 +130,7 @@ func spawn_new_mouse():
 	ellapsed = (Time.get_ticks_msec() - start_time) / 1000
 	
 	var min_size = 30
-	max_size = min_size + pow(ellapsed, 1.6) * 0.1
+	max_size = min_size + pow(ellapsed, 1.5) * 0.13
 	var h = rand_range(min_size, max_size)
 	# makes it exponential distribution, so big sizes are more rare, 
 	# while keeping same min and max sizes
@@ -137,7 +138,7 @@ func spawn_new_mouse():
 	mouse.max_health = h
 	
 	var min_speed = 35
-	var max_speed = min(100, min_speed + ellapsed * 0.14)
+	var max_speed = min(110, min_speed + ellapsed * 0.145)
 	var s = rand_range(min_speed, max_speed)
 	s = min_speed + pow(s, 3) * (min_speed + max_speed) / pow(min_speed + max_speed, 3)
 	mouse.speed = s

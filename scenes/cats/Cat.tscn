@@ -704,6 +704,12 @@ anchor_top = 1.0
 anchor_right = 0.5
 rect_pivot_offset = Vector2( 0, -160 )
 
+[node name="Up2Button" parent="UIroot/UI/CatActions/HBoxContainer" index="1"]
+cost = 20
+
+[node name="DeleteButton" parent="UIroot/UI/CatActions/HBoxContainer" index="2"]
+cost = 8
+
 [connection signal="area_entered" from="AggroRange" to="." method="_on_AggroRange_area_entered"]
 [connection signal="area_exited" from="AggroRange" to="." method="_on_AggroRange_area_exited"]
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]

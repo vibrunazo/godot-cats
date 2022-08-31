@@ -43,7 +43,7 @@ _global_script_class_icons={
 "Bullet": "res://assets/ball.png",
 "Cat": "res://assets/cat01.png",
 "Cat2": "res://assets/cat02.png",
-"CircleButton": "",
+"CircleButton": "res://assets/button_circle.png",
 "Map": "",
 "Mouse": "res://assets/mouse01.png"
 }

@@ -19,6 +19,9 @@ export(FocusType) var focus = 0
 var total_cost = 10
 onready var el_UI = $UIroot/UI
 onready var el_circle = $SelectRoot/SelectionCircle
+onready var el_up1_button: CircleButton = get_node("%CatActions").get_node("%UpButton")
+onready var el_up2_button: CircleButton = get_node("%CatActions").get_node("%Up2Button")
+onready var el_del_button: CircleButton = get_node("%CatActions").get_node("%DeleteButton")
 var SELECTION_SIZE := 400.0
 var map_ref: Node2D = null
 var cell_pos: Vector2 = Vector2(0, 0)
@@ -31,6 +34,7 @@ func init(map):
 func _ready():
 	el_UI.visible = false
 	total_cost = map_ref.data[cat_name]['cost']
+	update_worth(total_cost)
 	if selected:
 		update_range(aggro_range)
 		el_circle.visible = true
@@ -193,6 +197,16 @@ func play_attack_anim():
 #	yield(get_tree().create_timer(.4), "timeout")
 #	bullet_sprite.visible = true
 
+func update_worth(new_worth: int):
+	total_cost = new_worth
+	el_del_button.update_cost(get_delete_coins())
+
+func add_worth(new_worth: int):
+	update_worth(total_cost + new_worth)
+	
+func get_delete_coins() -> int:
+	return int(total_cost * 0.8)
+
 func _on_AggroRange_area_entered(area: Node):
 	if !area.get_parent().is_in_group("mice"):
 		return
@@ -224,7 +238,7 @@ func _on_up_pressed():
 	if map_ref.coins < cost:
 		return
 	map_ref.add_coins(-cost)
-	total_cost += cost
+	add_worth(cost)
 	update_range(aggro_range + 20.0)
 	
 
@@ -233,23 +247,15 @@ func _on_up2_pressed():
 	if map_ref.coins < cost:
 		return
 	map_ref.add_coins(-cost)
-	total_cost += cost
+	add_worth(cost)
 	damage += 10
 
 func _on_delete_pressed():
 	var cost = total_cost
-	map_ref.add_coins(int(cost * 0.8))
+	map_ref.add_coins(get_delete_coins())
 	map_ref.remove_cat_at_cell(cell_pos)
 	queue_free()
 
 func on_map_coins_changed(coins: int):
-	if coins < 5:
-#		$Node2D/UI/CatActions/HBoxContainer/UpButton.disabled = true
-		$UIroot/UI/CatActions.get_node("%UpButton").disabled = true
-#		get_node("%UpButton").disabled = true
-	else:
-		$UIroot/UI/CatActions/HBoxContainer/UpButton.disabled = false
-	if coins < 20:
-		$UIroot/UI/CatActions/HBoxContainer/Up2Button.disabled = true
-	else:
-		$UIroot/UI/CatActions/HBoxContainer/Up2Button.disabled = false
+	el_up1_button.set_state_from_coins(coins)
+	el_up2_button.set_state_from_coins(coins)
