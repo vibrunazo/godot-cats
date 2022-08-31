@@ -30,6 +30,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "start"
+step = 0.05
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("HBoxContainer:rect_scale:x")
 tracks/0/interp = 1

@@ -19,6 +19,7 @@ export(FocusType) var focus = 0
 var total_cost = 10
 onready var el_UI = $UIroot/UI
 onready var el_circle = $SelectRoot/SelectionCircle
+onready var el_actions: Control = get_node("%CatActions")
 onready var el_up1_button: CircleButton = get_node("%CatActions").get_node("%UpButton")
 onready var el_up2_button: CircleButton = get_node("%CatActions").get_node("%Up2Button")
 onready var el_del_button: CircleButton = get_node("%CatActions").get_node("%DeleteButton")
@@ -62,14 +63,17 @@ func done_building(new_cell = Vector2(0, 0)):
 
 func adjust_UI():
 	if cell_pos.x == 0:
-		get_node("%CatActions").rect_position.x += 200
-		get_node("%CatActions").rect_pivot_offset.x -= 200
+		el_actions.rect_position.x += 200
+		el_actions.rect_pivot_offset.x -= 200
+		el_actions.get_node("HBoxContainer").rect_pivot_offset.x -= 200
 	if cell_pos.x == map_ref.max_cell_x:
-		get_node("%CatActions").rect_position.x -= 200
-		get_node("%CatActions").rect_pivot_offset.x += 200
+		el_actions.rect_position.x -= 200
+		el_actions.rect_pivot_offset.x += 200
+		el_actions.get_node("HBoxContainer").rect_pivot_offset.x += 200
 	if cell_pos.y == map_ref.max_cell_y:
-		get_node("%CatActions").rect_position.y -= 200
-		get_node("%CatActions").rect_pivot_offset.y += 200
+		el_actions.rect_position.y -= 250
+		el_actions.rect_pivot_offset.y += 250
+		el_actions.get_node("HBoxContainer").rect_pivot_offset.y += 250
 	
 func select():
 	selected = true

@@ -695,6 +695,7 @@ z_index = 100
 margin_left = -128.0
 margin_top = -256.0
 margin_right = 128.0
+margin_bottom = 24.0
 mouse_filter = 2
 
 [node name="CatActions" parent="UIroot/UI" instance=ExtResource( 9 )]
