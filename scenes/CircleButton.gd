@@ -11,6 +11,9 @@ class_name CircleButton
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+	
+func update_cost(new_cost):
+	$Label.text = "$%s" % new_cost
 
 func _set(property: String, value) -> bool:
 	if property == "disabled":

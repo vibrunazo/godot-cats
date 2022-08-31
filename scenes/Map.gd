@@ -27,9 +27,13 @@ func _ready():
 	start_time = Time.get_ticks_msec()
 	el_path = $Path2D
 	for b in get_tree().get_nodes_in_group("action_button"):
+		var button: CircleButton = b
+		var cat_data = data[button.name]
+		var cost = cat_data.cost
 		print("found action button %s" % b.get_name())
 		b.connect("pressed", self, "action_pressed", [b.get_name()])
 		b.connect("button_up", self, "action_released", [b.get_name()])
+		button.update_cost(cost)
 	update_coins()
 		
 func action_pressed(name):
@@ -125,7 +129,7 @@ func spawn_new_mouse():
 	ellapsed = (Time.get_ticks_msec() - start_time) / 1000
 	
 	var min_size = 30
-	max_size = min_size + pow(ellapsed, 1.45) * 0.15
+	max_size = min_size + pow(ellapsed, 1.6) * 0.1
 	var h = rand_range(min_size, max_size)
 	# makes it exponential distribution, so big sizes are more rare, 
 	# while keeping same min and max sizes
