@@ -19,12 +19,12 @@ func update_cost(new_cost):
 
 func set_disabled(value: bool):
 	if disabled != value:
-			disabled = value
-			if disabled:
-				$AnimationPlayer.play("disabled")
-			else:
-				$AnimationPlayer.play("enabled")
-	disabled = value
+		print('updating disabled')
+		disabled = value
+		if disabled:
+			$AnimationPlayer.play("disabled")
+		else:
+			$AnimationPlayer.play("enabled")
 
 func _on_CircleButton_button_down():
 	pass # Replace with function body.
@@ -46,7 +46,7 @@ func _on_pressed_mid_point():
 		$Tween.interpolate_property(self, "self_modulate", self_modulate, Color.white, time)
 		$Tween.interpolate_property(self, "rect_scale", rect_scale, Vector2(0.8, 0.8), time)
 		
-		$Tween.start()
+#		$Tween.start()
 #		self_modulate = Color.white
 #		modulate = Color("cc9c9c9c")
 

@@ -301,16 +301,22 @@ rect_min_size = Vector2( 300, 40 )
 mouse_filter = 2
 custom_constants/separation = -10
 
-[node name="CoinLabel" type="Label" parent="UI/HUD/ActionBar"]
+[node name="CoinRoot" type="Control" parent="UI/HUD/ActionBar"]
 margin_right = 300.0
-margin_bottom = 59.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 50, 60 )
+
+[node name="CoinLabel" type="Label" parent="UI/HUD/ActionBar/CoinRoot"]
+margin_top = -10.0
+margin_right = 300.0
+margin_bottom = 49.0
 text = "$100"
 align = 1
 
 [node name="Separator" type="Control" parent="UI/HUD/ActionBar"]
-margin_top = 49.0
+margin_top = 50.0
 margin_right = 300.0
-margin_bottom = 69.0
+margin_bottom = 70.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Cat1" parent="UI/HUD/ActionBar" groups=["action_button"] instance=ExtResource( 6 )]
@@ -319,9 +325,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 70.0
-margin_top = 59.0
+margin_top = 60.0
 margin_right = 230.0
-margin_bottom = 219.0
+margin_bottom = 220.0
 rect_min_size = Vector2( 160, 160 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -343,9 +349,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 70.0
-margin_top = 209.0
+margin_top = 210.0
 margin_right = 230.0
-margin_bottom = 369.0
+margin_bottom = 370.0
 rect_min_size = Vector2( 160, 160 )
 size_flags_horizontal = 4
 size_flags_vertical = 0

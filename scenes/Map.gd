@@ -3,6 +3,7 @@ extends Node2D
 class_name Map
 
 var el_path: Path2D
+onready var el_coins: Label = $UI/HUD/ActionBar/CoinRoot/CoinLabel
 var mouse_scene = preload("res://scenes/Mouse.tscn")
 var data = GameData.cat_data
 
@@ -83,7 +84,7 @@ func add_coins(ammount):
 	update_coins()
 
 func update_coins():
-	$UI/HUD/ActionBar/CoinLabel.text = "$%s" % coins
+	el_coins.text = "$%s" % coins
 	for b in get_tree().get_nodes_in_group("action_button"):
 		var button: CircleButton = b
 		button.set_state_from_coins(coins)
