@@ -24,7 +24,7 @@ var max_size := 30.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Engine.time_scale = 2
+#	Engine.time_scale = 2
 	start_time = Time.get_ticks_msec()
 	el_path = $Path2D
 	for b in get_tree().get_nodes_in_group("action_button"):
@@ -84,6 +84,9 @@ func add_coins(ammount):
 
 func update_coins():
 	$UI/HUD/ActionBar/CoinLabel.text = "$%s" % coins
+	for b in get_tree().get_nodes_in_group("action_button"):
+		var button: CircleButton = b
+		button.set_state_from_coins(coins)
 	if is_instance_valid(cat_selected):
 		cat_selected.on_map_coins_changed(coins)
 	
