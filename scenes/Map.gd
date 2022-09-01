@@ -3,8 +3,10 @@ extends Node2D
 class_name Map
 
 var el_path: Path2D
-onready var el_coins: Label = $UI/HUD/ActionBar/CoinRoot/CoinLabel
+onready var el_coins: Label = get_node("%CoinLabel")
 onready var el_cheese: Label = get_node("%CheeseLabel")
+onready var el_pause: PauseMenu = get_node("%PauseMenu")
+
 var mouse_scene = preload("res://scenes/Mouse.tscn")
 var data = GameData.cat_data
 
@@ -24,6 +26,7 @@ var spawn_count := 0
 var start_time := 0
 var ellapsed := 0
 var max_size := 30.0
+var paused: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -80,6 +83,17 @@ func cancel_build():
 	
 func remove_cat_at_cell(cell_pos: Vector2):
 	cats_dict[cell_pos] = null
+
+func toggle_pause():
+	el_pause.toogle()
+#	pause_game(!paused)
+
+func pause_game(new_paused: bool):
+	paused = new_paused
+	el_pause.visible = paused
+#	print("paused: %s" % paused)
+#	get_tree().paused = new_paused
+	el_pause.pause(paused)
 
 func add_life(ammount):
 	life += ammount
@@ -144,7 +158,7 @@ func spawn_new_mouse():
 	ellapsed = (Time.get_ticks_msec() - start_time) / 1000
 	
 	var min_size = 30
-	max_size = min_size + pow(ellapsed, 1.5) * 0.13
+	max_size = min_size + pow(ellapsed, 1.5) * 0.1
 	var h = rand_range(min_size, max_size)
 	# makes it exponential distribution, so big sizes are more rare, 
 	# while keeping same min and max sizes
@@ -194,3 +208,7 @@ func _on_cat_clicked(cat: Cat):
 		cat.select()
 		cat_selected = cat
 		
+
+
+func _on_SettingsButton_pressed():
+	toggle_pause()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/terrain.png" type="Texture" id=1]
 [ext_resource path="res://resources/cats_theme.tres" type="Theme" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://scenes/Cheese.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/whiterect.png" type="Texture" id=9]
 [ext_resource path="res://assets/cheese.png" type="Texture" id=10]
+[ext_resource path="res://assets/cog.png" type="Texture" id=11]
+[ext_resource path="res://scenes/PauseMenu.tscn" type="PackedScene" id=12]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass"
@@ -65,6 +67,12 @@
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 64, 128, 0, 0, 0, 0, 288, 128, 0, 0, 0, 0, 320, 160, 0, 0, 0, 0, 320, 608, 0, 0, 0, 0, 352, 640, 0, 0, 0, 0, 544, 640, 0, 0, 0, 0, 576, 608, 0, 0, 0, 0, 576, 160, 0, 0, 0, 0, 608, 128, 0, 0, 0, 0, 1056, 128, 0, 0, 0, 0, 1088, 160, 0, 0, 0, 0, 1088, 480, 0, 0, 0, 0, 1056, 512, 0, 0, 0, 0, 864, 512, 0, 0, 0, 0, 832, 544, 0, 0, 0, 0, 832, 608, 0, 0, 0, 0, 864, 640, 0, 0, 0, 0, 1312, 640, 0, 0, 0, 0, 1344, 608, 0, 0, 0, 0, 1344, 544 )
 }
+
+[sub_resource type="StyleBoxEmpty" id=8]
+content_margin_left = 5.0
+content_margin_right = 0.0
+content_margin_top = 10.0
+content_margin_bottom = 0.0
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -297,6 +305,7 @@ position = Vector2( 1472, 576 )
 z_index = 10
 
 [node name="UI" type="CanvasLayer" parent="."]
+pause_mode = 2
 
 [node name="HUD" type="Control" parent="UI"]
 anchor_right = 1.0
@@ -322,56 +331,57 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CheeseRoot" type="Control" parent="UI/HUD/ActionBar"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/ActionBar"]
 margin_right = 300.0
+margin_bottom = 136.0
+
+[node name="SettingsButton" type="ToolButton" parent="UI/HUD/ActionBar/HBoxContainer"]
+pause_mode = 2
+unique_name_in_owner = true
+margin_right = 140.0
+margin_bottom = 136.0
+focus_mode = 0
+custom_styles/pressed = SubResource( 8 )
+icon = ExtResource( 11 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HUD/ActionBar/HBoxContainer"]
+margin_left = 144.0
+margin_right = 247.0
+margin_bottom = 136.0
+
+[node name="CheeseRoot" type="HBoxContainer" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer"]
+margin_right = 103.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 50, 60 )
 
-[node name="CheeseTex" type="TextureRect" parent="UI/HUD/ActionBar/CheeseRoot"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -67.0
-margin_top = -33.0
-margin_right = -17.0
-margin_bottom = 17.0
+[node name="CheeseTex" type="TextureRect" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/CheeseRoot"]
+margin_right = 50.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 50, 50 )
 texture = ExtResource( 10 )
 expand = true
 
-[node name="CheeseLabel" type="Label" parent="UI/HUD/ActionBar/CheeseRoot"]
+[node name="CheeseLabel" type="Label" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/CheeseRoot"]
 unique_name_in_owner = true
-margin_top = -10.0
-margin_right = 300.0
-margin_bottom = 49.0
+margin_left = 54.0
+margin_right = 103.0
+margin_bottom = 59.0
 custom_colors/font_color = Color( 0.917647, 0.905882, 0.196078, 1 )
 text = "20"
 align = 1
 
-[node name="Separator2" type="Control" parent="UI/HUD/ActionBar"]
-margin_top = 50.0
-margin_right = 300.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 0, 20 )
-
-[node name="CoinRoot" type="Control" parent="UI/HUD/ActionBar"]
-margin_top = 60.0
-margin_right = 300.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 50, 60 )
-
-[node name="CoinLabel" type="Label" parent="UI/HUD/ActionBar/CoinRoot"]
-margin_top = -10.0
-margin_right = 300.0
-margin_bottom = 49.0
+[node name="CoinLabel" type="Label" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 64.0
+margin_right = 103.0
+margin_bottom = 123.0
 text = "$100"
 align = 1
 
 [node name="Separator" type="Control" parent="UI/HUD/ActionBar"]
-margin_top = 110.0
+margin_top = 126.0
 margin_right = 300.0
-margin_bottom = 130.0
+margin_bottom = 146.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Cat1" parent="UI/HUD/ActionBar" groups=["action_button"] instance=ExtResource( 6 )]
@@ -380,9 +390,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 70.0
-margin_top = 120.0
+margin_top = 136.0
 margin_right = 230.0
-margin_bottom = 280.0
+margin_bottom = 296.0
 rect_min_size = Vector2( 160, 160 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -404,9 +414,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 70.0
-margin_top = 270.0
+margin_top = 286.0
 margin_right = 230.0
-margin_bottom = 430.0
+margin_bottom = 446.0
 rect_min_size = Vector2( 160, 160 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -431,7 +441,18 @@ anims/disabled = SubResource( 5 )
 anims/enabled = SubResource( 6 )
 anims/pressed = SubResource( 7 )
 
+[node name="Menus" type="Control" parent="UI"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="PauseMenu" parent="UI/Menus" instance=ExtResource( 12 )]
+unique_name_in_owner = true
+visible = false
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="pressed" from="UI/HUD/ActionBar/HBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
 
 [editable path="UI/HUD/ActionBar/Cat1"]
 [editable path="UI/HUD/ActionBar/Cat2"]
