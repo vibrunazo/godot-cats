@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/terrain.png" type="Texture" id=1]
 [ext_resource path="res://resources/cats_theme.tres" type="Theme" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/cheese.png" type="Texture" id=10]
 [ext_resource path="res://assets/cog.png" type="Texture" id=11]
 [ext_resource path="res://scenes/PauseMenu.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/GameOverMenu.tscn" type="PackedScene" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass"
@@ -298,6 +299,9 @@ curve = SubResource( 3 )
 wait_time = 5.0
 autostart = true
 
+[node name="EllapsedTimer" type="Timer" parent="."]
+autostart = true
+
 [node name="Cheese" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1472, 576 )
 
@@ -346,26 +350,31 @@ icon = ExtResource( 11 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/HUD/ActionBar/HBoxContainer"]
 margin_left = 144.0
-margin_right = 247.0
+margin_right = 248.0
 margin_bottom = 136.0
 
-[node name="CheeseRoot" type="HBoxContainer" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer"]
-margin_right = 103.0
+[node name="CheeseHBox" type="HBoxContainer" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer"]
+margin_right = 104.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 50, 60 )
 
-[node name="CheeseTex" type="TextureRect" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/CheeseRoot"]
+[node name="CheeseTex" type="TextureRect" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/CheeseHBox"]
 margin_right = 50.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 50, 50 )
 texture = ExtResource( 10 )
 expand = true
 
-[node name="CheeseLabel" type="Label" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/CheeseRoot"]
-unique_name_in_owner = true
+[node name="CheeseRoot" type="Control" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/CheeseHBox"]
 margin_left = 54.0
-margin_right = 103.0
-margin_bottom = 59.0
+margin_right = 104.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="CheeseLabel" type="Label" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/CheeseHBox/CheeseRoot"]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.917647, 0.905882, 0.196078, 1 )
 text = "20"
 align = 1
@@ -373,7 +382,7 @@ align = 1
 [node name="CoinLabel" type="Label" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 margin_top = 64.0
-margin_right = 103.0
+margin_right = 104.0
 margin_bottom = 123.0
 text = "$100"
 align = 1
@@ -451,7 +460,12 @@ mouse_filter = 2
 unique_name_in_owner = true
 visible = false
 
+[node name="GameOverMenu" parent="UI/Menus" instance=ExtResource( 13 )]
+unique_name_in_owner = true
+visible = false
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="EllapsedTimer" to="." method="_on_EllapsedTimer_timeout"]
 [connection signal="pressed" from="UI/HUD/ActionBar/HBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
 
 [editable path="UI/HUD/ActionBar/Cat1"]

@@ -6,6 +6,7 @@ var el_path: Path2D
 onready var el_coins: Label = get_node("%CoinLabel")
 onready var el_cheese: Label = get_node("%CheeseLabel")
 onready var el_pause: PauseMenu = get_node("%PauseMenu")
+onready var el_game_over: PauseMenu = get_node("%GameOverMenu")
 
 var mouse_scene = preload("res://scenes/Mouse.tscn")
 var data = GameData.cat_data
@@ -102,6 +103,11 @@ func add_life(ammount):
 	
 func update_life():
 	el_cheese.text = "%s" % life
+	if life == 0:
+		game_over()
+	
+func game_over():
+	el_game_over.pause(true)
 
 func add_coins(ammount):
 	coins += ammount
@@ -155,7 +161,7 @@ func spawn_new_mouse():
 	spawn_count += 1
 	var mouse = mouse_scene.instance()
 	mouse.position = Vector2(0, 0)
-	ellapsed = (Time.get_ticks_msec() - start_time) / 1000
+#	ellapsed = (Time.get_ticks_msec() - start_time) / 1000
 	
 	var min_size = 30
 	max_size = min_size + pow(ellapsed, 1.5) * 0.1
@@ -212,3 +218,7 @@ func _on_cat_clicked(cat: Cat):
 
 func _on_SettingsButton_pressed():
 	toggle_pause()
+
+
+func _on_EllapsedTimer_timeout():
+	ellapsed += 1

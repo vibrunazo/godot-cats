@@ -42,6 +42,7 @@ mouse_filter = 2
 margin_right = 163.0
 margin_bottom = 59.0
 text = "Paused"
+align = 1
 
 [node name="Separator" type="Control" parent="HBoxContainer"]
 margin_top = 63.0
