@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/terrain.png" type="Texture" id=1]
 [ext_resource path="res://resources/cats_theme.tres" type="Theme" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/bg-radial.png" type="Texture" id=7]
 [ext_resource path="res://scenes/Cheese.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/whiterect.png" type="Texture" id=9]
+[ext_resource path="res://assets/cheese.png" type="Texture" id=10]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass"
@@ -321,9 +322,43 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CoinRoot" type="Control" parent="UI/HUD/ActionBar"]
+[node name="CheeseRoot" type="Control" parent="UI/HUD/ActionBar"]
 margin_right = 300.0
 margin_bottom = 60.0
+rect_min_size = Vector2( 50, 60 )
+
+[node name="CheeseTex" type="TextureRect" parent="UI/HUD/ActionBar/CheeseRoot"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -67.0
+margin_top = -33.0
+margin_right = -17.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 10 )
+expand = true
+
+[node name="CheeseLabel" type="Label" parent="UI/HUD/ActionBar/CheeseRoot"]
+unique_name_in_owner = true
+margin_top = -10.0
+margin_right = 300.0
+margin_bottom = 49.0
+custom_colors/font_color = Color( 0.917647, 0.905882, 0.196078, 1 )
+text = "20"
+align = 1
+
+[node name="Separator2" type="Control" parent="UI/HUD/ActionBar"]
+margin_top = 50.0
+margin_right = 300.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="CoinRoot" type="Control" parent="UI/HUD/ActionBar"]
+margin_top = 60.0
+margin_right = 300.0
+margin_bottom = 120.0
 rect_min_size = Vector2( 50, 60 )
 
 [node name="CoinLabel" type="Label" parent="UI/HUD/ActionBar/CoinRoot"]
@@ -334,9 +369,9 @@ text = "$100"
 align = 1
 
 [node name="Separator" type="Control" parent="UI/HUD/ActionBar"]
-margin_top = 50.0
+margin_top = 110.0
 margin_right = 300.0
-margin_bottom = 70.0
+margin_bottom = 130.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="Cat1" parent="UI/HUD/ActionBar" groups=["action_button"] instance=ExtResource( 6 )]
@@ -345,9 +380,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 70.0
-margin_top = 60.0
+margin_top = 120.0
 margin_right = 230.0
-margin_bottom = 220.0
+margin_bottom = 280.0
 rect_min_size = Vector2( 160, 160 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -369,9 +404,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 70.0
-margin_top = 210.0
+margin_top = 270.0
 margin_right = 230.0
-margin_bottom = 370.0
+margin_bottom = 430.0
 rect_min_size = Vector2( 160, 160 )
 size_flags_horizontal = 4
 size_flags_vertical = 0

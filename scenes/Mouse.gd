@@ -2,6 +2,7 @@ extends PathFollow2D
 
 class_name Mouse, "res://assets/mouse01.png"
 signal killed
+signal cheese
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -49,6 +50,7 @@ func show_target_index(show: bool, index: String = ''):
 func _physics_process(delta):
 	# if I got to the end of the map
 	if unit_offset >= 1.0:
+		emit_signal("cheese")
 		end()
 		return
 	if $AnimationPlayer.current_animation != "walk":

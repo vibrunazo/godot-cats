@@ -4,6 +4,7 @@ class_name Map
 
 var el_path: Path2D
 onready var el_coins: Label = $UI/HUD/ActionBar/CoinRoot/CoinLabel
+onready var el_cheese: Label = get_node("%CheeseLabel")
 var mouse_scene = preload("res://scenes/Mouse.tscn")
 var data = GameData.cat_data
 
@@ -11,6 +12,7 @@ var data = GameData.cat_data
 var cat_building: Cat = null
 var cat_selected: Cat = null
 export var coins = 20
+export var life = 20
 export var max_cell_x = 10
 export var max_cell_y = 5
 var cats_dict = {
@@ -78,6 +80,14 @@ func cancel_build():
 	
 func remove_cat_at_cell(cell_pos: Vector2):
 	cats_dict[cell_pos] = null
+
+func add_life(ammount):
+	life += ammount
+	life = max(0, life)
+	update_life()
+	
+func update_life():
+	el_cheese.text = "%s" % life
 
 func add_coins(ammount):
 	coins += ammount
@@ -148,6 +158,7 @@ func spawn_new_mouse():
 	mouse.speed = s
 	el_path.add_child(mouse)
 	mouse.connect("killed", self, "_on_mouse_killed", [mouse])
+	mouse.connect("cheese", self, "_on_mouse_reached_cheese", [mouse])
 
 func _on_SpawnTimer_timeout():
 	spawn_new_mouse()
@@ -168,6 +179,9 @@ func _on_mouse_killed(mouse: Mouse):
 	# 80hp is 2 coins, 253hp is 3 coins, 504 is 4 coins
 	var worth = 1 + floor(pow(hp, 0.6) / 13.8)
 	add_coins(worth)
+
+func _on_mouse_reached_cheese(mouse: Mouse):
+	add_life(-1)
 
 func _on_cat_clicked(cat: Cat):
 	print('clicked cat %s' % cat.name)
