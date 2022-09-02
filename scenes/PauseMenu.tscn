@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://resources/cats_theme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/PauseMenu.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0, 0, 0, 0.784314, 0, 0, 0, 0.392157 )
@@ -10,6 +11,14 @@ colors = PoolColorArray( 0, 0, 0, 0.784314, 0, 0, 0, 0.392157 )
 gradient = SubResource( 1 )
 fill_to = Vector2( -0.5, 0 )
 repeat = 2
+
+[sub_resource type="DynamicFont" id=3]
+resource_local_to_scene = true
+size = 60
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 3 )
 
 [node name="PauseMenu" type="Control"]
 pause_mode = 2
@@ -32,40 +41,41 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -150.0
-margin_top = -168.0
+margin_top = -182.5
 margin_right = 150.0
-margin_bottom = 168.0
+margin_bottom = 182.5
 rect_min_size = Vector2( 300, 0 )
 mouse_filter = 2
 
 [node name="Paused" type="Label" parent="HBoxContainer"]
 margin_right = 300.0
-margin_bottom = 59.0
+margin_bottom = 88.0
+custom_fonts/font = SubResource( 3 )
 text = "Paused"
 align = 1
 
 [node name="Separator" type="Control" parent="HBoxContainer"]
-margin_top = 63.0
+margin_top = 92.0
 margin_right = 300.0
-margin_bottom = 123.0
+margin_bottom = 152.0
 rect_min_size = Vector2( 0, 60 )
 
 [node name="ResumeButton" type="ToolButton" parent="HBoxContainer"]
-margin_top = 127.0
+margin_top = 156.0
 margin_right = 300.0
-margin_bottom = 194.0
+margin_bottom = 223.0
 text = "Resume"
 
 [node name="RestartButton" type="ToolButton" parent="HBoxContainer"]
-margin_top = 198.0
+margin_top = 227.0
 margin_right = 300.0
-margin_bottom = 265.0
+margin_bottom = 294.0
 text = "Restart"
 
 [node name="ExitButton" type="ToolButton" parent="HBoxContainer"]
-margin_top = 269.0
+margin_top = 298.0
 margin_right = 300.0
-margin_bottom = 336.0
+margin_bottom = 365.0
 text = "Exit"
 
 [connection signal="pressed" from="HBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]

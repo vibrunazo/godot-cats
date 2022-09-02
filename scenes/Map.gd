@@ -7,6 +7,7 @@ onready var el_coins: Label = get_node("%CoinLabel")
 onready var el_cheese: Label = get_node("%CheeseLabel")
 onready var el_pause: PauseMenu = get_node("%PauseMenu")
 onready var el_game_over: PauseMenu = get_node("%GameOverMenu")
+onready var el_win: PauseMenu = get_node("%WinMenu")
 onready var el_time: Label = get_node("%TimeLabel")
 onready var el_lifebar: ProgressBar = get_node("%LifeBar")
 onready var el_mousebar: ProgressBar = get_node("%MouseBar")
@@ -121,6 +122,7 @@ func win():
 	yield(get_tree().create_timer(4),"timeout")
 	if life == max_life:
 		print("Perfect!")
+	el_win.pause(true)
 	
 func add_life(ammount):
 	life += ammount

@@ -22,26 +22,19 @@ color = Color( 0.847059, 0.345098, 0.827451, 1 )
 
 [node name="HBoxContainer" parent="." index="2"]
 margin_left = -187.0
-margin_top = -182.5
 margin_right = 187.0
-margin_bottom = 182.5
 
 [node name="Paused" parent="HBoxContainer" index="0"]
 margin_right = 374.0
-margin_bottom = 88.0
 custom_colors/font_color = Color( 0.890196, 0.913725, 0.121569, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Cats vs Mice"
 
 [node name="Separator" parent="HBoxContainer" index="1"]
-margin_top = 92.0
 margin_right = 374.0
-margin_bottom = 152.0
 
 [node name="ResumeButton" parent="HBoxContainer" index="2"]
-margin_top = 156.0
 margin_right = 374.0
-margin_bottom = 223.0
 text = "Play"
 
 [node name="SettingsButton" type="ToolButton" parent="HBoxContainer" index="3"]
@@ -55,6 +48,4 @@ visible = false
 text = "Settings"
 
 [node name="ExitButton" parent="HBoxContainer" index="5"]
-margin_top = 298.0
 margin_right = 374.0
-margin_bottom = 365.0
