@@ -19,6 +19,7 @@ var cat_building: Cat = null
 var cat_selected: Cat = null
 export var coins = 20
 export var life = 20
+var max_life = life
 export var max_cell_x = 10
 export var max_cell_y = 5
 var cats_dict = {
@@ -29,6 +30,7 @@ var cats_dict = {
 var spawn_count := 0
 export var spawn_max := 300
 var kill_count := 0
+var stolen_count := 0
 var start_time := 0
 var ellapsed := 0
 var max_size := 30.0
@@ -36,7 +38,8 @@ var paused: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Engine.time_scale = 4
+	if Global.DEBUG_WIN:
+		Engine.time_scale = 4
 	start_time = Time.get_ticks_msec()
 	el_path = $Path2D
 	for b in get_tree().get_nodes_in_group("action_button"):
@@ -106,10 +109,18 @@ func update_UI_time():
 #	el_mousebar.value = clamp(ellapsed, 0, 100)
 
 func update_UI_mousebar():
-	var mouse_left: float = spawn_max - kill_count
-	var value = ceil(100 * mouse_left / spawn_max)
-	print("kill count: %s, mouse left: %s, value: %s" % [kill_count, mouse_left, value])
+	var mouse_left: float = spawn_max - stolen_count - kill_count
+	var value = ceil(100 * mouse_left / (spawn_max - stolen_count))
+#	print("kill count: %s, mouse left: %s, value: %s" % [kill_count, mouse_left, value])
 	el_mousebar.value = clamp(value, 0, 100)
+	if mouse_left == 0:
+		win()
+
+func win():
+	print('you win!')
+	yield(get_tree().create_timer(4),"timeout")
+	if life == max_life:
+		print("Perfect!")
 	
 func add_life(ammount):
 	life += ammount
@@ -183,7 +194,9 @@ func spawn_new_mouse():
 #	ellapsed = (Time.get_ticks_msec() - start_time) / 1000
 	
 	var min_size = 30
-	max_size = 50#min_size + pow(ellapsed, 2.0) * 0.0035
+	max_size = min_size + pow(ellapsed, 2.0) * 0.0035
+	if Global.DEBUG_WIN:
+		max_size = 40
 	var h = rand_range(min_size, max_size)
 	# makes it exponential distribution, so big sizes are more rare, 
 	# while keeping same min and max sizes
@@ -222,7 +235,10 @@ func _on_mouse_killed(mouse: Mouse):
 	update_UI_mousebar()
 
 func _on_mouse_reached_cheese(mouse: Mouse):
+#	kill_count += 1
+	stolen_count += 1
 	add_life(-1)
+	update_UI_mousebar()
 
 func _on_cat_clicked(cat: Cat):
 	print('clicked cat %s' % cat.name)
@@ -240,7 +256,9 @@ func _on_SettingsButton_pressed():
 
 
 func _on_EllapsedTimer_timeout():
-	if kill_count >= spawn_max:
+	if Global.DEBUG_WIN:
+		Engine.time_scale = 4
+	if kill_count + stolen_count >= spawn_max:
 		$EllapsedTimer.stop()
 		return
 	ellapsed += 1
