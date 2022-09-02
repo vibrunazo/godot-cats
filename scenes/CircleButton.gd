@@ -19,7 +19,6 @@ func update_cost(new_cost):
 
 func set_disabled(value: bool):
 	if disabled != value:
-		print('updating disabled')
 		disabled = value
 		if disabled:
 			$AnimationPlayer.play("disabled")

@@ -7,6 +7,9 @@ onready var el_coins: Label = get_node("%CoinLabel")
 onready var el_cheese: Label = get_node("%CheeseLabel")
 onready var el_pause: PauseMenu = get_node("%PauseMenu")
 onready var el_game_over: PauseMenu = get_node("%GameOverMenu")
+onready var el_time: Label = get_node("%TimeLabel")
+onready var el_lifebar: ProgressBar = get_node("%LifeBar")
+onready var el_mousebar: ProgressBar = get_node("%MouseBar")
 
 var mouse_scene = preload("res://scenes/Mouse.tscn")
 var data = GameData.cat_data
@@ -24,6 +27,8 @@ var cats_dict = {
 }
 
 var spawn_count := 0
+export var spawn_max := 300
+var kill_count := 0
 var start_time := 0
 var ellapsed := 0
 var max_size := 30.0
@@ -31,7 +36,7 @@ var paused: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	Engine.time_scale = 2
+	Engine.time_scale = 4
 	start_time = Time.get_ticks_msec()
 	el_path = $Path2D
 	for b in get_tree().get_nodes_in_group("action_button"):
@@ -72,7 +77,7 @@ func build_cat(name):
 		cats_dict[cell_pos] = cat_building
 	
 	$UI.remove_child(cat_building)
-	$Cats.add_child(cat_building)
+	$Actors.add_child(cat_building)
 	cat_building.connect("clicked", self, "_on_cat_clicked", [cat_building])
 	cat_building.done_building(cell_pos)
 	cat_building = null
@@ -96,6 +101,16 @@ func pause_game(new_paused: bool):
 #	get_tree().paused = new_paused
 	el_pause.pause(paused)
 
+func update_UI_time():
+	el_time.text = str(ellapsed)#.pad_zeros(3)
+#	el_mousebar.value = clamp(ellapsed, 0, 100)
+
+func update_UI_mousebar():
+	var mouse_left: float = spawn_max - kill_count
+	var value = ceil(100 * mouse_left / spawn_max)
+	print("kill count: %s, mouse left: %s, value: %s" % [kill_count, mouse_left, value])
+	el_mousebar.value = clamp(value, 0, 100)
+	
 func add_life(ammount):
 	life += ammount
 	life = max(0, life)
@@ -103,6 +118,7 @@ func add_life(ammount):
 	
 func update_life():
 	el_cheese.text = "%s" % life
+	el_lifebar.value = life * 100 / 20
 	if life == 0:
 		game_over()
 	
@@ -158,13 +174,16 @@ func is_inside_map(cell_pos: Vector2):
 	return true
 
 func spawn_new_mouse():
+	if (spawn_count >= spawn_max): 
+		$SpawnTimer.stop()
+		return
 	spawn_count += 1
 	var mouse = mouse_scene.instance()
 	mouse.position = Vector2(0, 0)
 #	ellapsed = (Time.get_ticks_msec() - start_time) / 1000
 	
 	var min_size = 30
-	max_size = min_size + pow(ellapsed, 1.5) * 0.1
+	max_size = 50#min_size + pow(ellapsed, 2.0) * 0.0035
 	var h = rand_range(min_size, max_size)
 	# makes it exponential distribution, so big sizes are more rare, 
 	# while keeping same min and max sizes
@@ -198,7 +217,9 @@ func _on_mouse_killed(mouse: Mouse):
 	var hp = mouse.max_health
 	# 80hp is 2 coins, 253hp is 3 coins, 504 is 4 coins
 	var worth = 1 + floor(pow(hp, 0.6) / 13.8)
+	kill_count += 1
 	add_coins(worth)
+	update_UI_mousebar()
 
 func _on_mouse_reached_cheese(mouse: Mouse):
 	add_life(-1)
@@ -213,12 +234,14 @@ func _on_cat_clicked(cat: Cat):
 			cat_selected.unselect()
 		cat.select()
 		cat_selected = cat
-		
-
 
 func _on_SettingsButton_pressed():
 	toggle_pause()
 
 
 func _on_EllapsedTimer_timeout():
+	if kill_count >= spawn_max:
+		$EllapsedTimer.stop()
+		return
 	ellapsed += 1
+	update_UI_time()

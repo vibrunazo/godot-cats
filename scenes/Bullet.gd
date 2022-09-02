@@ -31,7 +31,7 @@ func _physics_process(delta):
 	look_at(target_pos)
 	position += Vector2(speed * delta, 0).rotated(rotation)
 	$Sprite.global_rotation_degrees = 0
-	if position.distance_to(target_pos) < 10:
+	if position.distance_to(target_pos) < speed * delta * 2:
 		hit_target()
 #		print($Sprite.global_rotation_degrees)
 #	else:

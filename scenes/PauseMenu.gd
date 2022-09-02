@@ -17,4 +17,5 @@ func _on_RestartButton_pressed():
 	get_tree().reload_current_scene()
 
 func _on_ExitButton_pressed():
-	get_tree().quit()
+	pause(false)
+	get_tree().change_scene("res://scenes/MainMenu.tscn")

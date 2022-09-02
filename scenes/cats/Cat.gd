@@ -115,6 +115,8 @@ func _physics_process(delta):
 		
 func follow_target():
 	if !target or !is_instance_valid(target): return
+	if !target.is_inside_tree() or !is_inside_tree(): return
+	if !$Turret.is_inside_tree(): return
 	var pos = target.global_position
 	$Turret.look_at(pos)
 
@@ -185,7 +187,8 @@ func shoot():
 		return
 	var bullet = bullet_scene.instance()
 #	get_tree().root.add_child(bullet)
-	get_tree().root.call_deferred("add_child", bullet)
+#	get_tree().root.call_deferred("add_child", bullet)
+	map_ref.get_node("Actors").call_deferred("add_child", bullet)
 	bullet.position = spawn_position.global_position
 	bullet.damage = damage
 	bullet.speed = shot_speed
