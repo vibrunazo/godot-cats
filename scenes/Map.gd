@@ -206,7 +206,7 @@ func spawn_new_mouse():
 #	ellapsed = (Time.get_ticks_msec() - start_time) / 1000
 	
 	var min_size = 30
-	max_size = min_size + pow(ellapsed, 2.0) * 0.0045
+	max_size = min_size + pow(ellapsed, 2.0) * 0.0055
 	if Global.DEBUG_WIN:
 		max_size = 40
 	var h = rand_range(min_size, max_size)

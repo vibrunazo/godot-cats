@@ -458,6 +458,7 @@ anchor_right = 0.5
 margin_left = -310.0
 margin_right = 310.0
 margin_bottom = 59.0
+mouse_filter = 2
 custom_constants/separation = 30
 alignment = 1
 
@@ -466,6 +467,7 @@ unique_name_in_owner = true
 margin_right = 240.0
 margin_bottom = 59.0
 rect_min_size = Vector2( 240, 20 )
+mouse_filter = 2
 value = 100.0
 
 [node name="TimeLabel" type="Label" parent="UI/HUD/TopBar"]
@@ -483,6 +485,7 @@ margin_left = 380.0
 margin_right = 620.0
 margin_bottom = 59.0
 rect_min_size = Vector2( 240, 20 )
+mouse_filter = 2
 value = 100.0
 
 [node name="Menus" type="Control" parent="UI"]
