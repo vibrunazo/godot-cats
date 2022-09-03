@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/cats/Cat.gd" type="Script" id=1]
 [ext_resource path="res://scenes/cats/CatClickArea.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/selection_circle.png" type="Texture" id=7]
 [ext_resource path="res://assets/cat01_head.png" type="Texture" id=8]
 [ext_resource path="res://scenes/CatActions.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/audio/whoosh.wav" type="AudioStream" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 resource_local_to_scene = true
@@ -710,6 +711,9 @@ cost = 20
 
 [node name="DeleteButton" parent="UIroot/UI/CatActions/HBoxContainer" index="2"]
 cost = 8
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
 
 [connection signal="area_entered" from="AggroRange" to="." method="_on_AggroRange_area_entered"]
 [connection signal="area_exited" from="AggroRange" to="." method="_on_AggroRange_area_exited"]

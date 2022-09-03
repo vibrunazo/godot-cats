@@ -194,6 +194,7 @@ func shoot():
 	bullet.speed = shot_speed
 	bullet.set_target(target)
 	play_attack_anim()
+	$Audio.play()
 
 func play_attack_anim():
 	$AnimationPlayer.stop(true)
