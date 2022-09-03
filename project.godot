@@ -57,7 +57,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Cats"
-run/main_scene="res://scenes/MainMenu.tscn"
+run/main_scene="res://scenes/MainScene.tscn"
 config/icon="res://assets/cat01.png"
 
 [autoload]
