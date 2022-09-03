@@ -496,14 +496,12 @@ __meta__ = {
 
 [node name="PauseMenu" parent="UI/Menus" instance=ExtResource( 12 )]
 unique_name_in_owner = true
-visible = false
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="GameOverMenu" parent="UI/Menus" instance=ExtResource( 13 )]
 unique_name_in_owner = true
-visible = false
 
 [node name="WinMenu" parent="UI/Menus" instance=ExtResource( 14 )]
 unique_name_in_owner = true

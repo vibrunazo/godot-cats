@@ -12,6 +12,10 @@ use_filter = true
 font_data = ExtResource( 2 )
 
 [node name="WinMenu" instance=ExtResource( 1 )]
+visible = true
+
+[node name="HBoxContainer" parent="." index="1"]
+anchor_bottom = 0.5
 
 [node name="Paused" parent="HBoxContainer" index="0"]
 custom_colors/font_color = Color( 0.890196, 0.913725, 0.121569, 1 )

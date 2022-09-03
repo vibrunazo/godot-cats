@@ -36,6 +36,8 @@ var start_time := 0
 var ellapsed := 0
 var max_size := 30.0
 var paused: bool = false
+enum State {READY, OVER}
+var state: int = State.READY
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -95,6 +97,7 @@ func remove_cat_at_cell(cell_pos: Vector2):
 	cats_dict[cell_pos] = null
 
 func toggle_pause():
+	if state != State.READY: return
 	el_pause.toogle()
 #	pause_game(!paused)
 
@@ -119,9 +122,10 @@ func update_UI_mousebar():
 
 func win():
 	print('you win!')
-	yield(get_tree().create_timer(4),"timeout")
+	yield(get_tree().create_timer(2),"timeout")
 	if life == max_life:
 		print("Perfect!")
+	state = State.OVER
 	el_win.pause(true)
 	
 func add_life(ammount):
@@ -136,6 +140,7 @@ func update_life():
 		game_over()
 	
 func game_over():
+	state = State.OVER
 	el_game_over.pause(true)
 
 func add_coins(ammount):
@@ -260,6 +265,8 @@ func _on_SettingsButton_pressed():
 func _on_EllapsedTimer_timeout():
 	if Global.DEBUG_WIN:
 		Engine.time_scale = 4
+	elif Engine.time_scale > 1:
+		Engine.time_scale = 1
 	if kill_count + stolen_count >= spawn_max:
 		$EllapsedTimer.stop()
 		return
