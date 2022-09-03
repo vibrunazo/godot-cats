@@ -113,11 +113,16 @@ func update_UI_time():
 #	el_mousebar.value = clamp(ellapsed, 0, 100)
 
 func update_UI_mousebar():
-	var mouse_left: float = spawn_max - stolen_count - kill_count
-	var value = ceil(100 * mouse_left / (spawn_max - stolen_count))
-#	print("kill count: %s, mouse left: %s, value: %s" % [kill_count, mouse_left, value])
+	var kills_needed = spawn_max - max_life
+	var mouse_left = max(kills_needed - kill_count, 0)
+	var value = 0
+	if kills_needed > 0:
+		value = ceil(100 * mouse_left / kills_needed)
+	print("kill count: %s, mouse left: %s, kills needed: %s, value: %s" % [kill_count, mouse_left, kills_needed, value])
 	el_mousebar.value = clamp(value, 0, 100)
 	if mouse_left == 0:
+		print('cannot lose anymore')
+	if kill_count + stolen_count >= spawn_max and life >= 0:
 		win()
 
 func win():
@@ -201,7 +206,7 @@ func spawn_new_mouse():
 #	ellapsed = (Time.get_ticks_msec() - start_time) / 1000
 	
 	var min_size = 30
-	max_size = min_size + pow(ellapsed, 2.0) * 0.0035
+	max_size = min_size + pow(ellapsed, 2.0) * 0.0045
 	if Global.DEBUG_WIN:
 		max_size = 40
 	var h = rand_range(min_size, max_size)
@@ -211,7 +216,7 @@ func spawn_new_mouse():
 	mouse.max_health = h
 	
 	var min_speed = 35
-	var max_speed = min(110, min_speed + ellapsed * 0.145)
+	var max_speed = min(110, min_speed + ellapsed * 0.155)
 	var s = rand_range(min_speed, max_speed)
 	s = min_speed + pow(s, 3) * (min_speed + max_speed) / pow(min_speed + max_speed, 3)
 	mouse.speed = s
