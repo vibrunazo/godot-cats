@@ -664,7 +664,6 @@ unique_name_in_owner = true
 
 [node name="WinMenu" parent="UI/Menus" instance=ExtResource( 14 )]
 unique_name_in_owner = true
-visible = false
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="EllapsedTimer" to="." method="_on_EllapsedTimer_timeout"]
