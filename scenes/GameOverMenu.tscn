@@ -12,7 +12,6 @@ use_filter = true
 font_data = ExtResource( 2 )
 
 [node name="GameOverMenu" instance=ExtResource( 1 )]
-visible = false
 
 [node name="HBoxContainer" parent="." index="1"]
 margin_left = -171.5

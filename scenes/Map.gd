@@ -27,9 +27,11 @@ var cats_dict = {
 #	[0, 0]: "cat1",
 #	[1, 2]: "cat2"
 }
-
+export(Curve) var size_curve: Curve
 var spawn_count := 0
-export var spawn_max := 300
+export var spawn_max := 350
+export var final_time := 500.0
+export var final_size := 1500.0
 var kill_count := 0
 var stolen_count := 0
 var start_time := 0
@@ -54,6 +56,7 @@ func _ready():
 		b.connect("button_up", self, "action_released", [b.get_name()])
 		button.update_cost(cost)
 	update_coins()
+	update_UI_mousebar()
 		
 func action_pressed(name):
 	print("pressed action %s" % name)
@@ -118,7 +121,7 @@ func update_UI_mousebar():
 	var value = 0
 	if kills_needed > 0:
 		value = ceil(100 * mouse_left / kills_needed)
-	print("kill count: %s, mouse left: %s, kills needed: %s, value: %s" % [kill_count, mouse_left, kills_needed, value])
+#	print("kill count: %s, mouse left: %s, kills needed: %s, value: %s" % [kill_count, mouse_left, kills_needed, value])
 	el_mousebar.value = clamp(value, 0, 100)
 	if mouse_left == 0:
 		print('cannot lose anymore')
@@ -206,7 +209,11 @@ func spawn_new_mouse():
 #	ellapsed = (Time.get_ticks_msec() - start_time) / 1000
 	
 	var min_size = 30
-	max_size = min_size + pow(ellapsed, 2.0) * 0.0055
+#	max_size = min_size + pow(ellapsed, 2.0) * 0.0100
+	
+	var interp = size_curve.interpolate(ellapsed / final_time)
+	max_size = min_size + interp * (final_size - min_size)
+#	print('ellpased: %s, interp: %s, maxsize: %s' % [ellapsed, interp, max_size])
 	if Global.DEBUG_WIN:
 		max_size = 40
 	var h = rand_range(min_size, max_size)
