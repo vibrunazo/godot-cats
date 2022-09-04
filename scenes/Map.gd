@@ -20,7 +20,7 @@ var cat_building: Cat = null
 var cat_selected: Cat = null
 export var coins = 20
 export var life = 20
-var max_life = life
+onready var max_life = life
 export var max_cell_x = 10
 export var max_cell_y = 5
 var cats_dict = {
@@ -57,6 +57,7 @@ func _ready():
 		button.update_cost(cost)
 	update_coins()
 	update_UI_mousebar()
+	update_life()
 		
 func action_pressed(name):
 	print("pressed action %s" % name)
@@ -116,7 +117,9 @@ func update_UI_time():
 #	el_mousebar.value = clamp(ellapsed, 0, 100)
 
 func update_UI_mousebar():
-	var kills_needed = spawn_max - max_life
+	# kills needed to win, after killing this many, you can't lose anymore
+	var kills_needed = spawn_max - max_life + 1
+	# how many mice left to kill to get to the kills needed to win
 	var mouse_left = max(kills_needed - kill_count, 0)
 	var value = 0
 	if kills_needed > 0:
@@ -143,7 +146,7 @@ func add_life(ammount):
 	
 func update_life():
 	el_cheese.text = "%s" % life
-	el_lifebar.value = life * 100 / 20
+	el_lifebar.value = life * 100 / max_life
 	if life == 0:
 		game_over()
 	
