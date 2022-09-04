@@ -43,6 +43,8 @@ func _ready():
 		el_circle.visible = false
 	if !building:
 		done_building()
+	else:
+		$AudioSpawn.play()
 
 func update_range(new_range):
 	aggro_range = new_range
@@ -60,6 +62,8 @@ func done_building(new_cell = Vector2(0, 0)):
 	$AnimationPlayer.play("idle")
 	modulate = Color.white
 	adjust_UI()
+	$AudioSpawn.play()
+	$AudioGrass.play()
 
 func adjust_UI():
 	if cell_pos.x == 0:
@@ -80,6 +84,7 @@ func select():
 	on_map_coins_changed(map_ref.coins)
 	el_UI.visible = true
 	update_aggro_labels()
+	$AudioSpawn.play()
 	if !building:
 #		yield(get_tree().create_timer(0.5),"timeout")
 		$UIAnimations.play("select")
@@ -194,8 +199,8 @@ func shoot():
 	bullet.speed = shot_speed
 	bullet.set_target(target)
 	play_attack_anim()
-	$Audio.pitch_scale = rand_range(0.8, 1.2)
-	$Audio.play()
+	$AudioShoot.pitch_scale = rand_range(0.8, 1.2)
+	$AudioShoot.play()
 
 func play_attack_anim():
 	$AnimationPlayer.stop(true)
