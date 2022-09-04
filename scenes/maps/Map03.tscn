@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/maps/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="DynamicFontData" id=2]
@@ -17,7 +17,16 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=3]
+resource_local_to_scene = true
+size = 60
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
 [node name="Map" instance=ExtResource( 1 )]
+next_map = "MainScene"
 
 [node name="Path2D" parent="." index="3"]
 curve = SubResource( 1 )
@@ -25,5 +34,9 @@ curve = SubResource( 1 )
 [node name="TimeLabel" parent="UI/HUD/TopBar" index="2"]
 custom_fonts/font = SubResource( 2 )
 
+[node name="Paused" parent="UI/Menus/WinMenu/HBoxContainer" index="0"]
+custom_fonts/font = SubResource( 3 )
+
 [editable path="UI/HUD/ActionBar/Cat1"]
 [editable path="UI/HUD/ActionBar/Cat2"]
+[editable path="UI/Menus/WinMenu"]

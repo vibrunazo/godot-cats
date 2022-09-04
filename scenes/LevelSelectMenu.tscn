@@ -49,41 +49,47 @@ rect_min_size = Vector2( 0, 400 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBox/ScrollContainer"]
 margin_right = 388.0
-margin_bottom = 848.0
+margin_bottom = 862.0
 size_flags_horizontal = 3
 alignment = 1
 
+[node name="Separator" type="Control" parent="VBox/ScrollContainer/VBoxContainer"]
+margin_right = 388.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 0, 10 )
+
 [node name="Map01" type="ToolButton" parent="VBox/ScrollContainer/VBoxContainer" groups=["level"]]
 margin_left = 108.0
+margin_top = 14.0
 margin_right = 279.0
-margin_bottom = 67.0
+margin_bottom = 81.0
 mouse_filter = 1
 size_flags_horizontal = 4
 text = "Level 01"
 
 [node name="Map02" type="ToolButton" parent="VBox/ScrollContainer/VBoxContainer" groups=["level"]]
 margin_left = 107.0
-margin_top = 71.0
+margin_top = 85.0
 margin_right = 280.0
-margin_bottom = 138.0
+margin_bottom = 152.0
 mouse_filter = 1
 size_flags_horizontal = 4
 text = "Level 02"
 
 [node name="Map03" type="ToolButton" parent="VBox/ScrollContainer/VBoxContainer" groups=["level"]]
 margin_left = 108.0
-margin_top = 142.0
+margin_top = 156.0
 margin_right = 280.0
-margin_bottom = 209.0
+margin_bottom = 223.0
 mouse_filter = 1
 size_flags_horizontal = 4
 text = "Level 03"
 
 [node name="Map04" type="ToolButton" parent="VBox/ScrollContainer/VBoxContainer" groups=["level"]]
 margin_left = 108.0
-margin_top = 213.0
+margin_top = 227.0
 margin_right = 280.0
-margin_bottom = 280.0
+margin_bottom = 294.0
 mouse_filter = 1
 size_flags_horizontal = 4
 disabled = true
@@ -91,9 +97,9 @@ text = "Level 04"
 
 [node name="Map05" type="ToolButton" parent="VBox/ScrollContainer/VBoxContainer" groups=["level"]]
 margin_left = 107.0
-margin_top = 284.0
+margin_top = 298.0
 margin_right = 280.0
-margin_bottom = 351.0
+margin_bottom = 365.0
 mouse_filter = 1
 size_flags_horizontal = 4
 disabled = true
@@ -101,9 +107,9 @@ text = "Level 05"
 
 [node name="Map06" type="ToolButton" parent="VBox/ScrollContainer/VBoxContainer" groups=["level"]]
 margin_left = 107.0
-margin_top = 355.0
+margin_top = 369.0
 margin_right = 281.0
-margin_bottom = 422.0
+margin_bottom = 436.0
 mouse_filter = 1
 size_flags_horizontal = 4
 disabled = true
@@ -111,9 +117,9 @@ text = "Level 06"
 
 [node name="ToolButton7" type="ToolButton" parent="VBox/ScrollContainer/VBoxContainer" groups=["level"]]
 margin_left = 108.0
-margin_top = 426.0
+margin_top = 440.0
 margin_right = 280.0
-margin_bottom = 493.0
+margin_bottom = 507.0
 mouse_filter = 1
 size_flags_horizontal = 4
 disabled = true
@@ -121,9 +127,9 @@ text = "Level 03"
 
 [node name="ToolButton8" type="ToolButton" parent="VBox/ScrollContainer/VBoxContainer" groups=["level"]]
 margin_left = 108.0
-margin_top = 497.0
+margin_top = 511.0
 margin_right = 280.0
-margin_bottom = 564.0
+margin_bottom = 578.0
 mouse_filter = 1
 size_flags_horizontal = 4
 disabled = true
@@ -131,9 +137,9 @@ text = "Level 04"
 
 [node name="ToolButton9" type="ToolButton" parent="VBox/ScrollContainer/VBoxContainer" groups=["level"]]
 margin_left = 108.0
-margin_top = 568.0
+margin_top = 582.0
 margin_right = 279.0
-margin_bottom = 635.0
+margin_bottom = 649.0
 mouse_filter = 1
 size_flags_horizontal = 4
 disabled = true
@@ -141,9 +147,9 @@ text = "Level 01"
 
 [node name="ToolButton10" type="ToolButton" parent="VBox/ScrollContainer/VBoxContainer" groups=["level"]]
 margin_left = 107.0
-margin_top = 639.0
+margin_top = 653.0
 margin_right = 280.0
-margin_bottom = 706.0
+margin_bottom = 720.0
 mouse_filter = 1
 size_flags_horizontal = 4
 disabled = true
@@ -151,9 +157,9 @@ text = "Level 02"
 
 [node name="ToolButton11" type="ToolButton" parent="VBox/ScrollContainer/VBoxContainer" groups=["level"]]
 margin_left = 108.0
-margin_top = 710.0
+margin_top = 724.0
 margin_right = 280.0
-margin_bottom = 777.0
+margin_bottom = 791.0
 mouse_filter = 1
 size_flags_horizontal = 4
 disabled = true
@@ -161,9 +167,9 @@ text = "Level 03"
 
 [node name="ToolButton12" type="ToolButton" parent="VBox/ScrollContainer/VBoxContainer" groups=["level"]]
 margin_left = 108.0
-margin_top = 781.0
+margin_top = 795.0
 margin_right = 280.0
-margin_bottom = 848.0
+margin_bottom = 862.0
 mouse_filter = 1
 size_flags_horizontal = 4
 disabled = true

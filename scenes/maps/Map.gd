@@ -18,6 +18,7 @@ var data = GameData.cat_data
 # the cat currently being built and dragged by the mouse
 var cat_building: Cat = null
 var cat_selected: Cat = null
+export var next_map = "Map02"
 export var coins = 20
 export var life = 20
 onready var max_life = life
@@ -58,6 +59,7 @@ func _ready():
 	update_coins()
 	update_UI_mousebar()
 	update_life()
+	pause_game(false)
 		
 func action_pressed(name):
 	print("pressed action %s" % name)
@@ -287,3 +289,8 @@ func _on_EllapsedTimer_timeout():
 		return
 	ellapsed += 1
 	update_UI_time()
+
+
+func _on_NextButton_pressed():
+	pause_game(false)
+	get_tree().change_scene("res://scenes/maps/%s.tscn" % next_map)

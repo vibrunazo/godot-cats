@@ -22,6 +22,7 @@ func level_pressed(name: String):
 	
 func level_down(name: String):
 	print('down: %s' % name)
+	selected = name
 
 func _on_ResumeButton_pressed():
 	$Anim.play("out")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scenes/CircleButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/cat02.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://scenes/GameOverMenu.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/WinMenu.tscn" type="PackedScene" id=16]
 [ext_resource path="res://resources/size_curve.tres" type="Curve" id=17]
+[ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="DynamicFontData" id=18]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass"
@@ -334,6 +335,14 @@ expand_margin_right = 3.0
 expand_margin_top = 3.0
 expand_margin_bottom = 3.0
 shadow_size = 5
+
+[sub_resource type="DynamicFont" id=13]
+resource_local_to_scene = true
+size = 60
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 18 )
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 7 )
@@ -666,9 +675,14 @@ unique_name_in_owner = true
 [node name="WinMenu" parent="UI/Menus" instance=ExtResource( 16 )]
 unique_name_in_owner = true
 
+[node name="Paused" parent="UI/Menus/WinMenu/HBoxContainer" index="0"]
+custom_fonts/font = SubResource( 13 )
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="EllapsedTimer" to="." method="_on_EllapsedTimer_timeout"]
 [connection signal="pressed" from="UI/HUD/ActionBar/HBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="UI/Menus/WinMenu/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
 
 [editable path="UI/HUD/ActionBar/Cat1"]
 [editable path="UI/HUD/ActionBar/Cat2"]
+[editable path="UI/Menus/WinMenu"]
