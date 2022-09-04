@@ -714,6 +714,7 @@ cost = 8
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 10 )
+volume_db = -5.0
 
 [connection signal="area_entered" from="AggroRange" to="." method="_on_AggroRange_area_entered"]
 [connection signal="area_exited" from="AggroRange" to="." method="_on_AggroRange_area_exited"]

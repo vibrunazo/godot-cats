@@ -30,3 +30,6 @@ shape = SubResource( 1 )
 [node name="AudioHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -15.0
+
+[node name="AudioSpawn" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0

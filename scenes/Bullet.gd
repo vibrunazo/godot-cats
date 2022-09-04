@@ -18,6 +18,8 @@ var blast_scene = preload("res://scenes/Blast.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	target_offset = Vector2(rand_range(-20, 20), rand_range(-20, 20))
+	$AudioSpawn.pitch_scale = rand_range(0.8, 1.2)
+	$AudioSpawn.play()
 #	look_at(Vector2(400, 200))
 #	rotation_degrees = 60
 
