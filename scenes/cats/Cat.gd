@@ -15,6 +15,8 @@ export var cat_name = "Cat1"
 export var damage = 10
 export var aggro_range := 200.0
 export var shot_speed = 400
+# Meows every X shoots
+export var meow_every = 0
 export(FocusType) var focus = 0
 var total_cost = 10
 onready var el_UI = $UIroot/UI
@@ -201,6 +203,8 @@ func shoot():
 	play_attack_anim()
 	$AudioShoot.pitch_scale = rand_range(0.8, 1.2)
 	$AudioShoot.play()
+	if meow_every > 0 and randi() % meow_every == 0:
+		$AudioSpawn.play()
 
 func play_attack_anim():
 	$AnimationPlayer.stop(true)

@@ -31,7 +31,7 @@ export(Curve) var size_curve: Curve
 var spawn_count := 0
 export var spawn_max := 350
 export var final_time := 500.0
-export var final_size := 1500.0
+export var final_size := 1600.0
 var kill_count := 0
 var stolen_count := 0
 var start_time := 0
@@ -72,7 +72,7 @@ func action_pressed(name):
 func action_released(name):
 	print('action released')
 	if cat_building:
-		if can_build(get_global_mouse_position()):
+		if can_build(cat_building.global_position):
 			build_cat(name)
 		else:
 			cancel_build()

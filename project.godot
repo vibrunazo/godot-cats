@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Map",
 "language": "GDScript",
-"path": "res://scenes/Map.gd"
+"path": "res://scenes/maps/Map.gd"
 }, {
 "base": "PathFollow2D",
 "class": "Mouse",

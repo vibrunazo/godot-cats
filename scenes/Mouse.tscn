@@ -135,7 +135,7 @@ tracks/1/keys = {
 
 [node name="Mouse" type="PathFollow2D" groups=["mice"]]
 loop = false
-lookahead = 40.0
+lookahead = 80.0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
