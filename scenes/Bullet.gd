@@ -52,6 +52,10 @@ func hit_target():
 	else:
 		if is_instance_valid(target):
 			target.on_hit(self)
+	visible = false
+	$AudioHit.pitch_scale = rand_range(0.8, 1.2)
+	$AudioHit.play()
+	yield($AudioHit, "finished")
 	queue_free()
 
 #func _on_Area2D_area_entered(area: Node2D):

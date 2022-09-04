@@ -194,6 +194,7 @@ func shoot():
 	bullet.speed = shot_speed
 	bullet.set_target(target)
 	play_attack_anim()
+	$Audio.pitch_scale = rand_range(0.8, 1.2)
 	$Audio.play()
 
 func play_attack_anim():

@@ -54,3 +54,6 @@ texture = ExtResource( 5 )
 wait_time = 2.1
 
 [editable path="UIroot/UI/CatActions"]
+[editable path="UIroot/UI/CatActions/HBoxContainer/UpButton"]
+[editable path="UIroot/UI/CatActions/HBoxContainer/Up2Button"]
+[editable path="UIroot/UI/CatActions/HBoxContainer/DeleteButton"]

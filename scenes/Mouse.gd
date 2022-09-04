@@ -71,14 +71,14 @@ func update_scale():
 func on_hit(bullet: Node2D):
 	if !alive: return
 	health -= bullet.damage
-	$Audio.play()
+#	$Audio.play()
 	if health <= 0 and alive:
 		health = 0
 		alive = false
 		emit_signal("killed")
 		$AnimationPlayer.play("dying")
-		$Tween.interpolate_property(self, "rotation_degrees", rotation_degrees, rotation_degrees + rand_range(-90, 90), 0.6)
-		$Tween.interpolate_property(self, "position", position, position + Vector2(rand_range(-50, 50), rand_range(-50, 50)), 0.6, 0, Tween.EASE_OUT)
+		$Tween.interpolate_property(self, "rotation_degrees", rotation_degrees, rotation_degrees + rand_range(-190, 190), 0.6, Tween.TRANS_QUART, Tween.EASE_OUT)
+		$Tween.interpolate_property(self, "position", position, position + Vector2(rand_range(-50, 50), rand_range(-50, 50)), 0.6, Tween.TRANS_QUART, Tween.EASE_OUT)
 		
 		$Tween.start()
 		yield($AnimationPlayer,"animation_finished")

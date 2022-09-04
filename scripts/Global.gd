@@ -13,6 +13,7 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	rng.randomize()
 	print('global script is ready, DEBUG is %s' % DEBUG)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -10)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -56,10 +56,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0.6, 1.2 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 0.6, 1.2 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:modulate")
@@ -167,5 +167,6 @@ anims/walk = SubResource( 3 )
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
+volume_db = -10.0
 
 [node name="Tween" type="Tween" parent="."]
