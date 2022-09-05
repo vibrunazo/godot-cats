@@ -134,12 +134,11 @@ func update_UI_mousebar():
 		win()
 
 func win():
-	print('you win!')
 	yield(get_tree().create_timer(2),"timeout")
 	if life == max_life:
 		print("Perfect!")
 	state = State.OVER
-	el_win.pause(true)
+	el_win.slow_pause()
 	
 func add_life(ammount):
 	life += ammount
@@ -154,7 +153,9 @@ func update_life():
 	
 func game_over():
 	state = State.OVER
-	el_game_over.pause(true)
+#	audio_fade_out()
+#	yield($TweenAudio,"tween_completed")
+	el_game_over.slow_pause()
 
 func add_coins(ammount):
 	coins += ammount

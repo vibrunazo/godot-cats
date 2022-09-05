@@ -77,8 +77,8 @@ func on_hit(bullet: Node2D):
 		alive = false
 		emit_signal("killed")
 		$AnimationPlayer.play("dying")
-		$Tween.interpolate_property(self, "rotation_degrees", rotation_degrees, rotation_degrees + rand_range(-190, 190), 0.6, Tween.TRANS_QUART, Tween.EASE_OUT)
-		$Tween.interpolate_property(self, "position", position, position + Vector2(rand_range(-50, 50), rand_range(-50, 50)), 0.6, Tween.TRANS_QUART, Tween.EASE_OUT)
+		$Tween.interpolate_property($Sprite, "rotation_degrees", $Sprite.rotation_degrees, $Sprite.rotation_degrees + rand_range(-190, 190), 0.6, Tween.TRANS_QUART, Tween.EASE_OUT)
+		$Tween.interpolate_property($Sprite, "position", $Sprite.position, $Sprite.position + Vector2(rand_range(-50, 50), rand_range(-50, 50)), 0.6, Tween.TRANS_QUART, Tween.EASE_OUT)
 		
 		$Tween.start()
 		yield($AnimationPlayer,"animation_finished")

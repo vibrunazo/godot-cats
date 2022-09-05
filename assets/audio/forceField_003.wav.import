@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/magic_impact02.wav-355f1e6af4eb6aa0959eb151651b5960.sample"
+path="res://.import/forceField_003.wav-29cc7e95734d7af7e2e83ffcbf04517f.sample"
 
 [deps]
 
-source_file="res://assets/audio/magic_impact02.wav"
-dest_files=[ "res://.import/magic_impact02.wav-355f1e6af4eb6aa0959eb151651b5960.sample" ]
+source_file="res://assets/audio/forceField_003.wav"
+dest_files=[ "res://.import/forceField_003.wav-29cc7e95734d7af7e2e83ffcbf04517f.sample" ]
 
 [params]
 
