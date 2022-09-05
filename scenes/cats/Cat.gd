@@ -1,6 +1,7 @@
 extends Node2D
 
 class_name Cat, "res://assets/cat01.png"
+# warning-ignore:unused_signal
 signal clicked
 
 var aggro_list = []
@@ -15,7 +16,7 @@ export var cat_name = "Cat1"
 export var damage = 10
 export var aggro_range := 200.0
 export var shot_speed = 400
-# Meows every X shoots
+# Meows every X shots
 export var meow_every = 0
 export(FocusType) var focus = 0
 var total_cost = 10
@@ -116,7 +117,7 @@ func update_aggro_labels():
 #func _process(delta):
 #	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_instance_valid(target):
 		follow_target()
 		
@@ -169,7 +170,7 @@ func search_new_target():
 	acquire_new_target(best)
 
 func search_furthest() -> Mouse:
-	var best_score := 0
+	var best_score: float = 0.0
 	var best: Mouse = aggro_list[0]
 	for m in aggro_list:
 		var mouse: Mouse = m
@@ -179,7 +180,7 @@ func search_furthest() -> Mouse:
 	return best
 
 func search_health() -> Mouse:
-	var best_score := 0
+	var best_score: float = 0.0
 	var best: Mouse = aggro_list[0]
 	for m in aggro_list:
 		var mouse: Mouse = m
@@ -269,7 +270,7 @@ func _on_up2_pressed():
 	damage += 10
 
 func _on_delete_pressed():
-	var cost = total_cost
+#	var cost = total_cost
 	map_ref.add_coins(get_delete_coins())
 	map_ref.remove_cat_at_cell(cell_pos)
 	queue_free()

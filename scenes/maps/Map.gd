@@ -52,7 +52,6 @@ func _ready():
 		var button: CircleButton = b
 		var cat_data = data[button.name]
 		var cost = cat_data.cost
-		print("found action button %s" % b.get_name())
 		b.connect("pressed", self, "action_pressed", [b.get_name()])
 		b.connect("button_up", self, "action_released", [b.get_name()])
 		button.update_cost(cost)
@@ -60,9 +59,16 @@ func _ready():
 	update_UI_mousebar()
 	update_life()
 	pause_game(false)
+
+func _physics_process(_delta):
+	if cat_building != null:
+		cat_building.position = snap_to_grid(get_global_mouse_position())
+		if can_build(get_global_mouse_position()):
+			cat_building.modulate = Color.yellow#("ff55ff99")
+		else:
+			cat_building.modulate = Color.red#("bbaa2222")
 		
 func action_pressed(name):
-	print("pressed action %s" % name)
 	if cat_building:
 		return
 	if coins < GameData.cat_data[name]['cost']:
@@ -72,7 +78,6 @@ func action_pressed(name):
 	$UI.add_child(cat_building)
 
 func action_released(name):
-	print('action released')
 	if cat_building:
 		if can_build(cat_building.global_position):
 			build_cat(name)
@@ -80,6 +85,7 @@ func action_released(name):
 			cancel_build()
 		
 func build_cat(name):
+	cat_building.position = snap_to_grid(cat_building.global_position)
 	var cell_pos = $TileMap.world_to_map(cat_building.global_position)
 	if cats_dict.get([int(cell_pos.x), int(cell_pos.y)]):
 		print("already a cat at %s is %s" % [cell_pos, cats_dict.get(cell_pos)])
@@ -90,6 +96,7 @@ func build_cat(name):
 	
 	$UI.remove_child(cat_building)
 	$Actors.add_child(cat_building)
+# warning-ignore:return_value_discarded
 	cat_building.connect("clicked", self, "_on_cat_clicked", [cat_building])
 	cat_building.done_building(cell_pos)
 	cat_building = null
@@ -101,6 +108,9 @@ func cancel_build():
 	
 func remove_cat_at_cell(cell_pos: Vector2):
 	cats_dict[cell_pos] = null
+	
+#func is_paused() -> bool:
+#	return get_tree().paused
 
 func toggle_pause():
 	if state != State.READY: return
@@ -130,7 +140,7 @@ func update_UI_mousebar():
 	el_mousebar.value = clamp(value, 0, 100)
 	if mouse_left == 0:
 		print('cannot lose anymore')
-	if kill_count + stolen_count >= spawn_max and life >= 0:
+	if kill_count + stolen_count >= spawn_max and life > 0:
 		win()
 
 func win():
@@ -171,14 +181,7 @@ func update_coins():
 	
 #func _unhandled_input(event):
 #	print('new event %s' % event)
-
-func _physics_process(delta):
-	if cat_building != null:
-		cat_building.position = snap_to_grid(get_global_mouse_position())
-		if can_build(get_global_mouse_position()):
-			cat_building.modulate = Color.yellow#("ff55ff99")
-		else:
-			cat_building.modulate = Color.red#("bbaa2222")
+		
 		
 func snap_to_grid(position: Vector2):
 	var map_position = $TileMap.world_to_map(position)
@@ -259,7 +262,7 @@ func _on_mouse_killed(mouse: Mouse):
 	add_coins(worth)
 	update_UI_mousebar()
 
-func _on_mouse_reached_cheese(mouse: Mouse):
+func _on_mouse_reached_cheese(_mouse: Mouse):
 #	kill_count += 1
 	stolen_count += 1
 	add_life(-1)
@@ -294,4 +297,5 @@ func _on_EllapsedTimer_timeout():
 
 func _on_NextButton_pressed():
 	pause_game(false)
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://scenes/maps/%s.tscn" % next_map)

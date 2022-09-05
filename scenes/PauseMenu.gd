@@ -12,7 +12,7 @@ func pause(new_paused: bool = true):
 		$AnimationPlayer.play("start")
 		audio_fade_in()
 		yield($TweenAudio,"tween_completed")
-		$AudioPause.play()
+		$AudioStreamPlayer.play()
 	else:
 		Global.set_volume(-80)
 		$AnimationPlayer.stop()
@@ -23,8 +23,14 @@ func pause(new_paused: bool = true):
 func slow_pause():
 	audio_fade_out()
 #	yield($TweenAudio,"tween_completed")
-	yield(get_tree().create_timer(0.2), "timeout")
-	pause(true)
+	yield(get_tree().create_timer(0.5), "timeout")
+	get_tree().paused = true
+	Global.reset_volume()
+	$AnimationPlayer.stop()
+	$AnimationPlayer.play("start")
+	$AudioStreamPlayer.play()
+#	audio_fade_in()
+#	yield($TweenAudio,"tween_completed")
 
 func audio_fade_out():
 	$TweenAudio.interpolate_method(self, "change_volume", Global.master_volume, -80, 0.5)

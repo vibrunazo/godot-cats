@@ -7,7 +7,7 @@ func _ready():
 	$AnimBG.play("start", 0, 0.2)
 	
 	for b in get_tree().get_nodes_in_group("level"):
-		var button: ToolButton = b
+#		var button: ToolButton = b
 		print("found level button %s" % b.get_name())
 		b.connect("pressed", self, "level_pressed", [b.get_name()])
 		b.connect("button_down", self, "level_down", [b.get_name()])

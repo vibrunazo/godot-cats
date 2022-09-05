@@ -16,7 +16,7 @@ func _ready():
 #func _unhandled_input(event):
 #	print('unhandled input')
 	
-func _input_event(viewport, event: InputEvent, shape_idx):
+func _input_event(_viewport, event: InputEvent, _shape_idx):
 	if event is InputEventMouseButton and !event.is_pressed():
 		if !get_parent().building:
 			get_parent().emit_signal("clicked")

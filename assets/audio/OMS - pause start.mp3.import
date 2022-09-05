@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/OMS - pause start.mp3-4219572ec4e80c9171f09c336333010e.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/OMS - pause start.mp3"
+dest_files=[ "res://.import/OMS - pause start.mp3-4219572ec4e80c9171f09c336333010e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
