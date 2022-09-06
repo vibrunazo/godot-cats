@@ -59,6 +59,7 @@ func _ready():
 	update_UI_mousebar()
 	update_life()
 	pause_game(false)
+	play_music()
 
 func _physics_process(_delta):
 	if cat_building != null:
@@ -67,6 +68,10 @@ func _physics_process(_delta):
 			cat_building.modulate = Color.yellow#("ff55ff99")
 		else:
 			cat_building.modulate = Color.red#("bbaa2222")
+
+func play_music():
+	yield(get_tree().create_timer(0.4), "timeout")
+	$AudioMusic.play()
 		
 func action_pressed(name):
 	if cat_building:
@@ -138,8 +143,8 @@ func update_UI_mousebar():
 		value = ceil(100 * mouse_left / kills_needed)
 #	print("kill count: %s, mouse left: %s, kills needed: %s, value: %s" % [kill_count, mouse_left, kills_needed, value])
 	el_mousebar.value = clamp(value, 0, 100)
-	if mouse_left == 0:
-		print('cannot lose anymore')
+#	if mouse_left == 0:
+#		print('cannot lose anymore')
 	if kill_count + stolen_count >= spawn_max and life > 0:
 		win()
 

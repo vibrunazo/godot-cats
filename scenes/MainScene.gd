@@ -5,10 +5,11 @@ var selected = "Map01"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimBG.play("start", 0, 0.2)
+	Global.reset_volume()
 	
 	for b in get_tree().get_nodes_in_group("level"):
 #		var button: ToolButton = b
-		print("found level button %s" % b.get_name())
+#		print("found level button %s" % b.get_name())
 		b.connect("pressed", self, "level_pressed", [b.get_name()])
 		b.connect("button_down", self, "level_down", [b.get_name()])
 
@@ -30,6 +31,7 @@ func _on_ResumeButton_pressed():
 func _on_PlayLevelButton_pressed():
 	var focused = $CanvasLayer/LevelSelectMenu.get_focus_owner()
 	print(focused)
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://scenes/maps/%s.tscn" % selected)
 
 

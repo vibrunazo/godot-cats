@@ -725,13 +725,16 @@ cost = 8
 [node name="AudioShoot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 volume_db = -5.0
+bus = "sfx"
 
 [node name="AudioSpawn" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 9 )
 volume_db = -5.0
+bus = "sfx"
 
 [node name="AudioGrass" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 10 )
+bus = "sfx"
 
 [connection signal="area_entered" from="AggroRange" to="." method="_on_AggroRange_area_entered"]
 [connection signal="area_exited" from="AggroRange" to="." method="_on_AggroRange_area_exited"]

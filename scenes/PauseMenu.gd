@@ -10,11 +10,10 @@ func pause(new_paused: bool = true):
 		get_tree().paused = new_paused
 		$AnimationPlayer.stop()
 		$AnimationPlayer.play("start")
-		audio_fade_in()
-		yield($TweenAudio,"tween_completed")
+		audio_fade_out()
 		$AudioStreamPlayer.play()
 	else:
-		Global.set_volume(-80)
+#		Global.set_volume(-80)
 		$AnimationPlayer.stop()
 		$AnimationPlayer.play("stop")
 		audio_fade_in()
@@ -22,25 +21,17 @@ func pause(new_paused: bool = true):
 		
 func slow_pause():
 	audio_fade_out()
-#	yield($TweenAudio,"tween_completed")
-	yield(get_tree().create_timer(0.5), "timeout")
+	yield(get_tree().create_timer(0.2), "timeout")
 	get_tree().paused = true
-	Global.reset_volume()
 	$AnimationPlayer.stop()
 	$AnimationPlayer.play("start")
 	$AudioStreamPlayer.play()
-#	audio_fade_in()
-#	yield($TweenAudio,"tween_completed")
 
 func audio_fade_out():
-	$TweenAudio.interpolate_method(self, "change_volume", Global.master_volume, -80, 0.5)
-	$TweenAudio.start()
-	yield($TweenAudio,"tween_completed")
-#	Global.reset_volume()
+	Global.fade_out_game_volume()
 
 func audio_fade_in():
-	$TweenAudio.interpolate_method(self, "change_volume", -80, Global.master_volume, 0.3)
-	$TweenAudio.start()
+	Global.fade_in_game_volume()
 
 func change_volume(val):
 	Global.set_volume(val)
@@ -50,8 +41,10 @@ func _on_ResumeButton_pressed():
 
 func _on_RestartButton_pressed():
 	pause(false)
+# warning-ignore:return_value_discarded
 	get_tree().reload_current_scene()
 
 func _on_ExitButton_pressed():
 	pause(false)
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://scenes/maps/MainScene.tscn")

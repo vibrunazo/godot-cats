@@ -131,6 +131,7 @@ func follow_target():
 func acquire_new_target(new_target: Mouse):
 	target = new_target
 	if !target.is_connected("killed", self, "_on_target_died"):
+# warning-ignore:return_value_discarded
 		target.connect("killed", self, "_on_target_died", [target])
 	follow_target()
 	if $Cooldown.time_left > 0:

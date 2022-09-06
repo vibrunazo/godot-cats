@@ -205,9 +205,8 @@ anims/RESET = SubResource( 4 )
 anims/start = SubResource( 5 )
 anims/stop = SubResource( 6 )
 
-[node name="TweenAudio" type="Tween" parent="."]
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = "ui"
 
 [connection signal="pressed" from="HBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="HBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]

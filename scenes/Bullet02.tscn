@@ -10,6 +10,7 @@ radius = 80.0
 [node name="Bullet02" instance=ExtResource( 1 )]
 damage = 25
 aoe = true
+sounds = [  ]
 
 [node name="Sprite" parent="." index="0"]
 modulate = Color( 1, 1, 1, 1 )
@@ -25,7 +26,7 @@ shape = SubResource( 1 )
 
 [node name="AudioHit" parent="." index="2"]
 stream = ExtResource( 2 )
-volume_db = -5.0
+pitch_scale = 0.8
 
 [node name="AudioSpawn" parent="." index="3"]
 stream = ExtResource( 3 )

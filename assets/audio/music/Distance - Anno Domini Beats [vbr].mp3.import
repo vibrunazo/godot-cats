@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Distance - Anno Domini Beats [vbr].mp3-4527711125d9cfecaa15c57cea3d47ef.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/Distance - Anno Domini Beats [vbr].mp3"
+dest_files=[ "res://.import/Distance - Anno Domini Beats [vbr].mp3-4527711125d9cfecaa15c57cea3d47ef.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/MainScene.gd" type="Script" id=1]
 [ext_resource path="res://assets/tiledbg.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://scenes/MainMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/LevelSelectMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/audio/music/One Man Symphony - Royalty Free Soundtrack Collection - 74 Happy Memories.mp3" type="AudioStream" id=6]
 
 [sub_resource type="Gradient" id=4]
 resource_local_to_scene = true
@@ -626,6 +627,9 @@ texture = SubResource( 5 )
 [node name="Paused" parent="CanvasLayer/MainMenu/HBoxContainer" index="0"]
 custom_fonts/font = SubResource( 6 )
 
+[node name="AudioStreamPlayer" parent="CanvasLayer/MainMenu" index="3"]
+bus = "Master"
+
 [node name="LevelSelectMenu" parent="CanvasLayer" instance=ExtResource( 5 )]
 visible = false
 anchor_left = 0.5
@@ -666,6 +670,11 @@ anims/start = SubResource( 3 )
 anims/RESET = SubResource( 9 )
 anims/out = SubResource( 10 )
 anims/start = SubResource( 11 )
+
+[node name="AudioMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+bus = "music"
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/HBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/LevelSelectMenu/Margin/BackButton" to="." method="_on_LevelBackButton_pressed"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Mall - Komiku.mp3-30fefa75bad5ac4becd4f27ea572a6d0.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/Mall - Komiku.mp3"
+dest_files=[ "res://.import/Mall - Komiku.mp3-30fefa75bad5ac4becd4f27ea572a6d0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

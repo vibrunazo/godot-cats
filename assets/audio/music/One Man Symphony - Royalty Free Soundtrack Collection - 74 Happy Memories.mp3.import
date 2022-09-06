@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/One Man Symphony - Royalty Free Soundtrack Collection - 74 Happy Memories.mp3-06cb9a07f42a7d83282e4b427d8c91a1.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/One Man Symphony - Royalty Free Soundtrack Collection - 74 Happy Memories.mp3"
+dest_files=[ "res://.import/One Man Symphony - Royalty Free Soundtrack Collection - 74 Happy Memories.mp3-06cb9a07f42a7d83282e4b427d8c91a1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
