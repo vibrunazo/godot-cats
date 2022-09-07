@@ -1,39 +1,51 @@
 extends Node2D
 
 var selected = "Map01"
+onready var el_mainmenu: PauseMenu = $"%MainMenu"
+enum State {START, LEVEL_SELECT}
+var state: int = State.START
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimBG.play("start", 0, 0.2)
 	Global.reset_volume()
-	
+#	el_mainmenu.set_focus()
+	reset_focus()
 	for b in get_tree().get_nodes_in_group("level"):
 #		var button: ToolButton = b
 #		print("found level button %s" % b.get_name())
 		b.connect("pressed", self, "level_pressed", [b.get_name()])
 		b.connect("button_down", self, "level_down", [b.get_name()])
+		
+func play_selected_level():
+	get_tree().change_scene("res://scenes/maps/%s.tscn" % selected)
 
+func _input(event):
+	if event.is_action_pressed("ui_accept") and state == State.LEVEL_SELECT:
+		play_selected_level()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 func level_pressed(name: String):
-	print('pressed: %s' % name)
 	selected = name
 	
 func level_down(name: String):
-	print('down: %s' % name)
 	selected = name
 
 func _on_ResumeButton_pressed():
 	$Anim.play("out")
+	state = State.LEVEL_SELECT
+	$CanvasLayer/LevelSelectMenu/VBox/ScrollContainer/VBoxContainer/Map01.grab_focus()
 
 func _on_PlayLevelButton_pressed():
-	var focused = $CanvasLayer/LevelSelectMenu.get_focus_owner()
-	print(focused)
 # warning-ignore:return_value_discarded
-	get_tree().change_scene("res://scenes/maps/%s.tscn" % selected)
+	play_selected_level()
 
 
 func _on_LevelBackButton_pressed():
 	$Anim.play_backwards("out")
+	state = State.START
+	el_mainmenu.set_focus()
+
+
+func reset_focus():
+	yield(get_tree().create_timer(0.1), "timeout")
+	el_mainmenu.set_focus()

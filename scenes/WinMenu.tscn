@@ -6,7 +6,7 @@
 
 [sub_resource type="Gradient" id=2]
 interpolation_mode = 2
-colors = PoolColorArray( 0.416, 0.52, 0.208, 0.588235, 0, 0, 0, 0.313726 )
+colors = PoolColorArray( 0.831373, 0.901961, 0.0901961, 0.54902, 0.568627, 0.6, 0.239216, 0.156863 )
 
 [sub_resource type="GradientTexture2D" id=3]
 gradient = SubResource( 2 )

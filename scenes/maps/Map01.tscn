@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/maps/Map.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/audio/music/Mall - Komiku.mp3" type="AudioStream" id=3]
 
 [sub_resource type="Curve2D" id=1]
 resource_local_to_scene = true
@@ -42,9 +41,6 @@ custom_fonts/font = SubResource( 2 )
 
 [node name="Paused" parent="UI/Menus/WinMenu/HBoxContainer" index="0"]
 custom_fonts/font = SubResource( 3 )
-
-[node name="AudioMusic" parent="." index="9"]
-stream = ExtResource( 3 )
 
 [editable path="UI/HUD/ActionBar/Cat1"]
 [editable path="UI/HUD/ActionBar/Cat2"]

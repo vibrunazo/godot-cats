@@ -2,6 +2,9 @@ extends Control
 
 class_name PauseMenu
 
+func set_focus():
+	$HBoxContainer/ResumeButton.grab_focus()
+
 func toogle():
 	pause(!get_tree().paused)
 
@@ -12,6 +15,7 @@ func pause(new_paused: bool = true):
 		$AnimationPlayer.play("start")
 		audio_fade_out()
 		$AudioStreamPlayer.play()
+		set_focus()
 	else:
 #		Global.set_volume(-80)
 		$AnimationPlayer.stop()
