@@ -184,7 +184,9 @@ func update_coins():
 	if is_instance_valid(cat_selected):
 		cat_selected.on_map_coins_changed(coins)
 	
-#func _unhandled_input(event):
+func _unhandled_input(event):
+	if event.is_action_pressed("pause"):
+		toggle_pause()
 #	print('new event %s' % event)
 		
 		

@@ -15,19 +15,17 @@ func _ready():
 #		var button: ToolButton = b
 #		print("found level button %s" % b.get_name())
 		b.connect("pressed", self, "level_pressed", [b.get_name()])
-		b.connect("button_down", self, "level_down", [b.get_name()])
+		b.connect("button_down", self, "level_pressed", [b.get_name()])
+		b.connect("focus_entered", self, "level_pressed", [b.get_name()])
 		
 func play_selected_level():
 	get_tree().change_scene("res://scenes/maps/%s.tscn" % selected)
 
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept") and state == State.LEVEL_SELECT:
 		play_selected_level()
 
 func level_pressed(name: String):
-	selected = name
-	
-func level_down(name: String):
 	selected = name
 
 func _on_ResumeButton_pressed():
