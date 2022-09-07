@@ -2,9 +2,6 @@ extends Node2D
 
 class_name Bullet, "res://assets/ball.png"
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 export var speed = 400
 export var damage = 10
 export var aoe = false
@@ -15,6 +12,7 @@ var target_pos: Vector2 = Vector2(0, 0)
 var ready = true
 var blast_scene = preload("res://scenes/Blast.tscn")
 var hit_pitch: float = 1
+var velocity: Vector2
 
 
 # Called when the node enters the scene tree for the first time.
@@ -34,8 +32,11 @@ func _physics_process(delta):
 	if is_instance_valid(target):
 		target_pos = target.get_bullet_target() + target_offset
 	look_at(target_pos)
-	position += Vector2(speed * delta, 0).rotated(rotation)
+	velocity = Vector2(speed, 0).rotated(rotation)
+	position += velocity * delta
 	$Sprite.global_rotation_degrees = 0
+	# TODO this is framerate dependant
+	# maybe Tween to target position instead?
 	if position.distance_to(target_pos) < speed * delta * 2:
 		hit_target()
 #		print($Sprite.global_rotation_degrees)
