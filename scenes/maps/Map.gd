@@ -55,11 +55,11 @@ export var wave_list := [
 		"size_max": 2
 	},
 	{
-		"start": 30,
+		"start": 38,
 		"spawns": 4,
 		"cooldown": 5,
-		"size_min": 100,
-		"size_max": 140
+		"size_min": 180,
+		"size_max": 240
 	},
 	{
 		"start": 35,
@@ -129,12 +129,10 @@ func ini_waves():
 
 func build_wave(wave: Dictionary, i: int):
 	print('building wave %s' % wave)
-	yield(get_tree().create_timer(wave.start), "timeout")
-	print('starting wave')
+	
 	get_tree().create_timer(wave.cooldown)
 	var t: Timer = Timer.new()
 	add_child(t)
-	t.connect("timeout", self, "wave_timer_timeout", [i])
 	var wave_state = {
 		"spawned": 0,
 		"timer": t
@@ -143,6 +141,10 @@ func build_wave(wave: Dictionary, i: int):
 		wave_state_list[i] = wave_state
 	else:
 		wave_state_list.append(wave_state)
+	t.connect("timeout", self, "wave_timer_timeout", [i])
+	yield(get_tree().create_timer(wave.start), "timeout")
+	wave_timer_timeout(i)
+	print('starting wave')
 	t.start(wave.cooldown)
 #	yield(t, "timeout")
 #	print('timer timed out')
