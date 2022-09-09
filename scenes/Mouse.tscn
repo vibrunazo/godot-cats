@@ -77,7 +77,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=4]
 resource_name = "gethit"
 length = 0.2
-step = 0.05
+step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
 tracks/0/interp = 1
@@ -97,7 +97,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.05, 0.2 ),
+"times": PoolRealArray( 0, 0.08, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 0.721569, 0.207843, 0.207843, 1 ), Color( 0.721569, 0.207843, 0.207843, 1 ), Color( 1, 1, 1, 1 ) ]

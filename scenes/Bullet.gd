@@ -6,18 +6,19 @@ export var speed = 400
 export var damage = 10
 export var aoe = false
 export(Array, AudioStream) var sounds: Array
+export(PackedScene) var blast_scene: PackedScene
 var target: Mouse = null setget set_target
 var target_offset: Vector2 = Vector2(0, 0)
 var target_pos: Vector2 = Vector2(0, 0)
 var ready = true
-var blast_scene = preload("res://scenes/Blast.tscn")
+#var blast_scene = preload(blast)
+#var blast_scene: PackedScene = preload("res://scenes/Blast.tscn")
 var hit_pitch: float = 1
 var velocity: Vector2
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	target_offset = Vector2(rand_range(-20, 20), rand_range(-20, 20))
+	target_offset = Vector2(rand_range(-12, 12), rand_range(-12, 12))
 	$AudioSpawn.pitch_scale = rand_range(0.8, 1.2)
 	$AudioSpawn.play()
 	hit_pitch = $AudioHit.pitch_scale
@@ -46,16 +47,18 @@ func _physics_process(delta):
 func hit_target():
 	if !ready: return
 	ready = false
+	var blast: Blast = blast_scene.instance()
+	blast.position = global_position
+	blast.rotation = rotation
+	get_parent().add_child(blast)
 	if aoe:
+		blast.start($Area2D/CollisionShape2D.shape.radius * 2.0)
 		var targets = $Area2D.get_overlapping_areas()
 		for t in targets:
 			if t.get_parent() is Mouse && is_instance_valid(t.get_parent()):
 				t.get_parent().on_hit(self)
-		var blast = blast_scene.instance()
-		blast.position = global_position
-		get_parent().add_child(blast)
-		blast.start($Area2D/CollisionShape2D.shape.radius)
 	else:
+		blast.start()
 		if is_instance_valid(target):
 			target.on_hit(self)
 	visible = false

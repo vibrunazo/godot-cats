@@ -624,11 +624,7 @@ unique_name_in_owner = true
 visible = true
 
 [node name="TextureRect" parent="CanvasLayer/MainMenu" index="0"]
-modulate = Color( 1, 1, 1, 0 )
 texture = SubResource( 5 )
-
-[node name="HBoxContainer" parent="CanvasLayer/MainMenu" index="1"]
-anchor_top = 1.5
 
 [node name="Paused" parent="CanvasLayer/MainMenu/HBoxContainer" index="0"]
 custom_fonts/font = SubResource( 6 )
