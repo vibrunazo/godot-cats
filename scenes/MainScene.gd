@@ -23,7 +23,11 @@ func play_selected_level():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept") and state == State.LEVEL_SELECT:
-		play_selected_level()
+		var focus := el_mainmenu.get_focus_owner()
+		if focus.is_in_group('level'):
+			play_selected_level()
+	elif event.is_action_pressed("ui_accept") and !el_mainmenu.get_focus_owner():
+		el_mainmenu.set_focus()
 
 func level_pressed(name: String):
 	selected = name
@@ -45,5 +49,11 @@ func _on_LevelBackButton_pressed():
 
 
 func reset_focus():
-	yield(get_tree().create_timer(0.1), "timeout")
-	el_mainmenu.set_focus()
+	yield(get_tree().create_timer(0.3), "timeout")
+	state = State.START
+	var focus = el_mainmenu.get_focus_owner()
+	if focus == null:
+		el_mainmenu.set_focus()
+	else:
+		print('focus is already on %s' % focus)
+	focus = el_mainmenu.get_focus_owner()
