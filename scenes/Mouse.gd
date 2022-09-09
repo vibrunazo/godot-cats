@@ -64,8 +64,8 @@ func _physics_process(delta):
 	offset = t
 
 func update_scale():
-	var size = 0.6 + pow(health, 0.75) * 0.02
-	size = min(size, 1.6)
+	var size = 0.5 + pow(health, 0.75) * 0.02
+	size = min(size, 1.7)
 	scale = Vector2(size, size)
 
 func on_hit(bullet: Node2D):

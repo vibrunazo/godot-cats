@@ -2,6 +2,11 @@ extends Node2D
 
 class_name Map
 
+class WaveData:
+	var start: float
+	var spaws: int
+	var cooldown: float
+
 var el_path: Path2D
 onready var el_coins: Label = get_node("%CoinLabel")
 onready var el_cheese: Label = get_node("%CheeseLabel")
@@ -24,15 +29,58 @@ export var life = 20
 onready var max_life = life
 export var max_cell_x = 10
 export var max_cell_y = 5
+export(Curve) var size_curve: Curve
+#export var final_time := 500.0
+#export var final_size := 1600.0
+export var wave_list := [
+	{
+		"start": 1,
+		"spawns": 10,
+		"cooldown": 4,
+		"size_min": 50,
+		"size_max": 80
+	},
+	{
+		"start": 16,
+		"spawns": 8,
+		"cooldown": 0.08,
+		"size_min": 2,
+		"size_max": 2
+	},
+	{
+		"start": 26,
+		"spawns": 12,
+		"cooldown": 0.05,
+		"size_min": 2,
+		"size_max": 2
+	},
+	{
+		"start": 30,
+		"spawns": 4,
+		"cooldown": 5,
+		"size_min": 100,
+		"size_max": 140
+	},
+	{
+		"start": 35,
+		"spawns": 18,
+		"cooldown": 0.1,
+		"size_min": 2,
+		"size_max": 2
+	}
+]
+var wave_state_list := [
+	{
+		"spawned": 0,
+		"timer": null
+	}
+]
 var cats_dict = {
 #	[0, 0]: "cat1",
 #	[1, 2]: "cat2"
 }
-export(Curve) var size_curve: Curve
+var spawn_max := 0
 var spawn_count := 0
-export var spawn_max := 350
-export var final_time := 500.0
-export var final_size := 1600.0
 var kill_count := 0
 var stolen_count := 0
 var start_time := 0
@@ -55,6 +103,7 @@ func _ready():
 		b.connect("pressed", self, "action_pressed", [b.get_name()])
 		b.connect("button_up", self, "action_released", [b.get_name()])
 		button.update_cost(cost)
+	ini_waves()
 	update_coins()
 	update_UI_mousebar()
 	update_life()
@@ -68,6 +117,48 @@ func _physics_process(_delta):
 			cat_building.modulate = Color.yellow#("ff55ff99")
 		else:
 			cat_building.modulate = Color.red#("bbaa2222")
+
+func ini_waves():
+	print('ini waves')
+	spawn_max = 0
+	var i: int = 0
+	for wave in wave_list:
+		spawn_max += wave.spawns
+		build_wave(wave, i)
+		i += 1
+
+func build_wave(wave: Dictionary, i: int):
+	print('building wave %s' % wave)
+	yield(get_tree().create_timer(wave.start), "timeout")
+	print('starting wave')
+	get_tree().create_timer(wave.cooldown)
+	var t: Timer = Timer.new()
+	add_child(t)
+	t.connect("timeout", self, "wave_timer_timeout", [i])
+	var wave_state = {
+		"spawned": 0,
+		"timer": t
+	}
+	if wave_state_list.size() > i:
+		wave_state_list[i] = wave_state
+	else:
+		wave_state_list.append(wave_state)
+	t.start(wave.cooldown)
+#	yield(t, "timeout")
+#	print('timer timed out')
+#	yield(t, "timeout")
+#	print('timer timed out again')
+	
+func wave_timer_timeout(i):
+	var wave = wave_list[i]
+	var wave_state = wave_state_list[i]
+	spawn_new_mouse(wave.size_min, wave.size_max)
+	wave_state.spawned += 1
+	var spawns_left = wave.spawns - wave_state.spawned
+	if spawns_left == 0:
+		var t: Timer = wave_state.timer
+		t.stop()
+	print('wave %s spawned %s/%s' % [i, wave_state.spawned, wave.spawns])
 
 func play_music():
 	yield(get_tree().create_timer(0.4), "timeout")
@@ -215,23 +306,22 @@ func is_inside_map(cell_pos: Vector2):
 	if cell_pos.y < y1 or cell_pos.y > y2: return false
 	return true
 
-func spawn_new_mouse():
+func spawn_new_mouse(s1 = 30, s2 = 60):
 	if (spawn_count >= spawn_max): 
 		$SpawnTimer.stop()
 		return
 	spawn_count += 1
 	var mouse = mouse_scene.instance()
 	mouse.position = Vector2(0, 0)
-#	ellapsed = (Time.get_ticks_msec() - start_time) / 1000
 	
-	var min_size = 30
+	var min_size = s1
 #	max_size = min_size + pow(ellapsed, 2.0) * 0.0100
-	
-	var interp = size_curve.interpolate(ellapsed / final_time)
-	max_size = min_size + interp * (final_size - min_size)
+#	var interp = size_curve.interpolate(ellapsed / final_time)
+#	max_size = min_size + interp * (final_size - min_size)
 #	print('ellpased: %s, interp: %s, maxsize: %s' % [ellapsed, interp, max_size])
 	if Global.DEBUG_WIN:
 		max_size = 40
+	max_size = s2
 	var h = rand_range(min_size, max_size)
 	# makes it exponential distribution, so big sizes are more rare, 
 	# while keeping same min and max sizes
