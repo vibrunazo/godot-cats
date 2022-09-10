@@ -2,8 +2,12 @@ extends Control
 
 class_name PauseMenu
 
+export var focus_name = 'ResumeButton'
+
 func set_focus():
-	$HBoxContainer/ResumeButton.grab_focus()
+	var button: Button = get_node("HBoxContainer/%s" % focus_name)
+	button.grab_focus()
+	print('focused on %s, name is %s' % [button.name, focus_name])
 
 func toogle():
 	pause(!get_tree().paused)
@@ -30,6 +34,7 @@ func slow_pause():
 	$AnimationPlayer.stop()
 	$AnimationPlayer.play("start")
 	$AudioStreamPlayer.play()
+	set_focus()
 
 func audio_fade_out():
 	Global.fade_out_game_volume()

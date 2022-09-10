@@ -22,6 +22,7 @@ use_filter = true
 font_data = ExtResource( 2 )
 
 [node name="GameOverMenu" instance=ExtResource( 1 )]
+focus_name = "RestartButton"
 
 [node name="TextureRect" parent="." index="0"]
 texture = SubResource( 5 )
@@ -53,5 +54,5 @@ margin_top = 227.0
 margin_right = 343.0
 margin_bottom = 294.0
 
-[node name="AudioStreamPlayer" parent="." index="4"]
+[node name="AudioStreamPlayer" parent="." index="3"]
 stream = ExtResource( 3 )

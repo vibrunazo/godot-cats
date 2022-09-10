@@ -22,6 +22,7 @@ use_filter = true
 font_data = ExtResource( 2 )
 
 [node name="WinMenu" instance=ExtResource( 1 )]
+focus_name = "NextButton"
 
 [node name="TextureRect" parent="." index="0"]
 texture = SubResource( 3 )
@@ -38,7 +39,7 @@ text = "You Win!"
 margin_right = 343.0
 text = "Next!"
 
-[node name="NextButton" type="ToolButton" parent="HBoxContainer" index="3"]
+[node name="NextButton" type="ToolButton" parent="HBoxContainer" index="3" groups=["button"]]
 margin_top = 156.0
 margin_right = 343.0
 margin_bottom = 223.0

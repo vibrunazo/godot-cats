@@ -26,6 +26,38 @@ use_filter = true
 font_data = ExtResource( 1 )
 
 [node name="Map" instance=ExtResource( 2 )]
+life = 2
+wave_list = [ {
+"cooldown": 3,
+"size_max": 70,
+"size_min": 40,
+"spawns": 10,
+"start": 5
+}, {
+"cooldown": 2.2,
+"size_max": 90,
+"size_min": 40,
+"spawns": 5,
+"start": 35
+}, {
+"cooldown": 3.6,
+"size_max": 140,
+"size_min": 130,
+"spawns": 3,
+"start": 52
+}, {
+"cooldown": 2.5,
+"size_max": 80,
+"size_min": 40,
+"spawns": 10,
+"start": 70
+}, {
+"cooldown": 3.8,
+"size_max": 140,
+"size_min": 130,
+"spawns": 3,
+"start": 80
+} ]
 
 [node name="TileRoad" parent="." index="1"]
 tile_data = PoolIntArray( 65537, 0, 131074, 131073, 0, 65536, 196609, 0, 65537, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 2, 262150, 0, 65537, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 131073 )

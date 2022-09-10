@@ -36,7 +36,7 @@ export var wave_list := [
 	{
 		"start": 1,
 		"spawns": 10,
-		"cooldown": 4,
+		"cooldown": 4.0,
 		"size_min": 50,
 		"size_max": 80
 	},
@@ -57,7 +57,7 @@ export var wave_list := [
 	{
 		"start": 38,
 		"spawns": 4,
-		"cooldown": 5,
+		"cooldown": 5.0,
 		"size_min": 180,
 		"size_max": 240
 	},
@@ -143,8 +143,8 @@ func build_wave(wave: Dictionary, i: int):
 		wave_state_list.append(wave_state)
 	t.connect("timeout", self, "wave_timer_timeout", [i])
 	yield(get_tree().create_timer(wave.start), "timeout")
+	print('starting wave %s' % i)
 	wave_timer_timeout(i)
-	print('starting wave')
 	t.start(wave.cooldown)
 #	yield(t, "timeout")
 #	print('timer timed out')
@@ -160,7 +160,8 @@ func wave_timer_timeout(i):
 	if spawns_left == 0:
 		var t: Timer = wave_state.timer
 		t.stop()
-	print('wave %s spawned %s/%s' % [i, wave_state.spawned, wave.spawns])
+		t.queue_free()
+	print('%s: wave %s spawned %s/%s' % [ellapsed, i, wave_state.spawned, wave.spawns])
 
 func play_music():
 	yield(get_tree().create_timer(0.4), "timeout")
@@ -356,7 +357,9 @@ func _on_SpawnTimer_timeout():
 func _on_mouse_killed(mouse: Mouse):
 	var hp = mouse.max_health
 	# 80hp is 2 coins, 253hp is 3 coins, 504 is 4 coins
-	var worth = 1 + floor(pow(hp, 0.6) / 13.8)
+#	var worth = 1 + floor(pow(hp, 0.6) / 13.8)
+	# 40hp is 2 coins, 125hp is 3 coins, 245 is 4 coins
+	var worth = 1 + floor(pow(hp, 0.6) / 9)
 	kill_count += 1
 	add_coins(worth)
 	update_UI_mousebar()

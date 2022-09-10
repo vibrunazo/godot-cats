@@ -182,19 +182,19 @@ margin_right = 300.0
 margin_bottom = 152.0
 rect_min_size = Vector2( 0, 60 )
 
-[node name="ResumeButton" type="ToolButton" parent="HBoxContainer"]
+[node name="ResumeButton" type="ToolButton" parent="HBoxContainer" groups=["button"]]
 margin_top = 156.0
 margin_right = 300.0
 margin_bottom = 223.0
 text = "Resume"
 
-[node name="RestartButton" type="ToolButton" parent="HBoxContainer"]
+[node name="RestartButton" type="ToolButton" parent="HBoxContainer" groups=["button"]]
 margin_top = 227.0
 margin_right = 300.0
 margin_bottom = 294.0
 text = "Restart"
 
-[node name="ExitButton" type="ToolButton" parent="HBoxContainer"]
+[node name="ExitButton" type="ToolButton" parent="HBoxContainer" groups=["button"]]
 margin_top = 298.0
 margin_right = 300.0
 margin_bottom = 365.0
