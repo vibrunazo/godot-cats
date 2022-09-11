@@ -19,6 +19,7 @@ func _ready():
 		b.connect("focus_entered", self, "level_pressed", [b.get_name()])
 		
 func play_selected_level():
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://scenes/maps/%s.tscn" % selected)
 
 func _unhandled_input(event):

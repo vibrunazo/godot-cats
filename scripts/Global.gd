@@ -30,12 +30,17 @@ func set_game_volume(volume: float):
 func fade_out_game_volume():
 #	print('fading out')
 	var tween: SceneTreeTween = get_tree().create_tween()
+# warning-ignore:return_value_discarded
 	tween.set_pause_mode(SceneTreeTween.TWEEN_PAUSE_PROCESS)
+# warning-ignore:return_value_discarded
 	tween.set_ease(Tween.EASE_IN)
+# warning-ignore:return_value_discarded
 	tween.tween_method(self, "set_game_volume", game_volume, -80, 0.8)
 
 func fade_in_game_volume():
 #	print('fading in')
 	var tween: SceneTreeTween = get_tree().create_tween()
+# warning-ignore:return_value_discarded
 	tween.set_ease(Tween.EASE_OUT)
+# warning-ignore:return_value_discarded
 	tween.tween_method(self, "set_game_volume", -80, game_volume, 0.8)

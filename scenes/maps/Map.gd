@@ -134,7 +134,6 @@ func ini_waves():
 func build_wave(wave: Dictionary, i: int):
 	print('building wave %s' % wave)
 	
-	get_tree().create_timer(wave.cooldown)
 	var t: Timer = Timer.new()
 	add_child(t)
 	var wave_state = {
@@ -145,6 +144,7 @@ func build_wave(wave: Dictionary, i: int):
 		wave_state_list[i] = wave_state
 	else:
 		wave_state_list.append(wave_state)
+# warning-ignore:return_value_discarded
 	t.connect("timeout", self, "wave_timer_timeout", [i])
 	yield(get_tree().create_timer(wave.start, false), "timeout")
 	print('starting wave %s' % i)
@@ -340,7 +340,9 @@ func spawn_new_mouse(s1 = 30, s2 = 60):
 	mouse.speed = s
 	mouse.update_worth(s2)
 	el_path.add_child(mouse)
+# warning-ignore:return_value_discarded
 	mouse.connect("killed", self, "_on_mouse_killed", [mouse])
+# warning-ignore:return_value_discarded
 	mouse.connect("cheese", self, "_on_mouse_reached_cheese", [mouse])
 
 func _on_SpawnTimer_timeout():
@@ -358,7 +360,6 @@ func _on_SpawnTimer_timeout():
 	
 	
 func _on_mouse_killed(mouse: Mouse):
-	var hp = mouse.max_health
 	var worth = mouse.worth
 	kill_count += 1
 	kill_worth += mouse.worth
