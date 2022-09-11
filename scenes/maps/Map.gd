@@ -80,9 +80,12 @@ var cats_dict = {
 #	[1, 2]: "cat2"
 }
 var spawn_max := 0
+var total_worth: float = 0.0
 var spawn_count := 0
 var kill_count := 0
+var kill_worth := 0.0
 var stolen_count := 0
+var stolen_worth := 0.0
 var start_time := 0
 var ellapsed := 0
 var max_size := 30.0
@@ -124,6 +127,7 @@ func ini_waves():
 	var i: int = 0
 	for wave in wave_list:
 		spawn_max += wave.spawns
+		total_worth += wave.spawns * Mouse.calculate_worth(wave.size_max)
 		build_wave(wave, i)
 		i += 1
 
@@ -225,17 +229,19 @@ func update_UI_time():
 
 func update_UI_mousebar():
 	# kills needed to win, after killing this many, you can't lose anymore
-	var kills_needed = spawn_max - max_life + 1
+#	var kills_needed = spawn_max - max_life + 1
+	var kills_needed = total_worth - max_life + 1
 	# how many mice left to kill to get to the kills needed to win
-	var mouse_left = max(kills_needed - kill_count, 0)
+	var worth_left = max(kills_needed - kill_worth, 0)
 	var value = 0
 	if kills_needed > 0:
-		value = ceil(100 * mouse_left / kills_needed)
+		value = ceil(100 * worth_left / kills_needed)
 #	print("kill count: %s, mouse left: %s, kills needed: %s, value: %s" % [kill_count, mouse_left, kills_needed, value])
 	el_mousebar.value = clamp(value, 0, 100)
 #	if mouse_left == 0:
 #		print('cannot lose anymore')
-	if kill_count + stolen_count >= spawn_max and life > 0:
+	var stolen = max_life - life
+	if kill_worth + stolen >= total_worth and life > 0:
 		win()
 
 func win():
@@ -310,7 +316,7 @@ func spawn_new_mouse(s1 = 30, s2 = 60):
 		$SpawnTimer.stop()
 		return
 	spawn_count += 1
-	var mouse = mouse_scene.instance()
+	var mouse: Mouse = mouse_scene.instance()
 	mouse.position = Vector2(0, 0)
 	
 	var min_size = s1
@@ -332,6 +338,7 @@ func spawn_new_mouse(s1 = 30, s2 = 60):
 	var s = rand_range(min_speed, max_speed)
 	s = min_speed + pow(s, 3) * (min_speed + max_speed) / pow(min_speed + max_speed, 3)
 	mouse.speed = s
+	mouse.update_worth(s2)
 	el_path.add_child(mouse)
 	mouse.connect("killed", self, "_on_mouse_killed", [mouse])
 	mouse.connect("cheese", self, "_on_mouse_reached_cheese", [mouse])
@@ -352,20 +359,16 @@ func _on_SpawnTimer_timeout():
 	
 func _on_mouse_killed(mouse: Mouse):
 	var hp = mouse.max_health
-	# 80hp is 2 coins, 253hp is 3 coins, 504 is 4 coins
-#	var worth = 1 + floor(pow(hp, 0.6) / 13.8)
-	# 40hp is 2 coins, 125hp is 3 coins, 245 is 4 coins
-	var worth = 1 + floor(pow(hp, 0.6) / 9)
-	if hp <= 8:
-		worth = 0.35
+	var worth = mouse.worth
 	kill_count += 1
+	kill_worth += mouse.worth
 	add_coins(worth)
 	update_UI_mousebar()
 
-func _on_mouse_reached_cheese(_mouse: Mouse):
+func _on_mouse_reached_cheese(mouse: Mouse):
 #	kill_count += 1
 	stolen_count += 1
-	add_life(-1)
+	add_life(-mouse.worth)
 	update_UI_mousebar()
 
 func _on_cat_clicked(cat: Cat):

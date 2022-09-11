@@ -4,33 +4,25 @@ class_name Mouse, "res://assets/mouse01.png"
 signal killed
 signal cheese
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var t = 0
 export var speed := 50.0
 export var max_health := 50.0
 export var OFFSET_RANGE := 15
 var health := 50.0
 var alive := true
+var worth := 1
 
 var rng: RandomNumberGenerator = Global.rng
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	health = max_health
 	start_walking()
 	update_scale()
+#	calculate_worth()
 	h_offset = rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE) * 2
 	v_offset = rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE)
 	if Global.DEBUG_MOUSE:
 		print("mouse ready with %s health and %s speed" % [health, speed])
-#	$Sprite.offset = Vector2(rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE) * 2, rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE))
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 func get_bullet_target():
 	return $BulletTarget.global_position
@@ -41,6 +33,16 @@ func end():
 	
 func start_walking():
 	$AnimationPlayer.play("walk", 0, 1.4)
+	
+func update_worth(hp: float):
+	worth = calculate_worth(hp)
+	
+static func calculate_worth(hp: float) -> int:
+	# 40hp is 2 coins, 125hp is 3 coins, 245 is 4 coins
+	var w = 1 + floor(pow(hp, 0.6) / 9)
+	if hp <= 8:
+		w = 0.2
+	return w
 
 func show_target_index(show: bool, index: String = ''):
 #	if !Global.DEBUG: return

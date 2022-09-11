@@ -7,14 +7,14 @@ resource_local_to_scene = true
 radius = 200.0
 
 [node name="Cat" instance=ExtResource( 1 )]
-damage = 15
+damage = 20
 focus = 1
 
 [node name="AggroShape" parent="AggroRange" index="0"]
 shape = SubResource( 1 )
 
 [node name="Cooldown" parent="." index="3"]
-wait_time = 1.2
+wait_time = 1.4
 
 [editable path="UIroot/UI/CatActions"]
 [editable path="UIroot/UI/CatActions/HBoxContainer/UpButton"]
