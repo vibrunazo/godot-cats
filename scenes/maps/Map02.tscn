@@ -72,19 +72,19 @@ wave_list = [ {
 "size_max": 240,
 "size_min": 180,
 "spawns": 10,
-"start": 45
+"start": 52
 }, {
 "cooldown": 0.1,
 "size_max": 2,
 "size_min": 2,
 "spawns": 22,
-"start": 55
+"start": 62
 }, {
 "cooldown": 2.0,
 "size_max": 80,
 "size_min": 40,
 "spawns": 8,
-"start": 65
+"start": 72
 } ]
 
 [node name="TileRoad" parent="." index="1"]
