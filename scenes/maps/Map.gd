@@ -267,7 +267,7 @@ func add_coins(ammount):
 	update_coins()
 
 func update_coins():
-	el_coins.text = "$%s" % coins
+	el_coins.text = "$%s" % floor(coins)
 	for b in get_tree().get_nodes_in_group("action_button"):
 		var button: CircleButton = b
 		button.set_state_from_coins(coins)
@@ -356,6 +356,8 @@ func _on_mouse_killed(mouse: Mouse):
 #	var worth = 1 + floor(pow(hp, 0.6) / 13.8)
 	# 40hp is 2 coins, 125hp is 3 coins, 245 is 4 coins
 	var worth = 1 + floor(pow(hp, 0.6) / 9)
+	if hp <= 8:
+		worth = 0.35
 	kill_count += 1
 	add_coins(worth)
 	update_UI_mousebar()

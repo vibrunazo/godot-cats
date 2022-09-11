@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/maps/Map.tscn" type="PackedScene" id=2]
@@ -18,6 +18,14 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=4]
+resource_local_to_scene = true
+size = 60
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
 [sub_resource type="DynamicFont" id=3]
 resource_local_to_scene = true
 size = 60
@@ -28,6 +36,49 @@ font_data = ExtResource( 1 )
 
 [node name="Map" instance=ExtResource( 2 )]
 next_map = "Map03"
+wave_list = [ {
+"cooldown": 4.0,
+"size_max": 60,
+"size_min": 40,
+"spawns": 5,
+"start": 4
+}, {
+"cooldown": 2.0,
+"size_max": 90,
+"size_min": 70,
+"spawns": 8,
+"start": 27
+}, {
+"cooldown": 0.08,
+"size_max": 8,
+"size_min": 1,
+"spawns": 16,
+"start": 29
+}, {
+"cooldown": 0.05,
+"size_max": 8,
+"size_min": 1,
+"spawns": 15,
+"start": 35
+}, {
+"cooldown": 0.05,
+"size_max": 8,
+"size_min": 1,
+"spawns": 15,
+"start": 40
+}, {
+"cooldown": 5.0,
+"size_max": 240,
+"size_min": 180,
+"spawns": 4,
+"start": 45
+}, {
+"cooldown": 0.1,
+"size_max": 2,
+"size_min": 2,
+"spawns": 18,
+"start": 55
+} ]
 
 [node name="TileRoad" parent="." index="1"]
 tile_data = PoolIntArray( 65537, 0, 1, 65538, 0, 0, 65539, 0, 0, 65540, 0, 2, 65542, 0, 1, 65543, 0, 0, 65544, 0, 0, 65545, 0, 2, 131073, 0, 65536, 131076, 0, 65537, 131077, 0, 0, 131078, 0, 65538, 131081, 0, 65536, 196609, 0, 65536, 196617, 0, 65536, 262145, 0, 196610, 262153, 0, 65537, 262154, 0, 0, 262155, 0, 131073 )
@@ -38,6 +89,9 @@ curve = SubResource( 2 )
 [node name="TimeLabel" parent="UI/HUD/TopBar" index="2"]
 custom_fonts/font = SubResource( 1 )
 
+[node name="Paused" parent="UI/Menus/PauseMenu/HBoxContainer" index="0"]
+custom_fonts/font = SubResource( 4 )
+
 [node name="Paused" parent="UI/Menus/WinMenu/HBoxContainer" index="0"]
 custom_fonts/font = SubResource( 3 )
 
@@ -46,4 +100,5 @@ stream = ExtResource( 3 )
 
 [editable path="UI/HUD/ActionBar/Cat1"]
 [editable path="UI/HUD/ActionBar/Cat2"]
+[editable path="UI/Menus/PauseMenu"]
 [editable path="UI/Menus/WinMenu"]
