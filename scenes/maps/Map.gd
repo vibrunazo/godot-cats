@@ -142,14 +142,10 @@ func build_wave(wave: Dictionary, i: int):
 	else:
 		wave_state_list.append(wave_state)
 	t.connect("timeout", self, "wave_timer_timeout", [i])
-	yield(get_tree().create_timer(wave.start), "timeout")
+	yield(get_tree().create_timer(wave.start, false), "timeout")
 	print('starting wave %s' % i)
 	wave_timer_timeout(i)
 	t.start(wave.cooldown)
-#	yield(t, "timeout")
-#	print('timer timed out')
-#	yield(t, "timeout")
-#	print('timer timed out again')
 	
 func wave_timer_timeout(i):
 	var wave = wave_list[i]

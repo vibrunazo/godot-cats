@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://resources/cats_theme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/PauseMenu.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scenes/MenuToolButton.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Gradient" id=1]
 interpolation_mode = 2
@@ -182,19 +183,19 @@ margin_right = 300.0
 margin_bottom = 152.0
 rect_min_size = Vector2( 0, 60 )
 
-[node name="ResumeButton" type="ToolButton" parent="HBoxContainer" groups=["button"]]
+[node name="ResumeButton" parent="HBoxContainer" groups=["button"] instance=ExtResource( 5 )]
 margin_top = 156.0
 margin_right = 300.0
 margin_bottom = 223.0
 text = "Resume"
 
-[node name="RestartButton" type="ToolButton" parent="HBoxContainer" groups=["button"]]
+[node name="RestartButton" parent="HBoxContainer" groups=["button"] instance=ExtResource( 5 )]
 margin_top = 227.0
 margin_right = 300.0
 margin_bottom = 294.0
 text = "Restart"
 
-[node name="ExitButton" type="ToolButton" parent="HBoxContainer" groups=["button"]]
+[node name="ExitButton" parent="HBoxContainer" groups=["button"] instance=ExtResource( 5 )]
 margin_top = 298.0
 margin_right = 300.0
 margin_bottom = 365.0

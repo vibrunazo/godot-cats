@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/maps/Map.gd"
 }, {
+"base": "ToolButton",
+"class": "MenuToolButton",
+"language": "GDScript",
+"path": "res://scenes/MenuToolButton.gd"
+}, {
 "base": "PathFollow2D",
 "class": "Mouse",
 "language": "GDScript",
@@ -56,6 +61,7 @@ _global_script_class_icons={
 "Cat2": "res://assets/cat02.png",
 "CircleButton": "res://assets/button_circle.png",
 "Map": "",
+"MenuToolButton": "",
 "Mouse": "res://assets/mouse01.png",
 "PauseMenu": ""
 }
