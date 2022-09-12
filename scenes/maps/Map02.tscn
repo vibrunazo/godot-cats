@@ -36,7 +36,6 @@ font_data = ExtResource( 1 )
 
 [node name="Map" instance=ExtResource( 2 )]
 next_map = "Map03"
-life = 10
 wave_list = [ {
 "cooldown": 4.0,
 "size_max": 60,
@@ -71,7 +70,7 @@ wave_list = [ {
 "cooldown": 5.0,
 "size_max": 240,
 "size_min": 180,
-"spawns": 10,
+"spawns": 8,
 "start": 52
 }, {
 "cooldown": 0.1,
@@ -85,6 +84,30 @@ wave_list = [ {
 "size_min": 40,
 "spawns": 8,
 "start": 72
+}, {
+"cooldown": 1.8,
+"size_max": 80,
+"size_min": 40,
+"spawns": 20,
+"start": 101
+}, {
+"cooldown": 1.4,
+"size_max": 35,
+"size_min": 25,
+"spawns": 20,
+"start": 103
+}, {
+"cooldown": 2.8,
+"size_max": 130,
+"size_min": 180,
+"spawns": 16,
+"start": 102
+}, {
+"cooldown": 3.0,
+"size_max": 340,
+"size_min": 280,
+"spawns": 5,
+"start": 112
 } ]
 
 [node name="TileRoad" parent="." index="1"]
