@@ -236,15 +236,17 @@ func update_UI_mousebar():
 	var value = 0
 	if kills_needed > 0:
 		value = ceil(100 * worth_left / kills_needed)
-#	print("kill count: %s, mouse left: %s, kills needed: %s, value: %s" % [kill_count, mouse_left, kills_needed, value])
 	el_mousebar.value = clamp(value, 0, 100)
 #	if mouse_left == 0:
 #		print('cannot lose anymore')
 	var stolen = max_life - life
-	if kill_worth + stolen >= total_worth and life > 0:
+#	print("kill worth %s + stolen %s >= total worth %s (%s) and life %s, worth left: %s, worth needed: %s, value: %s" % [kill_worth, stolen, total_worth, (kill_worth + stolen >= total_worth),life, worth_left, kills_needed, value])
+	# round() is to workaround float precision
+	if round(kill_worth) + round(stolen) >= round(total_worth) and life > 0:
 		win()
 
 func win():
+	print('you win')
 	yield(get_tree().create_timer(2),"timeout")
 	if life == max_life:
 		print("Perfect!")
