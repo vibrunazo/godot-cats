@@ -8,11 +8,16 @@ var cat_data = {
 	"Cat2": {
 		'id': 1,
 		'cost': 15
+	},
+	"Cat3": {
+		'id': 2,
+		'cost': 20
 	}
 }
 var cat_scenes = [
 	preload("res://scenes/cats/Cat01.tscn"),
-	preload("res://scenes/cats/Cat02.tscn")
+	preload("res://scenes/cats/Cat02.tscn"),
+	preload("res://scenes/cats/Cat03.tscn")
 	]
 
 

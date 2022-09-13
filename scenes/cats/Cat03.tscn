@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/cats/Cat.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/cat03_tail.png" type="Texture" id=2]
+[ext_resource path="res://assets/cat03_body.png" type="Texture" id=3]
+[ext_resource path="res://assets/cat03_head.png" type="Texture" id=4]
+[ext_resource path="res://assets/cat03_hand.png" type="Texture" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+resource_local_to_scene = true
+radius = 200.0
+
+[node name="Cat03" instance=ExtResource( 1 )]
+damage = 800
+aggro_range = 150.0
+shot_speed = 800
+focus = 1
+
+[node name="AggroShape" parent="AggroRange" index="0"]
+shape = SubResource( 1 )
+
+[node name="tail" parent="Turret" index="1"]
+texture = ExtResource( 2 )
+
+[node name="cat_body" parent="Turret" index="2"]
+texture = ExtResource( 3 )
+
+[node name="hand_l" parent="Turret/cat_body" index="0"]
+texture = ExtResource( 5 )
+
+[node name="hand_r" parent="Turret/cat_body" index="1"]
+texture = ExtResource( 5 )
+
+[node name="head" parent="Turret" index="3"]
+texture = ExtResource( 4 )
+
+[node name="Cooldown" parent="." index="3"]
+wait_time = 6.0
+
+[editable path="UIroot/UI/CatActions"]
+[editable path="UIroot/UI/CatActions/HBoxContainer/UpButton"]
+[editable path="UIroot/UI/CatActions/HBoxContainer/Up2Button"]
+[editable path="UIroot/UI/CatActions/HBoxContainer/DeleteButton"]
