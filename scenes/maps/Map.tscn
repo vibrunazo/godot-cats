@@ -749,13 +749,16 @@ size_flags_vertical = 0
 action_mode = 0
 
 [node name="CenterContainer" parent="UI/HUD/ActionBar/Cat3" index="0"]
+custom_constants/margin_top = 45
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="TextureRect" parent="UI/HUD/ActionBar/Cat3/CenterContainer" index="0"]
-margin_right = 130.0
-margin_bottom = 130.0
+margin_top = 45.0
+margin_right = 160.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 130, 130 )
 texture = ExtResource( 20 )
 
 [node name="Label" parent="UI/HUD/ActionBar/Cat3" index="1"]

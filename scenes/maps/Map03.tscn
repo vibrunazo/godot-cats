@@ -1,12 +1,37 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/maps/Map.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="Curve2D" id=1]
 resource_local_to_scene = true
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 64, 128, 0, 0, 0, 0, 288, 128, 0, 0, 0, 0, 320, 160, 0, 0, 0, 0, 320, 608, 0, 0, 0, 0, 352, 640, 0, 0, 0, 0, 544, 640, 0, 0, 0, 0, 576, 608, 0, 0, 0, 0, 576, 160, 0, 0, 0, 0, 608, 128, 0, 0, 0, 0, 1056, 128, 0, 0, 0, 0, 1088, 160, 0, 0, 0, 0, 1088, 480, 0, 0, 0, 0, 1056, 512, 0, 0, 0, 0, 864, 512, 0, 0, 0, 0, 832, 544, 0, 0, 0, 0, 832, 608, 0, 0, 0, 0, 864, 640, 0, 0, 0, 0, 1320, 640, 0, 0, 0, 0, 1344, 616, 0, 0, 0, 0, 1344, 560 )
 }
+
+[sub_resource type="DynamicFont" id=2]
+resource_local_to_scene = true
+size = 40
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+resource_local_to_scene = true
+size = 60
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+resource_local_to_scene = true
+size = 60
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 2 )
 
 [node name="Map" instance=ExtResource( 1 )]
 next_map = "MainScene"
@@ -142,19 +167,29 @@ wave_list = [ {
 "size_max": 1600,
 "size_min": 1200,
 "spawns": 15,
-"start": 230
+"start": 227
 }, {
 "cooldown": 0.7,
 "size_max": 120,
 "size_min": 50,
 "spawns": 30,
-"start": 232
+"start": 229
 } ]
 
 [node name="Path2D" parent="." index="3"]
 curve = SubResource( 1 )
 
+[node name="TimeLabel" parent="UI/HUD/TopBar" index="2"]
+custom_fonts/font = SubResource( 2 )
+
+[node name="Paused" parent="UI/Menus/PauseMenu/HBoxContainer" index="0"]
+custom_fonts/font = SubResource( 3 )
+
+[node name="Paused" parent="UI/Menus/WinMenu/HBoxContainer" index="0"]
+custom_fonts/font = SubResource( 4 )
+
 [editable path="UI/HUD/ActionBar/Cat1"]
 [editable path="UI/HUD/ActionBar/Cat2"]
+[editable path="UI/HUD/ActionBar/Cat3"]
 [editable path="UI/Menus/PauseMenu"]
 [editable path="UI/Menus/WinMenu"]
