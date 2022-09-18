@@ -23,7 +23,7 @@ extents = Vector2( 64, 64 )
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Turret/cat_body/hand_r:rotation_degrees")
+tracks/0/path = NodePath("Turret/SpriteRoot/cat_body/hand_r:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -35,7 +35,7 @@ tracks/0/keys = {
 "values": [ -15.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Turret/cat_body/hand_l:rotation_degrees")
+tracks/1/path = NodePath("Turret/SpriteRoot/cat_body/hand_l:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -47,7 +47,7 @@ tracks/1/keys = {
 "values": [ 15.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Turret/SpawnPosition/BulletSprite:visible")
+tracks/2/path = NodePath("Turret/SpriteRoot/SpawnPosition/BulletSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -59,7 +59,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Turret/SpawnPosition/BulletSprite:scale")
+tracks/3/path = NodePath("Turret/SpriteRoot/SpawnPosition/BulletSprite:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -71,7 +71,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Turret/SpawnPosition/BulletSprite:position")
+tracks/4/path = NodePath("Turret/SpriteRoot/SpawnPosition/BulletSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -83,7 +83,7 @@ tracks/4/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Turret/cat_body/hand_r:position")
+tracks/5/path = NodePath("Turret/SpriteRoot/cat_body/hand_r:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -95,7 +95,7 @@ tracks/5/keys = {
 "values": [ Vector2( -20, 24 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Turret/cat_body/hand_l:position")
+tracks/6/path = NodePath("Turret/SpriteRoot/cat_body/hand_l:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -107,7 +107,7 @@ tracks/6/keys = {
 "values": [ Vector2( 20, 24 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Turret/cat_body/hand_r:scale")
+tracks/7/path = NodePath("Turret/SpriteRoot/cat_body/hand_r:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -119,7 +119,7 @@ tracks/7/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Turret/cat_body/hand_l:scale")
+tracks/8/path = NodePath("Turret/SpriteRoot/cat_body/hand_l:scale")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -131,7 +131,7 @@ tracks/8/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Turret/cat_body:scale")
+tracks/9/path = NodePath("Turret/SpriteRoot/cat_body:scale")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -143,7 +143,7 @@ tracks/9/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Turret/head:position")
+tracks/10/path = NodePath("Turret/SpriteRoot/head:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -155,7 +155,7 @@ tracks/10/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/11/type = "bezier"
-tracks/11/path = NodePath("Turret/tail:rotation_degrees")
+tracks/11/path = NodePath("Turret/SpriteRoot/tail:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -169,7 +169,7 @@ tracks/11/keys = {
 resource_name = "attack"
 length = 0.8
 tracks/0/type = "value"
-tracks/0/path = NodePath("Turret/cat_body/hand_r:rotation_degrees")
+tracks/0/path = NodePath("Turret/SpriteRoot/cat_body/hand_r:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -181,7 +181,7 @@ tracks/0/keys = {
 "values": [ -15.0, 50.0, 30.0, 30.0, -60.0, -15.0, -15.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Turret/cat_body/hand_l:rotation_degrees")
+tracks/1/path = NodePath("Turret/SpriteRoot/cat_body/hand_l:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -193,7 +193,7 @@ tracks/1/keys = {
 "values": [ 15.0, -50.0, -30.0, -30.0, 60.0, 15.0, 15.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Turret/SpawnPosition/BulletSprite:visible")
+tracks/2/path = NodePath("Turret/SpriteRoot/SpawnPosition/BulletSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -205,7 +205,7 @@ tracks/2/keys = {
 "values": [ false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Turret/SpawnPosition/BulletSprite:scale")
+tracks/3/path = NodePath("Turret/SpriteRoot/SpawnPosition/BulletSprite:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -217,7 +217,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Turret/SpawnPosition/BulletSprite:position")
+tracks/4/path = NodePath("Turret/SpriteRoot/SpawnPosition/BulletSprite:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -229,7 +229,7 @@ tracks/4/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -20 ), Vector2( 0, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Turret/cat_body/hand_r:position")
+tracks/5/path = NodePath("Turret/SpriteRoot/cat_body/hand_r:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -241,7 +241,7 @@ tracks/5/keys = {
 "values": [ Vector2( -20, 24 ), Vector2( -20, 26 ), Vector2( -20, 24 ), Vector2( -20, 24 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Turret/cat_body/hand_l:position")
+tracks/6/path = NodePath("Turret/SpriteRoot/cat_body/hand_l:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -253,7 +253,7 @@ tracks/6/keys = {
 "values": [ Vector2( 20, 24 ), Vector2( 20, 26 ), Vector2( 20, 24 ), Vector2( 20, 24 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Turret/cat_body/hand_r:scale")
+tracks/7/path = NodePath("Turret/SpriteRoot/cat_body/hand_r:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -265,7 +265,7 @@ tracks/7/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.3 ), Vector2( 1.1, 1.2 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Turret/cat_body/hand_l:scale")
+tracks/8/path = NodePath("Turret/SpriteRoot/cat_body/hand_l:scale")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -277,7 +277,7 @@ tracks/8/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.3 ), Vector2( 1.1, 1.2 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Turret/cat_body:scale")
+tracks/9/path = NodePath("Turret/SpriteRoot/cat_body:scale")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -289,7 +289,7 @@ tracks/9/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.95, 1.05 ), Vector2( 1, 1 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Turret/head:position")
+tracks/10/path = NodePath("Turret/SpriteRoot/head:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -301,7 +301,7 @@ tracks/10/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 8, 0 ), Vector2( 4, 0 ), Vector2( 4, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Turret/tail:rotation_degrees")
+tracks/11/path = NodePath("Turret/SpriteRoot/tail:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -318,7 +318,7 @@ resource_name = "idle"
 length = 2.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Turret/cat_body/hand_r:rotation_degrees")
+tracks/0/path = NodePath("Turret/SpriteRoot/cat_body/hand_r:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -330,7 +330,7 @@ tracks/0/keys = {
 "values": [ -15.0, -30.0, -15.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Turret/cat_body/hand_l:rotation_degrees")
+tracks/1/path = NodePath("Turret/SpriteRoot/cat_body/hand_l:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -342,7 +342,7 @@ tracks/1/keys = {
 "values": [ 15.0, 30.0, 15.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Turret/SpawnPosition/BulletSprite:visible")
+tracks/2/path = NodePath("Turret/SpriteRoot/SpawnPosition/BulletSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -354,7 +354,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Turret/SpawnPosition/BulletSprite:scale")
+tracks/3/path = NodePath("Turret/SpriteRoot/SpawnPosition/BulletSprite:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -366,7 +366,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Turret/cat_body:scale")
+tracks/4/path = NodePath("Turret/SpriteRoot/cat_body:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -378,7 +378,7 @@ tracks/4/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.15, 0.95 ), Vector2( 1, 1 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Turret/head:position")
+tracks/5/path = NodePath("Turret/SpriteRoot/head:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -390,7 +390,7 @@ tracks/5/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -3, 0 ), Vector2( 0, 0 ) ]
 }
 tracks/6/type = "bezier"
-tracks/6/path = NodePath("Turret/tail:rotation_degrees")
+tracks/6/path = NodePath("Turret/SpriteRoot/tail:rotation_degrees")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -631,43 +631,46 @@ shape = SubResource( 1 )
 [node name="Turret" type="Position2D" parent="."]
 rotation = 1.5708
 
-[node name="SpawnPosition" type="Position2D" parent="Turret"]
+[node name="SpriteRoot" type="Position2D" parent="Turret"]
+
+[node name="SpawnPosition" type="Position2D" parent="Turret/SpriteRoot"]
+unique_name_in_owner = true
 position = Vector2( 41.8, -0.000151316 )
 rotation = -1.5708
 scale = Vector2( 0.5, 0.5 )
 
-[node name="BulletSprite" type="Sprite" parent="Turret/SpawnPosition"]
+[node name="BulletSprite" type="Sprite" parent="Turret/SpriteRoot/SpawnPosition"]
 modulate = Color( 0.9, 0.36, 0.36, 1 )
 z_index = 9
 texture = ExtResource( 3 )
 
-[node name="tail" type="Sprite" parent="Turret"]
+[node name="tail" type="Sprite" parent="Turret/SpriteRoot"]
 position = Vector2( -39.074, -0.406708 )
 rotation = -1.5708
 z_index = 10
 texture = ExtResource( 6 )
 offset = Vector2( 0, 40 )
 
-[node name="cat_body" type="Sprite" parent="Turret"]
+[node name="cat_body" type="Sprite" parent="Turret/SpriteRoot"]
 rotation = -1.5708
 z_index = 10
 texture = ExtResource( 5 )
 
-[node name="hand_l" type="Sprite" parent="Turret/cat_body"]
+[node name="hand_l" type="Sprite" parent="Turret/SpriteRoot/cat_body"]
 show_behind_parent = true
 position = Vector2( 20, 24 )
 rotation = 0.261799
 texture = ExtResource( 4 )
 offset = Vector2( 0, 8 )
 
-[node name="hand_r" type="Sprite" parent="Turret/cat_body"]
+[node name="hand_r" type="Sprite" parent="Turret/SpriteRoot/cat_body"]
 show_behind_parent = true
 position = Vector2( -20, 24 )
 rotation = -0.261799
 texture = ExtResource( 4 )
 offset = Vector2( 0, 8 )
 
-[node name="head" type="Sprite" parent="Turret"]
+[node name="head" type="Sprite" parent="Turret/SpriteRoot"]
 rotation = -1.5708
 z_index = 10
 texture = ExtResource( 8 )

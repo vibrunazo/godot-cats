@@ -7,8 +7,8 @@ signal clicked
 var aggro_list = []
 var target: Mouse
 var bullet_scene = preload("res://scenes/Bullet.tscn")
-onready var spawn_position: Position2D = $Turret/SpawnPosition
-onready var bullet_sprite: Sprite = $Turret/SpawnPosition/BulletSprite
+onready var spawn_position: Position2D = $"%SpawnPosition"
+onready var bullet_sprite: Sprite = $"%SpawnPosition/BulletSprite"
 enum FocusType {FURTHEST, HEALTH}
 export var building = true
 export var selected = true

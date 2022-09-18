@@ -27,32 +27,31 @@ shot_speed = 250
 [node name="AggroShape" parent="AggroRange" index="0"]
 shape = SubResource( 1 )
 
-[node name="SpawnPosition" parent="Turret" index="0"]
-scale = Vector2( 0.8, 0.8 )
+[node name="SpawnPosition" parent="Turret/SpriteRoot" index="0"]
+scale = Vector2( 0.6, 0.6 )
 
-[node name="BulletSprite" parent="Turret/SpawnPosition" index="0"]
-modulate = Color( 1, 1, 1, 1 )
-self_modulate = Color( 0.784314, 0.160784, 0.913725, 0.588235 )
+[node name="BulletSprite" parent="Turret/SpriteRoot/SpawnPosition" index="0"]
+modulate = Color( 0.827451, 0.360784, 0.901961, 0.694118 )
 
-[node name="BulletGlowSprite" type="Sprite" parent="Turret/SpawnPosition/BulletSprite" index="0"]
+[node name="BulletGlowSprite" type="Sprite" parent="Turret/SpriteRoot/SpawnPosition/BulletSprite" index="0"]
 modulate = Color( 0.984314, 0.596078, 0.976471, 1 )
 show_behind_parent = true
-scale = Vector2( 0.7, 0.7 )
+scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 9 )
 
-[node name="tail" parent="Turret" index="1"]
+[node name="tail" parent="Turret/SpriteRoot" index="1"]
 texture = ExtResource( 8 )
 
-[node name="cat_body" parent="Turret" index="2"]
+[node name="cat_body" parent="Turret/SpriteRoot" index="2"]
 texture = ExtResource( 7 )
 
-[node name="hand_l" parent="Turret/cat_body" index="0"]
+[node name="hand_l" parent="Turret/SpriteRoot/cat_body" index="0"]
 texture = ExtResource( 6 )
 
-[node name="hand_r" parent="Turret/cat_body" index="1"]
+[node name="hand_r" parent="Turret/SpriteRoot/cat_body" index="1"]
 texture = ExtResource( 6 )
 
-[node name="head" parent="Turret" index="3"]
+[node name="head" parent="Turret/SpriteRoot" index="3"]
 texture = ExtResource( 5 )
 
 [node name="Cooldown" parent="." index="3"]

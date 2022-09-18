@@ -19,19 +19,22 @@ focus = 1
 [node name="AggroShape" parent="AggroRange" index="0"]
 shape = SubResource( 1 )
 
-[node name="tail" parent="Turret" index="1"]
+[node name="SpriteRoot" parent="Turret" index="0"]
+position = Vector2( 30, 0 )
+
+[node name="tail" parent="Turret/SpriteRoot" index="1"]
 texture = ExtResource( 2 )
 
-[node name="cat_body" parent="Turret" index="2"]
+[node name="cat_body" parent="Turret/SpriteRoot" index="2"]
 texture = ExtResource( 3 )
 
-[node name="hand_l" parent="Turret/cat_body" index="0"]
+[node name="hand_l" parent="Turret/SpriteRoot/cat_body" index="0"]
 texture = ExtResource( 5 )
 
-[node name="hand_r" parent="Turret/cat_body" index="1"]
+[node name="hand_r" parent="Turret/SpriteRoot/cat_body" index="1"]
 texture = ExtResource( 5 )
 
-[node name="head" parent="Turret" index="3"]
+[node name="head" parent="Turret/SpriteRoot" index="3"]
 texture = ExtResource( 4 )
 
 [node name="Cooldown" parent="." index="3"]
