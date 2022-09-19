@@ -30,7 +30,7 @@ func set_target(new_target: Mouse):
 	target_pos = target.get_bullet_target()
 	
 func _physics_process(delta):
-	if is_instance_valid(target):
+	if is_instance_valid(target) and target.is_ready():
 		target_pos = target.get_bullet_target() + target_offset
 	look_at(target_pos)
 	velocity = Vector2(speed, 0).rotated(rotation)

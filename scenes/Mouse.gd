@@ -11,6 +11,8 @@ export var OFFSET_RANGE := 15
 var health := 50.0
 var alive := true
 var worth := 1
+enum State {READY, GRABBED, CHEESE, DEAD}
+var state: int = State.READY
 
 var rng: RandomNumberGenerator = Global.rng
 
@@ -50,8 +52,11 @@ func show_target_index(show: bool, index: String = ''):
 	$TargetIndexLabel.text = index
 
 func _physics_process(delta):
+	if !is_ready():
+		return
 	# if I got to the end of the map
 	if unit_offset >= 1.0:
+		state = State.CHEESE
 		emit_signal("cheese")
 		end()
 		return
@@ -70,13 +75,18 @@ func update_scale():
 	size = min(size, 1.7)
 	scale = Vector2(size, size)
 
+func is_ready() -> bool:
+	return state == State.READY
+
 func on_hit(bullet: Node2D):
-	if !alive: return
+	if !alive or !is_ready(): return
 	health -= bullet.damage
 #	$Audio.play()
+	# if the hit killed me, die
 	if health <= 0 and alive:
 		health = 0
 		alive = false
+		state = State.DEAD
 		emit_signal("killed")
 		$AudioDie.play()
 		$AnimationPlayer.play("dying")
@@ -88,8 +98,16 @@ func on_hit(bullet: Node2D):
 		$Tween.start()
 		yield($AnimationPlayer,"animation_finished")
 		end()
+	# if hit didn't kill me, just play get hit anim
 	else:
 		update_scale()
 		$AnimationPlayer.play("gethit")
 		yield($AnimationPlayer, "animation_finished")
 		start_walking()
+		
+func on_get_grabbed(cat: Node2D):
+	print('%s grabbed by %s' % [name, cat.name])
+	state = State.GRABBED
+	$AnimationPlayer.play("grabbed")
+	emit_signal("killed")
+	

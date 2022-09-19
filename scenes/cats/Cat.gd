@@ -6,9 +6,8 @@ signal clicked
 
 var aggro_list = []
 var target: Mouse
+var locked_target: Mouse
 var bullet_scene = preload("res://scenes/Bullet.tscn")
-onready var spawn_position: Position2D = $"%SpawnPosition"
-onready var bullet_sprite: Sprite = $"%SpawnPosition/BulletSprite"
 enum FocusType {FURTHEST, HEALTH}
 export var building = true
 export var selected = true
@@ -16,16 +15,20 @@ export var cat_name = "Cat1"
 export var damage = 10
 export var aggro_range := 200.0
 export var shot_speed = 400
+export var attack_anim = "attack"
 # Meows every X shots
 export var meow_every = 0
 export(FocusType) var focus = 0
 var total_cost = 10
+onready var spawn_position: Position2D = $"%SpawnPosition"
+onready var bullet_sprite: Sprite = $"%SpawnPosition/BulletSprite"
 onready var el_UI = $UIroot/UI
 onready var el_circle = $SelectRoot/SelectionCircle
 onready var el_actions: Control = get_node("%CatActions")
 onready var el_up1_button: CircleButton = get_node("%CatActions").get_node("%UpButton")
 onready var el_up2_button: CircleButton = get_node("%CatActions").get_node("%Up2Button")
 onready var el_del_button: CircleButton = get_node("%CatActions").get_node("%DeleteButton")
+onready var el_grab_l: Position2D = $"%grab_l"
 var SELECTION_SIZE := 400.0
 var map_ref: Node2D = null
 var cell_pos: Vector2 = Vector2(0, 0)
@@ -37,6 +40,8 @@ func init(map):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	el_UI.visible = false
+	$UIroot.visible = true
+	$SelectRoot.visible = true
 	total_cost = map_ref.data[cat_name]['cost']
 	update_worth(total_cost)
 	if selected:
@@ -136,7 +141,7 @@ func acquire_new_target(new_target: Mouse):
 	follow_target()
 	if $Cooldown.time_left > 0:
 		return
-	shoot()
+	attack()
 	$Cooldown.start()
 
 func lose_aggro(mouse: Mouse):
@@ -146,6 +151,7 @@ func lose_aggro(mouse: Mouse):
 		update_aggro_labels()
 
 func gain_aggro(mouse: Mouse):
+	if !mouse.is_ready(): return
 	aggro_list.append(mouse)
 	if selected:
 		update_aggro_labels()
@@ -175,6 +181,7 @@ func search_furthest() -> Mouse:
 	var best: Mouse = aggro_list[0]
 	for m in aggro_list:
 		var mouse: Mouse = m
+		if !mouse.is_ready(): continue
 		if mouse.offset > best_score:
 			best_score = mouse.offset
 			best = mouse
@@ -185,37 +192,49 @@ func search_health() -> Mouse:
 	var best: Mouse = aggro_list[0]
 	for m in aggro_list:
 		var mouse: Mouse = m
+		if !mouse.is_ready(): continue
 		if mouse.health > best_score:
 			best_score = mouse.health
 			best = mouse
 	return best
 
-func shoot():
-	if !target or !is_instance_valid(target):
+func attack():
+	if !target or !is_instance_valid(target) or !target.is_ready():
 		$Cooldown.stop()
 		return
-	var bullet = bullet_scene.instance()
-#	get_tree().root.add_child(bullet)
-#	get_tree().root.call_deferred("add_child", bullet)
-	map_ref.get_node("Actors").call_deferred("add_child", bullet)
-	bullet.position = spawn_position.global_position
-	bullet.damage = damage
-	bullet.speed = shot_speed
-	bullet.set_target(target)
+	locked_target = target
 	play_attack_anim()
 	$AudioShoot.pitch_scale = rand_range(0.8, 1.2)
 	$AudioShoot.play()
 	if meow_every > 0 and randi() % meow_every == 0:
 		$AudioSpawn.play()
+		
+func shoot():
+	var bullet = bullet_scene.instance()
+	map_ref.get_node("Actors").call_deferred("add_child", bullet)
+	bullet.position = spawn_position.global_position
+	bullet.damage = damage
+	bullet.speed = shot_speed
+	bullet.set_target(target)
+
+func hit_target():
+	if !locked_target or !is_instance_valid(locked_target) or !locked_target.is_ready():
+		return
+	locked_target.on_hit(self)
+
+func grab_target():
+	if !locked_target or !is_instance_valid(locked_target) or !locked_target.is_ready(): return
+	locked_target.on_get_grabbed(self)
+	locked_target.get_parent().remove_child(locked_target)
+	locked_target.position = Vector2(0, 0)
+	el_grab_l.add_child(locked_target)
+	target = null
 
 func play_attack_anim():
 	$AnimationPlayer.stop(true)
-	$AnimationPlayer.play("attack")
+	$AnimationPlayer.play(attack_anim)
 	yield($AnimationPlayer, "animation_finished")
 	$AnimationPlayer.play("idle")
-#	bullet_sprite.visible = false
-#	yield(get_tree().create_timer(.4), "timeout")
-#	bullet_sprite.visible = true
 
 func update_worth(new_worth: int):
 	total_cost = new_worth
@@ -251,7 +270,7 @@ func _on_AggroRange_area_exited(area: Node):
 
 
 func _on_Cooldown_timeout():
-	shoot()
+	attack()
 
 func _on_up_pressed():
 	var cost = 5

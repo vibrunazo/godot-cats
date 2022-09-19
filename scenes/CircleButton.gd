@@ -11,12 +11,6 @@ func update_cost(new_cost):
 	cost = new_cost
 	$Label.text = "$%s" % new_cost
 
-#func _set(property: String, value) -> bool:
-#	if property == "disabled":
-#		set_disabled(value)
-#		return true
-#	return false
-
 func set_disabled(value: bool):
 	if disabled != value:
 		disabled = value

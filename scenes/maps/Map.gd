@@ -161,7 +161,8 @@ func wave_timer_timeout(i):
 		var t: Timer = wave_state.timer
 		t.stop()
 		t.queue_free()
-	print('%s: wave %s spawned %s/%s' % [ellapsed, i, wave_state.spawned, wave.spawns])
+	if Global.DEBUG_WAVES:
+		print('%s: wave %s spawned %s/%s' % [ellapsed, i, wave_state.spawned, wave.spawns])
 
 func play_music():
 	yield(get_tree().create_timer(0.4), "timeout")

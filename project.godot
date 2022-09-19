@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/cats/Cat02.gd"
 }, {
+"base": "Cat",
+"class": "Cat3",
+"language": "GDScript",
+"path": "res://scenes/cats/Cat03.gd"
+}, {
 "base": "TextureButton",
 "class": "CircleButton",
 "language": "GDScript",
@@ -59,6 +64,7 @@ _global_script_class_icons={
 "Bullet": "res://assets/ball.png",
 "Cat": "res://assets/cat01.png",
 "Cat2": "res://assets/cat02.png",
+"Cat3": "res://assets/cat03.png",
 "CircleButton": "res://assets/button_circle.png",
 "Map": "",
 "MenuToolButton": "",

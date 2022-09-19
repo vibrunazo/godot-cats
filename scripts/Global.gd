@@ -5,6 +5,7 @@ var DEBUG = false
 var DEBUG_MAP_TIMER = false
 var DEBUG_MOUSE = false
 var DEBUG_WIN = false
+var DEBUG_WAVES = false
 var rng = RandomNumberGenerator.new()
 var master_volume = -10
 var game_volume = 0
