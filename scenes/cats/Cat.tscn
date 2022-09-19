@@ -718,6 +718,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="AudioStreamRandomPitch" id=9]
+resource_local_to_scene = true
 audio_stream = ExtResource( 11 )
 random_pitch = 1.3
 

@@ -215,7 +215,7 @@ func shoot():
 	bullet.position = spawn_position.global_position
 	bullet.damage = damage
 	bullet.speed = shot_speed
-	bullet.set_target(target)
+	bullet.set_target(locked_target)
 
 func hit_target():
 	if !locked_target or !is_instance_valid(locked_target) or !locked_target.is_ready():
