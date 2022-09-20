@@ -18,5 +18,5 @@ func _ready():
 	
 func _input_event(_viewport, event: InputEvent, _shape_idx):
 	if event is InputEventMouseButton and !event.is_pressed():
-		if !get_parent().building:
+		if !get_parent().is_building():
 			get_parent().emit_signal("clicked")

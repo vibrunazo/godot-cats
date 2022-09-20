@@ -18,7 +18,6 @@ audio_stream = ExtResource( 7 )
 
 [node name="Cat03" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
-building = null
 damage = 800
 aggro_range = 130.0
 shot_speed = 800
@@ -57,7 +56,7 @@ texture = ExtResource( 5 )
 texture = ExtResource( 4 )
 
 [node name="Cooldown" parent="." index="3"]
-wait_time = 3.0
+wait_time = 7.0
 
 [node name="UIroot" parent="." index="7"]
 visible = false

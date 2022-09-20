@@ -58,6 +58,9 @@ func _ready():
 
 func is_building() -> bool:
 	return state == State.BUILDING
+	
+func is_ready() -> bool:
+	return state == State.READY
 
 func update_range(new_range):
 	aggro_range = new_range
@@ -133,6 +136,7 @@ func _physics_process(_delta):
 		
 func follow_target():
 	if !target or !is_instance_valid(target): return
+	if !is_ready(): return
 	if !target.is_inside_tree() or !is_inside_tree(): return
 	if !$Turret.is_inside_tree(): return
 	var pos = target.global_position
@@ -161,8 +165,6 @@ func gain_aggro(mouse: Mouse):
 	if selected:
 		update_aggro_labels()
 	
-	
-
 func _on_target_died(dead_mouse: Mouse):
 #	print('target died')
 	lose_aggro(dead_mouse)
@@ -204,7 +206,7 @@ func search_health() -> Mouse:
 	return best
 
 func attack():
-	if !target or !is_instance_valid(target) or !target.is_ready():
+	if !target or !is_instance_valid(target) or !target.is_ready() or !is_ready():
 		$Cooldown.stop()
 		return
 	locked_target = target
@@ -229,17 +231,30 @@ func hit_target():
 
 func grab_target():
 	if !locked_target or !is_instance_valid(locked_target) or !locked_target.is_ready(): return
+	var rot = locked_target.global_rotation
 	locked_target.on_get_grabbed(self)
 	locked_target.get_parent().remove_child(locked_target)
-	locked_target.position = Vector2(0, 0)
 	el_grab_l.add_child(locked_target)
+	locked_target.position = Vector2(0, 0)
+	locked_target.global_rotation = rot
 	target = null
+	state = State.EAT
 
 func play_attack_anim():
+	follow_target()
 	$AnimationPlayer.stop(true)
 	$AnimationPlayer.play(attack_anim)
+	state = State.ATTACK
 	yield($AnimationPlayer, "animation_finished")
-	$AnimationPlayer.play("idle")
+	match state:
+		State.ATTACK:
+			$AnimationPlayer.play("idle")
+			state = State.READY
+		State.EAT:
+			$AnimationPlayer.play("eat")
+			yield($AnimationPlayer, "animation_finished")
+			locked_target.on_finished_eaten()
+			$AnimationPlayer.play("idle")
 
 func update_worth(new_worth: int):
 	total_cost = new_worth
@@ -275,6 +290,8 @@ func _on_AggroRange_area_exited(area: Node):
 
 
 func _on_Cooldown_timeout():
+	if state == State.EAT:
+		state = State.READY
 	attack()
 
 func _on_up_pressed():

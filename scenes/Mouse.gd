@@ -110,4 +110,6 @@ func on_get_grabbed(cat: Node2D):
 	state = State.GRABBED
 	$AnimationPlayer.play("grabbed")
 	emit_signal("killed")
-	
+
+func on_finished_eaten():
+	queue_free()

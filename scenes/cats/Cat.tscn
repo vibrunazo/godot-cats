@@ -463,6 +463,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( -10, 0 ), Vector2( 20, 0 ), Vector2( 0, 0 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("Turret/SpriteRoot/cat_body/hand_l/grab_l:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.45 ), Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "eat"
