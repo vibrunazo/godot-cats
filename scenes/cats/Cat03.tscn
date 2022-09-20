@@ -44,6 +44,7 @@ texture = null
 texture = ExtResource( 2 )
 
 [node name="cat_body" parent="Turret/SpriteRoot" index="2"]
+position = Vector2( 0, 0 )
 texture = ExtResource( 3 )
 
 [node name="hand_l" parent="Turret/SpriteRoot/cat_body" index="0"]
