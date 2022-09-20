@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scenes/cats/Cat.gd" type="Script" id=1]
 [ext_resource path="res://scenes/cats/CatClickArea.gd" type="Script" id=2]
@@ -175,6 +175,18 @@ tracks/12/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Turret/SpriteRoot/cat_body/hand_l/grab_l:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -450,6 +462,107 @@ tracks/8/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( -10, 0 ), Vector2( 20, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "eat"
+length = 0.8
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Turret/SpriteRoot/cat_body/hand_r:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -20, 24 ), Vector2( -20, 30 ), Vector2( -20, 24 ), Vector2( -20, 24 ), Vector2( -20, 24 ), Vector2( -20, 24 ), Vector2( -20, 24 ), Vector2( -20, 24 ), Vector2( -20, 24 ), Vector2( -20, 24 ), Vector2( -20, 24 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Turret/SpriteRoot/cat_body/hand_r:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -15.0, -15.0, -40.0, -30.0, -40.0, -30.0, -40.0, -30.0, -40.0, -30.0, -15.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Turret/SpriteRoot/cat_body/hand_r:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1.3 ), Vector2( 1, 1.2 ), Vector2( 1, 1.2 ), Vector2( 1, 1.2 ), Vector2( 1, 1.2 ), Vector2( 1, 1.2 ), Vector2( 1, 1.2 ), Vector2( 1, 1.2 ), Vector2( 1, 1.2 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Turret/SpriteRoot/cat_body/hand_l:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 20, 24 ), Vector2( 20, 30 ), Vector2( 20, 24 ), Vector2( 20, 24 ), Vector2( 20, 24 ), Vector2( 20, 24 ), Vector2( 20, 24 ), Vector2( 20, 24 ), Vector2( 20, 24 ), Vector2( 20, 24 ), Vector2( 20, 24 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Turret/SpriteRoot/cat_body/hand_l:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 15.0, 15.0, 40.0, 30.0, 40.0, 30.0, 40.0, 30.0, 40.0, 30.0, 15.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Turret/SpriteRoot/cat_body/hand_l:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1.3 ), Vector2( 1, 1.2 ), Vector2( 1, 1.2 ), Vector2( 1, 1.2 ), Vector2( 1, 1.2 ), Vector2( 1, 1.2 ), Vector2( 1, 1.2 ), Vector2( 1, 1.2 ), Vector2( 1, 1.2 ), Vector2( 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Turret/SpriteRoot/head:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -5, 0 ), Vector2( 3, 0 ), Vector2( -5, 0 ), Vector2( 3, 0 ), Vector2( -5, 0 ), Vector2( 3, 0 ), Vector2( -5, 0 ), Vector2( 3, 0 ), Vector2( -5, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Turret/SpriteRoot/cat_body/hand_l/grab_l:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -838,6 +951,7 @@ __meta__ = {
 anims/RESET = SubResource( 3 )
 anims/attack = SubResource( 4 )
 anims/attack_melee = SubResource( 11 )
+anims/eat = SubResource( 12 )
 anims/idle = SubResource( 5 )
 
 [node name="UIAnimations" type="AnimationPlayer" parent="."]

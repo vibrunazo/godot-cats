@@ -18,6 +18,7 @@ audio_stream = ExtResource( 7 )
 
 [node name="Cat03" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
+building = null
 damage = 800
 aggro_range = 130.0
 shot_speed = 800
@@ -44,7 +45,6 @@ texture = null
 texture = ExtResource( 2 )
 
 [node name="cat_body" parent="Turret/SpriteRoot" index="2"]
-position = Vector2( 0, 0 )
 texture = ExtResource( 3 )
 
 [node name="hand_l" parent="Turret/SpriteRoot/cat_body" index="0"]

@@ -9,7 +9,7 @@ var target: Mouse
 var locked_target: Mouse
 var bullet_scene = preload("res://scenes/Bullet.tscn")
 enum FocusType {FURTHEST, HEALTH}
-export var building = true
+#export var building = true
 export var selected = true
 export var cat_name = "Cat1"
 export var damage = 10
@@ -32,6 +32,8 @@ onready var el_grab_l: Position2D = $"%grab_l"
 var SELECTION_SIZE := 400.0
 var map_ref: Node2D = null
 var cell_pos: Vector2 = Vector2(0, 0)
+enum State {BUILDING, READY, ATTACK, EAT}
+var state: int = State.BUILDING
 
 
 func init(map):
@@ -49,10 +51,13 @@ func _ready():
 		el_circle.visible = true
 	else:
 		el_circle.visible = false
-	if !building:
+	if !is_building():
 		done_building()
 	else:
 		$AudioSpawn.play()
+
+func is_building() -> bool:
+	return state == State.BUILDING
 
 func update_range(new_range):
 	aggro_range = new_range
@@ -62,7 +67,7 @@ func update_range(new_range):
 #	print("range is now %s. radius is %s" % [aggro_range, $AggroRange/AggroShape.shape.radius])
 	
 func done_building(new_cell = Vector2(0, 0)):
-	building = false
+	state = State.READY
 	cell_pos = new_cell
 	$AggroRange.monitoring = true
 #	unselect()
@@ -93,7 +98,7 @@ func select():
 	el_UI.visible = true
 	update_aggro_labels()
 	$AudioSpawn.play()
-	if !building:
+	if !is_building():
 #		yield(get_tree().create_timer(0.5),"timeout")
 		$UIAnimations.play("select")
 		$UIroot/UI/CatActions/AnimationPlayer.play("start")
