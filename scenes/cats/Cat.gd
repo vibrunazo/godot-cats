@@ -80,6 +80,7 @@ func done_building(new_cell = Vector2(0, 0)):
 	adjust_UI()
 	$AudioSpawn.play()
 	$AudioGrass.play()
+	search_new_target()
 
 func adjust_UI():
 	if cell_pos.x == 0:
@@ -230,7 +231,11 @@ func hit_target():
 	locked_target.on_hit(self)
 
 func grab_target():
-	if !locked_target or !is_instance_valid(locked_target) or !locked_target.is_ready(): return
+	if !locked_target or !is_instance_valid(locked_target) or !locked_target.is_ready(): 
+		$Cooldown.stop()
+#		state = State.READY
+		search_new_target()
+		return
 	var rot = locked_target.global_rotation
 	locked_target.on_get_grabbed(self)
 	locked_target.get_parent().remove_child(locked_target)
@@ -247,14 +252,14 @@ func play_attack_anim():
 	state = State.ATTACK
 	yield($AnimationPlayer, "animation_finished")
 	match state:
-		State.ATTACK:
-			$AnimationPlayer.play("idle")
-			state = State.READY
 		State.EAT:
 			$AnimationPlayer.play("eat")
 			yield($AnimationPlayer, "animation_finished")
 			locked_target.on_finished_eaten()
 			$AnimationPlayer.play("sleeping")
+		_:
+			$AnimationPlayer.play("idle")
+			state = State.READY
 
 func update_worth(new_worth: int):
 	total_cost = new_worth
@@ -292,6 +297,7 @@ func _on_AggroRange_area_exited(area: Node):
 func _on_Cooldown_timeout():
 	if state == State.EAT:
 		state = State.READY
+		$AnimationPlayer.play("idle")
 	attack()
 
 func _on_up_pressed():
