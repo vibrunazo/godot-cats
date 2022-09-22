@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/cats/Cat.gd" type="Script" id=1]
 [ext_resource path="res://scenes/cats/CatClickArea.gd" type="Script" id=2]
@@ -188,6 +188,30 @@ tracks/13/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
+tracks/14/type = "value"
+tracks/14/path = NodePath("Turret/SpriteRoot/head/eyes:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Turret/SpriteRoot/cat_body:rotation_degrees")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0002 ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "attack"
@@ -350,6 +374,18 @@ tracks/12/keys = {
 "method": "shoot"
 } ]
 }
+tracks/13/type = "value"
+tracks/13/path = NodePath("Turret/SpriteRoot/head/eyes:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "attack_melee"
@@ -474,6 +510,18 @@ tracks/9/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 0.45 ), Vector2( 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Turret/SpriteRoot/head/eyes:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -662,6 +710,145 @@ tracks/6/enabled = true
 tracks/6/keys = {
 "points": PoolRealArray( -90, -0.25, 0, 0.25, 0, -100, -0.25, 0, 0.25, 0, -90, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0.2, 1.4, 2.2 )
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Turret/SpriteRoot/head/eyes:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "sleep"
+
+[sub_resource type="Animation" id=14]
+resource_name = "sleeping"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Turret/SpriteRoot/head/eyes:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Turret/SpriteRoot/cat_body/hand_r:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -23.9999, 34 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Turret/SpriteRoot/cat_body/hand_r:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -58.1311 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Turret/SpriteRoot/cat_body/hand_r:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Turret/SpriteRoot/cat_body/hand_l:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 24.0001, 34 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Turret/SpriteRoot/cat_body/hand_l:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 57.8629 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Turret/SpriteRoot/cat_body/hand_l:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Turret/SpriteRoot/cat_body:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Turret/SpriteRoot/cat_body:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -90.0002, -90.0002 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Turret/SpriteRoot/cat_body:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 1.1 ), Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -943,6 +1130,11 @@ offset = Vector2( 0, 8 )
 rotation = -1.5708
 z_index = 10
 texture = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="eyes" type="Sprite" parent="Turret/SpriteRoot/head"]
 
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 0.8
@@ -965,6 +1157,8 @@ anims/attack = SubResource( 4 )
 anims/attack_melee = SubResource( 11 )
 anims/eat = SubResource( 12 )
 anims/idle = SubResource( 5 )
+anims/sleep = SubResource( 13 )
+anims/sleeping = SubResource( 14 )
 
 [node name="UIAnimations" type="AnimationPlayer" parent="."]
 root_node = NodePath("../UIroot")
@@ -975,6 +1169,9 @@ anims/unselect = SubResource( 8 )
 [node name="UIroot" type="Node2D" parent="."]
 position = Vector2( 0, 160 )
 z_index = 100
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="UI" type="Control" parent="UIroot"]
 margin_left = -128.0
@@ -982,6 +1179,9 @@ margin_top = -256.0
 margin_right = 128.0
 margin_bottom = 24.0
 mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CatActions" parent="UIroot/UI" instance=ExtResource( 9 )]
 unique_name_in_owner = true

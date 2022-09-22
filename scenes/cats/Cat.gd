@@ -254,7 +254,7 @@ func play_attack_anim():
 			$AnimationPlayer.play("eat")
 			yield($AnimationPlayer, "animation_finished")
 			locked_target.on_finished_eaten()
-			$AnimationPlayer.play("idle")
+			$AnimationPlayer.play("sleeping")
 
 func update_worth(new_worth: int):
 	total_cost = new_worth
