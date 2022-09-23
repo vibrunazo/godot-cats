@@ -237,10 +237,8 @@ func hit_target():
 func grab_target():
 	if !locked_target or !is_instance_valid(locked_target) or !locked_target.is_ready(): 
 		$Cooldown.stop()
-		$Cooldown.start(0.001)
-		print('grab failed, timeleft on cd: %s' % $Cooldown.time_left)
-#		state = State.READY
-		search_new_target()
+		$Cooldown.start(0.1)
+#		search_new_target()
 		return
 	var rot = locked_target.global_rotation
 	locked_target.on_get_grabbed(self)
@@ -250,6 +248,8 @@ func grab_target():
 	locked_target.global_rotation = rot
 	target = null
 	state = State.EAT
+	$AudioGrass.pitch_scale = 3.0
+	$AudioGrass.play()
 
 func play_attack_anim():
 	follow_target()
