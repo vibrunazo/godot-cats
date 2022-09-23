@@ -236,6 +236,30 @@ tracks/17/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
+tracks/18/type = "value"
+tracks/18/path = NodePath("Turret/SpriteRoot/head/ZParticles:emitting")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Turret/SpriteRoot/head:rotation_degrees")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0002 ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "attack"
@@ -619,6 +643,18 @@ tracks/14/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
+tracks/15/type = "value"
+tracks/15/path = NodePath("Turret/SpriteRoot/head/ZParticles:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "eat"
@@ -929,12 +965,25 @@ tracks/13/keys = {
 "update": 0,
 "values": [ -90.0, -90.0, -100.0, -90.0 ]
 }
+tracks/14/type = "value"
+tracks/14/path = NodePath("Turret/SpriteRoot/head/ZParticles:emitting")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=13]
 resource_name = "sleep"
 
 [sub_resource type="Animation" id=14]
 resource_name = "sleeping"
+length = 2.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Turret/SpriteRoot/head/eyes:visible")
@@ -1091,6 +1140,42 @@ tracks/12/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Turret/SpriteRoot/head/ZParticles:emitting")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Turret/SpriteRoot/head:position")
+tracks/14/interp = 2
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -2.99998, 3.9999 ), Vector2( 0, 0 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Turret/SpriteRoot/head:rotation_degrees")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -90.0002, -90.0002, -90.0002 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -1339,7 +1424,7 @@ z_index = 9
 texture = ExtResource( 3 )
 
 [node name="tail" type="Sprite" parent="Turret/SpriteRoot"]
-position = Vector2( -29, -7 )
+position = Vector2( -39, 0 )
 rotation = -1.5708
 z_index = 10
 texture = ExtResource( 6 )
