@@ -13,6 +13,7 @@ enum FocusType {FURTHEST, HEALTH}
 export var selected = true
 export var cat_name = "Cat1"
 export var damage = 10
+export var cooldown = 2.0
 export var aggro_range := 200.0
 export var shot_speed = 400
 export var attack_anim = "attack"
@@ -133,7 +134,10 @@ func update_aggro_labels():
 
 func _physics_process(_delta):
 	if is_instance_valid(target):
-		follow_target()
+		if $Cooldown.time_left > 0:
+			follow_target()
+		else:
+			attack()
 		
 func follow_target():
 	if !target or !is_instance_valid(target): return
@@ -152,7 +156,7 @@ func acquire_new_target(new_target: Mouse):
 	if $Cooldown.time_left > 0:
 		return
 	attack()
-	$Cooldown.start()
+	$Cooldown.start(cooldown)
 
 func lose_aggro(mouse: Mouse):
 	aggro_list.erase(mouse)
@@ -233,6 +237,8 @@ func hit_target():
 func grab_target():
 	if !locked_target or !is_instance_valid(locked_target) or !locked_target.is_ready(): 
 		$Cooldown.stop()
+		$Cooldown.start(0.001)
+		print('grab failed, timeleft on cd: %s' % $Cooldown.time_left)
 #		state = State.READY
 		search_new_target()
 		return
@@ -255,7 +261,8 @@ func play_attack_anim():
 		State.EAT:
 			$AnimationPlayer.play("eat")
 			yield($AnimationPlayer, "animation_finished")
-			locked_target.on_finished_eaten()
+			if locked_target:
+				locked_target.on_finished_eaten()
 			$AnimationPlayer.play("sleeping")
 		_:
 			$AnimationPlayer.play("idle")
