@@ -832,6 +832,20 @@ tracks/12/keys = {
 } ],
 "times": PoolRealArray( 0.35 )
 }
+tracks/13/type = "method"
+tracks/13/path = NodePath(".")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "on_eat_finished"
+} ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "idle"
@@ -1569,7 +1583,7 @@ cost = 8
 
 [node name="AudioShoot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
-volume_db = -5.0
+volume_db = -9.0
 bus = "sfx"
 
 [node name="AudioSpawn" type="AudioStreamPlayer" parent="."]
@@ -1584,15 +1598,17 @@ bus = "sfx"
 
 [node name="AudioCrunch" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 15 )
+volume_db = -2.0
 bus = "sfx"
 
 [node name="AudioCrunch2" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 16 )
+volume_db = -2.0
 bus = "sfx"
 
 [node name="AudioPurr" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 16 )
-volume_db = 2.0
+volume_db = 3.0
 bus = "sfx"
 
 [connection signal="area_entered" from="AggroRange" to="." method="_on_AggroRange_area_entered"]

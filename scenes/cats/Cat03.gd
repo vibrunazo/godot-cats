@@ -8,4 +8,5 @@ func _on_up2_pressed():
 		return
 	map_ref.add_coins(-cost)
 	add_worth(cost)
-	cooldown *= 0.6
+	cooldown *= 0.7
+	$Cooldown.wait_time = cooldown

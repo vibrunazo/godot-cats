@@ -77,6 +77,9 @@ func update_scale():
 
 func is_ready() -> bool:
 	return state == State.READY
+	
+func is_grabbed() -> bool:
+	return state == State.GRABBED
 
 func on_hit(bullet: Node2D):
 	if !alive or !is_ready(): return
@@ -106,7 +109,7 @@ func on_hit(bullet: Node2D):
 		start_walking()
 		
 func on_get_grabbed(cat: Node2D):
-	print('%s grabbed by %s' % [name, cat.name])
+#	print('%s grabbed by %s' % [name, cat.name])
 	state = State.GRABBED
 	$AnimationPlayer.play("grabbed")
 	emit_signal("killed")

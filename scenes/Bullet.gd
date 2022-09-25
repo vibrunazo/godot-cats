@@ -19,11 +19,7 @@ var velocity: Vector2
 
 func _ready():
 	target_offset = Vector2(rand_range(-12, 12), rand_range(-12, 12))
-	$AudioSpawn.pitch_scale = rand_range(0.8, 1.2)
-	$AudioSpawn.play()
 	hit_pitch = $AudioHit.pitch_scale
-#	look_at(Vector2(400, 200))
-#	rotation_degrees = 60
 
 func set_target(new_target: Mouse):
 	target = new_target

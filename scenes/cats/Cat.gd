@@ -7,6 +7,7 @@ signal clicked
 var aggro_list = []
 var target: Mouse
 var locked_target: Mouse
+var grabbed_target: Mouse
 var bullet_scene = preload("res://scenes/Bullet.tscn")
 enum FocusType {FURTHEST, HEALTH}
 #export var building = true
@@ -134,7 +135,7 @@ func update_aggro_labels():
 
 func _physics_process(_delta):
 	if is_instance_valid(target):
-		if $Cooldown.time_left > 0:
+		if !is_ready():
 			follow_target()
 		else:
 			attack()
@@ -156,6 +157,7 @@ func acquire_new_target(new_target: Mouse):
 	if $Cooldown.time_left > 0:
 		return
 	attack()
+	$Cooldown.wait_time = cooldown
 	$Cooldown.start(cooldown)
 
 func lose_aggro(mouse: Mouse):
@@ -214,6 +216,8 @@ func attack():
 	if !target or !is_instance_valid(target) or !target.is_ready() or !is_ready():
 		$Cooldown.stop()
 		return
+#	if is_instance_valid(locked_target) and locked_target.is_grabbed() and el_grab_l.get_child_count() > 0:
+#		locked_target.on_finished_eaten()
 	locked_target = target
 	play_attack_anim()
 	$AudioShoot.pitch_scale = rand_range(0.8, 1.2)
@@ -240,6 +244,9 @@ func grab_target():
 		$Cooldown.start(0.1)
 #		search_new_target()
 		return
+	if is_instance_valid(grabbed_target):
+		grabbed_target.on_finished_eaten()
+	grabbed_target = locked_target
 	var rot = locked_target.global_rotation
 	locked_target.on_get_grabbed(self)
 	locked_target.get_parent().remove_child(locked_target)
@@ -247,7 +254,7 @@ func grab_target():
 	locked_target.position = Vector2(0, 0)
 	locked_target.global_rotation = rot
 	target = null
-	state = State.EAT
+#	state = State.EAT
 	$AudioGrass.pitch_scale = 3.0
 	$AudioGrass.play()
 
@@ -257,18 +264,24 @@ func play_attack_anim():
 	$AnimationPlayer.play(attack_anim)
 	state = State.ATTACK
 	yield($AnimationPlayer, "animation_finished")
-	match state:
-		State.EAT:
-			$AnimationPlayer.play("eat")
-			yield($AnimationPlayer, "animation_finished")
-			if locked_target:
-				locked_target.on_finished_eaten()
-			$AnimationPlayer.play("sleeping")
-			yield(get_tree().create_timer(0.35), "timeout")
-			$AudioPurr.play()
-		_:
-			$AnimationPlayer.play("idle")
-			state = State.READY
+	if is_instance_valid(grabbed_target):
+#		print('has grab %s' % $AnimationPlayer.assigned_animation)
+		$AnimationPlayer.play("eat")
+	else:
+#		print('no grab %s' % $AnimationPlayer.assigned_animation)
+		$AnimationPlayer.play("idle")
+
+func on_eat_finished():
+	if is_instance_valid(grabbed_target):
+		grabbed_target.on_finished_eaten()
+#	print('eat finished %s' % $AnimationPlayer.assigned_animation)
+	grabbed_target = null
+	if !is_ready():
+		$AnimationPlayer.play("sleeping")
+		yield(get_tree().create_timer(0.35), "timeout")
+		$AudioPurr.play()
+	else:
+		$AnimationPlayer.play("idle")
 
 func update_worth(new_worth: int):
 	total_cost = new_worth
@@ -304,10 +317,12 @@ func _on_AggroRange_area_exited(area: Node):
 
 
 func _on_Cooldown_timeout():
-	if state == State.EAT:
-		state = State.READY
+	if $AnimationPlayer.current_animation == "sleeping":
 		$AnimationPlayer.play("idle")
-	attack()
+	state = State.READY
+	if !is_instance_valid(target):
+		$Cooldown.stop()
+#	print('cat cooldown up')
 
 func _on_up_pressed():
 	var cost = 5
@@ -316,7 +331,6 @@ func _on_up_pressed():
 	map_ref.add_coins(-cost)
 	add_worth(cost)
 	update_range(aggro_range + 20.0)
-	
 
 func _on_up2_pressed():
 	var cost = 20
