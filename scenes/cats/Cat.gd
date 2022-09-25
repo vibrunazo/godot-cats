@@ -264,6 +264,8 @@ func play_attack_anim():
 			if locked_target:
 				locked_target.on_finished_eaten()
 			$AnimationPlayer.play("sleeping")
+			yield(get_tree().create_timer(0.3), "timeout")
+			$AudioPurr.play()
 		_:
 			$AnimationPlayer.play("idle")
 			state = State.READY

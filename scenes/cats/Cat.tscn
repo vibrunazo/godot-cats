@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/cats/Cat.gd" type="Script" id=1]
 [ext_resource path="res://scenes/cats/CatClickArea.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/audio/meow01.wav" type="AudioStream" id=11]
 [ext_resource path="res://assets/audio/crunch.1.ogg" type="AudioStream" id=12]
 [ext_resource path="res://assets/audio/grass_step.wav" type="AudioStream" id=13]
+[ext_resource path="res://assets/audio/cat-purr.wav" type="AudioStream" id=14]
 
 [sub_resource type="CircleShape2D" id=1]
 resource_local_to_scene = true
@@ -661,7 +662,7 @@ tracks/15/keys = {
 audio_stream = ExtResource( 12 )
 
 [sub_resource type="AudioStreamRandomPitch" id=16]
-audio_stream = ExtResource( 12 )
+audio_stream = ExtResource( 14 )
 
 [sub_resource type="Animation" id=12]
 resource_name = "eat"
@@ -1502,6 +1503,10 @@ __meta__ = {
 
 [node name="eyes" type="Sprite" parent="Turret/SpriteRoot/head"]
 
+[node name="ZParticles" type="Particles2D" parent="Turret/SpriteRoot/head"]
+emitting = false
+amount = 2
+
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 0.8
 
@@ -1583,6 +1588,11 @@ bus = "sfx"
 
 [node name="AudioCrunch2" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 16 )
+bus = "sfx"
+
+[node name="AudioPurr" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 16 )
+volume_db = 6.0
 bus = "sfx"
 
 [connection signal="area_entered" from="AggroRange" to="." method="_on_AggroRange_area_entered"]

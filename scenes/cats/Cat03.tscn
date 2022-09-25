@@ -12,7 +12,7 @@
 
 [sub_resource type="CircleShape2D" id=1]
 resource_local_to_scene = true
-radius = 150.0
+radius = 145.0
 
 [sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.668317, 1 )
@@ -42,7 +42,7 @@ audio_stream = ExtResource( 7 )
 script = ExtResource( 6 )
 damage = 800
 cooldown = 9.0
-aggro_range = 130.0
+aggro_range = 145.0
 shot_speed = 800
 attack_anim = "attack_melee"
 meow_every = 1
@@ -81,9 +81,8 @@ texture = ExtResource( 4 )
 [node name="eyes" parent="Turret/SpriteRoot/head" index="0"]
 texture = ExtResource( 8 )
 
-[node name="ZParticles" type="Particles2D" parent="Turret/SpriteRoot/head" index="1"]
+[node name="ZParticles" parent="Turret/SpriteRoot/head" index="1"]
 position = Vector2( 0, -15 )
-emitting = false
 amount = 3
 lifetime = 1.5
 randomness = 0.5
