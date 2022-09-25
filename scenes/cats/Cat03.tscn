@@ -102,6 +102,9 @@ __meta__ = {
 [node name="UIroot" parent="." index="7"]
 visible = false
 
+[node name="Up2Button" parent="UIroot/UI/CatActions/HBoxContainer" index="1"]
+cost = 25
+
 [node name="AudioSpawn" parent="." index="9"]
 stream = SubResource( 2 )
 volume_db = 10.0

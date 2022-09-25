@@ -5,7 +5,7 @@ class_name CircleButton, "res://assets/button_circle.png"
 export var cost := 10
 
 func _ready():
-	pass # Replace with function body.
+	update_cost(cost)
 	
 func update_cost(new_cost):
 	cost = new_cost

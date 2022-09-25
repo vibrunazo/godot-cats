@@ -2,17 +2,10 @@ extends Cat
 
 class_name Cat3, "res://assets/cat03.png"
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_up2_pressed():
+	var cost = 25
+	if map_ref.coins < cost:
+		return
+	map_ref.add_coins(-cost)
+	add_worth(cost)
+	cooldown *= 0.6
