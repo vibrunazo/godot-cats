@@ -528,7 +528,7 @@ font_data = ExtResource( 18 )
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 7 )
-coins = 255
+coins = 55
 size_curve = ExtResource( 17 )
 
 [node name="TileMap" type="TileMap" parent="."]

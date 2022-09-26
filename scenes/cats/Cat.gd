@@ -157,6 +157,7 @@ func acquire_new_target(new_target: Mouse):
 	if $Cooldown.time_left > 0:
 		return
 	attack()
+	$Cooldown.stop()
 	$Cooldown.wait_time = cooldown
 	$Cooldown.start(cooldown)
 
@@ -241,7 +242,8 @@ func hit_target():
 func grab_target():
 	if !locked_target or !is_instance_valid(locked_target) or !locked_target.is_ready(): 
 		$Cooldown.stop()
-		$Cooldown.start(0.1)
+		$Cooldown.start(0.8)
+		$Cooldown.wait_time = cooldown
 #		search_new_target()
 		return
 	if is_instance_valid(grabbed_target):
@@ -261,7 +263,7 @@ func grab_target():
 func play_attack_anim():
 	follow_target()
 	$AnimationPlayer.stop(true)
-	$AnimationPlayer.play(attack_anim)
+	$AnimationPlayer.play(attack_anim, -1, 0.5)
 	state = State.ATTACK
 	yield($AnimationPlayer, "animation_finished")
 	if is_instance_valid(grabbed_target):
@@ -322,6 +324,7 @@ func _on_Cooldown_timeout():
 	state = State.READY
 	if !is_instance_valid(target):
 		$Cooldown.stop()
+	$Cooldown.wait_time = cooldown
 #	print('cat cooldown up')
 
 func _on_up_pressed():
