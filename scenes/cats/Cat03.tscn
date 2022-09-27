@@ -103,6 +103,7 @@ __meta__ = {
 visible = false
 
 [node name="Up2Button" parent="UIroot/UI/CatActions/HBoxContainer" index="1"]
+hint_tooltip = "Reduce Cooldown"
 cost = 25
 
 [node name="AudioShoot" parent="." index="8"]

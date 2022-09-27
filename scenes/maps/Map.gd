@@ -19,7 +19,7 @@ onready var el_mousebar: ProgressBar = get_node("%MouseBar")
 
 var mouse_scene = preload("res://scenes/Mouse.tscn")
 var data = GameData.cat_data
-
+onready var buttons: Array = get_tree().get_nodes_in_group("action_button")
 # the cat currently being built and dragged by the mouse
 var cat_building: Cat = null
 var cat_selected: Cat = null
@@ -99,12 +99,12 @@ func _ready():
 		Engine.time_scale = 4
 	start_time = Time.get_ticks_msec()
 	el_path = $Path2D
-	for b in get_tree().get_nodes_in_group("action_button"):
+	for b in buttons:
 		var button: CircleButton = b
 		var cat_data = data[button.name]
 		var cost = cat_data.cost
-		b.connect("pressed", self, "action_pressed", [b.get_name()])
-		b.connect("button_up", self, "action_released", [b.get_name()])
+		b.connect("pressed", self, "action_pressed", [b.get_name(), b])
+		b.connect("button_up", self, "action_released", [b.get_name(), b])
 		button.update_cost(cost)
 	ini_waves()
 	update_coins()
@@ -122,7 +122,7 @@ func _physics_process(_delta):
 			cat_building.modulate = Color.red#("bbaa2222")
 
 func ini_waves():
-	print('ini waves')
+#	print('ini waves')
 	spawn_max = 0
 	var i: int = 0
 	for wave in wave_list:
@@ -132,7 +132,7 @@ func ini_waves():
 		i += 1
 
 func build_wave(wave: Dictionary, i: int):
-	print('building wave %s' % wave)
+#	print('building wave %s' % wave)
 	
 	var t: Timer = Timer.new()
 	add_child(t)
@@ -168,7 +168,7 @@ func play_music():
 	yield(get_tree().create_timer(0.4), "timeout")
 	$AudioMusic.play()
 		
-func action_pressed(name):
+func action_pressed(name: String, button: CircleButton):
 	if cat_building:
 		return
 	if coins < GameData.cat_data[name]['cost']:
@@ -176,8 +176,19 @@ func action_pressed(name):
 	cat_building = GameData.get_cat_scene(name).instance()
 	cat_building.init(self)
 	$UI.add_child(cat_building)
+	if !OS.has_touchscreen_ui_hint(): 
+		print('no touch')
+		return
+	for b in buttons:
+		b.hide_tooltip()
+	var tip := button.show_tooltip()
+	var pos := tip.get_global_transform().origin
+	tip.get_parent().remove_child(tip)
+	$UI/Tooltips.add_child(tip)
+	tip.set_global_position(pos)
+	
 
-func action_released(name):
+func action_released(name: String, button: CircleButton):
 	if cat_building:
 		if can_build(cat_building.global_position):
 			build_cat(name)
@@ -250,7 +261,7 @@ func win():
 	print('you win')
 	yield(get_tree().create_timer(2),"timeout")
 	if life == max_life:
-		print("Perfect!")
+		print("Puurfect!")
 	state = State.OVER
 	el_win.slow_pause()
 	
@@ -277,7 +288,7 @@ func add_coins(ammount):
 
 func update_coins():
 	el_coins.text = "$%s" % floor(coins)
-	for b in get_tree().get_nodes_in_group("action_button"):
+	for b in buttons:
 		var button: CircleButton = b
 		button.set_state_from_coins(coins)
 	if is_instance_valid(cat_selected):
@@ -388,7 +399,6 @@ func _on_cat_clicked(cat: Cat):
 
 func _on_SettingsButton_pressed():
 	toggle_pause()
-
 
 func _on_EllapsedTimer_timeout():
 	if Global.DEBUG_WIN:

@@ -3,9 +3,18 @@ extends TextureButton
 class_name CircleButton, "res://assets/button_circle.png"
 
 export var cost := 10
+onready var el_tooltip: Tooltip = $'%Tooltip'
 
 func _ready():
 	update_cost(cost)
+	el_tooltip.set_label(hint_tooltip)
+
+func show_tooltip() -> Tooltip:
+	el_tooltip.show()
+	return el_tooltip
+
+func hide_tooltip():
+	el_tooltip.hide()
 	
 func update_cost(new_cost):
 	cost = new_cost
@@ -27,9 +36,6 @@ func _on_CircleButton_button_up():
 
 func _on_CircleButton_pressed():
 	$AnimationPlayer.play("pressed")
-	yield($AnimationPlayer,"animation_finished")
-#	if disabled:
-#		$AnimationPlayer.play("disabled", 0, 4)
 		
 func _on_pressed_mid_point():
 	if disabled:

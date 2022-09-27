@@ -554,7 +554,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0.6 ),
+"times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -1575,10 +1575,15 @@ anchor_top = 1.0
 anchor_right = 0.5
 rect_pivot_offset = Vector2( 0, -160 )
 
+[node name="UpButton" parent="UIroot/UI/CatActions/HBoxContainer" index="0"]
+hint_tooltip = "Increase range"
+
 [node name="Up2Button" parent="UIroot/UI/CatActions/HBoxContainer" index="1"]
+hint_tooltip = "Increase damage"
 cost = 20
 
 [node name="DeleteButton" parent="UIroot/UI/CatActions/HBoxContainer" index="2"]
+hint_tooltip = "Remove cat"
 cost = 8
 
 [node name="AudioShoot" type="AudioStreamPlayer" parent="."]

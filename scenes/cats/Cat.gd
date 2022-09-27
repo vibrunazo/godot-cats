@@ -263,7 +263,7 @@ func grab_target():
 func play_attack_anim():
 	follow_target()
 	$AnimationPlayer.stop(true)
-	$AnimationPlayer.play(attack_anim, -1, 0.5)
+	$AnimationPlayer.play(attack_anim)
 	state = State.ATTACK
 	yield($AnimationPlayer, "animation_finished")
 	if is_instance_valid(grabbed_target):

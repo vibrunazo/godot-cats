@@ -108,7 +108,7 @@ func on_hit(bullet: Node2D):
 		yield($AnimationPlayer, "animation_finished")
 		start_walking()
 		
-func on_get_grabbed(cat: Node2D):
+func on_get_grabbed(_cat: Node2D):
 #	print('%s grabbed by %s' % [name, cat.name])
 	state = State.GRABBED
 	$AnimationPlayer.play("grabbed")

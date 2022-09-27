@@ -727,7 +727,7 @@ texture = ExtResource( 2 )
 [node name="Label" parent="UI/HUD/ActionBar/Cat2" index="1"]
 text = "$15"
 
-[node name="AnimationPlayer" parent="UI/HUD/ActionBar/Cat2" index="2"]
+[node name="AnimationPlayer" parent="UI/HUD/ActionBar/Cat2" index="3"]
 anims/RESET = SubResource( 4 )
 anims/disabled = SubResource( 5 )
 anims/enabled = SubResource( 6 )
@@ -762,7 +762,7 @@ texture = ExtResource( 20 )
 [node name="Label" parent="UI/HUD/ActionBar/Cat3" index="1"]
 text = "$20"
 
-[node name="AnimationPlayer" parent="UI/HUD/ActionBar/Cat3" index="2"]
+[node name="AnimationPlayer" parent="UI/HUD/ActionBar/Cat3" index="3"]
 anims/RESET = SubResource( 15 )
 anims/disabled = SubResource( 16 )
 anims/enabled = SubResource( 17 )
@@ -900,6 +900,10 @@ custom_fonts/font = SubResource( 13 )
 
 [node name="AudioStreamPlayer" parent="UI/Menus/WinMenu" index="3"]
 bus = "Master"
+
+[node name="Tooltips" type="Control" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
 
 [node name="AudioMusic" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
