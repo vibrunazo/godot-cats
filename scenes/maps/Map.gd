@@ -103,6 +103,8 @@ func _ready():
 		var button: CircleButton = b
 		var cat_data = data[button.name]
 		var cost = cat_data.cost
+		b.connect("mouse_entered", self, "button_entered", [b])
+		b.connect("mouse_exited", self, "button_exited", [b])
 		b.connect("pressed", self, "action_pressed", [b.get_name(), b])
 		b.connect("button_up", self, "action_released", [b.get_name(), b])
 		button.update_cost(cost)
@@ -167,7 +169,33 @@ func wave_timer_timeout(i):
 func play_music():
 	yield(get_tree().create_timer(0.4), "timeout")
 	$AudioMusic.play()
-		
+
+func on_tooltip_spawned(tip: Tooltip):
+#	var pos := tip.get_global_transform().origin
+	var pos := Vector2(100,100)
+#	tip.get_parent().remove_child(tip)
+#	tip.get_parent().call_deferred("remove_child", tip)
+	$UI/Tooltips.call_deferred("add_child", tip)
+#	yield(get_tree().create_timer(0.05), "timeout")
+#	$UI/Tooltips.add_child(tip)
+	tip.set_global_position(pos)
+#	tip.call_deferred("set_global_position", pos)
+
+func button_entered(button: CircleButton):
+	show_tooltip_on(button)
+
+func button_exited(button: CircleButton):
+	button.hide_tooltip()
+
+func show_tooltip_on(button: CircleButton):
+	for b in buttons:
+		b.hide_tooltip()
+	var tip := button.show_tooltip()
+	var pos := tip.get_global_transform().origin
+	tip.get_parent().remove_child(tip)
+	$UI/Tooltips.add_child(tip)
+	tip.set_global_position(pos)
+
 func action_pressed(name: String, button: CircleButton):
 	if cat_building:
 		return
@@ -179,13 +207,7 @@ func action_pressed(name: String, button: CircleButton):
 	if !OS.has_touchscreen_ui_hint(): 
 		print('no touch')
 		return
-	for b in buttons:
-		b.hide_tooltip()
-	var tip := button.show_tooltip()
-	var pos := tip.get_global_transform().origin
-	tip.get_parent().remove_child(tip)
-	$UI/Tooltips.add_child(tip)
-	tip.set_global_position(pos)
+	show_tooltip_on(button)
 	
 
 func action_released(name: String, button: CircleButton):

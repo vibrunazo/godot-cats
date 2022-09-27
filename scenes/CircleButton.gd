@@ -16,6 +16,18 @@ func show_tooltip() -> Tooltip:
 func hide_tooltip():
 	el_tooltip.hide()
 	
+func _make_custom_tooltip(for_text):
+	return Control.new()
+#	var tooltip = preload("res://scenes/Tooltip.tscn").instance()
+#	tooltip.get_node("Label").text = for_text
+#	return tooltip
+
+#func remove_tooltip(tip: Tooltip):
+#	print('removing %s' % tip)
+#	remove_child(tip)
+#	var root = get_tree().current_scene
+#	root.on_tooltip_spawned(tip)
+	
 func update_cost(new_cost):
 	cost = new_cost
 	$Label.text = "$%s" % new_cost
