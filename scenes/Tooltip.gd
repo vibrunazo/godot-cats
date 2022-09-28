@@ -14,11 +14,14 @@ func register_tooltip():
 
 func show():
 	visible = true
-	yield(get_tree().create_timer(5), "timeout")
-	hide()
+	$VisibilityTimer.start()
 
 func hide():
 	visible = false
 
 func set_label(hint: String):
 	$Label.text = hint
+
+
+func _on_VisibilityTimer_timeout():
+	hide()

@@ -3,7 +3,7 @@
 [ext_resource path="res://resources/cats_theme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/Tooltip.gd" type="Script" id=2]
 
-[node name="Container" type="PanelContainer"]
+[node name="Tooltip" type="PanelContainer"]
 margin_right = 40.0
 margin_bottom = 40.0
 theme = ExtResource( 1 )
@@ -17,3 +17,9 @@ margin_right = 315.0
 margin_bottom = 66.0
 size_flags_horizontal = 4
 text = "This is a tooltip"
+
+[node name="VisibilityTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="VisibilityTimer" to="." method="_on_VisibilityTimer_timeout"]

@@ -9,6 +9,7 @@ func _ready():
 	update_cost(cost)
 	el_tooltip.set_label(hint_tooltip)
 	var root = get_tree().current_scene
+#	print("root %s is class %s" % [root, root.get_class()])
 	root.call_deferred("register_new_button", self)
 
 # register tooltip with the map, so the map can place the tooltip in the correct layer

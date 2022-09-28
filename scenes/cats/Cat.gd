@@ -123,7 +123,9 @@ func unselect():
 		mouse.show_target_index(false)
 		
 func register_tooltips():
-	el_up1_button
+	el_up1_button.register_tooltip()
+	el_up2_button.register_tooltip()
+	el_del_button.register_tooltip()
 		
 func update_aggro_labels():
 	if !Global.DEBUG: return
