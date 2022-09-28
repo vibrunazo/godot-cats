@@ -84,6 +84,7 @@ func done_building(new_cell = Vector2(0, 0)):
 	$AudioGrass.play()
 	search_new_target()
 
+# adjust buttons positions so they don't stay off screen if the Cat is close to borders
 func adjust_UI():
 	if cell_pos.x == 0:
 		el_actions.rect_position.x += 200
@@ -97,6 +98,7 @@ func adjust_UI():
 		el_actions.rect_position.y -= 250
 		el_actions.rect_pivot_offset.y += 250
 		el_actions.get_node("HBoxContainer").rect_pivot_offset.y += 250
+	register_tooltips()
 	
 func select():
 	selected = true
@@ -119,6 +121,9 @@ func unselect():
 	for m in aggro_list:
 		var mouse: Mouse = m
 		mouse.show_target_index(false)
+		
+func register_tooltips():
+	el_up1_button
 		
 func update_aggro_labels():
 	if !Global.DEBUG: return

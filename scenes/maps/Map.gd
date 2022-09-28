@@ -19,7 +19,9 @@ onready var el_mousebar: ProgressBar = get_node("%MouseBar")
 
 var mouse_scene = preload("res://scenes/Mouse.tscn")
 var data = GameData.cat_data
-onready var buttons: Array = get_tree().get_nodes_in_group("action_button")
+onready var action_buttons: Array = get_tree().get_nodes_in_group("action_button")
+var tooltips: Array = []
+var all_buttons: Array = []
 # the cat currently being built and dragged by the mouse
 var cat_building: Cat = null
 var cat_selected: Cat = null
@@ -99,15 +101,14 @@ func _ready():
 		Engine.time_scale = 4
 	start_time = Time.get_ticks_msec()
 	el_path = $Path2D
-	for b in buttons:
+	for b in action_buttons:
 		var button: CircleButton = b
 		var cat_data = data[button.name]
 		var cost = cat_data.cost
-		b.connect("mouse_entered", self, "button_entered", [b])
-		b.connect("mouse_exited", self, "button_exited", [b])
 		b.connect("pressed", self, "action_pressed", [b.get_name(), b])
 		b.connect("button_up", self, "action_released", [b.get_name(), b])
 		button.update_cost(cost)
+		button.register_tooltip()
 	ini_waves()
 	update_coins()
 	update_UI_mousebar()
@@ -169,17 +170,19 @@ func wave_timer_timeout(i):
 func play_music():
 	yield(get_tree().create_timer(0.4), "timeout")
 	$AudioMusic.play()
-
-func on_tooltip_spawned(tip: Tooltip):
-#	var pos := tip.get_global_transform().origin
-	var pos := Vector2(100,100)
-#	tip.get_parent().remove_child(tip)
-#	tip.get_parent().call_deferred("remove_child", tip)
-	$UI/Tooltips.call_deferred("add_child", tip)
-#	yield(get_tree().create_timer(0.05), "timeout")
-#	$UI/Tooltips.add_child(tip)
+	
+func register_new_button(button: CircleButton):
+	all_buttons.append(button)
+	button.connect("mouse_entered", self, "button_entered", [button])
+	button.connect("mouse_exited", self, "button_exited", [button])
+	
+func register_new_tooltip(tip: Tooltip):
+	tooltips.append(tip)
+	var pos := tip.get_global_transform().origin
+	tip.get_parent().remove_child(tip)
+	$UI/Tooltips.add_child(tip)
 	tip.set_global_position(pos)
-#	tip.call_deferred("set_global_position", pos)
+	print('registered tooltip %s' % tip)
 
 func button_entered(button: CircleButton):
 	show_tooltip_on(button)
@@ -188,13 +191,9 @@ func button_exited(button: CircleButton):
 	button.hide_tooltip()
 
 func show_tooltip_on(button: CircleButton):
-	for b in buttons:
-		b.hide_tooltip()
+	for t in tooltips:
+		t.hide()
 	var tip := button.show_tooltip()
-	var pos := tip.get_global_transform().origin
-	tip.get_parent().remove_child(tip)
-	$UI/Tooltips.add_child(tip)
-	tip.set_global_position(pos)
 
 func action_pressed(name: String, button: CircleButton):
 	if cat_building:
@@ -310,7 +309,7 @@ func add_coins(ammount):
 
 func update_coins():
 	el_coins.text = "$%s" % floor(coins)
-	for b in buttons:
+	for b in action_buttons:
 		var button: CircleButton = b
 		button.set_state_from_coins(coins)
 	if is_instance_valid(cat_selected):

@@ -5,11 +5,12 @@ class_name Tooltip
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visible = false
-#	var root = get_tree().current_scene
-##	if root is Map:
-##	root.on_tooltip_spawned(self)
-	print('parent is %s' % get_parent())
-#	get_parent().call_deferred("remove_tooltip", self)
+
+# registers this tooltip on the map, so the map can place it in the appropriate layer
+# called by the CircleButton 
+func register_tooltip():
+	var root = get_tree().current_scene
+	root.call_deferred("register_new_tooltip", self)
 
 func show():
 	visible = true

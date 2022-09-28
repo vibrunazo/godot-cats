@@ -8,6 +8,14 @@ onready var el_tooltip: Tooltip = $'%Tooltip'
 func _ready():
 	update_cost(cost)
 	el_tooltip.set_label(hint_tooltip)
+	var root = get_tree().current_scene
+	root.call_deferred("register_new_button", self)
+
+# register tooltip with the map, so the map can place the tooltip in the correct layer
+# called by the cat when the button is in a cat
+# called by the map when it's an action button
+func register_tooltip():
+	el_tooltip.register_tooltip()
 
 func show_tooltip() -> Tooltip:
 	el_tooltip.show()
@@ -62,6 +70,7 @@ func _on_pressed_mid_point():
 #		modulate = Color("cc9c9c9c")
 
 func set_state_from_coins(new_coins):
+	print('updating cost on button %s' % name)
 	if new_coins >= cost:
 		set_disabled(false)
 	else:
