@@ -45,6 +45,7 @@ margin_left = -93.0
 margin_right = 61.0
 margin_bottom = 62.0
 grow_horizontal = 2
+mouse_filter = 2
 theme = ExtResource( 1 )
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
@@ -52,11 +53,13 @@ script = ExtResource( 2 )
 [node name="Panel" type="Panel" parent="."]
 margin_right = 167.0
 margin_bottom = 71.0
+mouse_filter = 2
 custom_styles/panel = SubResource( 2 )
 
 [node name="Margin" type="MarginContainer" parent="."]
 margin_right = 167.0
 margin_bottom = 71.0
+mouse_filter = 2
 custom_constants/margin_right = 8
 custom_constants/margin_top = 6
 custom_constants/margin_left = 8
