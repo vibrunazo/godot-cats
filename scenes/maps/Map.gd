@@ -173,8 +173,10 @@ func play_music():
 	
 func register_new_button(button: CircleButton):
 	all_buttons.append(button)
-	button.connect("mouse_entered", self, "button_entered", [button])
-	button.connect("mouse_exited", self, "button_exited", [button])
+	var _e 
+	_e = button.connect("mouse_entered", self, "button_entered", [button])
+	_e = button.connect("mouse_exited", self, "button_exited", [button])
+	_e = button.connect("button_up", self, "hide_tooltip_on", [button])
 	
 func register_new_tooltip(tip: Tooltip):
 	tooltips.append(tip)
@@ -182,7 +184,6 @@ func register_new_tooltip(tip: Tooltip):
 	tip.get_parent().remove_child(tip)
 	$UI/Tooltips.add_child(tip)
 	tip.set_global_position(pos)
-	print('registered tooltip %s' % tip)
 
 func button_entered(button: CircleButton):
 	show_tooltip_on(button)
@@ -193,9 +194,12 @@ func button_exited(button: CircleButton):
 func show_tooltip_on(button: CircleButton):
 	for t in tooltips:
 		t.hide()
-	var tip := button.show_tooltip()
+	button.show_tooltip()
 
-func action_pressed(name: String, button: CircleButton):
+func hide_tooltip_on(button: CircleButton):
+	button.hide_tooltip()
+
+func action_pressed(name: String, _button: CircleButton):
 	if cat_building:
 		return
 	if coins < GameData.cat_data[name]['cost']:
@@ -203,10 +207,10 @@ func action_pressed(name: String, button: CircleButton):
 	cat_building = GameData.get_cat_scene(name).instance()
 	cat_building.init(self)
 	$UI.add_child(cat_building)
-	if !OS.has_touchscreen_ui_hint(): 
-		print('no touch')
-		return
-	show_tooltip_on(button)
+#	if !OS.has_touchscreen_ui_hint(): 
+#		print('no touch')
+#		return
+#	show_tooltip_on(button)
 	
 
 func action_released(name: String, button: CircleButton):

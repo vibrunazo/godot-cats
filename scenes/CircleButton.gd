@@ -18,24 +18,14 @@ func _ready():
 func register_tooltip():
 	el_tooltip.register_tooltip()
 
-func show_tooltip() -> Tooltip:
+func show_tooltip():
 	el_tooltip.show()
-	return el_tooltip
 
 func hide_tooltip():
 	el_tooltip.hide()
 	
-func _make_custom_tooltip(for_text):
+func _make_custom_tooltip(_for_text):
 	return Control.new()
-#	var tooltip = preload("res://scenes/Tooltip.tscn").instance()
-#	tooltip.get_node("Label").text = for_text
-#	return tooltip
-
-#func remove_tooltip(tip: Tooltip):
-#	print('removing %s' % tip)
-#	remove_child(tip)
-#	var root = get_tree().current_scene
-#	root.on_tooltip_spawned(tip)
 	
 func update_cost(new_cost):
 	cost = new_cost
@@ -71,7 +61,6 @@ func _on_pressed_mid_point():
 #		modulate = Color("cc9c9c9c")
 
 func set_state_from_coins(new_coins):
-	print('updating cost on button %s' % name)
 	if new_coins >= cost:
 		set_disabled(false)
 	else:
