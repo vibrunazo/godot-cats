@@ -1576,14 +1576,14 @@ anchor_right = 0.5
 rect_pivot_offset = Vector2( 0, -160 )
 
 [node name="UpButton" parent="UIroot/UI/CatActions/HBoxContainer" index="0"]
-hint_tooltip = "Increase range"
+hint_tooltip = "+range"
 
 [node name="Up2Button" parent="UIroot/UI/CatActions/HBoxContainer" index="1"]
-hint_tooltip = "Increase damage"
+hint_tooltip = "+damage"
 cost = 20
 
 [node name="DeleteButton" parent="UIroot/UI/CatActions/HBoxContainer" index="2"]
-hint_tooltip = "Remove cat"
+hint_tooltip = "delete"
 cost = 8
 
 [node name="AudioShoot" type="AudioStreamPlayer" parent="."]

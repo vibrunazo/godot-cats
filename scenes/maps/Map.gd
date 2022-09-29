@@ -213,7 +213,7 @@ func action_pressed(name: String, _button: CircleButton):
 #	show_tooltip_on(button)
 	
 
-func action_released(name: String, button: CircleButton):
+func action_released(name: String, _button: CircleButton):
 	if cat_building:
 		if can_build(cat_building.global_position):
 			build_cat(name)

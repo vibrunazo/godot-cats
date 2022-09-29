@@ -2,6 +2,8 @@ extends PanelContainer
 
 class_name Tooltip
 
+onready var el_label: Label = $"%Label"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visible = false
@@ -20,7 +22,7 @@ func hide():
 	visible = false
 
 func set_label(hint: String):
-	$Label.text = hint
+	el_label.text = hint
 
 
 func _on_VisibilityTimer_timeout():
