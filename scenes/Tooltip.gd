@@ -9,14 +9,14 @@ func _ready():
 	visible = false
 
 # registers this tooltip on the map, so the map can place it in the appropriate layer
-# called by the CircleButton 
+# called by the CircleButton, or the Cat
 func register_tooltip():
 	var root = get_tree().current_scene
 	root.call_deferred("register_new_tooltip", self)
 
 # adjust the position of the tooltip to fit inside the screen if it's being cut off
 func adjust_position():
-	print('window real size: %s, window size: %s, pos: %s, size: %s, vp: %s' % [OS.get_real_window_size(), OS.window_size, get_global_transform().origin, rect_size, get_viewport_rect().size])
+#	print('window real size: %s, window size: %s, pos: %s, size: %s, vp: %s' % [OS.get_real_window_size(), OS.window_size, get_global_transform().origin, rect_size, get_viewport_rect().size])
 	var pos := get_global_transform().origin
 	var size := rect_size
 	var vp := get_viewport_rect().size

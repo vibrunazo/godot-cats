@@ -40,6 +40,7 @@ audio_stream = ExtResource( 7 )
 
 [node name="Cat03" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
+cat_name = "Cat3"
 damage = 800
 cooldown = 9.0
 aggro_range = 145.0

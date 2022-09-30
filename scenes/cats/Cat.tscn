@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scenes/cats/Cat.gd" type="Script" id=1]
 [ext_resource path="res://scenes/cats/CatClickArea.gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/audio/crunch.1.ogg" type="AudioStream" id=12]
 [ext_resource path="res://assets/audio/grass_step.wav" type="AudioStream" id=13]
 [ext_resource path="res://assets/audio/cat-purr.wav" type="AudioStream" id=14]
+[ext_resource path="res://scenes/Tooltip.tscn" type="PackedScene" id=15]
 
 [sub_resource type="CircleShape2D" id=1]
 resource_local_to_scene = true
@@ -1585,6 +1586,15 @@ cost = 20
 [node name="DeleteButton" parent="UIroot/UI/CatActions/HBoxContainer" index="2"]
 hint_tooltip = "delete"
 cost = 8
+
+[node name="CatTooltip" parent="UIroot/UI" instance=ExtResource( 15 )]
+unique_name_in_owner = true
+anchor_top = 1.28
+anchor_bottom = 1.28
+margin_left = -85.0
+margin_top = -74.0
+margin_right = 85.0
+margin_bottom = 0.0
 
 [node name="AudioShoot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )

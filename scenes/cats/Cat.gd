@@ -31,6 +31,7 @@ onready var el_up1_button: CircleButton = get_node("%CatActions").get_node("%UpB
 onready var el_up2_button: CircleButton = get_node("%CatActions").get_node("%Up2Button")
 onready var el_del_button: CircleButton = get_node("%CatActions").get_node("%DeleteButton")
 onready var el_grab_l: Position2D = $"%grab_l"
+onready var el_cat_tooltip: Tooltip = $"%CatTooltip"
 var SELECTION_SIZE := 400.0
 var map_ref: Node2D = null
 var cell_pos: Vector2 = Vector2(0, 0)
@@ -111,21 +112,30 @@ func select():
 		$UIAnimations.play("select")
 		$UIroot/UI/CatActions/AnimationPlayer.play("start")
 		el_circle.visible = true
+#		show_cat_tooltip()
 	
 func unselect():
 	selected = false
 	$UIAnimations.play("unselect", 0, 2)
-#	el_UI.visible = false
-#	get_node("%CatAction/AnimationPlayer").play("start")
+#	hide_cat_tooltip()
 	if !Global.DEBUG: return
 	for m in aggro_list:
 		var mouse: Mouse = m
 		mouse.show_target_index(false)
+
+func show_tooltip():
+	var full_name = GameData.cat_data[cat_name].full_name
+	el_cat_tooltip.set_label(full_name)
+	el_cat_tooltip.show()
+
+func hide_tooltip():
+	el_cat_tooltip.hide()
 		
 func register_tooltips():
 	el_up1_button.register_tooltip()
 	el_up2_button.register_tooltip()
 	el_del_button.register_tooltip()
+	el_cat_tooltip.register_tooltip()
 		
 func update_aggro_labels():
 	if !Global.DEBUG: return

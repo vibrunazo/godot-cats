@@ -3,14 +3,17 @@ extends Node
 var cat_data = {
 	"Cat1": {
 		'id': 0,
+		'full_name': "Yarn Cat",
 		'cost': 10
 	},
 	"Cat2": {
 		'id': 1,
+		'full_name': "Witch Cat",
 		'cost': 15
 	},
 	"Cat3": {
 		'id': 2,
+		'full_name': "Fat Cat",
 		'cost': 20
 	}
 }

@@ -191,12 +191,14 @@ func button_entered(button: CircleButton):
 func button_exited(button: CircleButton):
 	button.hide_tooltip()
 
-func show_tooltip_on(button: CircleButton):
+# can be either a CircleButton or a Cat
+func show_tooltip_on(button):
 	for t in tooltips:
 		t.hide()
 	button.show_tooltip()
 
-func hide_tooltip_on(button: CircleButton):
+# can eb either a CircleButton or a Cat
+func hide_tooltip_on(button):
 	button.hide_tooltip()
 
 func action_pressed(name: String, _button: CircleButton):
@@ -416,11 +418,13 @@ func _on_cat_clicked(cat: Cat):
 	if cat == cat_selected:
 		cat_selected = null
 		cat.unselect()
+		hide_tooltip_on(cat)
 	else:
 		if is_instance_valid(cat_selected):
 			cat_selected.unselect()
 		cat.select()
 		cat_selected = cat
+		show_tooltip_on(cat)
 
 func _on_SettingsButton_pressed():
 	toggle_pause()
