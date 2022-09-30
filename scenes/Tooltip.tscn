@@ -51,14 +51,14 @@ custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
-margin_right = 167.0
-margin_bottom = 71.0
+margin_right = 498.0
+margin_bottom = 133.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 2 )
 
 [node name="Margin" type="MarginContainer" parent="."]
-margin_right = 167.0
-margin_bottom = 71.0
+margin_right = 498.0
+margin_bottom = 133.0
 mouse_filter = 2
 custom_constants/margin_right = 8
 custom_constants/margin_top = 6
@@ -69,16 +69,18 @@ custom_constants/margin_bottom = 6
 unique_name_in_owner = true
 margin_left = 8.0
 margin_top = 6.0
-margin_right = 159.0
-margin_bottom = 65.0
+margin_right = 490.0
+margin_bottom = 127.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-text = "Tool tip"
+text = "I am a very large tooltip
+of course"
 valign = 1
 
 [node name="VisibilityTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
+[connection signal="resized" from="." to="." method="_on_Tooltip_resized"]
 [connection signal="timeout" from="VisibilityTimer" to="." method="_on_VisibilityTimer_timeout"]

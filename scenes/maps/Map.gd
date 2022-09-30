@@ -184,6 +184,7 @@ func register_new_tooltip(tip: Tooltip):
 	tip.get_parent().remove_child(tip)
 	$UI/Tooltips.add_child(tip)
 	tip.set_global_position(pos)
+	tip.registered = true
 
 func button_entered(button: CircleButton):
 	show_tooltip_on(button)
