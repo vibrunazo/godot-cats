@@ -3,6 +3,7 @@ extends PanelContainer
 class_name Tooltip
 
 onready var el_label: Label = $"%Label"
+onready var el_desc: RichTextLabel = $"%DescriptionLabel"
 var registered := false
 
 # Called when the node enters the scene tree for the first time.
@@ -17,7 +18,7 @@ func register_tooltip():
 
 # adjust the position of the tooltip to fit inside the screen if it's being cut off
 func adjust_position():
-	var tp = $"%Label".text.left(5)
+#	var tp = $"%Label".text.left(5)
 #	print('tp: %s, gpos: %s, lpos: %s, size: %s, vp: %s' % [tp, get_global_transform().origin, rect_position, rect_size, get_viewport_rect().size])
 	var pos := get_global_transform().origin
 	var size := rect_size
@@ -48,8 +49,14 @@ func show():
 func hide():
 	visible = false
 
-func set_label(hint: String):
+func set_label(hint: String, desc: String = ''):
 	el_label.text = hint
+	el_desc.bbcode_text = desc
+	if desc.length() > 0:
+		el_desc.rect_min_size.x = 460
+		el_desc.fit_content_height = true
+	else:
+		el_desc.fit_content_height = false
 
 
 func _on_VisibilityTimer_timeout():

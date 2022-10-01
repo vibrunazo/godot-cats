@@ -126,7 +126,7 @@ func unselect():
 func show_tooltip():
 	var full_name = GameData.cat_data[cat_name].full_name
 	var description = GameData.cat_data[cat_name].description
-	el_cat_tooltip.set_label("%s\n%s" % [full_name, description])
+	el_cat_tooltip.set_label("%s" % [full_name], description)
 	el_cat_tooltip.show()
 
 func hide_tooltip():
