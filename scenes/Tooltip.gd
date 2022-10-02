@@ -42,10 +42,11 @@ func adjust_position():
 		rect_position.y -= delta
 #	print('tooltip moved to g: %s, l: %s' % [pos, rect_position])
 
-func show():
+func show(duration: float = -1):
 #	adjust_position()
 	visible = true
-	$VisibilityTimer.start()
+	if duration != 0:
+		$VisibilityTimer.start(duration)
 
 func hide():
 	visible = false
@@ -56,8 +57,8 @@ func set_label(hint: String, desc: String = ''):
 	el_desc.bbcode_text = desc
 	if desc.length() > 0:
 		el_desc.fit_content_height = true
-		if desc.length() > 30:
-			el_desc.rect_min_size.x = 460
+#		if desc.length() > 30:
+#			el_desc.rect_min_size.x = 460
 	else:
 		el_desc.fit_content_height = false
 

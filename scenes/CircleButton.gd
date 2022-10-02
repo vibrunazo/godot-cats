@@ -17,8 +17,8 @@ func _ready():
 func register_tooltip():
 	el_tooltip.register_tooltip()
 
-func show_tooltip():
-	el_tooltip.show()
+func show_tooltip(duration = -1):
+	el_tooltip.show(duration)
 
 func hide_tooltip():
 	el_tooltip.hide()

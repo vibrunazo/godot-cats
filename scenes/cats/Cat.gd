@@ -133,16 +133,16 @@ func update_tooltip():
 	var full_name = GameData.cat_data[cat_name].full_name
 	var description = GameData.cat_data[cat_name].description
 	description = (
-"""damage: %s
-range: %s
-cooldown: %s""" 
+"""[color=#ee1]damage[/color] %s
+[color=#ee1]range[/color] %s
+[color=#ee1]cooldown[/color] %s""" 
 % [damage, aggro_range, cooldown] )
 	el_cat_tooltip.set_label(full_name, description)
 
 # called by map when cat is clicked
-func show_tooltip():
+func show_tooltip(duration = -1):
 	update_tooltip()
-	el_cat_tooltip.show()
+	el_cat_tooltip.show(duration)
 
 func hide_tooltip():
 	el_cat_tooltip.hide()
@@ -152,7 +152,7 @@ func register_tooltips():
 	var id = 0
 	for b in buttons:
 		var button: CircleButton = b
-		button.el_tooltip.rect_min_size.x = 250
+#		button.el_tooltip.rect_min_size.x = 250
 		button.el_tooltip.set_label(action_names[id], action_descs[id])
 		button.register_tooltip()
 		id += 1

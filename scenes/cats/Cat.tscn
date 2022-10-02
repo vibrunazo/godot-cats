@@ -1576,11 +1576,20 @@ anchor_top = 1.0
 anchor_right = 0.5
 rect_pivot_offset = Vector2( 0, -160 )
 
+[node name="Tooltip" parent="UIroot/UI/CatActions/HBoxContainer/UpButton" index="2"]
+rect_min_size = Vector2( 300, 0 )
+
 [node name="Up2Button" parent="UIroot/UI/CatActions/HBoxContainer" index="1"]
 cost = 20
 
+[node name="Tooltip" parent="UIroot/UI/CatActions/HBoxContainer/Up2Button" index="2"]
+rect_min_size = Vector2( 300, 0 )
+
 [node name="DeleteButton" parent="UIroot/UI/CatActions/HBoxContainer" index="2"]
 cost = 8
+
+[node name="Tooltip" parent="UIroot/UI/CatActions/HBoxContainer/DeleteButton" index="2"]
+rect_min_size = Vector2( 300, 0 )
 
 [node name="CatTooltip" parent="UIroot/UI" instance=ExtResource( 15 )]
 unique_name_in_owner = true
@@ -1590,6 +1599,7 @@ margin_left = -85.0
 margin_top = -74.0
 margin_right = 85.0
 margin_bottom = 0.0
+rect_min_size = Vector2( 300, 0 )
 
 [node name="AudioShoot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
