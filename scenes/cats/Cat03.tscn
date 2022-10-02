@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/cats/Cat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/cat03_tail.png" type="Texture" id=2]
@@ -21,6 +21,13 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 [sub_resource type="GradientTexture" id=4]
 gradient = SubResource( 3 )
 
+[sub_resource type="Curve" id=6]
+max_value = 2.0
+_data = [ Vector2( 0.00888889, 0.043892 ), 0.0, 0.0, 0, 0, Vector2( 0.248889, 0.966572 ), 0.0, 0.0, 0, 0, Vector2( 0.995556, 0.421117 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
 [sub_resource type="ParticlesMaterial" id=5]
 emission_shape = 1
 emission_sphere_radius = 12.0
@@ -32,6 +39,7 @@ gravity = Vector3( 0, -10, 0 )
 initial_velocity = 20.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
+scale_curve = SubResource( 7 )
 color_ramp = SubResource( 4 )
 
 [sub_resource type="AudioStreamRandomPitch" id=2]
