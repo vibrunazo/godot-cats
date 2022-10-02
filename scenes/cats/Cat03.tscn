@@ -46,6 +46,8 @@ cooldown = 9.0
 aggro_range = 145.0
 shot_speed = 800
 attack_anim = "attack_melee"
+action_names = [ "delete", "+range", "-cooldown" ]
+action_descs = [ "deletes the cat", "increases range", "reduces time sleeping" ]
 meow_every = 1
 focus = 1
 
@@ -104,7 +106,6 @@ __meta__ = {
 visible = false
 
 [node name="Up2Button" parent="UIroot/UI/CatActions/HBoxContainer" index="1"]
-hint_tooltip = "Reduce Cooldown"
 cost = 25
 
 [node name="AudioShoot" parent="." index="8"]

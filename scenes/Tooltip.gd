@@ -5,6 +5,7 @@ class_name Tooltip
 onready var el_label: Label = $"%Label"
 onready var el_desc: RichTextLabel = $"%DescriptionLabel"
 var registered := false
+var labelled := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -50,11 +51,13 @@ func hide():
 	visible = false
 
 func set_label(hint: String, desc: String = ''):
+	labelled = true
 	el_label.text = hint
 	el_desc.bbcode_text = desc
 	if desc.length() > 0:
-		el_desc.rect_min_size.x = 460
 		el_desc.fit_content_height = true
+		if desc.length() > 30:
+			el_desc.rect_min_size.x = 460
 	else:
 		el_desc.fit_content_height = false
 
@@ -64,6 +67,6 @@ func _on_VisibilityTimer_timeout():
 
 
 func _on_Tooltip_resized():
-	if !registered: return
-#	print('tooltip resized to %s' % rect_size)
+	if !registered or !labelled: return
+	print('tooltip resized to %s' % rect_size)
 	adjust_position()

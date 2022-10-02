@@ -18,6 +18,8 @@ export var cooldown = 2.0
 export var aggro_range := 200.0
 export var shot_speed = 400
 export var attack_anim = "attack"
+export var action_names: Array = ['delete', '+range', '+damage']
+export var action_descs: Array = ['deletes the cat', 'increases range', 'increases damage']
 # Meows every X shots
 export var meow_every = 0
 export(FocusType) var focus = 0
@@ -30,6 +32,7 @@ onready var el_actions: Control = get_node("%CatActions")
 onready var el_up1_button: CircleButton = get_node("%CatActions").get_node("%UpButton")
 onready var el_up2_button: CircleButton = get_node("%CatActions").get_node("%Up2Button")
 onready var el_del_button: CircleButton = get_node("%CatActions").get_node("%DeleteButton")
+onready var buttons: Array = [el_del_button, el_up1_button, el_up2_button]
 onready var el_grab_l: Position2D = $"%grab_l"
 onready var el_cat_tooltip: Tooltip = $"%CatTooltip"
 var SELECTION_SIZE := 400.0
@@ -49,6 +52,9 @@ func _ready():
 	$SelectRoot.visible = true
 	total_cost = map_ref.data[cat_name]['cost']
 	update_worth(total_cost)
+#	var full_name = GameData.cat_data[cat_name].full_name
+#	var description = GameData.cat_data[cat_name].description
+#	el_cat_tooltip.set_label(full_name, description)
 	if selected:
 		update_range(aggro_range)
 		el_circle.visible = true
@@ -123,21 +129,31 @@ func unselect():
 		var mouse: Mouse = m
 		mouse.show_target_index(false)
 
-func show_tooltip():
+func update_tooltip():
 	var full_name = GameData.cat_data[cat_name].full_name
 	var description = GameData.cat_data[cat_name].description
-	el_cat_tooltip.set_label("%s" % [full_name], description)
+	el_cat_tooltip.set_label(full_name, description)
+
+# called by map when cat is clicked
+func show_tooltip():
+	update_tooltip()
 	el_cat_tooltip.show()
 
 func hide_tooltip():
 	el_cat_tooltip.hide()
-		
+
+# called when done building
 func register_tooltips():
-	el_up1_button.register_tooltip()
-	el_up2_button.register_tooltip()
-	el_del_button.register_tooltip()
+	var id = 0
+	for b in buttons:
+		var button: CircleButton = b
+		button.el_tooltip.rect_min_size.x = 250
+		button.el_tooltip.set_label(action_names[id], action_descs[id])
+		button.register_tooltip()
+		id += 1
 	el_cat_tooltip.register_tooltip()
-		
+	update_tooltip()
+
 func update_aggro_labels():
 	if !Global.DEBUG: return
 	var i := 0

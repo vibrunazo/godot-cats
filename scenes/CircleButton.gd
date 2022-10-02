@@ -7,7 +7,6 @@ onready var el_tooltip: Tooltip = $'%Tooltip'
 
 func _ready():
 	update_cost(cost)
-	el_tooltip.set_label(hint_tooltip)
 	var root = get_tree().current_scene
 #	print("root %s is class %s" % [root, root.get_class()])
 	root.call_deferred("register_new_button", self)
@@ -23,10 +22,7 @@ func show_tooltip():
 
 func hide_tooltip():
 	el_tooltip.hide()
-	
-func _make_custom_tooltip(_for_text):
-	return Control.new()
-	
+
 func update_cost(new_cost):
 	cost = new_cost
 	$Label.text = "$%s" % new_cost
