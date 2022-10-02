@@ -132,6 +132,11 @@ func unselect():
 func update_tooltip():
 	var full_name = GameData.cat_data[cat_name].full_name
 	var description = GameData.cat_data[cat_name].description
+	description = (
+"""damage: %s
+range: %s
+cooldown: %s""" 
+% [damage, aggro_range, cooldown] )
 	el_cat_tooltip.set_label(full_name, description)
 
 # called by map when cat is clicked
