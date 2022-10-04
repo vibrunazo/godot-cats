@@ -14,6 +14,7 @@ func _ready():
 	rng.randomize()
 	print('global script is ready, DEBUG is %s' % DEBUG)
 	set_volume(master_volume)
+#	TranslationServer.set_locale('en')
 
 func set_volume(volume: float):
 	set_bus_volume(volume)

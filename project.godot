@@ -87,8 +87,8 @@ config/name_pt_BR="Gatos"
 
 [autoload]
 
-GameData="*res://scripts/GameData.gd"
 Global="*res://scripts/Global.gd"
+GameData="*res://scripts/GameData.gd"
 
 [display]
 

@@ -1,6 +1,6 @@
 extends Node
 
-var cat_data = {
+onready var cat_data = {
 	"Cat1": {
 		'id': 0,
 		'full_name': tr('cat1'),
