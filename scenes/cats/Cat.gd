@@ -18,8 +18,8 @@ export var cooldown = 2.0
 export var aggro_range := 200.0
 export var shot_speed = 400
 export var attack_anim = "attack"
-export var action_names: Array = ['delete', '+range', '+damage']
-export var action_descs: Array = ['deletes the cat', 'increases range', 'increases damage']
+export var action_names: Array = [tr('action_delete'), tr('action_range'), tr('action_damage')]
+export var action_descs: Array = [tr('action_delete_desc'), tr('action_range_desc'), tr('action_damage_desc')]
 # Meows every X shots
 export var meow_every = 0
 export(FocusType) var focus = 0
@@ -133,9 +133,10 @@ func update_tooltip():
 	var full_name = GameData.cat_data[cat_name].full_name
 	var description = GameData.cat_data[cat_name].description
 	description = (
-"""[color=#ee1]damage[/color] %s
-[color=#ee1]range[/color] %s
-[color=#ee1]cooldown[/color] %s""" 
+		tr('cat_stats')
+#"""[color=#ee1]damage[/color] %s
+#[color=#ee1]range[/color] %s
+#[color=#ee1]cooldown[/color] %s""" 
 % [damage, aggro_range, cooldown] )
 	el_cat_tooltip.set_label(full_name, description)
 

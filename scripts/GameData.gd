@@ -3,20 +3,20 @@ extends Node
 var cat_data = {
 	"Cat1": {
 		'id': 0,
-		'full_name': "Yarn cat",
-		'description': "Throws yarn balls at mice. Damages one mouse at a time.",
+		'full_name': tr('cat1'),
+		'description': tr('cat1_description'),
 		'cost': 10
 	},
 	"Cat2": {
 		'id': 1,
-		'full_name': "Witch cat",
-		'description': "Witch cat is a very witchy cat that loves the dark arts of dark magic and uses it to damage many mice at once in an area.",
+		'full_name': tr('cat2'),
+		'description': tr('cat2_description'),
 		'cost': 15
 	},
 	"Cat3": {
 		'id': 2,
-		'full_name': "Fat cat",
-		'description': "Eats and sleeps. That's pretty much all he does.",
+		'full_name': tr('cat3'),
+		'description': tr('cat3_description'),
 		'cost': 20
 	}
 }
