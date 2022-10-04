@@ -20,3 +20,16 @@ cat_stats,"[color=#ee1]Damage[/color] %s
 [color=#ee1]Espera[/color] %ss"
 action_sleep,-Sleep,-Dormir
 action_sleep_desc,Reduce time sleeping,Menos tempo dormindo
+app_name,Cats vs Mice,Gatos x Ratos
+menu_play,Play,Jogar
+menu_settings,Settings,Configurar
+menu_exit,Exit,Sair
+levelmenu_title,Level Select,Escolha um nível
+levelmenu_back,<- Back,<- Voltar
+levelmenu_play,Play ->,Jogar ->
+menu_paused,Paused,Pausado
+menu_resume,Resume,Continuar
+menu_restart,Restart,Reiniciar
+menu_win,You Win!,Você Venceu!
+menu_next,Next!,Próximo!
+menu_gameover,Game Over!,Perdeu!

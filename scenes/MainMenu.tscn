@@ -38,20 +38,20 @@ margin_right = 187.0
 margin_right = 374.0
 custom_colors/font_color = Color( 0.890196, 0.913725, 0.121569, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "Cats vs Mice"
+text = "app_name"
 
 [node name="Separator" parent="HBoxContainer" index="1"]
 margin_right = 374.0
 
 [node name="ResumeButton" parent="HBoxContainer" index="2"]
 margin_right = 374.0
-text = "Play"
+text = "menu_play"
 
 [node name="SettingsButton" parent="HBoxContainer" index="3" instance=ExtResource( 5 )]
 margin_top = 227.0
 margin_right = 374.0
 margin_bottom = 294.0
-text = "Settings"
+text = "menu_settings"
 
 [node name="RestartButton" parent="HBoxContainer" index="4"]
 visible = false
