@@ -106,7 +106,7 @@ func _ready():
 		var cat_data = data[button.name]
 		var cost = cat_data.cost
 		var cat_name = cat_data.full_name
-		var desc = cat_data.description
+		var desc = tr(cat_data.description)
 		b.el_tooltip.set_label(cat_name, desc)
 		b.connect("pressed", self, "action_pressed", [b.get_name(), b])
 		b.connect("button_up", self, "action_released", [b.get_name(), b])

@@ -19,8 +19,8 @@ export var aggro_range := 200.0
 export var shot_speed = 400
 export var turn_speed: float = 3.5
 export var attack_anim = "attack"
-export var action_names: Array = [tr('action_delete'), tr('action_range'), tr('action_damage')]
-export var action_descs: Array = [tr('action_delete_desc'), tr('action_range_desc'), tr('action_damage_desc')]
+export var action_names: Array = ['action_delete', 'action_range', 'action_damage']
+export var action_descs: Array = ['action_delete_desc', 'action_range_desc', 'action_damage_desc']
 # Meows every X shots
 export var meow_every = 0
 export(FocusType) var focus = 0
@@ -131,8 +131,8 @@ func unselect():
 		mouse.show_target_index(false)
 
 func update_tooltip():
-	var full_name = GameData.cat_data[cat_name].full_name
-	var description = GameData.cat_data[cat_name].description
+	var full_name = tr(GameData.cat_data[cat_name].full_name)
+	var description = tr(GameData.cat_data[cat_name].description)
 	description = (
 		tr('cat_stats')
 #"""[color=#ee1]damage[/color] %s
@@ -155,7 +155,7 @@ func register_tooltips():
 	for b in buttons:
 		var button: CircleButton = b
 #		button.el_tooltip.rect_min_size.x = 250
-		button.el_tooltip.set_label(action_names[id], action_descs[id])
+		button.el_tooltip.set_label(tr(action_names[id]), tr(action_descs[id]))
 		button.register_tooltip()
 		id += 1
 	el_cat_tooltip.register_tooltip()

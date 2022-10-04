@@ -3,20 +3,20 @@ extends Node
 onready var cat_data = {
 	"Cat1": {
 		'id': 0,
-		'full_name': tr('cat1'),
-		'description': tr('cat1_description'),
+		'full_name': 'cat1',
+		'description': 'cat1_description',
 		'cost': 10
 	},
 	"Cat2": {
 		'id': 1,
-		'full_name': tr('cat2'),
-		'description': tr('cat2_description'),
+		'full_name': 'cat2',
+		'description': 'cat2_description',
 		'cost': 15
 	},
 	"Cat3": {
 		'id': 2,
-		'full_name': tr('cat3'),
-		'description': tr('cat3_description'),
+		'full_name': 'cat3',
+		'description': 'cat3_description',
 		'cost': 20
 	}
 }

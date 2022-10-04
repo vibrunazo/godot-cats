@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/MainScene.gd" type="Script" id=1]
 [ext_resource path="res://assets/tiledbg.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://scenes/LevelSelectMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/audio/music/One Man Symphony - Royalty Free Soundtrack Collection - 74 Happy Memories.mp3" type="AudioStream" id=6]
 [ext_resource path="res://resources/cats_theme.tres" type="Theme" id=7]
+[ext_resource path="res://assets/us.png" type="Texture" id=8]
+[ext_resource path="res://assets/brazil.png" type="Texture" id=9]
 
 [sub_resource type="Gradient" id=4]
 resource_local_to_scene = true
@@ -670,14 +672,15 @@ custom_constants/margin_top = 50
 [node name="LangOption" type="OptionButton" parent="CanvasLayer/MarginContainer"]
 unique_name_in_owner = true
 margin_top = 50.0
-margin_right = 120.0
-margin_bottom = 115.0
+margin_right = 142.0
+margin_bottom = 120.0
 rect_min_size = Vector2( 120, 0 )
 focus_neighbour_bottom = NodePath("../../MainMenu/HBoxContainer/ResumeButton")
 action_mode = 1
 text = "en"
+icon = ExtResource( 8 )
 align = 2
-items = [ "en", null, false, 0, null, "pt_BR", null, false, 1, null ]
+items = [ "en", ExtResource( 8 ), false, 0, null, "pt_BR", ExtResource( 9 ), false, 1, null ]
 selected = 0
 
 [node name="TileMap" type="TileMap" parent="."]
