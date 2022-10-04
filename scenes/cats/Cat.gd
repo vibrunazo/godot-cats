@@ -182,7 +182,8 @@ func _physics_process(_delta):
 		
 func follow_target():
 	if !target or !is_instance_valid(target): return
-	if !is_ready(): return
+	if !is_ready() and state != State.ATTACK: return
+#	if state == State.EAT: return
 	if !target.is_inside_tree() or !is_inside_tree(): return
 	if !$Turret.is_inside_tree(): return
 	var pos = target.global_position
@@ -288,6 +289,7 @@ func grab_target():
 		return
 	if is_instance_valid(grabbed_target):
 		grabbed_target.on_finished_eaten()
+	state = State.EAT
 	grabbed_target = locked_target
 	var rot = locked_target.global_rotation
 	locked_target.on_get_grabbed(self)
@@ -296,7 +298,6 @@ func grab_target():
 	locked_target.position = Vector2(0, 0)
 	locked_target.global_rotation = rot
 	target = null
-#	state = State.EAT
 	$AudioGrass.pitch_scale = 3.0
 	$AudioGrass.play()
 
