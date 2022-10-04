@@ -17,6 +17,7 @@ export var damage = 10
 export var cooldown = 2.0
 export var aggro_range := 200.0
 export var shot_speed = 400
+export var turn_speed: float = 3.5
 export var attack_anim = "attack"
 export var action_names: Array = [tr('action_delete'), tr('action_range'), tr('action_damage')]
 export var action_descs: Array = [tr('action_delete_desc'), tr('action_range_desc'), tr('action_damage_desc')]
@@ -186,8 +187,13 @@ func follow_target():
 #	if state == State.EAT: return
 	if !target.is_inside_tree() or !is_inside_tree(): return
 	if !$Turret.is_inside_tree(): return
-	var pos = target.global_position
-	$Turret.look_at(pos)
+	var pos := target.global_position
+	var target_vector: Vector2 = pos - global_position
+	var target_rot: float = target_vector.angle()
+	var target_tran: Transform2D = Transform2D(target_rot, global_position)
+	$Turret.global_transform = $Turret.global_transform.interpolate_with(target_tran, turn_speed * get_physics_process_delta_time())
+#	$Turret.global_rotation = lerp($Turret.global_rotation, target_rot, 1.5 * get_physics_process_delta_time())
+#	$Turret.look_at(pos)
 
 func acquire_new_target(new_target: Mouse):
 	target = new_target

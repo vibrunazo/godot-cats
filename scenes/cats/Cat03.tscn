@@ -53,6 +53,7 @@ damage = 800
 cooldown = 9.0
 aggro_range = 145.0
 shot_speed = 800
+turn_speed = 8.0
 attack_anim = "attack_melee"
 meow_every = 1
 focus = 1
