@@ -21,6 +21,9 @@ func _ready():
 		b.connect("focus_entered", self, "level_pressed", [b.get_name()])
 
 func update_lang_from_locale():
+	if !OS.has_touchscreen_ui_hint(): 
+		# no touch, I'm on PC
+		el_lang.action_mode = 1
 	if TranslationServer.get_locale() == 'en':
 		el_lang.select(0)
 	else:

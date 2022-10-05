@@ -672,11 +672,10 @@ custom_constants/margin_top = 50
 [node name="LangOption" type="OptionButton" parent="CanvasLayer/MarginContainer"]
 unique_name_in_owner = true
 margin_top = 50.0
-margin_right = 142.0
+margin_right = 200.0
 margin_bottom = 120.0
-rect_min_size = Vector2( 120, 0 )
+rect_min_size = Vector2( 200, 0 )
 focus_neighbour_bottom = NodePath("../../MainMenu/HBoxContainer/ResumeButton")
-action_mode = 1
 text = "en"
 icon = ExtResource( 8 )
 align = 2
