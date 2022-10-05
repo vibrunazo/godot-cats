@@ -35,7 +35,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ -15.0 ]
+"values": [ -25.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Turret/SpriteRoot/cat_body/hand_l:rotation_degrees")
@@ -47,7 +47,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 15.0 ]
+"values": [ 25.0 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Turret/SpriteRoot/SpawnPosition/BulletSprite:visible")
@@ -277,7 +277,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.6, 0.7, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -15.0, 50.0, 30.0, 30.0, -60.0, -15.0, -15.0 ]
+"values": [ -25.0, 50.0, 30.0, 30.0, -60.0, -25.0, -25.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Turret/SpriteRoot/cat_body/hand_l:rotation_degrees")
@@ -289,7 +289,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.4, 0.6, 0.7, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 15.0, -50.0, -30.0, -30.0, 60.0, 15.0, 15.0 ]
+"values": [ 25.0, -50.0, -30.0, -30.0, 60.0, 25.0, 25.0 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Turret/SpriteRoot/SpawnPosition/BulletSprite:visible")
@@ -862,7 +862,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ -15.0, -30.0, -15.0 ]
+"values": [ -25.0, -40.0, -25.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Turret/SpriteRoot/cat_body/hand_l:rotation_degrees")
@@ -874,7 +874,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 15.0, 30.0, 15.0 ]
+"values": [ 25.0, 40.0, 25.0 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Turret/SpriteRoot/SpawnPosition/BulletSprite:visible")
@@ -1031,6 +1031,18 @@ tracks/14/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Turret/SpriteRoot/SpawnPosition/BulletSprite:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -7.49999 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -1471,7 +1483,7 @@ rotation = 1.5708
 unique_name_in_owner = true
 position = Vector2( 41.8, -0.000151316 )
 rotation = -1.5708
-scale = Vector2( 0.5, 0.5 )
+scale = Vector2( 0.4, 0.4 )
 
 [node name="BulletSprite" type="Sprite" parent="Turret/SpriteRoot/SpawnPosition"]
 modulate = Color( 0.9, 0.36, 0.36, 1 )
@@ -1493,7 +1505,7 @@ texture = ExtResource( 5 )
 [node name="hand_l" type="Sprite" parent="Turret/SpriteRoot/cat_body"]
 show_behind_parent = true
 position = Vector2( 20, 24 )
-rotation = 0.261799
+rotation = 0.436332
 texture = ExtResource( 4 )
 offset = Vector2( 0, 8 )
 
@@ -1504,7 +1516,7 @@ position = Vector2( 0, 20 )
 [node name="hand_r" type="Sprite" parent="Turret/SpriteRoot/cat_body"]
 show_behind_parent = true
 position = Vector2( -20, 24 )
-rotation = -0.261799
+rotation = -0.436332
 texture = ExtResource( 4 )
 offset = Vector2( 0, 8 )
 
