@@ -7,6 +7,8 @@ cat3,Fat cat,Gato gordo
 cat3_description,Eats and sleeps. That's pretty much all he does.,Só come e dorme. Isso é tudo o que ele faz.
 action_delete,Delete,Remover
 action_delete_desc,Delete cat,Remover gato
+action_yarn,Yarn ball,Bola de lã
+action_yarn_desc,Increases damage,Aumenta dano
 action_damage,+Damage,+Dano
 action_damage_desc,Increase damage,Aumentar dano
 action_range,+Range,+Alcance

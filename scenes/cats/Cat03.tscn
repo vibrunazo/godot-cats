@@ -80,11 +80,9 @@ texture = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="hand_l" parent="Turret/SpriteRoot/cat_body" index="0"]
-rotation = 0.436332
 texture = ExtResource( 5 )
 
 [node name="hand_r" parent="Turret/SpriteRoot/cat_body" index="1"]
-rotation = -0.436332
 texture = ExtResource( 5 )
 
 [node name="head" parent="Turret/SpriteRoot" index="3"]
