@@ -10,3 +10,4 @@ func _on_up2_pressed():
 	spawn_position.scale = Vector2(0.6, 0.6)
 	bullet_sprite.modulate = Color('#4147dd')
 	bullet_scene = preload("res://scenes/BulletYarn.tscn")
+	el_up2_button.hide()
