@@ -19,8 +19,6 @@ export var aggro_range := 200.0
 export var shot_speed = 400
 export var turn_speed: float = 3.5
 export var attack_anim = "attack"
-export var action_names: Array = ['action_delete', 'action_range', 'action_damage']
-export var action_descs: Array = ['action_delete_desc', 'action_range_desc', 'action_damage_desc']
 # Meows every X shots
 export var meow_every = 0
 export(FocusType) var focus = 0
@@ -88,11 +86,14 @@ func done_building(new_cell = Vector2(0, 0)):
 	$AnimationPlayer.play("idle")
 	modulate = Color.white
 	adjust_UI()
+	register_action_buttons()
 	$AudioSpawn.play()
 	$AudioGrass.play()
 	search_new_target()
 
-# adjust buttons positions so they don't stay off screen if the Cat is close to borders
+# adjust action buttons positions so they don't stay off screen 
+# if the Cat is close to screen borders
+# called when done building
 func adjust_UI():
 	if cell_pos.x == 0:
 		el_actions.rect_position.x += 200
@@ -106,8 +107,7 @@ func adjust_UI():
 		el_actions.rect_position.y -= 250
 		el_actions.rect_pivot_offset.y += 250
 		el_actions.get_node("HBoxContainer").rect_pivot_offset.y += 250
-	register_tooltips()
-	
+
 func select():
 	selected = true
 	on_map_coins_changed(map_ref.coins)
@@ -130,6 +130,8 @@ func unselect():
 		var mouse: Mouse = m
 		mouse.show_target_index(false)
 
+# updates the cat's tooltip
+# with name, description and stats
 func update_tooltip():
 	var full_name = tr(GameData.cat_data[cat_name].full_name)
 	var description = tr(GameData.cat_data[cat_name].description)
@@ -149,13 +151,24 @@ func show_tooltip(duration = -1):
 func hide_tooltip():
 	el_cat_tooltip.hide()
 
+# connects what each action button does
+# based on this Cat's actions tree
+# updates their tooltips
 # called when done building
-func register_tooltips():
+func register_action_buttons():
+	var actions = $Actions.get_children()
 	var id = 0
 	for b in buttons:
 		var button: CircleButton = b
-#		button.el_tooltip.rect_min_size.x = 250
-		button.el_tooltip.set_label(tr(action_names[id]), tr(action_descs[id]))
+		var action: Action = actions[id]
+		button.connect("pressed", self, "action_pressed", [action, button])
+		button.connect("pressed", self, action.method)
+		button.update_icon(action.icon, action.icon_size, action.icon_tint)
+		if action.cost > 0:
+			button.update_cost(action.cost)
+		else:
+			button.update_cost(get_delete_coins())
+		button.el_tooltip.set_label(tr(action.action_name), tr(action.description))
 		button.register_tooltip()
 		id += 1
 	el_cat_tooltip.register_tooltip()
@@ -169,10 +182,23 @@ func update_aggro_labels():
 		mouse.show_target_index(true, str(i))
 		i += 1
 
+func up_range():
+	update_range(aggro_range + 20.0)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func up_damage():
+	damage += 10
+
+func up_cooldown():
+	cooldown *= 0.7
+	$Cooldown.wait_time = cooldown
+
+func action_pressed(action: Action, button: CircleButton):
+	print('action pressed %s' % action)
+	var cost = action.cost
+	if map_ref.coins < cost:
+		return
+	map_ref.add_coins(-cost)
+	add_worth(cost)
 
 func _physics_process(_delta):
 	if is_instance_valid(target):
@@ -286,6 +312,8 @@ func hit_target():
 		return
 	locked_target.on_hit(self)
 
+# grabs a target
+# called by the animation when it gets to the appropriate frame
 func grab_target():
 	if !locked_target or !is_instance_valid(locked_target) or !locked_target.is_ready(): 
 		$Cooldown.stop()
@@ -332,6 +360,9 @@ func on_eat_finished():
 	else:
 		$AnimationPlayer.play("idle")
 
+# updates how much the Cat is worth 
+# based on the costs of all upgrades
+# higher worth means more coins back when the Cat is deleted
 func update_worth(new_worth: int):
 	total_cost = new_worth
 	el_del_button.update_cost(get_delete_coins())
@@ -339,6 +370,8 @@ func update_worth(new_worth: int):
 func add_worth(new_worth: int):
 	update_worth(total_cost + new_worth)
 	
+# returns how many coins you'd get for deleting this cat
+# increases as you get more upgrades
 func get_delete_coins() -> int:
 	return int(total_cost * 0.8)
 
@@ -351,7 +384,6 @@ func _on_AggroRange_area_entered(area: Node):
 		search_new_target()
 #		acquire_new_target(mouse)
 #	print(aggro_list)
-
 
 func _on_AggroRange_area_exited(area: Node):
 	if !area.get_parent().is_in_group("mice"):

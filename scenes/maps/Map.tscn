@@ -694,8 +694,11 @@ __meta__ = {
 }
 
 [node name="TextureRect" parent="UI/HUD/ActionBar/Cat1/CenterContainer" index="0"]
-margin_right = 130.0
-margin_bottom = 130.0
+margin_left = 35.0
+margin_top = 35.0
+margin_right = 125.0
+margin_bottom = 125.0
+rect_min_size = Vector2( 90, 90 )
 texture = ExtResource( 10 )
 
 [node name="Cat2" parent="UI/HUD/ActionBar" groups=["action_button"] instance=ExtResource( 1 )]
@@ -718,8 +721,11 @@ __meta__ = {
 }
 
 [node name="TextureRect" parent="UI/HUD/ActionBar/Cat2/CenterContainer" index="0"]
-margin_right = 130.0
-margin_bottom = 130.0
+margin_left = 35.0
+margin_top = 35.0
+margin_right = 125.0
+margin_bottom = 125.0
+rect_min_size = Vector2( 90, 90 )
 texture = ExtResource( 2 )
 
 [node name="Label" parent="UI/HUD/ActionBar/Cat2" index="1"]
@@ -751,6 +757,8 @@ __meta__ = {
 }
 
 [node name="TextureRect" parent="UI/HUD/ActionBar/Cat3/CenterContainer" index="0"]
+margin_left = 30.0
+margin_top = 30.0
 margin_right = 160.0
 margin_bottom = 160.0
 rect_min_size = Vector2( 130, 130 )

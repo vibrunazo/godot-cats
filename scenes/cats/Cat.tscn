@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scenes/cats/Cat.gd" type="Script" id=1]
 [ext_resource path="res://scenes/cats/CatClickArea.gd" type="Script" id=2]
@@ -15,6 +15,10 @@
 [ext_resource path="res://assets/audio/grass_step.wav" type="AudioStream" id=13]
 [ext_resource path="res://assets/audio/cat-purr.wav" type="AudioStream" id=14]
 [ext_resource path="res://scenes/Tooltip.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/Action.gd" type="Script" id=16]
+[ext_resource path="res://assets/x.png" type="Texture" id=17]
+[ext_resource path="res://assets/range.png" type="Texture" id=18]
+[ext_resource path="res://assets/dmg.png" type="Texture" id=19]
 
 [sub_resource type="CircleShape2D" id=1]
 resource_local_to_scene = true
@@ -1588,6 +1592,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 rect_pivot_offset = Vector2( 0, -160 )
 
+[node name="TextureRect" parent="UIroot/UI/CatActions/HBoxContainer/UpButton/CenterContainer" index="0"]
+texture = ExtResource( 19 )
+
 [node name="Tooltip" parent="UIroot/UI/CatActions/HBoxContainer/UpButton" index="2"]
 rect_min_size = Vector2( 300, 0 )
 
@@ -1599,6 +1606,9 @@ rect_min_size = Vector2( 300, 0 )
 
 [node name="DeleteButton" parent="UIroot/UI/CatActions/HBoxContainer" index="2"]
 cost = 8
+
+[node name="TextureRect" parent="UIroot/UI/CatActions/HBoxContainer/DeleteButton/CenterContainer" index="0"]
+texture = ExtResource( 19 )
 
 [node name="Tooltip" parent="UIroot/UI/CatActions/HBoxContainer/DeleteButton" index="2"]
 rect_min_size = Vector2( 300, 0 )
@@ -1643,11 +1653,32 @@ stream = SubResource( 16 )
 volume_db = 3.0
 bus = "sfx"
 
+[node name="Actions" type="Node" parent="."]
+
+[node name="Delete" type="Node" parent="Actions"]
+script = ExtResource( 16 )
+action_name = "action_delete"
+description = "action_delete_desc"
+cost = -5.0
+icon = ExtResource( 17 )
+
+[node name="Up1" type="Node" parent="Actions"]
+script = ExtResource( 16 )
+method = "up_range"
+cost = 5.0
+icon = ExtResource( 18 )
+
+[node name="Up2" type="Node" parent="Actions"]
+script = ExtResource( 16 )
+action_name = "action_damage"
+description = "action_damage_desc"
+method = "up_damage"
+cost = 15.0
+icon = ExtResource( 19 )
+
 [connection signal="area_entered" from="AggroRange" to="." method="_on_AggroRange_area_entered"]
 [connection signal="area_exited" from="AggroRange" to="." method="_on_AggroRange_area_exited"]
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
-[connection signal="pressed" from="UIroot/UI/CatActions/HBoxContainer/UpButton" to="." method="_on_up_pressed"]
-[connection signal="pressed" from="UIroot/UI/CatActions/HBoxContainer/Up2Button" to="." method="_on_up2_pressed"]
 [connection signal="pressed" from="UIroot/UI/CatActions/HBoxContainer/DeleteButton" to="." method="_on_delete_pressed"]
 
 [editable path="UIroot/UI/CatActions"]

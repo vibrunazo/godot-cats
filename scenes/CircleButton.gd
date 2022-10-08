@@ -26,6 +26,11 @@ func hide_tooltip():
 func update_cost(new_cost):
 	cost = new_cost
 	$Label.text = "$%s" % new_cost
+	
+func update_icon(new_icon: Texture, size: Vector2 = Vector2(64, 64), color: Color = Color.white):
+	$CenterContainer/TextureRect.texture = new_icon
+	$CenterContainer/TextureRect.rect_min_size = size
+	$CenterContainer/TextureRect.modulate = color
 
 func set_disabled(value: bool):
 	if disabled != value:
@@ -35,15 +40,9 @@ func set_disabled(value: bool):
 		else:
 			$AnimationPlayer.play("enabled")
 
-func _on_CircleButton_button_down():
-	pass # Replace with function body.
-
-func _on_CircleButton_button_up():
-	pass # Replace with function body.
-
 func _on_CircleButton_pressed():
 	$AnimationPlayer.play("pressed")
-		
+
 func _on_pressed_mid_point():
 	if disabled:
 		$AnimationPlayer.stop()

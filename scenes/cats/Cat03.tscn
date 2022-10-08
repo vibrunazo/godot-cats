@@ -122,6 +122,14 @@ volume_db = -4.0
 stream = SubResource( 2 )
 volume_db = 10.0
 
+[node name="Up2" parent="Actions" index="2"]
+action_name = "action_sleep"
+description = "action_sleep_desc"
+method = "up_cooldown"
+cost = 25.0
+icon = ExtResource( 9 )
+icon_size = Vector2( 32, 32 )
+
 [editable path="UIroot/UI/CatActions"]
 [editable path="UIroot/UI/CatActions/HBoxContainer/UpButton"]
 [editable path="UIroot/UI/CatActions/HBoxContainer/Up2Button"]
