@@ -46,6 +46,7 @@ stream = SubResource( 2 )
 action_name = "action_yarn"
 description = "action_yarn_desc"
 method = "up_yarn"
+binds = [ 25.0 ]
 icon = ExtResource( 4 )
 icon_size = Vector2( 45, 45 )
 icon_tint = Color( 0.254902, 0.278431, 0.866667, 1 )

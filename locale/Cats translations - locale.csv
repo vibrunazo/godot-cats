@@ -8,20 +8,20 @@ cat3_description,Eats and sleeps. That's pretty much all he does.,Só come e dor
 action_delete,Delete,Remover
 action_delete_desc,Delete cat,Remover gato
 action_yarn,Yarn ball,Bola de lã
-action_yarn_desc,Increases damage,Aumenta dano
+action_yarn_desc,Increases damage by {0},Aumenta dano em {0}
 action_damage,+Damage,+Dano
-action_damage_desc,Increase damage,Aumentar dano
+action_damage_desc,Increase damage by {0},Aumenta dano em {0}
 action_range,+Range,+Alcance
-action_range_desc,Increase range,Aumentar distância de alcance dos ataques
+action_range_desc,Increase range by {0}cm,Aumenta distância dos ataques em {0}cm
 action_cooldown,-Cooldown,-Espera
-action_cooldown_desc,Reduce cooldown,Diminuir tempo de espera entre ataques
+action_cooldown_desc,Reduce cooldown by {0},Diminuir tempo de espera entre ataques em {0}
 cat_stats,"[color=#ee1]Damage[/color] %s
-[color=#ee1]Range[/color] %s
+[color=#ee1]Range[/color] %sm
 [color=#ee1]Cooldown[/color] %ss","[color=#ee1]Dano[/color] %s
-[color=#ee1]Alcance[/color] %s
+[color=#ee1]Alcance[/color] %sm
 [color=#ee1]Espera[/color] %ss"
 action_sleep,-Sleep,-Dormir
-action_sleep_desc,Reduce time sleeping,Menos tempo dormindo
+action_sleep_desc,Reduce time sleeping by {0}%,{0}% Menos tempo dormindo
 app_name,Cats vs Mice,Gatos x Ratos
 menu_play,Play,Jogar
 menu_settings,Settings,Configurar

@@ -1472,7 +1472,6 @@ modulate = Color( 0.45, 0.75, 0.9, 0.901961 )
 texture = ExtResource( 7 )
 
 [node name="AggroRange" type="Area2D" parent="."]
-visible = false
 monitoring = false
 
 [node name="AggroShape" type="CollisionShape2D" parent="AggroRange"]
@@ -1665,6 +1664,7 @@ icon = ExtResource( 17 )
 [node name="Up1" type="Node" parent="Actions"]
 script = ExtResource( 16 )
 method = "up_range"
+binds = [ 10.0 ]
 cost = 5.0
 icon = ExtResource( 18 )
 
@@ -1673,6 +1673,7 @@ script = ExtResource( 16 )
 action_name = "action_damage"
 description = "action_damage_desc"
 method = "up_damage"
+binds = [ 10.0 ]
 cost = 15.0
 icon = ExtResource( 19 )
 

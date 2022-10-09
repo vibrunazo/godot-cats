@@ -140,7 +140,7 @@ func update_tooltip():
 #"""[color=#ee1]damage[/color] %s
 #[color=#ee1]range[/color] %s
 #[color=#ee1]cooldown[/color] %s""" 
-% [damage, aggro_range, cooldown] )
+% [damage, aggro_range / 200.0, cooldown] )
 	el_cat_tooltip.set_label(full_name, description)
 
 # called by map when cat is clicked
@@ -162,13 +162,13 @@ func register_action_buttons():
 		var button: CircleButton = b
 		var action: Action = actions[id]
 		button.connect("pressed", self, "action_pressed", [action, button])
-		button.connect("pressed", self, action.method)
+		button.connect("pressed", self, action.method, action.binds)
 		button.update_icon(action.icon, action.icon_size, action.icon_tint)
 		if action.cost > 0:
 			button.update_cost(action.cost)
 		else:
 			button.update_cost(get_delete_coins())
-		button.el_tooltip.set_label(tr(action.action_name), tr(action.description))
+		button.el_tooltip.set_label(action.action_name, action.description)
 		button.register_tooltip()
 		id += 1
 	el_cat_tooltip.register_tooltip()
@@ -182,14 +182,20 @@ func update_aggro_labels():
 		mouse.show_target_index(true, str(i))
 		i += 1
 
-func up_range():
-	update_range(aggro_range + 20.0)
+# upgrades range
+# value in centimeters 
+# 220 pixels in game is 110 cm
+func up_range(value: float):
+	update_range(aggro_range + value * 2.0)
 
-func up_damage():
-	damage += 10
+func up_damage(value):
+	damage += value
 
-func up_cooldown():
-	cooldown *= 0.7
+# upgrades cooldown
+# value in percentage,
+# ie, value of 30 reduces cooldown by 30%
+func up_cooldown(value: float):
+	cooldown *= (1 - value/100.0)
 	$Cooldown.wait_time = cooldown
 
 func action_pressed(action: Action, button: CircleButton):

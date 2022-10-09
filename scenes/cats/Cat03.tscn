@@ -126,6 +126,7 @@ volume_db = 10.0
 action_name = "action_sleep"
 description = "action_sleep_desc"
 method = "up_cooldown"
+binds = [ 30.0 ]
 cost = 25.0
 icon = ExtResource( 9 )
 icon_size = Vector2( 32, 32 )

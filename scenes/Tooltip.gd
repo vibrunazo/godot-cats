@@ -69,5 +69,5 @@ func _on_VisibilityTimer_timeout():
 
 func _on_Tooltip_resized():
 	if !registered or !labelled: return
-	print('tooltip resized to %s' % rect_size)
+#	print('tooltip resized to %s' % rect_size)
 	adjust_position()
