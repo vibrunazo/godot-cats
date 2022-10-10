@@ -5,6 +5,8 @@ class_name Bullet, "res://assets/ball.png"
 export var speed = 400
 export var damage = 10
 export var aoe = false
+export var turn_rate_min: float = 0
+export var turn_rate_max: float = 0
 export(Array, AudioStream) var sounds: Array
 export(PackedScene) var blast_scene: PackedScene
 var target: Mouse = null setget set_target
@@ -15,11 +17,13 @@ var ready = true
 #var blast_scene: PackedScene = preload("res://scenes/Blast.tscn")
 var hit_pitch: float = 1
 var velocity: Vector2
+var turn_rate: float = 0
 
 
 func _ready():
 	target_offset = Vector2(rand_range(-12, 12), rand_range(-12, 12))
 	hit_pitch = $AudioHit.pitch_scale
+	turn_rate = rand_range(turn_rate_min, turn_rate_max)
 
 func set_target(new_target: Mouse):
 	target = new_target
@@ -31,7 +35,7 @@ func _physics_process(delta):
 	look_at(target_pos)
 	velocity = Vector2(speed, 0).rotated(rotation)
 	position += velocity * delta
-#	$Sprite.global_rotation_degrees = 0
+	$Sprite.global_rotation_degrees += turn_rate * delta
 	# TODO this is framerate dependant
 	# maybe Tween to target position instead?
 	if position.distance_to(target_pos) < speed * delta * 2:
