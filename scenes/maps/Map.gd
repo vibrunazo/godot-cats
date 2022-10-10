@@ -330,7 +330,14 @@ func update_coins():
 func _unhandled_input(event):
 	if event.is_action_pressed("pause"):
 		toggle_pause()
-#	print('new event %s' % event)
+	if event.is_pressed():
+#		print('new event %s at %s' % [event, get_global_mouse_position()])
+		if get_cat_at(get_global_mouse_position()) == cat_selected:
+			return
+		if is_instance_valid(cat_selected):
+			cat_selected.unselect()
+			hide_tooltip_on(cat_selected)
+			cat_selected = null
 		
 		
 func snap_to_grid(position: Vector2):
@@ -348,6 +355,11 @@ func can_build(position: Vector2) -> bool:
 	if cats_dict.get(cell_pos): return false
 	if !is_inside_map(cell_pos): return false
 	return true
+
+# returns the cat located at given global mouse position
+func get_cat_at(position: Vector2) -> Cat:
+	var cell_pos = $TileMap.world_to_map(position)
+	return cats_dict.get(cell_pos)
 
 func is_inside_map(cell_pos: Vector2):
 	var x1 = 0
@@ -419,6 +431,7 @@ func _on_mouse_reached_cheese(mouse: Mouse):
 	add_life(-mouse.worth)
 	update_UI_mousebar()
 
+# connected to cat clicked event by the build cat
 func _on_cat_clicked(cat: Cat):
 	print('clicked cat %s' % cat.name)
 	if cat == cat_selected:
