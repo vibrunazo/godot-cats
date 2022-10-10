@@ -31,7 +31,7 @@ func _physics_process(delta):
 	look_at(target_pos)
 	velocity = Vector2(speed, 0).rotated(rotation)
 	position += velocity * delta
-	$Sprite.global_rotation_degrees = 0
+#	$Sprite.global_rotation_degrees = 0
 	# TODO this is framerate dependant
 	# maybe Tween to target position instead?
 	if position.distance_to(target_pos) < speed * delta * 2:

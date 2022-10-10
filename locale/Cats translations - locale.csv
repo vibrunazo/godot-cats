@@ -12,7 +12,7 @@ action_yarn_desc,Increases damage by {0},Aumenta dano em {0}
 action_damage,+Damage,+Dano
 action_damage_desc,Increase damage by {0},Aumenta dano em {0}
 action_range,+Range,+Alcance
-action_range_desc,Increase range by {0}cm,Aumenta distância dos ataques em {0}cm
+action_range_desc,Increase range by {0}cm,Aumenta em {0}cm a distância dos ataques
 action_cooldown,-Cooldown,-Espera
 action_cooldown_desc,Reduce cooldown by {0},Diminuir tempo de espera entre ataques em {0}
 cat_stats,"[color=#ee1]Damage[/color] %s

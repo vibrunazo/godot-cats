@@ -8,7 +8,7 @@ var aggro_list = []
 var target: Mouse
 var locked_target: Mouse
 var grabbed_target: Mouse
-var bullet_scene = preload("res://scenes/Bullet.tscn")
+var bullet_scene = preload("res://scenes/BulletBasic.tscn")
 enum FocusType {FURTHEST, HEALTH}
 #export var building = true
 export var selected = true
@@ -137,10 +137,7 @@ func update_tooltip():
 	var description = tr(GameData.cat_data[cat_name].description)
 	description = (
 		tr('cat_stats')
-#"""[color=#ee1]damage[/color] %s
-#[color=#ee1]range[/color] %s
-#[color=#ee1]cooldown[/color] %s""" 
-% [damage, aggro_range / 200.0, cooldown] )
+		% [damage, aggro_range / 200.0, cooldown] )
 	el_cat_tooltip.set_label(full_name, description)
 
 # called by map when cat is clicked
