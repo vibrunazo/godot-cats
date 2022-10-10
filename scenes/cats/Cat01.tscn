@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/cats/Cat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/audio/meow01.wav" type="AudioStream" id=2]
 [ext_resource path="res://scenes/cats/Cat01.gd" type="Script" id=3]
 [ext_resource path="res://assets/ball.png" type="Texture" id=4]
+[ext_resource path="res://scenes/Action.gd" type="Script" id=5]
+[ext_resource path="res://assets/teacup.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 resource_local_to_scene = true
@@ -45,11 +47,19 @@ stream = SubResource( 2 )
 [node name="Up2" parent="Actions" index="2"]
 action_name = "action_yarn"
 description = "action_yarn_desc"
-method = "up_teacup"
+method = "up_yarn"
 binds = [ 25.0 ]
 icon = ExtResource( 4 )
 icon_size = Vector2( 45, 45 )
 icon_tint = Color( 0.254902, 0.278431, 0.866667, 1 )
+
+[node name="UpTeacup" type="Node" parent="Actions/Up2" index="0"]
+script = ExtResource( 5 )
+action_name = "action_damage"
+description = "action_damage_desc"
+method = "up_teacup"
+binds = [ 20.0 ]
+icon = ExtResource( 6 )
 
 [editable path="UIroot/UI/CatActions"]
 [editable path="UIroot/UI/CatActions/HBoxContainer/UpButton"]

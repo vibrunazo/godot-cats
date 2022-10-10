@@ -4,6 +4,7 @@ class_name CircleButton, "res://assets/button_circle.png"
 
 export var cost := 10
 onready var el_tooltip: Tooltip = $'%Tooltip'
+var action = null
 
 func _ready():
 	update_cost(cost)

@@ -158,18 +158,27 @@ func register_action_buttons():
 	for b in buttons:
 		var button: CircleButton = b
 		var action: Action = actions[id]
+		# warning-ignore:return_value_discarded
 		button.connect("pressed", self, "action_pressed", [action, button])
-		button.connect("pressed", self, action.method, action.binds)
-		button.update_icon(action.icon, action.icon_size, action.icon_tint)
-		if action.cost > 0:
-			button.update_cost(action.cost)
-		else:
-			button.update_cost(get_delete_coins())
-		button.el_tooltip.set_label(action.action_name, action.description)
-		button.register_tooltip()
+		register_action_to_button(action, button)
 		id += 1
 	el_cat_tooltip.register_tooltip()
 	update_tooltip()
+
+func register_action_to_button(action: Action, button: CircleButton):
+	if button.action:
+		var connected: Action = button.action
+		button.disconnect("pressed", self, connected.method)
+	button.action = action
+# warning-ignore:return_value_discarded
+	button.connect("pressed", self, action.method, action.binds)
+	button.update_icon(action.icon, action.icon_size, action.icon_tint)
+	if action.cost > 0:
+		button.update_cost(action.cost)
+	else:
+		button.update_cost(get_delete_coins())
+	button.el_tooltip.set_label(action.action_name, action.description)
+	button.register_tooltip()
 
 func update_aggro_labels():
 	if !Global.DEBUG: return
@@ -198,10 +207,14 @@ func up_cooldown(value: float):
 func action_pressed(action: Action, button: CircleButton):
 	print('action pressed %s' % action)
 	var cost = action.cost
-	if map_ref.coins < cost:
+	if map_ref.coins < cost || cost < 0:
 		return
 	map_ref.add_coins(-cost)
 	add_worth(cost)
+	var children = action.get_children()
+	print('children of %s are: %s' % [action, children])
+	if children.size() > 0:
+		register_action_to_button(children[0], button)
 
 func _physics_process(_delta):
 	if is_instance_valid(target):
