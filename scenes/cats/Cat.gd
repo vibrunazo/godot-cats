@@ -159,6 +159,8 @@ func register_action_buttons():
 	for b in buttons:
 		var button: CircleButton = b
 		var action: Action = actions[id]
+		# warning-ignore:return_value_discarded
+		button.connect("pressed", self, "action_pressed", [button])
 		register_action_to_button(action, button)
 		id += 1
 	el_cat_tooltip.register_tooltip()
@@ -169,12 +171,8 @@ func register_action_to_button(action: Action, button: CircleButton):
 		var connected: Action = button.action
 		button.disconnect("pressed", self, connected.method)
 	button.action = action
-	if button.is_connected("pressed", self, "action_pressed"):
-		button.disconnect("pressed", self, "action_pressed")
 	# warning-ignore:return_value_discarded
-	button.connect("pressed", self, "action_pressed", [action, button])
-	# warning-ignore:return_value_discarded
-	button.connect("pressed", self, action.method, action.binds)
+#	button.connect("pressed", self, action.method, action.binds)
 	button.update_icon(action.icon, action.icon_size, action.icon_tint)
 	if action.cost > 0:
 		button.update_cost(action.cost)
@@ -207,7 +205,8 @@ func up_cooldown(value: float):
 	cooldown *= (1 - value/100.0)
 	$Cooldown.wait_time = cooldown
 
-func action_pressed(action: Action, button: CircleButton):
+func action_pressed(button: CircleButton):
+	var action = button.action
 	print('action pressed %s' % action)
 	var cost = action.cost
 	if map_ref.coins < cost || cost < 0:
@@ -220,6 +219,8 @@ func action_pressed(action: Action, button: CircleButton):
 		register_action_to_button(children[0], button)
 	else:
 		button.hide()
+	callv(action.method, action.binds)
+	update_tooltip()
 
 func _physics_process(_delta):
 	if is_instance_valid(target):

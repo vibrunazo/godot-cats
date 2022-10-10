@@ -57,6 +57,8 @@ texture = ExtResource( 4 )
 stream = SubResource( 2 )
 
 [node name="Up1" parent="Actions" index="1"]
+action_name = "action_tower"
+description = "action_tower_desc"
 method = "up_tower"
 binds = [ 30.0 ]
 cost = 10.0
@@ -73,8 +75,8 @@ icon_tint = Color( 0.254902, 0.278431, 0.866667, 1 )
 
 [node name="UpTeacup" type="Node" parent="Actions/Up2" index="0"]
 script = ExtResource( 5 )
-action_name = "action_damage"
-description = "action_damage_desc"
+action_name = "action_teacup"
+description = "action_teacup_desc"
 method = "up_teacup"
 binds = [ 20.0 ]
 icon = ExtResource( 6 )
