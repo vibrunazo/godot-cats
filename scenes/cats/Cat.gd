@@ -158,8 +158,6 @@ func register_action_buttons():
 	for b in buttons:
 		var button: CircleButton = b
 		var action: Action = actions[id]
-		# warning-ignore:return_value_discarded
-		button.connect("pressed", self, "action_pressed", [action, button])
 		register_action_to_button(action, button)
 		id += 1
 	el_cat_tooltip.register_tooltip()
@@ -170,7 +168,11 @@ func register_action_to_button(action: Action, button: CircleButton):
 		var connected: Action = button.action
 		button.disconnect("pressed", self, connected.method)
 	button.action = action
-# warning-ignore:return_value_discarded
+	if button.is_connected("pressed", self, "action_pressed"):
+		button.disconnect("pressed", self, "action_pressed")
+	# warning-ignore:return_value_discarded
+	button.connect("pressed", self, "action_pressed", [action, button])
+	# warning-ignore:return_value_discarded
 	button.connect("pressed", self, action.method, action.binds)
 	button.update_icon(action.icon, action.icon_size, action.icon_tint)
 	if action.cost > 0:
@@ -215,6 +217,8 @@ func action_pressed(action: Action, button: CircleButton):
 	print('children of %s are: %s' % [action, children])
 	if children.size() > 0:
 		register_action_to_button(children[0], button)
+	else:
+		button.hide()
 
 func _physics_process(_delta):
 	if is_instance_valid(target):
