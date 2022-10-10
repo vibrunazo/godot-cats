@@ -1,5 +1,11 @@
 extends Cat
 
+func up_tower(value: float = 20):
+	up_range(value)
+	$BaseSprite.visible = true
+	$BaseSprite.texture = preload("res://assets/scratchtower.png")
+	$Turret.position.y = -30
+	
 func up_yarn(value: float = 25):
 	damage += value
 	spawn_position.scale = Vector2(0.6, 0.6)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/cats/Cat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/audio/meow01.wav" type="AudioStream" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/ball.png" type="Texture" id=4]
 [ext_resource path="res://scenes/Action.gd" type="Script" id=5]
 [ext_resource path="res://assets/teacup.png" type="Texture" id=6]
+[ext_resource path="res://assets/scratchtower.png" type="Texture" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 resource_local_to_scene = true
@@ -25,8 +26,19 @@ focus = 1
 [node name="AggroShape" parent="AggroRange" index="0"]
 shape = SubResource( 1 )
 
-[node name="Cooldown" parent="." index="3"]
+[node name="BaseSprite" type="Sprite" parent="." index="2"]
+visible = false
+position = Vector2( 0, 12 )
+texture = ExtResource( 7 )
+
+[node name="SpriteRoot" parent="Turret" index="0"]
+z_index = 10
+
+[node name="Cooldown" parent="." index="4"]
 wait_time = 1.4
+
+[node name="ClickArea" parent="." index="5"]
+visible = false
 
 [node name="Up2Button" parent="UIroot/UI/CatActions/HBoxContainer" index="1"]
 cost = 15
@@ -41,8 +53,14 @@ rect_min_size = Vector2( 38, 38 )
 rect_pivot_offset = Vector2( 32, 32 )
 texture = ExtResource( 4 )
 
-[node name="AudioSpawn" parent="." index="9"]
+[node name="AudioSpawn" parent="." index="10"]
 stream = SubResource( 2 )
+
+[node name="Up1" parent="Actions" index="1"]
+method = "up_tower"
+binds = [ 30.0 ]
+cost = 10.0
+icon = ExtResource( 7 )
 
 [node name="Up2" parent="Actions" index="2"]
 action_name = "action_yarn"

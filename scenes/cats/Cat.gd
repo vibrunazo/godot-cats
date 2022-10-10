@@ -49,6 +49,7 @@ func _ready():
 	el_UI.visible = false
 	$UIroot.visible = true
 	$SelectRoot.visible = true
+	$ClickArea.visible = true
 	total_cost = map_ref.data[cat_name]['cost']
 	update_worth(total_cost)
 #	var full_name = GameData.cat_data[cat_name].full_name
@@ -236,7 +237,7 @@ func follow_target():
 	var pos := target.global_position
 	var target_vector: Vector2 = pos - global_position
 	var target_rot: float = target_vector.angle()
-	var target_tran: Transform2D = Transform2D(target_rot, global_position)
+	var target_tran: Transform2D = Transform2D(target_rot, $Turret.global_position)
 	$Turret.global_transform = $Turret.global_transform.interpolate_with(target_tran, turn_speed * get_physics_process_delta_time())
 #	$Turret.global_rotation = lerp($Turret.global_rotation, target_rot, 1.5 * get_physics_process_delta_time())
 #	$Turret.look_at(pos)

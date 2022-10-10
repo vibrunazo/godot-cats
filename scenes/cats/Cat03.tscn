@@ -61,9 +61,6 @@ focus = 1
 [node name="SelectRoot" parent="." index="0"]
 visible = false
 
-[node name="AggroRange" parent="." index="1"]
-visible = true
-
 [node name="AggroShape" parent="AggroRange" index="0"]
 shape = SubResource( 1 )
 
