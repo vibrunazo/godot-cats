@@ -167,12 +167,7 @@ func register_action_buttons():
 	update_tooltip()
 
 func register_action_to_button(action: Action, button: CircleButton):
-	if button.action:
-		var connected: Action = button.action
-		button.disconnect("pressed", self, connected.method)
 	button.action = action
-	# warning-ignore:return_value_discarded
-#	button.connect("pressed", self, action.method, action.binds)
 	button.update_icon(action.icon, action.icon_size, action.icon_tint)
 	if action.cost > 0:
 		button.update_cost(action.cost)

@@ -8,12 +8,15 @@ func up_tower(value: float = 20):
 	
 func up_yarn(value: float = 25):
 	damage += value
-	spawn_position.scale = Vector2(0.6, 0.6)
-	bullet_sprite.modulate = Color('#4147dd')
+	shot_speed = 280
+	spawn_position.scale = Vector2(1.0, 1.0)
+	bullet_sprite.modulate = Color.white
+	bullet_sprite.texture = preload("res://assets/yarn.png")
 	bullet_scene = preload("res://scenes/BulletYarn.tscn")
 
 func up_teacup(value: float = 25):
 	damage += value
+	shot_speed = 400
 	spawn_position.scale = Vector2(1.0, 1.0)
 	bullet_sprite.modulate = Color.white
 	bullet_sprite.texture = preload("res://assets/teacup.png")

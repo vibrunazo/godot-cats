@@ -130,5 +130,6 @@ stream = ExtResource( 3 )
 
 [editable path="UI/HUD/ActionBar/Cat1"]
 [editable path="UI/HUD/ActionBar/Cat2"]
+[editable path="UI/HUD/ActionBar/Cat3"]
 [editable path="UI/Menus/PauseMenu"]
 [editable path="UI/Menus/WinMenu"]

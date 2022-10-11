@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/cats/Cat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/audio/meow01.wav" type="AudioStream" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/Action.gd" type="Script" id=5]
 [ext_resource path="res://assets/teacup.png" type="Texture" id=6]
 [ext_resource path="res://assets/scratchtower.png" type="Texture" id=7]
+[ext_resource path="res://assets/yarn.png" type="Texture" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 resource_local_to_scene = true
@@ -69,9 +70,8 @@ action_name = "action_yarn"
 description = "action_yarn_desc"
 method = "up_yarn"
 binds = [ 25.0 ]
-icon = ExtResource( 4 )
+icon = ExtResource( 8 )
 icon_size = Vector2( 45, 45 )
-icon_tint = Color( 0.254902, 0.278431, 0.866667, 1 )
 
 [node name="UpTeacup" type="Node" parent="Actions/Up2" index="0"]
 script = ExtResource( 5 )
