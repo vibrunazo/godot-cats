@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/Bullet.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/yarn.png" type="Texture" id=2]
 [ext_resource path="res://assets/thread.png" type="Texture" id=3]
+[ext_resource path="res://scenes/blast/Blast03.tscn" type="PackedScene" id=4]
 
 [node name="BulletYarn" instance=ExtResource( 1 )]
 turn_rate_min = -800.0
 turn_rate_max = 800.0
+blast_scene = ExtResource( 4 )
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 1, 1 )
@@ -19,3 +21,6 @@ scale = Vector2( 0.35, 0.35 )
 [node name="Sprite2" type="Sprite" parent="Sprite" index="1"]
 position = Vector2( -29, -4 )
 texture = ExtResource( 3 )
+
+[node name="AudioHit" parent="." index="2"]
+volume_db = 0.0
