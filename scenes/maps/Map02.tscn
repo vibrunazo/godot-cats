@@ -36,6 +36,7 @@ font_data = ExtResource( 1 )
 
 [node name="Map" instance=ExtResource( 2 )]
 next_map = "Map03"
+life = 40
 wave_list = [ {
 "cooldown": 4.0,
 "size_max": 60,
