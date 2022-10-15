@@ -4,13 +4,13 @@ func up_house(value: float = 10):
 	up_range(value)
 	$BaseSprite.visible = true
 	$BaseSprite.texture = preload("res://assets/scratchhouse.png")
-	$Turret.position.y = -15
+	$Turret.position.y = -13
 
 func up_tower(value: float = 20):
 	up_range(value)
 	$BaseSprite.visible = true
 	$BaseSprite.texture = preload("res://assets/scratchtower.png")
-	$Turret.position.y = -30
+	$Turret.position.y = -33
 	
 func up_yarn(value: float = 25):
 	damage += value
