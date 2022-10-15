@@ -34,7 +34,7 @@ use_filter = true
 font_data = ExtResource( 1 )
 
 [node name="Map" instance=ExtResource( 2 )]
-life = 30
+life = 20
 wave_list = [ {
 "cooldown": 3,
 "size_max": 70,
