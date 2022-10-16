@@ -13,6 +13,8 @@ var alive := true
 var worth := 1
 enum State {READY, GRABBED, CHEESE, DEAD}
 var state: int = State.READY
+var tail_rot: Transform2D 
+onready var el_tail_follow: PathFollow2D = $TailFollow
 
 var rng: RandomNumberGenerator = Global.rng
 
@@ -21,8 +23,7 @@ func _ready():
 	start_walking()
 	update_scale()
 #	calculate_worth()
-	h_offset = rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE) * 2
-	v_offset = rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE)
+	ini_offsets()
 	if Global.DEBUG_MOUSE:
 		print("mouse ready with %s health and %s speed" % [health, speed])
 
@@ -32,9 +33,19 @@ func get_bullet_target():
 func end():
 	alive = false
 	queue_free()
+	el_tail_follow.queue_free()
 	
 func start_walking():
-	$AnimationPlayer.play("walk", 0, 1.4)
+	$AnimationPlayer.play("walk", 0, 1.4) #1.4 speed
+	
+func ini_offsets():
+#	h_offset = rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE) * 2
+	v_offset = rng.randf_range(-OFFSET_RANGE, OFFSET_RANGE)
+	remove_child(el_tail_follow)
+	get_parent().add_child(el_tail_follow)
+	el_tail_follow.h_offset = h_offset
+	el_tail_follow.v_offset = v_offset
+	tail_rot = $Sprite/SpriteTail.global_transform
 	
 func update_worth(hp: float):
 	worth = calculate_worth(hp)
@@ -60,6 +71,10 @@ func _physics_process(delta):
 		emit_signal("cheese")
 		end()
 		return
+	update_tail_rot(delta)
+	update_offset(delta)
+
+func update_offset(delta):
 	if $AnimationPlayer.current_animation != "walk":
 		return
 	var final_speed := speed
@@ -67,9 +82,28 @@ func _physics_process(delta):
 		final_speed = speed * 4
 	else:
 		final_speed = speed * 0.25
-	t += delta * final_speed
+#	t += delta * final_speed
+	t += delta * speed
 	offset = t
+	el_tail_follow.offset = offset - 50
 
+func update_tail_rot(delta):
+	if offset < 50:
+		tail_rot = $Sprite/TailRot.global_transform
+		return
+#	var tail_rot = Vector2(500,300)
+	var tail_loc = el_tail_follow.global_position
+	$Sprite/TailRot.look_at(tail_loc)
+	$Sprite/TailRot.rotation_degrees += 180
+#	$Sprite/SpriteTail.look_at(tail_loc)
+#	tail_rot = lerp(tail_rot, $Sprite/TailRot.global_rotation, delta * 10)
+	tail_rot = $Sprite/SpriteTail.get_global_transform()
+	tail_rot = tail_rot.interpolate_with($Sprite/TailRot.get_global_transform(), delta * 12)
+#	tail_rot = $Sprite/TailRot.get_global_transform()
+#	$Sprite/SpriteTail.rotation_degrees += 180
+	$Sprite/SpriteTail.global_rotation = tail_rot.get_rotation()
+#	$Turret.global_transform = $Turret.global_transform.interpolate_with(target_tran, turn_speed * get_physics_process_delta_time())
+	
 func update_scale():
 	var size = 0.5 + pow(health, 0.75) * 0.02
 	size = min(size, 1.7)
@@ -115,4 +149,4 @@ func on_get_grabbed(_cat: Node2D):
 	emit_signal("killed")
 
 func on_finished_eaten():
-	queue_free()
+	end()
