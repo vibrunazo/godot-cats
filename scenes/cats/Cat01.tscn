@@ -59,8 +59,8 @@ texture = ExtResource( 4 )
 stream = SubResource( 2 )
 
 [node name="Up1" parent="Actions" index="1"]
-action_name = "action_tower"
-description = "action_tower_desc"
+action_name = "action_house"
+description = "action_house_desc"
 method = "up_house"
 binds = [ 30.0 ]
 icon = ExtResource( 9 )

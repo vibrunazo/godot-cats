@@ -15,6 +15,8 @@ action_damage,+Damage,+Dano
 action_damage_desc,Increase damage by {0},Aumenta dano em {0}
 action_range,+Range,+Alcance
 action_range_desc,Increase range by {0}cm,Aumenta em {0}cm a distância dos ataques
+action_house,Scratch House,Toca
+action_house_desc,Throws {0}cm further,Atira {0}cm mais longe
 action_tower,Scratch Tower,Arranhador
 action_tower_desc,Throws {0}cm further,Atira {0}cm mais longe
 action_cooldown,-Cooldown,-Espera
