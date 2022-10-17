@@ -3,6 +3,7 @@ extends Node2D
 class_name Cat, "res://assets/cat01.png"
 # warning-ignore:unused_signal
 signal clicked
+signal shoot
 
 var aggro_list = []
 var target: Mouse
@@ -323,6 +324,7 @@ func shoot():
 	bullet.damage = damage
 	bullet.speed = shot_speed
 	bullet.set_target(locked_target)
+	emit_signal("shoot", bullet)
 
 func hit_target():
 	if !locked_target or !is_instance_valid(locked_target) or !locked_target.is_ready():

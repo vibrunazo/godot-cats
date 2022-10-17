@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Bullet, "res://assets/ball.png"
 
+signal hit
+
 export var speed = 400
 export var damage = 10
 export var aoe = false
@@ -61,6 +63,7 @@ func hit_target():
 		blast.start()
 		if is_instance_valid(target):
 			target.on_hit(self)
+	emit_signal("hit", self)
 	visible = false
 	random_hit_audio()
 	$AudioHit.pitch_scale = rand_range(hit_pitch - 0.2, hit_pitch + 0.2)

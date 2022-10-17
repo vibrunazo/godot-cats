@@ -237,11 +237,12 @@ func build_cat(name):
 	else:
 #		print("building cat at %s" % cell_pos)
 		cats_dict[cell_pos] = cat_building
-	
 	$UI.remove_child(cat_building)
 	$Actors.add_child(cat_building)
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	cat_building.connect("clicked", self, "_on_cat_clicked", [cat_building])
+	# warning-ignore:return_value_discarded
+	cat_building.connect("shoot", self, "_on_cat_shoot")
 	cat_building.done_building(cell_pos)
 	cat_building = null
 	add_coins(-data[name]['cost'])
@@ -444,6 +445,14 @@ func _on_cat_clicked(cat: Cat):
 		cat.select()
 		cat_selected = cat
 		show_tooltip_on(cat, 0)
+
+func _on_cat_shoot(bullet: Bullet):
+	print('Cat shooting %s of %sdmg' % [bullet, bullet.damage])
+	bullet.connect("hit", self, "_on_bullet_hit")
+
+func _on_bullet_hit(bullet: Bullet):
+	print('bullet hit')
+	$Camera.shake(bullet.damage/20)
 
 func _on_SettingsButton_pressed():
 	toggle_pause()
