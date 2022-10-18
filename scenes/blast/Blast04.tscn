@@ -199,7 +199,7 @@ tracks/7/keys = {
 [sub_resource type="Curve" id=6]
 max_value = 500.0
 bake_resolution = 50
-_data = [ Vector2( 0, -17.6608 ), 0.0, 0.0, 0, 0, Vector2( 0.182222, 500 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 500 ), 0.0, 0.0, 0, 0, Vector2( 0.257778, 500 ), 0.0, 0.0, 0, 0, Vector2( 0.493333, 258.688 ), -351.562, -351.562, 0, 0, Vector2( 1, 149.597 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=7]
 curve = SubResource( 6 )
@@ -218,7 +218,8 @@ spread = 180.0
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 200.0
 initial_velocity_random = 1.0
-angular_velocity = 500.0
+angular_velocity = 200.0
+angular_velocity_random = 0.48
 angular_velocity_curve = SubResource( 7 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0

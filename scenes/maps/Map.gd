@@ -150,7 +150,7 @@ func build_wave(wave: Dictionary, i: int):
 		wave_state_list[i] = wave_state
 	else:
 		wave_state_list.append(wave_state)
-# warning-ignore:return_value_discarded
+	# warning-ignore:return_value_discarded
 	t.connect("timeout", self, "wave_timer_timeout", [i])
 	yield(get_tree().create_timer(wave.start, false), "timeout")
 	print('starting wave %s' % i)
@@ -447,13 +447,11 @@ func _on_cat_clicked(cat: Cat):
 		show_tooltip_on(cat, 0)
 
 func _on_cat_shoot(bullet: Bullet):
-	print('Cat shooting %s of %sdmg' % [bullet, bullet.damage])
 	# warning-ignore:return_value_discarded
 	bullet.connect("hit", self, "_on_bullet_hit")
 
 func _on_bullet_hit(bullet: Bullet):
-	print('bullet hit')
-	var amp: float = 0.1 + bullet.damage/20.0
+	var amp: float = 0.1 + bullet.damage/30.0
 	if bullet.aoe:
 		amp *= 3
 	amp = clamp(amp, 0.1, 5)
