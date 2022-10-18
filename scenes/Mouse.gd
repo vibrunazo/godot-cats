@@ -77,6 +77,7 @@ func _physics_process(delta):
 func update_offset(delta):
 	if $AnimationPlayer.current_animation != "walk":
 		return
+# warning-ignore:unused_variable
 	var final_speed := speed
 	if $AnimationPlayer.current_animation_position < 0.125:
 		final_speed = speed * 4
