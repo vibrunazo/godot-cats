@@ -443,9 +443,25 @@ func _on_up2_pressed():
 
 func _on_delete_pressed():
 #	var cost = total_cost
+	var popup = ConfirmationDialog.new()
+	map_ref.get_node("UI/Menus").add_child(popup)
+	var full_name = tr(GameData.cat_data[cat_name].full_name)
+	popup.window_title = 'Delete %s?' % [full_name]
+	unselect()
+	popup.connect("confirmed", self, "on_delete_confirm")
+	popup.connect("hide", self, "on_delete_canceled")
+	popup.popup_centered()
+#	map_ref.add_coins(get_delete_coins())
+#	map_ref.remove_cat_at_cell(cell_pos)
+#	queue_free()
+
+func on_delete_confirm():
 	map_ref.add_coins(get_delete_coins())
 	map_ref.remove_cat_at_cell(cell_pos)
 	queue_free()
+
+func on_delete_canceled():
+	select()
 
 func on_map_coins_changed(coins: int):
 	el_up1_button.set_state_from_coins(coins)
