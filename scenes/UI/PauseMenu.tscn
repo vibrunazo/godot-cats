@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://resources/cats_theme.tres" type="Theme" id=1]
-[ext_resource path="res://scenes/PauseMenu.gd" type="Script" id=2]
+[ext_resource path="res://scenes/UI/PauseMenu.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://scenes/MenuToolButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/UI/MenuToolButton.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Gradient" id=1]
 interpolation_mode = 2

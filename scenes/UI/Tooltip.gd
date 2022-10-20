@@ -62,10 +62,8 @@ func set_label(hint: String, desc: String = ''):
 	else:
 		el_desc.fit_content_height = false
 
-
 func _on_VisibilityTimer_timeout():
 	hide()
-
 
 func _on_Tooltip_resized():
 	if !registered or !labelled: return

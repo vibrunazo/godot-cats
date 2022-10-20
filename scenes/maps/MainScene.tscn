@@ -1,10 +1,10 @@
 [gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://scenes/MainScene.gd" type="Script" id=1]
+[ext_resource path="res://scenes/UI/MainScene.gd" type="Script" id=1]
 [ext_resource path="res://assets/tiledbg.png" type="Texture" id=2]
 [ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://scenes/MainMenu.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/LevelSelectMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/UI/MainMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/UI/LevelSelectMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/audio/music/One Man Symphony - Royalty Free Soundtrack Collection - 74 Happy Memories.mp3" type="AudioStream" id=6]
 [ext_resource path="res://resources/cats_theme.tres" type="Theme" id=7]
 [ext_resource path="res://assets/us.png" type="Texture" id=8]

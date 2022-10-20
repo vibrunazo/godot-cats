@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://resources/cats_theme.tres" type="Theme" id=1]
-[ext_resource path="res://assets/range.png" type="Texture" id=2]
-[ext_resource path="res://assets/x.png" type="Texture" id=3]
-[ext_resource path="res://scenes/CircleButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/x.png" type="Texture" id=2]
+[ext_resource path="res://assets/range.png" type="Texture" id=3]
+[ext_resource path="res://scenes/UI/CircleButton.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -73,7 +73,7 @@ size_flags_vertical = 5
 custom_constants/separation = 20
 alignment = 1
 
-[node name="UpButton" parent="HBoxContainer" instance=ExtResource( 5 )]
+[node name="UpButton" parent="HBoxContainer" instance=ExtResource( 4 )]
 unique_name_in_owner = true
 anchor_left = 0.0
 anchor_top = 0.0
@@ -88,12 +88,12 @@ size_flags_vertical = 4
 cost = 5
 
 [node name="TextureRect" parent="HBoxContainer/UpButton/CenterContainer" index="0"]
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="Label" parent="HBoxContainer/UpButton" index="1"]
 text = "$5"
 
-[node name="Up2Button" parent="HBoxContainer" instance=ExtResource( 5 )]
+[node name="Up2Button" parent="HBoxContainer" instance=ExtResource( 4 )]
 unique_name_in_owner = true
 anchor_left = 0.0
 anchor_top = 0.0
@@ -107,7 +107,7 @@ margin_bottom = 128.0
 [node name="Label" parent="HBoxContainer/Up2Button" index="1"]
 text = "$20"
 
-[node name="DeleteButton" parent="HBoxContainer" instance=ExtResource( 5 )]
+[node name="DeleteButton" parent="HBoxContainer" instance=ExtResource( 4 )]
 unique_name_in_owner = true
 anchor_left = 0.0
 anchor_top = 0.0
@@ -119,7 +119,7 @@ margin_right = 425.0
 margin_bottom = 128.0
 
 [node name="TextureRect" parent="HBoxContainer/DeleteButton/CenterContainer" index="0"]
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 
 [node name="Label" parent="HBoxContainer/DeleteButton" index="1"]
 custom_colors/font_color = Color( 0.964706, 0.168627, 0.168627, 1 )

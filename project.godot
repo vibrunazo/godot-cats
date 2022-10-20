@@ -44,10 +44,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/CatCam.gd"
 }, {
+"base": "ConfirmationDialog",
+"class": "CatDialog",
+"language": "GDScript",
+"path": "res://scenes/UI/CatDialog.gd"
+}, {
 "base": "TextureButton",
 "class": "CircleButton",
 "language": "GDScript",
-"path": "res://scenes/CircleButton.gd"
+"path": "res://scenes/UI/CircleButton.gd"
 }, {
 "base": "Node2D",
 "class": "Map",
@@ -57,7 +62,7 @@ _global_script_classes=[ {
 "base": "ToolButton",
 "class": "MenuToolButton",
 "language": "GDScript",
-"path": "res://scenes/MenuToolButton.gd"
+"path": "res://scenes/UI/MenuToolButton.gd"
 }, {
 "base": "PathFollow2D",
 "class": "Mouse",
@@ -67,12 +72,12 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "PauseMenu",
 "language": "GDScript",
-"path": "res://scenes/PauseMenu.gd"
+"path": "res://scenes/UI/PauseMenu.gd"
 }, {
 "base": "PanelContainer",
 "class": "Tooltip",
 "language": "GDScript",
-"path": "res://scenes/Tooltip.gd"
+"path": "res://scenes/UI/Tooltip.gd"
 } ]
 _global_script_class_icons={
 "Action": "",
@@ -82,7 +87,8 @@ _global_script_class_icons={
 "Cat2": "res://assets/cat02.png",
 "Cat3": "res://assets/cat03.png",
 "CatCam": "",
-"CircleButton": "res://assets/button_circle.png",
+"CatDialog": "",
+"CircleButton": "",
 "Map": "",
 "MenuToolButton": "",
 "Mouse": "res://assets/mouse01.png",
