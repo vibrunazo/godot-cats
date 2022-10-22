@@ -4,6 +4,8 @@ class_name Cat, "res://assets/cat01.png"
 # warning-ignore:unused_signal
 signal clicked
 signal shoot
+signal unselect
+signal select
 
 var aggro_list = []
 var target: Mouse
@@ -38,7 +40,7 @@ onready var el_cat_tooltip: Tooltip = $"%CatTooltip"
 var SELECTION_SIZE := 400.0
 var map_ref: Node2D = null
 var cell_pos: Vector2 = Vector2(0, 0)
-enum State {BUILDING, READY, ATTACK, EAT}
+enum State {BUILDING, READY, ATTACK, EAT, DELETED}
 var state: int = State.BUILDING
 
 
@@ -450,7 +452,7 @@ func _on_delete_pressed():
 	var full_name = tr(GameData.cat_data[cat_name].full_name)
 #	popup.window_title = 'Delete %s for $%s?' % [full_name, get_delete_coins()]
 	popup.set_text(tr('menu_delete').format([full_name, get_delete_coins()]))
-	unselect()
+	emit_signal("unselect")
 	popup.connect("confirmed", self, "on_delete_confirm")
 	popup.connect("popup_hide", self, "on_delete_canceled", [popup])
 	popup.popup_centered()
@@ -463,11 +465,20 @@ func on_delete_confirm():
 	map_ref.add_coins(get_delete_coins())
 	map_ref.remove_cat_at_cell(cell_pos)
 	queue_free()
+	state = State.DELETED
 
 func on_delete_canceled(popup):
-	print('delete canceled')
 #	select()
+#	emit_signal("select")
 	popup.queue_free()
+	call_deferred("try_reselect")
+
+func try_reselect():
+	if state == State.DELETED: return
+	yield(get_tree().create_timer(0.1), "timeout")
+#	print('trying to reselect when selected is %s' % map_ref.cat_selected)
+	if !map_ref.cat_selected:
+		emit_signal("select")
 
 func on_map_coins_changed(coins: int):
 	el_up1_button.set_state_from_coins(coins)

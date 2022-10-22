@@ -239,6 +239,11 @@ func build_cat(name):
 		cats_dict[cell_pos] = cat_building
 	$UI.remove_child(cat_building)
 	$Actors.add_child(cat_building)
+	
+	# warning-ignore:return_value_discarded
+	cat_building.connect("select", self, "select_cat", [cat_building])
+	# warning-ignore:return_value_discarded
+	cat_building.connect("unselect", self, "unselect_cat", [cat_building])
 	# warning-ignore:return_value_discarded
 	cat_building.connect("clicked", self, "_on_cat_clicked", [cat_building])
 	# warning-ignore:return_value_discarded
@@ -336,9 +341,7 @@ func _unhandled_input(event):
 		if get_cat_at(get_global_mouse_position()) == cat_selected:
 			return
 		if is_instance_valid(cat_selected):
-			cat_selected.unselect()
-			hide_tooltip_on(cat_selected)
-			cat_selected = null
+			unselect_cat(cat_selected)
 
 func snap_to_grid(position: Vector2):
 	var map_position = $TileMap.world_to_map(position)
@@ -435,15 +438,22 @@ func _on_mouse_reached_cheese(mouse: Mouse):
 func _on_cat_clicked(cat: Cat):
 	print('clicked cat %s' % cat.name)
 	if cat == cat_selected:
-		cat_selected = null
-		cat.unselect()
-		hide_tooltip_on(cat)
+		unselect_cat(cat)
 	else:
 		if is_instance_valid(cat_selected):
 			cat_selected.unselect()
-		cat.select()
-		cat_selected = cat
-		show_tooltip_on(cat, 0)
+		select_cat(cat)
+		
+func unselect_cat(cat: Cat):
+	print('unselecting cat')
+	cat_selected = null
+	cat.unselect()
+	hide_tooltip_on(cat)
+
+func select_cat(cat: Cat):
+	cat.select()
+	cat_selected = cat
+	show_tooltip_on(cat, 0)
 
 func _on_cat_shoot(bullet: Bullet):
 	# warning-ignore:return_value_discarded
