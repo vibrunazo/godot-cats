@@ -41,3 +41,4 @@ menu_restart,Restart,Reiniciar
 menu_win,You Win!,Você Venceu!
 menu_next,Next!,Próximo!
 menu_gameover,Game Over!,Perdeu!
+menu_delete,Delete {0} to gain ${1}?,Apagar {0} em troca de ${1}?

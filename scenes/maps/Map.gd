@@ -339,8 +339,7 @@ func _unhandled_input(event):
 			cat_selected.unselect()
 			hide_tooltip_on(cat_selected)
 			cat_selected = null
-		
-		
+
 func snap_to_grid(position: Vector2):
 	var map_position = $TileMap.world_to_map(position)
 	var cell_position = $TileMap.map_to_world(map_position)

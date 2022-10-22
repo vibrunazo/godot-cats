@@ -1,9 +1,10 @@
-[gd_resource type="Theme" load_steps=8 format=2]
+[gd_resource type="Theme" load_steps=9 format=2]
 
 [ext_resource path="res://resources/Merienda_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/x.png" type="Texture" id=3]
+[ext_resource path="res://assets/x-small.png" type="Texture" id=3]
 [ext_resource path="res://resources/TooltipPanelbg.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/x-small-hl.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=3]
 resource_local_to_scene = true
@@ -57,10 +58,10 @@ RichTextLabel/fonts/italics_font = ExtResource( 1 )
 RichTextLabel/fonts/normal_font = SubResource( 2 )
 ToolButton/styles/focus = SubResource( 1 )
 WindowDialog/colors/title_color = Color( 0.631373, 0.776471, 0.101961, 1 )
-WindowDialog/constants/close_h_ofs = 18
-WindowDialog/constants/close_v_ofs = 18
+WindowDialog/constants/close_h_ofs = 32
+WindowDialog/constants/close_v_ofs = 6
 WindowDialog/constants/scaleborder_size = 4
 WindowDialog/constants/title_height = 50
 WindowDialog/icons/close = ExtResource( 3 )
-WindowDialog/icons/close_highlight = ExtResource( 3 )
+WindowDialog/icons/close_highlight = ExtResource( 5 )
 WindowDialog/styles/panel = ExtResource( 4 )

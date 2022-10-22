@@ -449,7 +449,7 @@ func _on_delete_pressed():
 	map_ref.get_node("UI/Menus").add_child(popup)
 	var full_name = tr(GameData.cat_data[cat_name].full_name)
 #	popup.window_title = 'Delete %s for $%s?' % [full_name, get_delete_coins()]
-	popup.set_text('Delete %s for $%s?' % [full_name, get_delete_coins()])
+	popup.set_text(tr('menu_delete').format([full_name, get_delete_coins()]))
 	unselect()
 	popup.connect("confirmed", self, "on_delete_confirm")
 	popup.connect("popup_hide", self, "on_delete_canceled", [popup])
@@ -466,7 +466,7 @@ func on_delete_confirm():
 
 func on_delete_canceled(popup):
 	print('delete canceled')
-	select()
+#	select()
 	popup.queue_free()
 
 func on_map_coins_changed(coins: int):
