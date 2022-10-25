@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/UI/CatDialog.gd" type="Script" id=1]
-[ext_resource path="res://assets/cat01.png" type="Texture" id=2]
+[ext_resource path="res://assets/trash.png" type="Texture" id=2]
 [ext_resource path="res://resources/cats_theme.tres" type="Theme" id=3]
 [ext_resource path="res://resources/TooltipPanelhl.tres" type="StyleBox" id=4]
 
@@ -26,32 +26,35 @@ grow_vertical = 2
 mouse_filter = 2
 custom_styles/panel = ExtResource( 4 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 492.0
-margin_bottom = 88.0
-rect_min_size = Vector2( 80, 80 )
-mouse_filter = 2
-texture = ExtResource( 2 )
-expand = true
-stretch_mode = 6
-
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 492.0
-margin_bottom = 88.0
+margin_bottom = 123.0
 mouse_filter = 2
 custom_constants/margin_top = 20
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 margin_top = 20.0
 margin_right = 484.0
-margin_bottom = 80.0
+margin_bottom = 115.0
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_right = 80.0
+margin_bottom = 95.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+stretch_mode = 6
+
+[node name="Text" type="RichTextLabel" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 84.0
+margin_right = 484.0
+margin_bottom = 95.0
 rect_clip_content = false
 mouse_filter = 2
+size_flags_horizontal = 3
 bbcode_enabled = true
 bbcode_text = "Do you agree with my proposition?"
 text = "Do you agree with my proposition?"

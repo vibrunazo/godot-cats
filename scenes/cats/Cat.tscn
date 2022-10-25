@@ -16,7 +16,7 @@
 [ext_resource path="res://assets/audio/cat-purr.wav" type="AudioStream" id=14]
 [ext_resource path="res://scenes/UI/Tooltip.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Action.gd" type="Script" id=16]
-[ext_resource path="res://assets/x.png" type="Texture" id=17]
+[ext_resource path="res://assets/trash.png" type="Texture" id=17]
 [ext_resource path="res://assets/range.png" type="Texture" id=18]
 [ext_resource path="res://assets/dmg.png" type="Texture" id=19]
 
