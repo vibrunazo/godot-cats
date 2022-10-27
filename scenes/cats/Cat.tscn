@@ -1591,6 +1591,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 rect_pivot_offset = Vector2( 0, -160 )
 
+[node name="HBoxContainer" parent="UIroot/UI/CatActions" index="0"]
+mouse_filter = 2
+
 [node name="TextureRect" parent="UIroot/UI/CatActions/HBoxContainer/UpButton/CenterContainer" index="0"]
 texture = ExtResource( 19 )
 
@@ -1661,14 +1664,12 @@ bus = "sfx"
 script = ExtResource( 16 )
 action_name = "action_delete"
 description = "action_delete_desc"
-cost = -5.0
 icon = ExtResource( 17 )
 
 [node name="Up1" type="Node" parent="Actions"]
 script = ExtResource( 16 )
 method = "up_range"
 binds = [ 10.0 ]
-cost = 5.0
 icon = ExtResource( 18 )
 
 [node name="Up2" type="Node" parent="Actions"]
@@ -1677,7 +1678,6 @@ action_name = "action_damage"
 description = "action_damage_desc"
 method = "up_damage"
 binds = [ 10.0 ]
-cost = 15.0
 icon = ExtResource( 19 )
 
 [connection signal="area_entered" from="AggroRange" to="." method="_on_AggroRange_area_entered"]

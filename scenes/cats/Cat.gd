@@ -25,7 +25,7 @@ export var attack_anim = "attack"
 # Meows every X shots
 export var meow_every = 0
 export(FocusType) var focus = 0
-var total_cost = 10
+var total_cost: int = 10
 onready var spawn_position: Position2D = $"%SpawnPosition"
 onready var bullet_sprite: Sprite = $"%SpawnPosition/BulletSprite"
 onready var el_UI = $UIroot/UI
