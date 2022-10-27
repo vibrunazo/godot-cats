@@ -88,7 +88,7 @@ _global_script_class_icons={
 "Cat3": "res://assets/cat03.png",
 "CatCam": "",
 "CatDialog": "",
-"CircleButton": "",
+"CircleButton": "res://assets/button_circle.png",
 "Map": "",
 "MenuToolButton": "",
 "Mouse": "res://assets/mouse01.png",

@@ -175,7 +175,7 @@ func register_action_to_button(action: Action, button: CircleButton):
 	if action.cost > 0:
 		button.update_cost(action.cost)
 	else:
-		button.update_cost(get_delete_coins())
+		button.update_cost(-get_delete_coins())
 	button.el_tooltip.set_label(action.action_name, action.description)
 	button.register_tooltip()
 

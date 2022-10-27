@@ -1609,6 +1609,9 @@ cost = 8
 [node name="TextureRect" parent="UIroot/UI/CatActions/HBoxContainer/DeleteButton/CenterContainer" index="0"]
 texture = ExtResource( 19 )
 
+[node name="Label" parent="UIroot/UI/CatActions/HBoxContainer/DeleteButton" index="1"]
+custom_colors/font_color = Color( 0.756863, 0.796078, 0.0666667, 1 )
+
 [node name="Tooltip" parent="UIroot/UI/CatActions/HBoxContainer/DeleteButton" index="2"]
 rect_min_size = Vector2( 300, 0 )
 
