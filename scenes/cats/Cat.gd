@@ -107,6 +107,9 @@ func adjust_UI():
 		el_actions.rect_position.x -= 200
 		el_actions.rect_pivot_offset.x += 200
 		el_actions.get_node("HBoxContainer").rect_pivot_offset.x += 200
+		el_actions.get_node("MarginContainer").rect_position.x -= 200
+		if cell_pos.y != 0:
+			el_actions.get_node("MarginContainer").rect_position.y -= 100
 	if cell_pos.y == map_ref.max_cell_y:
 		el_actions.rect_position.y -= 250
 		el_actions.rect_pivot_offset.y += 250
