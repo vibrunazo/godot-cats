@@ -61,7 +61,13 @@ wait_time = 2.1
 [node name="AudioSpawn" parent="." index="9"]
 stream = SubResource( 2 )
 
+[node name="Up1" parent="Actions" index="1"]
+cost = 5
+
+[node name="Up2" parent="Actions" index="2"]
+cost = 15
+
 [editable path="UIroot/UI/CatActions"]
 [editable path="UIroot/UI/CatActions/HBoxContainer/UpButton"]
 [editable path="UIroot/UI/CatActions/HBoxContainer/Up2Button"]
-[editable path="UIroot/UI/CatActions/HBoxContainer/DeleteButton"]
+[editable path="UIroot/UI/CatActions/MarginContainer/DeleteButton"]

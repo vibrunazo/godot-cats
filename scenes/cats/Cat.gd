@@ -267,14 +267,12 @@ func gain_aggro(mouse: Mouse):
 		update_aggro_labels()
 	
 func _on_target_died(dead_mouse: Mouse):
-#	print('target died')
 	lose_aggro(dead_mouse)
 	if dead_mouse == target:
 		target = null
 	search_new_target()
 
 func search_new_target():
-#	print(aggro_list)
 	if aggro_list.size() == 0: return
 	var best: Mouse = aggro_list[0]
 	if focus == FocusType.FURTHEST:
@@ -363,16 +361,13 @@ func play_attack_anim():
 	state = State.ATTACK
 	yield($AnimationPlayer, "animation_finished")
 	if is_instance_valid(grabbed_target):
-#		print('has grab %s' % $AnimationPlayer.assigned_animation)
 		$AnimationPlayer.play("eat")
 	else:
-#		print('no grab %s' % $AnimationPlayer.assigned_animation)
 		$AnimationPlayer.play("idle")
 
 func on_eat_finished():
 	if is_instance_valid(grabbed_target):
 		grabbed_target.on_finished_eaten()
-#	print('eat finished %s' % $AnimationPlayer.assigned_animation)
 	grabbed_target = null
 	if !is_ready():
 		$AnimationPlayer.play("sleeping")
@@ -386,7 +381,7 @@ func on_eat_finished():
 # higher worth means more coins back when the Cat is deleted
 func update_worth(new_worth: int):
 	total_cost = new_worth
-	el_del_button.update_cost(get_delete_coins())
+	el_del_button.update_cost(-get_delete_coins())
 
 func add_worth(new_worth: int):
 	update_worth(total_cost + new_worth)

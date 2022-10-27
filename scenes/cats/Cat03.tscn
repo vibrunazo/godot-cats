@@ -131,4 +131,4 @@ icon_size = Vector2( 32, 32 )
 [editable path="UIroot/UI/CatActions"]
 [editable path="UIroot/UI/CatActions/HBoxContainer/UpButton"]
 [editable path="UIroot/UI/CatActions/HBoxContainer/Up2Button"]
-[editable path="UIroot/UI/CatActions/HBoxContainer/DeleteButton"]
+[editable path="UIroot/UI/CatActions/MarginContainer/DeleteButton"]

@@ -63,6 +63,7 @@ action_name = "action_house"
 description = "action_house_desc"
 method = "up_house"
 binds = [ 30.0 ]
+cost = 5
 icon = ExtResource( 9 )
 
 [node name="UpTower" type="Node" parent="Actions/Up1" index="0"]
@@ -92,4 +93,4 @@ icon = ExtResource( 6 )
 [editable path="UIroot/UI/CatActions"]
 [editable path="UIroot/UI/CatActions/HBoxContainer/UpButton"]
 [editable path="UIroot/UI/CatActions/HBoxContainer/Up2Button"]
-[editable path="UIroot/UI/CatActions/HBoxContainer/DeleteButton"]
+[editable path="UIroot/UI/CatActions/MarginContainer/DeleteButton"]

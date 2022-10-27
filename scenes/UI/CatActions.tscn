@@ -27,6 +27,18 @@ tracks/1/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("MarginContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "start"
@@ -51,6 +63,18 @@ tracks/1/keys = {
 "points": PoolRealArray( 1e-05, -0.06, -0.5181, 0.106674, -0.000129686, 1e-05, -0.0933256, -0.000129686, 0.06, 0.5181, 1.2, -0.06, 0.00925648, 0.06, -0.00925648, 0.95, -0.02, -0.00488514, 0.02, 0.00488514, 1, -0.06, 0.12086, 0.2, 0, 1, -0.2, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.5, 1 )
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("MarginContainer:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="CatActions" type="Control"]
 anchor_right = 1.0
@@ -68,6 +92,7 @@ margin_right = 213.5
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 213.5, 0 )
+mouse_filter = 2
 size_flags_horizontal = 5
 size_flags_vertical = 5
 custom_constants/separation = 20
@@ -79,9 +104,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1.0
+margin_left = 75.0
 margin_top = 0.0
-margin_right = 129.0
+margin_right = 203.0
 margin_bottom = 128.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -99,29 +124,43 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 149.0
+margin_left = 223.0
 margin_top = 0.0
-margin_right = 277.0
+margin_right = 351.0
 margin_bottom = 128.0
 
 [node name="Label" parent="HBoxContainer/Up2Button" index="1"]
 text = "$20"
 
-[node name="DeleteButton" parent="HBoxContainer" instance=ExtResource( 4 )]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -128.0
+margin_right = 64.0
+mouse_filter = 2
+custom_constants/margin_right = -200
+custom_constants/margin_top = -100
+custom_constants/margin_left = 200
+custom_constants/margin_bottom = 100
+
+[node name="DeleteButton" parent="MarginContainer" instance=ExtResource( 4 )]
 unique_name_in_owner = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 297.0
-margin_top = 0.0
-margin_right = 425.0
-margin_bottom = 128.0
+margin_left = 200.0
+margin_top = -100.0
+margin_right = 328.0
+margin_bottom = 28.0
 
-[node name="TextureRect" parent="HBoxContainer/DeleteButton/CenterContainer" index="0"]
+[node name="TextureRect" parent="MarginContainer/DeleteButton/CenterContainer" index="0"]
 texture = ExtResource( 2 )
 
-[node name="Label" parent="HBoxContainer/DeleteButton" index="1"]
+[node name="Label" parent="MarginContainer/DeleteButton" index="1"]
 custom_colors/font_color = Color( 0.964706, 0.168627, 0.168627, 1 )
 text = "$8"
 
@@ -131,4 +170,4 @@ anims/start = SubResource( 2 )
 
 [editable path="HBoxContainer/UpButton"]
 [editable path="HBoxContainer/Up2Button"]
-[editable path="HBoxContainer/DeleteButton"]
+[editable path="MarginContainer/DeleteButton"]
