@@ -42,7 +42,13 @@ wait_time = 1.4
 [node name="ClickArea" parent="." index="5"]
 visible = false
 
+[node name="UpButton" parent="UIroot/UI/CatActions/HBoxContainer" index="0"]
+margin_left = 75.0
+margin_bottom = 128.0
+
 [node name="Up2Button" parent="UIroot/UI/CatActions/HBoxContainer" index="1"]
+margin_right = 351.0
+margin_bottom = 128.0
 cost = 15
 
 [node name="TextureRect" parent="UIroot/UI/CatActions/HBoxContainer/Up2Button/CenterContainer" index="0"]
@@ -54,6 +60,12 @@ margin_bottom = 83.0
 rect_min_size = Vector2( 38, 38 )
 rect_pivot_offset = Vector2( 32, 32 )
 texture = ExtResource( 4 )
+
+[node name="TextureRect" parent="UIroot/UI/CatActions/MarginContainer/DeleteButton/CenterContainer" index="0"]
+margin_left = 48.0
+margin_top = 48.0
+margin_right = 112.0
+margin_bottom = 112.0
 
 [node name="AudioSpawn" parent="." index="10"]
 stream = SubResource( 2 )

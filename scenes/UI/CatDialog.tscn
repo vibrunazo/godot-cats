@@ -6,7 +6,6 @@
 [ext_resource path="res://resources/TooltipPanelhl.tres" type="StyleBox" id=4]
 
 [node name="CatDialog" type="ConfirmationDialog"]
-visible = true
 margin_right = 200.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 500, 70 )
