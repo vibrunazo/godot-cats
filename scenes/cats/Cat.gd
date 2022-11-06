@@ -99,21 +99,28 @@ func done_building(new_cell = Vector2(0, 0)):
 # if the Cat is close to screen borders
 # called when done building
 func adjust_UI():
+	# at left-most column
 	if cell_pos.x == 0:
 		el_actions.rect_position.x += 200
 		el_actions.rect_pivot_offset.x -= 200
 		el_actions.get_node("HBoxContainer").rect_pivot_offset.x -= 200
+	# at right-most column
 	if cell_pos.x == map_ref.max_cell_x:
 		el_actions.rect_position.x -= 200
 		el_actions.rect_pivot_offset.x += 200
 		el_actions.get_node("HBoxContainer").rect_pivot_offset.x += 200
 		el_actions.get_node("MarginContainer").rect_position.x -= 200
+		# and not at the top
 		if cell_pos.y != 0:
 			el_actions.get_node("MarginContainer").rect_position.y -= 100
+	# at the bottom
 	if cell_pos.y == map_ref.max_cell_y:
 		el_actions.rect_position.y -= 250
 		el_actions.rect_pivot_offset.y += 250
 		el_actions.get_node("HBoxContainer").rect_pivot_offset.y += 250
+	# at bottom 3 rows
+	if cell_pos.y > map_ref.max_cell_y - 3:
+		el_cat_tooltip.rect_position.x -= 350
 
 func select():
 	selected = true
