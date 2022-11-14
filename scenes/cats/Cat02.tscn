@@ -65,6 +65,7 @@ stream = SubResource( 2 )
 cost = 5
 
 [node name="Up2" parent="Actions" index="2"]
+method = "up_fire"
 cost = 15
 
 [editable path="UIroot/UI/CatActions"]
