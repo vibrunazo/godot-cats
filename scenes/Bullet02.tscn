@@ -14,7 +14,6 @@ sounds = [  ]
 blast_scene = ExtResource( 4 )
 
 [node name="Sprite" parent="." index="0"]
-modulate = Color( 1, 1, 1, 1 )
 self_modulate = Color( 0.886275, 0.313726, 0.85098, 0.737255 )
 scale = Vector2( 0.8, 0.8 )
 

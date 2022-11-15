@@ -66,6 +66,7 @@ cost = 5
 
 [node name="Up2" parent="Actions" index="2"]
 method = "up_fire"
+binds = [ 15.0 ]
 cost = 15
 
 [editable path="UIroot/UI/CatActions"]
