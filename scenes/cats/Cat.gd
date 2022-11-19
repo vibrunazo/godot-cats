@@ -197,6 +197,13 @@ func update_aggro_labels():
 		mouse.show_target_index(true, str(i))
 		i += 1
 
+# delete action has been confirmed
+func on_delete_confirm():
+	map_ref.add_coins(get_delete_coins())
+	map_ref.remove_cat_at_cell(cell_pos)
+	queue_free()
+	state = State.DELETED
+
 # upgrades range
 # value in centimeters 
 # 220 pixels in game is 110 cm
@@ -213,9 +220,31 @@ func up_cooldown(value: float):
 	cooldown *= (1 - value/100.0)
 	$Cooldown.wait_time = cooldown
 
+# an action button was pressed (upgrade or delete)
+# run common code between all actions
+# action specific code is run in the end by the callv()
 func action_pressed(button: CircleButton):
-	var action = button.action
+	var action: Action = button.action
 	print('action pressed %s' % action)
+	action_popup(action, button)
+
+func action_popup(action: Action, button: CircleButton):
+	var popup_scene = load("res://scenes/UI/CatDialog.tscn")
+	var popup = popup_scene.instance()
+	map_ref.get_node("UI/Menus").add_child(popup)
+#	var full_name = tr(GameData.cat_data[cat_name].full_name)
+#	popup.set_text(tr('menu_delete').format([full_name, get_delete_coins()]))
+	popup.set_title(tr(action.action_name))
+	popup.set_text(tr(action.description))
+	popup.set_icon(action.icon)
+	emit_signal("unselect")
+	popup.connect("confirmed", self, "on_action_confirm", [action, button])
+	popup.connect("popup_hide", self, "on_action_canceled", [popup])
+	popup.popup_centered()
+
+# action popup confirmed. Call method to apply upgrade
+func on_action_confirm(action: Action, button: CircleButton):
+	callv(action.method, action.binds)
 	var cost = action.cost
 	if map_ref.coins < cost || cost < 0:
 		return
@@ -227,7 +256,6 @@ func action_pressed(button: CircleButton):
 		register_action_to_button(children[0], button)
 	else:
 		button.hide()
-	callv(action.method, action.binds)
 	update_tooltip()
 
 func _physics_process(_delta):
@@ -432,49 +460,23 @@ func _on_Cooldown_timeout():
 	$Cooldown.wait_time = cooldown
 #	print('cat cooldown up')
 
-func _on_up_pressed():
-	var cost = 5
-	if map_ref.coins < cost:
-		return
-	map_ref.add_coins(-cost)
-	add_worth(cost)
-	update_range(aggro_range + 20.0)
+#func _on_up_pressed():
+#	var cost = 5
+#	if map_ref.coins < cost:
+#		return
+#	map_ref.add_coins(-cost)
+#	add_worth(cost)
+#	update_range(aggro_range + 20.0)
+#
+#func _on_up2_pressed():
+#	var cost = 20
+#	if map_ref.coins < cost:
+#		return
+#	map_ref.add_coins(-cost)
+#	add_worth(cost)
+#	damage += 10
 
-func _on_up2_pressed():
-	var cost = 20
-	if map_ref.coins < cost:
-		return
-	map_ref.add_coins(-cost)
-	add_worth(cost)
-	damage += 10
-
-func _on_delete_pressed():
-#	var cost = total_cost
-	var popup_scene = load("res://scenes/UI/CatDialog.tscn")
-#	var popup_scene = load("res://scenes/UI/TooltipConfirm.tscn")
-	var popup = popup_scene.instance()
-	map_ref.get_node("UI/Menus").add_child(popup)
-	var full_name = tr(GameData.cat_data[cat_name].full_name)
-#	popup.window_title = 'Delete %s for $%s?' % [full_name, get_delete_coins()]
-	popup.set_text(tr('menu_delete').format([full_name, get_delete_coins()]))
-	emit_signal("unselect")
-	popup.connect("confirmed", self, "on_delete_confirm")
-	popup.connect("popup_hide", self, "on_delete_canceled", [popup])
-	popup.popup_centered()
-#	popup.show(0)
-#	map_ref.add_coins(get_delete_coins())
-#	map_ref.remove_cat_at_cell(cell_pos)
-#	queue_free()
-
-func on_delete_confirm():
-	map_ref.add_coins(get_delete_coins())
-	map_ref.remove_cat_at_cell(cell_pos)
-	queue_free()
-	state = State.DELETED
-
-func on_delete_canceled(popup):
-#	select()
-#	emit_signal("select")
+func on_action_canceled(popup):
 	popup.queue_free()
 	call_deferred("try_reselect")
 

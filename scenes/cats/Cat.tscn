@@ -1649,6 +1649,7 @@ bus = "sfx"
 script = ExtResource( 16 )
 action_name = "action_delete"
 description = "action_delete_desc"
+method = "on_delete_confirm"
 cost = -10
 icon = ExtResource( 17 )
 
@@ -1669,7 +1670,6 @@ icon = ExtResource( 19 )
 [connection signal="area_entered" from="AggroRange" to="." method="_on_AggroRange_area_entered"]
 [connection signal="area_exited" from="AggroRange" to="." method="_on_AggroRange_area_exited"]
 [connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]
-[connection signal="pressed" from="UIroot/UI/CatActions/MarginContainer/DeleteButton" to="." method="_on_delete_pressed"]
 
 [editable path="UIroot/UI/CatActions"]
 [editable path="UIroot/UI/CatActions/HBoxContainer/UpButton"]

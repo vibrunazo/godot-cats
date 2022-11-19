@@ -6,8 +6,8 @@ func _ready():
 	._ready()
 	bullet_scene = preload("res://scenes/Bullet02.tscn")
 
-func up_fire(value: float = 25):
-	damage += value
+func up_fireball(value: float = 25):
+	damage = value
 	shot_speed = 180
 #	spawn_position.scale = Vector2(1.0, 1.0)
 	bullet_sprite.modulate = Color.yellow

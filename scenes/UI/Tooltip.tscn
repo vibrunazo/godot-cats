@@ -83,7 +83,7 @@ fit_content_height = true
 scroll_active = false
 
 [node name="VisibilityTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
 one_shot = true
 
 [connection signal="resized" from="." to="." method="_on_Tooltip_resized"]

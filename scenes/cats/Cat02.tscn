@@ -65,9 +65,11 @@ stream = SubResource( 2 )
 cost = 5
 
 [node name="Up2" parent="Actions" index="2"]
-method = "up_fire"
-binds = [ 15.0 ]
-cost = 15
+action_name = "action_fireball"
+description = "action_fireball_desc"
+method = "up_fireball"
+binds = [ 26.0 ]
+cost = 12
 
 [editable path="UIroot/UI/CatActions"]
 [editable path="UIroot/UI/CatActions/HBoxContainer/UpButton"]

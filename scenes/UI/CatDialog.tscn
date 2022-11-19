@@ -1,14 +1,24 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/UI/CatDialog.gd" type="Script" id=1]
 [ext_resource path="res://assets/trash.png" type="Texture" id=2]
 [ext_resource path="res://resources/cats_theme.tres" type="Theme" id=3]
 [ext_resource path="res://resources/TooltipPanelhl.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+resource_local_to_scene = true
+size = 34
+outline_size = 2
+outline_color = Color( 0, 0, 0, 0.392157 )
+use_filter = true
+font_data = ExtResource( 5 )
 
 [node name="CatDialog" type="ConfirmationDialog"]
+visible = true
 margin_right = 200.0
 margin_bottom = 70.0
-rect_min_size = Vector2( 500, 70 )
+rect_min_size = Vector2( 500, 200 )
 theme = ExtResource( 3 )
 window_title = ""
 script = ExtResource( 1 )
@@ -29,28 +39,44 @@ custom_styles/panel = ExtResource( 4 )
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 492.0
-margin_bottom = 123.0
+margin_bottom = 153.0
 mouse_filter = 2
-custom_constants/margin_top = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-margin_top = 20.0
 margin_right = 484.0
-margin_bottom = 115.0
+margin_bottom = 145.0
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 margin_right = 80.0
-margin_bottom = 95.0
+margin_bottom = 145.0
 mouse_filter = 2
 texture = ExtResource( 2 )
 stretch_mode = 6
 
-[node name="Text" type="RichTextLabel" parent="MarginContainer/HBoxContainer"]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 margin_left = 84.0
 margin_right = 484.0
-margin_bottom = 95.0
+margin_bottom = 145.0
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_right = 400.0
+margin_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 5
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Action "
+valign = 1
+
+[node name="Text" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 54.0
+margin_right = 400.0
+margin_bottom = 138.0
 rect_clip_content = false
 mouse_filter = 2
 size_flags_horizontal = 3

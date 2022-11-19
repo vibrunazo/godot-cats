@@ -11,6 +11,8 @@ action_yarn,Yarn ball,Bola de lã
 action_yarn_desc,Increases damage by {0},Aumenta dano em {0}
 action_teacup,Tea cup,Xícara
 action_teacup_desc,Increases damage by {0},Aumenta dano em {0}
+action_fireball,Fireball,Bola de fogo
+action_fireball_desc,Deals {0} damage and burns mice,"Sou eu bola de fogo. E o calor tá de matar. Dá {0} de dano, e bota os rato pra queima."
 action_damage,+Damage,+Dano
 action_damage_desc,Increase damage by {0},Aumenta dano em {0}
 action_range,+Range,+Alcance
