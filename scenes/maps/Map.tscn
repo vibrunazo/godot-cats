@@ -892,6 +892,44 @@ texture = ExtResource( 11 )
 expand = true
 stretch_mode = 1
 
+[node name="SpeedBar" type="MarginContainer" parent="UI/HUD"]
+margin_left = 32.0
+margin_top = 24.0
+margin_right = 142.0
+margin_bottom = 91.0
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/SpeedBar"]
+margin_right = 158.0
+margin_bottom = 67.0
+mouse_filter = 2
+
+[node name="ButtonSpeed1" type="ToolButton" parent="UI/HUD/SpeedBar/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 50, 50 )
+focus_mode = 0
+enabled_focus_mode = 0
+text = "1"
+
+[node name="ButtonSpeed2" type="ToolButton" parent="UI/HUD/SpeedBar/HBoxContainer"]
+margin_left = 54.0
+margin_right = 104.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 50, 50 )
+focus_mode = 0
+enabled_focus_mode = 0
+text = "2"
+
+[node name="ButtonSpeed4" type="ToolButton" parent="UI/HUD/SpeedBar/HBoxContainer"]
+margin_left = 108.0
+margin_right = 158.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 50, 50 )
+focus_mode = 0
+enabled_focus_mode = 0
+text = "4"
+
 [node name="Menus" type="Control" parent="UI"]
 pause_mode = 2
 anchor_right = 1.0
@@ -939,6 +977,9 @@ script = ExtResource( 21 )
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="EllapsedTimer" to="." method="_on_EllapsedTimer_timeout"]
 [connection signal="pressed" from="UI/HUD/ActionBar/HBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="UI/HUD/SpeedBar/HBoxContainer/ButtonSpeed1" to="." method="_on_ButtonSpeed1_pressed"]
+[connection signal="pressed" from="UI/HUD/SpeedBar/HBoxContainer/ButtonSpeed2" to="." method="_on_ButtonSpeed2_pressed"]
+[connection signal="pressed" from="UI/HUD/SpeedBar/HBoxContainer/ButtonSpeed4" to="." method="_on_ButtonSpeed4_pressed"]
 [connection signal="pressed" from="UI/Menus/WinMenu/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
 
 [editable path="UI/HUD/ActionBar/Cat1"]

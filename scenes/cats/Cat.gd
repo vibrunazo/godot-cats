@@ -226,7 +226,10 @@ func up_cooldown(value: float):
 func action_pressed(button: CircleButton):
 	var action: Action = button.action
 	print('action pressed %s' % action)
-	action_popup(action, button)
+	if Config.confirm:
+		action_popup(action, button)
+	else:
+		on_action_confirm(action, button)
 
 func action_popup(action: Action, button: CircleButton):
 	var popup_scene = load("res://scenes/UI/CatDialog.tscn")

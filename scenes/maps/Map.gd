@@ -97,8 +97,9 @@ var state: int = State.READY
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if Global.DEBUG_WIN:
-		Engine.time_scale = 4
+#	if Global.DEBUG_WIN:
+#		Engine.time_scale = 4
+	Engine.time_scale = 1
 	start_time = Time.get_ticks_msec()
 	el_path = $Path2D
 	for b in action_buttons:
@@ -192,6 +193,7 @@ func register_new_tooltip(tip: Tooltip):
 	tip.registered = true
 
 func button_entered(button: CircleButton):
+	if Config.confirm: return
 	show_tooltip_on(button)
 
 func button_exited(button: CircleButton):
@@ -297,6 +299,7 @@ func update_UI_mousebar():
 		win()
 
 func win():
+	Engine.time_scale = 1
 	print('you win')
 	yield(get_tree().create_timer(2),"timeout")
 	if life == max_life:
@@ -317,8 +320,7 @@ func update_life():
 	
 func game_over():
 	state = State.OVER
-#	audio_fade_out()
-#	yield($TweenAudio,"tween_completed")
+	Engine.time_scale = 1
 	el_game_over.slow_pause()
 
 func add_coins(ammount):
@@ -471,10 +473,10 @@ func _on_SettingsButton_pressed():
 	toggle_pause()
 
 func _on_EllapsedTimer_timeout():
-	if Global.DEBUG_WIN:
-		Engine.time_scale = 4
-	elif Engine.time_scale > 1:
-		Engine.time_scale = 1
+#	if Global.DEBUG_WIN:
+#		Engine.time_scale = 4
+#	elif Engine.time_scale > 1:
+#		Engine.time_scale = 1
 	if kill_count + stolen_count >= spawn_max:
 		$EllapsedTimer.stop()
 		return
@@ -486,3 +488,16 @@ func _on_NextButton_pressed():
 	pause_game(false)
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://scenes/maps/%s.tscn" % next_map)
+
+
+func _on_ButtonSpeed1_pressed():
+	print('pressed speed 1')
+	Engine.time_scale = 1
+
+func _on_ButtonSpeed2_pressed():
+	print('speed 2 pressed')
+	Engine.time_scale = 2
+
+func _on_ButtonSpeed4_pressed():
+	print('speed 4 pressed')
+	Engine.time_scale = 4

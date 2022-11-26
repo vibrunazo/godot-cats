@@ -107,6 +107,7 @@ config/name_pt_BR="Gatos"
 
 Global="*res://scripts/Global.gd"
 GameData="*res://scripts/GameData.gd"
+Config="*res://scripts/Config.gd"
 
 [display]
 
