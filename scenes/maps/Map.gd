@@ -493,8 +493,21 @@ func _on_NextButton_pressed():
 func _on_ButtonSpeed1_pressed():
 	if state != State.READY: return
 	print('pressed speed 1')
-	Engine.time_scale = 1
-
+	var button: Button = $"%ButtonSpeed1"
+	var text: String = button.text
+	if text == '1':
+		Engine.time_scale = 2
+		button.text = '2'
+		button.icon = preload("res://assets/play2.png")
+	elif text == '2':
+		Engine.time_scale = 4
+		button.text = '4'
+		button.icon = preload("res://assets/play4.png")
+	elif text == '4':
+		Engine.time_scale = 1
+		button.text = '1'
+		button.icon = preload("res://assets/play.png")
+	
 func _on_ButtonSpeed2_pressed():
 	if state != State.READY: return
 	print('speed 2 pressed')
