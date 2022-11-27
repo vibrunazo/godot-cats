@@ -491,13 +491,16 @@ func _on_NextButton_pressed():
 
 
 func _on_ButtonSpeed1_pressed():
+	if state != State.READY: return
 	print('pressed speed 1')
 	Engine.time_scale = 1
 
 func _on_ButtonSpeed2_pressed():
+	if state != State.READY: return
 	print('speed 2 pressed')
 	Engine.time_scale = 2
 
 func _on_ButtonSpeed4_pressed():
+	if state != State.READY: return
 	print('speed 4 pressed')
 	Engine.time_scale = 4
