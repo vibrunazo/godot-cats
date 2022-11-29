@@ -5,6 +5,7 @@ class_name CircleButton, "res://assets/button_circle.png"
 export var cost: int = 10
 export var confirm: bool = true
 onready var el_tooltip: Tooltip = $'%Tooltip'
+onready var el_label: Label = $"%Label"
 var action = null
 
 func _ready():
@@ -28,9 +29,9 @@ func hide_tooltip():
 func update_cost(new_cost: int):
 	cost = new_cost
 	if cost > 0:
-		$Label.text = "$%s" % new_cost
+		el_label.text = "$%s" % new_cost
 	else:
-		$Label.text = "+$%s" % abs(new_cost)
+		el_label.text = "+$%s" % abs(new_cost)
 	
 func update_icon(new_icon: Texture, size: Vector2 = Vector2(64, 64), color: Color = Color.white):
 	$CenterContainer/TextureRect.texture = new_icon

@@ -221,6 +221,7 @@ texture = ExtResource( 4 )
 expand = true
 
 [node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
