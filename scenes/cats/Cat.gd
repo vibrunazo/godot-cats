@@ -130,14 +130,14 @@ func select():
 	$AudioSpawn.play()
 	if !is_building():
 #		yield(get_tree().create_timer(0.5),"timeout")
-		$UIAnimations.play("select")
+		$UIAnimations.play("select", -1, 1 / Engine.time_scale)
 		$UIroot/UI/CatActions/AnimationPlayer.play("start")
 		el_circle.visible = true
 #		show_cat_tooltip()
 	
 func unselect():
 	selected = false
-	$UIAnimations.play("unselect", 0, 2)
+	$UIAnimations.play("unselect", -1, 2 / Engine.time_scale)
 #	hide_cat_tooltip()
 	if !Global.DEBUG: return
 	for m in aggro_list:

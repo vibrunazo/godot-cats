@@ -42,12 +42,12 @@ func set_disabled(value: bool):
 	if disabled != value:
 		disabled = value
 		if disabled:
-			$AnimationPlayer.play("disabled")
+			$AnimationPlayer.play("disabled", -1, 1 / Engine.time_scale)
 		else:
-			$AnimationPlayer.play("enabled")
+			$AnimationPlayer.play("enabled", -1, 1 / Engine.time_scale)
 
 func _on_CircleButton_pressed():
-	$AnimationPlayer.play("pressed")
+	$AnimationPlayer.play("pressed", -1, 1 / Engine.time_scale)
 
 func _on_pressed_mid_point():
 	if disabled:
