@@ -757,27 +757,32 @@ custom_colors/font_color = Color( 0.28, 0.7, 0.287, 1 )
 text = "$100"
 align = 1
 
-[node name="Cat1" parent="UI/HUD/ActionBar" groups=["action_button"] instance=ExtResource( 1 )]
+[node name="M1" type="MarginContainer" parent="UI/HUD/ActionBar"]
+margin_top = 165.0
+margin_right = 300.0
+margin_bottom = 325.0
+
+[node name="Cat1" parent="UI/HUD/ActionBar/M1" groups=["action_button"] instance=ExtResource( 1 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 70.0
-margin_top = 165.0
+margin_top = 0.0
 margin_right = 230.0
-margin_bottom = 325.0
+margin_bottom = 160.0
 rect_min_size = Vector2( 160, 160 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
 action_mode = 0
 confirm = false
 
-[node name="CenterContainer" parent="UI/HUD/ActionBar/Cat1" index="0"]
+[node name="CenterContainer" parent="UI/HUD/ActionBar/M1/Cat1" index="0"]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="TextureRect" parent="UI/HUD/ActionBar/Cat1/CenterContainer" index="0"]
+[node name="TextureRect" parent="UI/HUD/ActionBar/M1/Cat1/CenterContainer" index="0"]
 margin_left = 35.0
 margin_top = 35.0
 margin_right = 125.0
@@ -785,27 +790,32 @@ margin_bottom = 125.0
 rect_min_size = Vector2( 90, 90 )
 texture = ExtResource( 10 )
 
-[node name="Cat2" parent="UI/HUD/ActionBar" groups=["action_button"] instance=ExtResource( 1 )]
+[node name="M2" type="MarginContainer" parent="UI/HUD/ActionBar"]
+margin_top = 315.0
+margin_right = 300.0
+margin_bottom = 475.0
+
+[node name="Cat2" parent="UI/HUD/ActionBar/M2" groups=["action_button"] instance=ExtResource( 1 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 70.0
-margin_top = 315.0
+margin_top = 0.0
 margin_right = 230.0
-margin_bottom = 475.0
+margin_bottom = 160.0
 rect_min_size = Vector2( 160, 160 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
 action_mode = 0
 confirm = false
 
-[node name="CenterContainer" parent="UI/HUD/ActionBar/Cat2" index="0"]
+[node name="CenterContainer" parent="UI/HUD/ActionBar/M2/Cat2" index="0"]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="TextureRect" parent="UI/HUD/ActionBar/Cat2/CenterContainer" index="0"]
+[node name="TextureRect" parent="UI/HUD/ActionBar/M2/Cat2/CenterContainer" index="0"]
 margin_left = 35.0
 margin_top = 35.0
 margin_right = 125.0
@@ -813,36 +823,41 @@ margin_bottom = 125.0
 rect_min_size = Vector2( 90, 90 )
 texture = ExtResource( 2 )
 
-[node name="Label" parent="UI/HUD/ActionBar/Cat2" index="1"]
+[node name="Label" parent="UI/HUD/ActionBar/M2/Cat2" index="1"]
 text = "$15"
 
-[node name="AnimationPlayer" parent="UI/HUD/ActionBar/Cat2" index="3"]
+[node name="AnimationPlayer" parent="UI/HUD/ActionBar/M2/Cat2" index="3"]
 anims/RESET = SubResource( 4 )
 anims/disabled = SubResource( 5 )
 anims/enabled = SubResource( 6 )
 anims/pressed = SubResource( 7 )
 
-[node name="Cat3" parent="UI/HUD/ActionBar" groups=["action_button"] instance=ExtResource( 1 )]
+[node name="M3" type="MarginContainer" parent="UI/HUD/ActionBar"]
+margin_top = 465.0
+margin_right = 300.0
+margin_bottom = 625.0
+
+[node name="Cat3" parent="UI/HUD/ActionBar/M3" groups=["action_button"] instance=ExtResource( 1 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 70.0
-margin_top = 465.0
+margin_top = 0.0
 margin_right = 230.0
-margin_bottom = 625.0
+margin_bottom = 160.0
 rect_min_size = Vector2( 160, 160 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
 action_mode = 0
 confirm = false
 
-[node name="CenterContainer" parent="UI/HUD/ActionBar/Cat3" index="0"]
+[node name="CenterContainer" parent="UI/HUD/ActionBar/M3/Cat3" index="0"]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="TextureRect" parent="UI/HUD/ActionBar/Cat3/CenterContainer" index="0"]
+[node name="TextureRect" parent="UI/HUD/ActionBar/M3/Cat3/CenterContainer" index="0"]
 margin_left = 30.0
 margin_top = 30.0
 margin_right = 160.0
@@ -850,10 +865,10 @@ margin_bottom = 160.0
 rect_min_size = Vector2( 130, 130 )
 texture = ExtResource( 20 )
 
-[node name="Label" parent="UI/HUD/ActionBar/Cat3" index="1"]
+[node name="Label" parent="UI/HUD/ActionBar/M3/Cat3" index="1"]
 text = "$20"
 
-[node name="AnimationPlayer" parent="UI/HUD/ActionBar/Cat3" index="3"]
+[node name="AnimationPlayer" parent="UI/HUD/ActionBar/M3/Cat3" index="3"]
 anims/RESET = SubResource( 15 )
 anims/disabled = SubResource( 16 )
 anims/enabled = SubResource( 17 )
@@ -1014,8 +1029,8 @@ script = ExtResource( 21 )
 [connection signal="pressed" from="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer/ButtonSpeed4" to="." method="_on_ButtonSpeed4_pressed"]
 [connection signal="pressed" from="UI/Menus/WinMenu/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
 
-[editable path="UI/HUD/ActionBar/Cat1"]
-[editable path="UI/HUD/ActionBar/Cat2"]
-[editable path="UI/HUD/ActionBar/Cat3"]
+[editable path="UI/HUD/ActionBar/M1/Cat1"]
+[editable path="UI/HUD/ActionBar/M2/Cat2"]
+[editable path="UI/HUD/ActionBar/M3/Cat3"]
 [editable path="UI/Menus/PauseMenu"]
 [editable path="UI/Menus/WinMenu"]
