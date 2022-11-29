@@ -88,6 +88,8 @@ content_margin_right = 0.0
 content_margin_top = 10.0
 content_margin_bottom = 0.0
 
+[sub_resource type="ButtonGroup" id=19]
+
 [sub_resource type="Animation" id=4]
 length = 0.001
 tracks/0/type = "value"
@@ -515,8 +517,6 @@ expand_margin_top = 3.0
 expand_margin_bottom = 3.0
 shadow_size = 5
 
-[sub_resource type="ButtonGroup" id=19]
-
 [sub_resource type="DynamicFont" id=14]
 resource_local_to_scene = true
 size = 60
@@ -657,8 +657,64 @@ icon = ExtResource( 13 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/HUD/ActionBar/HBoxContainer"]
 margin_left = 144.0
-margin_right = 242.0
+margin_right = 215.0
 margin_bottom = 136.0
+alignment = 1
+
+[node name="SpeedBar" type="MarginContainer" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer"]
+margin_top = 39.0
+margin_right = 71.0
+margin_bottom = 97.0
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar"]
+margin_right = 71.0
+margin_bottom = 58.0
+mouse_filter = 2
+alignment = 1
+
+[node name="ButtonSpeed1" type="ToolButton" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer"]
+unique_name_in_owner = true
+margin_right = 71.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 50, 50 )
+focus_mode = 0
+custom_constants/hseparation = -1
+custom_fonts/font = ExtResource( 23 )
+enabled_focus_mode = 0
+group = SubResource( 19 )
+text = "1"
+icon = ExtResource( 22 )
+
+[node name="ButtonSpeed2" type="ToolButton" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer"]
+visible = false
+margin_left = 56.0
+margin_right = 109.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 50, 50 )
+focus_mode = 0
+custom_constants/hseparation = -2
+custom_fonts/font = ExtResource( 23 )
+toggle_mode = true
+enabled_focus_mode = 0
+group = SubResource( 19 )
+text = "2"
+icon = ExtResource( 24 )
+
+[node name="ButtonSpeed4" type="ToolButton" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer"]
+visible = false
+margin_left = 56.0
+margin_right = 116.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 50, 50 )
+focus_mode = 0
+custom_constants/hseparation = -1
+custom_fonts/font = ExtResource( 23 )
+toggle_mode = true
+enabled_focus_mode = 0
+group = SubResource( 19 )
+text = "4"
+icon = ExtResource( 25 )
 
 [node name="CheeseHBox" type="HBoxContainer" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer"]
 visible = false
@@ -687,19 +743,19 @@ custom_colors/font_color = Color( 0.917647, 0.905882, 0.196078, 1 )
 text = "20"
 align = 1
 
-[node name="CoinLabel" type="Label" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-margin_right = 98.0
-margin_bottom = 59.0
-custom_colors/font_color = Color( 0.28, 0.7, 0.287, 1 )
-text = "$100"
-align = 1
-
 [node name="Separator" type="Control" parent="UI/HUD/ActionBar"]
 margin_top = 126.0
 margin_right = 300.0
-margin_bottom = 166.0
-rect_min_size = Vector2( 0, 40 )
+margin_bottom = 126.0
+
+[node name="CoinLabel" type="Label" parent="UI/HUD/ActionBar"]
+unique_name_in_owner = true
+margin_top = 116.0
+margin_right = 300.0
+margin_bottom = 175.0
+custom_colors/font_color = Color( 0.28, 0.7, 0.287, 1 )
+text = "$100"
+align = 1
 
 [node name="Cat1" parent="UI/HUD/ActionBar" groups=["action_button"] instance=ExtResource( 1 )]
 anchor_left = 0.0
@@ -707,9 +763,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 70.0
-margin_top = 156.0
+margin_top = 165.0
 margin_right = 230.0
-margin_bottom = 316.0
+margin_bottom = 325.0
 rect_min_size = Vector2( 160, 160 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -734,9 +790,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 70.0
-margin_top = 306.0
+margin_top = 315.0
 margin_right = 230.0
-margin_bottom = 466.0
+margin_bottom = 475.0
 rect_min_size = Vector2( 160, 160 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -770,9 +826,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 70.0
-margin_top = 456.0
+margin_top = 465.0
 margin_right = 230.0
-margin_bottom = 616.0
+margin_bottom = 625.0
 rect_min_size = Vector2( 160, 160 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -903,67 +959,6 @@ texture = ExtResource( 11 )
 expand = true
 stretch_mode = 1
 
-[node name="SpeedBar" type="MarginContainer" parent="UI/HUD"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -184.0
-margin_top = -320.0
-margin_right = -26.0
-margin_bottom = -253.0
-mouse_filter = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/SpeedBar"]
-margin_right = 158.0
-margin_bottom = 67.0
-mouse_filter = 2
-alignment = 1
-
-[node name="ButtonSpeed1" type="ToolButton" parent="UI/HUD/SpeedBar/HBoxContainer"]
-unique_name_in_owner = true
-margin_left = 43.0
-margin_right = 114.0
-margin_bottom = 67.0
-rect_min_size = Vector2( 50, 50 )
-focus_mode = 0
-custom_constants/hseparation = -1
-custom_fonts/font = ExtResource( 23 )
-enabled_focus_mode = 0
-group = SubResource( 19 )
-text = "1"
-icon = ExtResource( 22 )
-
-[node name="ButtonSpeed2" type="ToolButton" parent="UI/HUD/SpeedBar/HBoxContainer"]
-visible = false
-margin_left = 56.0
-margin_right = 109.0
-margin_bottom = 67.0
-rect_min_size = Vector2( 50, 50 )
-focus_mode = 0
-custom_constants/hseparation = -2
-custom_fonts/font = ExtResource( 23 )
-toggle_mode = true
-enabled_focus_mode = 0
-group = SubResource( 19 )
-text = "2"
-icon = ExtResource( 24 )
-
-[node name="ButtonSpeed4" type="ToolButton" parent="UI/HUD/SpeedBar/HBoxContainer"]
-visible = false
-margin_left = 56.0
-margin_right = 116.0
-margin_bottom = 67.0
-rect_min_size = Vector2( 50, 50 )
-focus_mode = 0
-custom_constants/hseparation = -1
-custom_fonts/font = ExtResource( 23 )
-toggle_mode = true
-enabled_focus_mode = 0
-group = SubResource( 19 )
-text = "4"
-icon = ExtResource( 25 )
-
 [node name="Menus" type="Control" parent="UI"]
 pause_mode = 2
 anchor_right = 1.0
@@ -1011,9 +1006,9 @@ script = ExtResource( 21 )
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="timeout" from="EllapsedTimer" to="." method="_on_EllapsedTimer_timeout"]
 [connection signal="pressed" from="UI/HUD/ActionBar/HBoxContainer/MarginSettings/SettingsButton" to="." method="_on_SettingsButton_pressed"]
-[connection signal="pressed" from="UI/HUD/SpeedBar/HBoxContainer/ButtonSpeed1" to="." method="_on_ButtonSpeed1_pressed"]
-[connection signal="pressed" from="UI/HUD/SpeedBar/HBoxContainer/ButtonSpeed2" to="." method="_on_ButtonSpeed2_pressed"]
-[connection signal="pressed" from="UI/HUD/SpeedBar/HBoxContainer/ButtonSpeed4" to="." method="_on_ButtonSpeed4_pressed"]
+[connection signal="pressed" from="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer/ButtonSpeed1" to="." method="_on_ButtonSpeed1_pressed"]
+[connection signal="pressed" from="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer/ButtonSpeed2" to="." method="_on_ButtonSpeed2_pressed"]
+[connection signal="pressed" from="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer/ButtonSpeed4" to="." method="_on_ButtonSpeed4_pressed"]
 [connection signal="pressed" from="UI/Menus/WinMenu/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
 
 [editable path="UI/HUD/ActionBar/Cat1"]
