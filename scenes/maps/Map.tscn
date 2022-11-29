@@ -977,6 +977,10 @@ texture = ExtResource( 11 )
 expand = true
 stretch_mode = 1
 
+[node name="Tooltips" type="Control" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+
 [node name="Menus" type="Control" parent="UI"]
 pause_mode = 2
 anchor_right = 1.0
@@ -1006,10 +1010,6 @@ custom_fonts/font = SubResource( 13 )
 
 [node name="AudioStreamPlayer" parent="UI/Menus/WinMenu" index="3"]
 bus = "Master"
-
-[node name="Tooltips" type="Control" parent="UI"]
-margin_right = 40.0
-margin_bottom = 40.0
 
 [node name="AudioMusic" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
