@@ -234,7 +234,7 @@ func action_pressed(button: CircleButton):
 func action_popup(action: Action, button: CircleButton):
 	var popup_scene = load("res://scenes/UI/CatDialog.tscn")
 	var popup = popup_scene.instance()
-	map_ref.get_node("UI/Menus").add_child(popup)
+	map_ref.get_node("UI/Tooltips").add_child(popup)
 #	var full_name = tr(GameData.cat_data[cat_name].full_name)
 #	popup.set_text(tr('menu_delete').format([full_name, get_delete_coins()]))
 	popup.set_title(tr(action.action_name))
