@@ -770,6 +770,7 @@ rect_min_size = Vector2( 160, 160 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
 action_mode = 0
+confirm = false
 
 [node name="CenterContainer" parent="UI/HUD/ActionBar/Cat1" index="0"]
 __meta__ = {
@@ -797,6 +798,7 @@ rect_min_size = Vector2( 160, 160 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
 action_mode = 0
+confirm = false
 
 [node name="CenterContainer" parent="UI/HUD/ActionBar/Cat2" index="0"]
 __meta__ = {
@@ -833,6 +835,7 @@ rect_min_size = Vector2( 160, 160 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
 action_mode = 0
+confirm = false
 
 [node name="CenterContainer" parent="UI/HUD/ActionBar/Cat3" index="0"]
 __meta__ = {

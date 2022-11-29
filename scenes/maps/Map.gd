@@ -193,7 +193,7 @@ func register_new_tooltip(tip: Tooltip):
 	tip.registered = true
 
 func button_entered(button: CircleButton):
-	if Config.confirm: return
+	if Config.confirm and button.confirm: return
 	show_tooltip_on(button)
 
 func button_exited(button: CircleButton):

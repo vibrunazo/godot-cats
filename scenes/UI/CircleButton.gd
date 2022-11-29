@@ -3,6 +3,7 @@ extends TextureButton
 class_name CircleButton, "res://assets/button_circle.png"
 
 export var cost: int = 10
+export var confirm: bool = true
 onready var el_tooltip: Tooltip = $'%Tooltip'
 var action = null
 
