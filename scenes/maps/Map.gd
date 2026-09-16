@@ -229,7 +229,7 @@ func action_released(cat_key: String, _button: CircleButton) -> void:
 		else:
 			cancel_build()
 		
-func build_cat(name: String) -> void:
+func build_cat(cat_key: String) -> void:
 	cat_building.position = snap_to_grid(cat_building.global_position)
 	var cell_pos: Vector2i = $TileMap.local_to_map(cat_building.global_position)
 	if cats_dict.get(cell_pos):
@@ -248,7 +248,7 @@ func build_cat(name: String) -> void:
 	cat_building.connect("shot", Callable(self, "_on_cat_shoot"))
 	cat_building.done_building(cell_pos)
 	cat_building = null
-	add_coins(-data[name]['cost'])
+	add_coins(-data[cat_key]['cost'])
 	
 func cancel_build() -> void:
 	cat_building.queue_free()
@@ -341,14 +341,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		if is_instance_valid(cat_selected):
 			unselect_cat(cat_selected)
 
-func snap_to_grid(position: Vector2) -> Vector2:
+func snap_to_grid(pos: Vector2) -> Vector2:
 	# NOTE: Godot 4 map_to_local already returns the cell center
 	# (Godot 3 map_to_world returned the corner, hence the old +64).
-	var map_position: Vector2i = $TileMap.local_to_map(position)
+	var map_position: Vector2i = $TileMap.local_to_map(pos)
 	return $TileMap.map_to_local(map_position)
 
-func can_build(position: Vector2) -> bool:
-	var cell_pos: Vector2i = $TileMap.local_to_map(position)
+func can_build(pos: Vector2) -> bool:
+	var cell_pos: Vector2i = $TileMap.local_to_map(pos)
 	var id: int = $TileRoad.get_cell_source_id(0, cell_pos)
 	
 	if id == 0 : return false
@@ -357,8 +357,8 @@ func can_build(position: Vector2) -> bool:
 	return true
 
 # returns the cat located at given global mouse position
-func get_cat_at(position: Vector2) -> Cat:
-	var cell_pos: Vector2i = $TileMap.local_to_map(position)
+func get_cat_at(pos: Vector2) -> Cat:
+	var cell_pos: Vector2i = $TileMap.local_to_map(pos)
 	return cats_dict.get(cell_pos) as Cat
 
 func is_inside_map(cell_pos: Vector2i) -> bool:

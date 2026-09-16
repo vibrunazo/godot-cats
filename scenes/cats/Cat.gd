@@ -25,7 +25,7 @@ enum FocusType {FURTHEST, HEALTH}
 @export var attack_anim: String = "attack"
 # Meows every X shots
 @export var meow_every: int = 0
-@export var focus: FocusType = 0
+@export var focus: FocusType = FocusType.FURTHEST
 var total_cost: int = 10
 @onready var spawn_position: Marker2D = $"%SpawnPosition"
 @onready var bullet_sprite: Sprite2D = $"%SpawnPosition/BulletSprite"

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b27sihraj3ckn" path="res://assets/cheese.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://bg8g5xrhabi85" path="res://assets/whiterect.png" id="4"]
 [ext_resource type="FontVariation" path="res://resources/Merienda_font.tres" id="5"]
-[ext_resource type="Theme" path="res://resources/cats_theme.tres" id="6"]
+[ext_resource type="Theme" uid="uid://cue2ofj6l5vge" path="res://resources/cats_theme.tres" id="6"]
 [ext_resource type="Script" uid="uid://bybdh66wnxha4" path="res://scenes/maps/Map.gd" id="7"]
 [ext_resource type="PackedScene" path="res://scenes/Cheese.tscn" id="8"]
 [ext_resource type="Texture2D" uid="uid://bns1djh1280xk" path="res://assets/terrain.png" id="9"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" path="res://scenes/UI/GameOverMenu.tscn" id="15"]
 [ext_resource type="PackedScene" path="res://scenes/UI/WinMenu.tscn" id="16"]
 [ext_resource type="Curve" path="res://resources/size_curve.tres" id="17"]
-[ext_resource type="FontFile" uid="uid://bqmy4wfhy8ovy" path="res://assets/fonts/Merienda-Regular.ttf" id="18"]
 [ext_resource type="AudioStream" uid="uid://m2werlgts1fd" path="res://assets/audio/music/Mall - Komiku.mp3" id="19"]
 [ext_resource type="Texture2D" uid="uid://c6iqlo8ipei1t" path="res://assets/cat03.png" id="20"]
 [ext_resource type="Script" uid="uid://cx40go5gsphoj" path="res://scenes/CatCam.gd" id="21"]
@@ -700,146 +699,6 @@ corner_radius_bottom_left = 5
 corner_detail = 4
 shadow_size = 3
 
-[sub_resource type="FontVariation" id="14"]
-base_font = ExtResource("18")
-
-[sub_resource type="Animation" id="Animation_30xk2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HBoxContainer:anchor_top")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.5]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_btlhj"]
-resource_name = "start"
-length = 0.5
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HBoxContainer:anchor_top")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.5, 0.5]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_eui2n"]
-resource_name = "stop"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HBoxContainer:anchor_top")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.5, -0.5]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cl24t"]
-_data = {
-&"RESET": SubResource("Animation_30xk2"),
-&"start": SubResource("Animation_btlhj"),
-&"stop": SubResource("Animation_eui2n")
-}
-
-[sub_resource type="FontVariation" id="13"]
-base_font = ExtResource("18")
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cwhh8"]
-_data = {
-&"RESET": SubResource("Animation_30xk2"),
-&"start": SubResource("Animation_btlhj"),
-&"stop": SubResource("Animation_eui2n")
-}
-
 [node name="Map" type="Node2D" unique_id=440764097]
 script = ExtResource("7")
 coins = 55
@@ -921,6 +780,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("6")
 
@@ -1053,10 +914,20 @@ size_flags_vertical = 0
 action_mode = 0
 confirm = false
 
+[node name="CenterContainer" parent="UI/HUD/ActionBar/M1/Cat1" index="0"]
+layout_mode = 0
+
 [node name="TextureRect" parent="UI/HUD/ActionBar/M1/Cat1/CenterContainer" index="0"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 texture = ExtResource("10")
+
+[node name="Label" parent="UI/HUD/ActionBar/M1/Cat1" index="1"]
+layout_mode = 0
+theme_type_variation = &"money"
+
+[node name="Tooltip" parent="UI/HUD/ActionBar/M1/Cat1" index="2"]
+layout_mode = 0
 
 [node name="AnimationPlayer" parent="UI/HUD/ActionBar/M1/Cat1" index="3"]
 libraries/ = SubResource("AnimationLibrary_4ibd5")
@@ -1072,13 +943,21 @@ size_flags_vertical = 0
 action_mode = 0
 confirm = false
 
+[node name="CenterContainer" parent="UI/HUD/ActionBar/M2/Cat2" index="0"]
+layout_mode = 0
+
 [node name="TextureRect" parent="UI/HUD/ActionBar/M2/Cat2/CenterContainer" index="0"]
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 texture = ExtResource("2")
 
 [node name="Label" parent="UI/HUD/ActionBar/M2/Cat2" index="1"]
+layout_mode = 0
+theme_type_variation = &"money"
 text = "$15"
+
+[node name="Tooltip" parent="UI/HUD/ActionBar/M2/Cat2" index="2"]
+layout_mode = 0
 
 [node name="AnimationPlayer" parent="UI/HUD/ActionBar/M2/Cat2" index="3"]
 libraries/ = SubResource("AnimationLibrary_itnue")
@@ -1094,13 +973,21 @@ size_flags_vertical = 0
 action_mode = 0
 confirm = false
 
+[node name="CenterContainer" parent="UI/HUD/ActionBar/M3/Cat3" index="0"]
+layout_mode = 0
+
 [node name="TextureRect" parent="UI/HUD/ActionBar/M3/Cat3/CenterContainer" index="0"]
 custom_minimum_size = Vector2(130, 130)
 layout_mode = 2
 texture = ExtResource("20")
 
 [node name="Label" parent="UI/HUD/ActionBar/M3/Cat3" index="1"]
+layout_mode = 0
+theme_type_variation = &"money"
 text = "$20"
+
+[node name="Tooltip" parent="UI/HUD/ActionBar/M3/Cat3" index="2"]
+layout_mode = 0
 
 [node name="AnimationPlayer" parent="UI/HUD/ActionBar/M3/Cat3" index="3"]
 libraries/ = SubResource("AnimationLibrary_g01a7")
@@ -1204,40 +1091,14 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="PauseMenu" parent="UI/Menus" unique_id=1924316777 instance=ExtResource("14")]
 unique_name_in_owner = true
 anchors_preset = 0
-
-[node name="TextureRect" parent="UI/Menus/PauseMenu" index="0"]
-layout_mode = 0
-
-[node name="HBoxContainer" parent="UI/Menus/PauseMenu" index="1"]
-layout_mode = 0
-
-[node name="Paused" parent="UI/Menus/PauseMenu/HBoxContainer" index="0"]
-layout_mode = 2
-theme_override_fonts/font = SubResource("14")
-horizontal_alignment = 1
-
-[node name="Separator" parent="UI/Menus/PauseMenu/HBoxContainer" index="1"]
-layout_mode = 2
-
-[node name="ResumeButton" parent="UI/Menus/PauseMenu/HBoxContainer" index="2"]
-layout_mode = 2
-
-[node name="RestartButton" parent="UI/Menus/PauseMenu/HBoxContainer" index="3"]
-layout_mode = 2
-
-[node name="ExitButton" parent="UI/Menus/PauseMenu/HBoxContainer" index="4"]
-layout_mode = 2
-
-[node name="AnimationPlayer" parent="UI/Menus/PauseMenu" index="2"]
-libraries/ = SubResource("AnimationLibrary_cl24t")
-
-[node name="AudioStreamPlayer" parent="UI/Menus/PauseMenu" index="3"]
-bus = &"ui"
 
 [node name="GameOverMenu" parent="UI/Menus" unique_id=945323916 instance=ExtResource("15")]
 unique_name_in_owner = true
@@ -1246,38 +1107,6 @@ anchors_preset = 0
 [node name="WinMenu" parent="UI/Menus" unique_id=1882379353 instance=ExtResource("16")]
 unique_name_in_owner = true
 anchors_preset = 0
-
-[node name="TextureRect" parent="UI/Menus/WinMenu" index="0"]
-layout_mode = 0
-
-[node name="HBoxContainer" parent="UI/Menus/WinMenu" index="1"]
-layout_mode = 0
-
-[node name="Paused" parent="UI/Menus/WinMenu/HBoxContainer" index="0"]
-layout_mode = 2
-theme_override_fonts/font = SubResource("13")
-horizontal_alignment = 1
-
-[node name="Separator" parent="UI/Menus/WinMenu/HBoxContainer" index="1"]
-layout_mode = 2
-
-[node name="ResumeButton" parent="UI/Menus/WinMenu/HBoxContainer" index="2"]
-layout_mode = 2
-
-[node name="NextButton" parent="UI/Menus/WinMenu/HBoxContainer" index="3"]
-layout_mode = 2
-
-[node name="RestartButton" parent="UI/Menus/WinMenu/HBoxContainer" index="4"]
-layout_mode = 2
-
-[node name="ExitButton" parent="UI/Menus/WinMenu/HBoxContainer" index="5"]
-layout_mode = 2
-
-[node name="AnimationPlayer" parent="UI/Menus/WinMenu" index="2"]
-libraries/ = SubResource("AnimationLibrary_cwhh8")
-
-[node name="AudioStreamPlayer" parent="UI/Menus/WinMenu" index="3"]
-bus = &"Master"
 
 [node name="AudioMusic" type="AudioStreamPlayer" parent="." unique_id=1502116189]
 process_mode = 3
@@ -1294,10 +1123,7 @@ script = ExtResource("21")
 [connection signal="pressed" from="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer/ButtonSpeed1" to="." method="_on_ButtonSpeed1_pressed"]
 [connection signal="pressed" from="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer/ButtonSpeed2" to="." method="_on_ButtonSpeed2_pressed"]
 [connection signal="pressed" from="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer/ButtonSpeed4" to="." method="_on_ButtonSpeed4_pressed"]
-[connection signal="pressed" from="UI/Menus/WinMenu/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
 
 [editable path="UI/HUD/ActionBar/M1/Cat1"]
 [editable path="UI/HUD/ActionBar/M2/Cat2"]
 [editable path="UI/HUD/ActionBar/M3/Cat3"]
-[editable path="UI/Menus/PauseMenu"]
-[editable path="UI/Menus/WinMenu"]

@@ -34,7 +34,7 @@ func update_lang_from_locale() -> void:
 		return
 	if !DisplayServer.has_feature(DisplayServer.FEATURE_TOUCHSCREEN):
 		# no touch, I'm on PC
-		el_lang.action_mode = 1
+		el_lang.action_mode = BaseButton.ACTION_MODE_BUTTON_RELEASE
 	if TranslationServer.get_locale().begins_with("en"):
 		el_lang.select(0)
 	else:

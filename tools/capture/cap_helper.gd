@@ -6,6 +6,7 @@ extends SceneTree
 var _scene: String = "res://scenes/maps/MainScene.tscn"
 var _output: String = "captures/new/capture.png"
 var _wait_frames: int = 120
+var _pause_after_frames: int = -1
 
 
 func _init() -> void:
@@ -16,21 +17,17 @@ func _init() -> void:
 			_output = arg.trim_prefix("output=")
 		elif arg.begins_with("wait_frames="):
 			_wait_frames = int(arg.trim_prefix("wait_frames="))
+		elif arg.begins_with("pause_after_frames="):
+			_pause_after_frames = int(arg.trim_prefix("pause_after_frames="))
 	call_deferred("_run")
 
 
 func _run() -> void:
-	# NOTE: -s scripts bypass automatic project translation loading,
-	# so load them explicitly to match normal game startup.
-	# Godot 4 lists them under "internationalization/locale/translations";
-	# fall back to the Godot 3 path for unconverted projects.
-	var tr_paths: Array = ProjectSettings.get_setting("internationalization/locale/translations", [])
-	if tr_paths.is_empty():
-		tr_paths = ProjectSettings.get_setting("locale/translations", [])
-	for tr_path: String in tr_paths:
-		var tr_res: Translation = load(tr_path) as Translation
-		if tr_res != null:
-			TranslationServer.add_translation(tr_res)
+	# Project translations (internationalization/locale/translations in
+	# project.godot) are loaded automatically by the engine in every mode,
+	# including -s scripts — nothing to set up here. NOTE: a Godot 3-style
+	# [locale]/translations= entry is silently ignored by Godot 4 and the
+	# game will show raw translation keys; convert it if you see that.
 	var packed: PackedScene = load(_scene) as PackedScene
 	if packed == null:
 		push_error("capture helper: cannot load scene %s" % _scene)
@@ -39,8 +36,21 @@ func _run() -> void:
 	var inst: Node = packed.instantiate()
 	root.add_child(inst)
 	current_scene = inst
-	for i: int in range(_wait_frames):
-		await process_frame
+
+	if _pause_after_frames >= 0:
+		for i: int in range(_pause_after_frames):
+			await process_frame
+		if inst.has_method("toggle_pause"):
+			inst.toggle_pause()
+		elif inst.has_node("%PauseMenu"):
+			var pm: Node = inst.get_node("%PauseMenu")
+			if pm.has_method("pause"):
+				pm.pause(true)
+		for i: int in range(_wait_frames):
+			await process_frame
+	else:
+		for i: int in range(_wait_frames):
+			await process_frame
 	# Two extra frames so the viewport texture is fully rendered.
 	await process_frame
 	await process_frame
