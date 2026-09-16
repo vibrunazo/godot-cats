@@ -60,9 +60,9 @@ pause={
 ]
 }
 
-[locale]
+[internationalization]
 
-translations=PackedStringArray("res://locale/Cats translations - locale.en.translation", "res://locale/Cats translations - locale.pt_BR.translation")
+locale/translations=PackedStringArray("res://locale/Cats translations - locale.en.translation", "res://locale/Cats translations - locale.pt_BR.translation")
 
 [physics]
 

@@ -22,7 +22,12 @@ func _init() -> void:
 func _run() -> void:
 	# NOTE: -s scripts bypass automatic project translation loading,
 	# so load them explicitly to match normal game startup.
-	for tr_path: String in ProjectSettings.get_setting("locale/translations", []):
+	# Godot 4 lists them under "internationalization/locale/translations";
+	# fall back to the Godot 3 path for unconverted projects.
+	var tr_paths: Array = ProjectSettings.get_setting("internationalization/locale/translations", [])
+	if tr_paths.is_empty():
+		tr_paths = ProjectSettings.get_setting("locale/translations", [])
+	for tr_path: String in tr_paths:
 		var tr_res: Translation = load(tr_path) as Translation
 		if tr_res != null:
 			TranslationServer.add_translation(tr_res)
