@@ -4,8 +4,10 @@ class_name Tooltip
 
 @onready var el_label: Label = $"%Label"
 @onready var el_desc: RichTextLabel = $"%DescriptionLabel"
-var registered := false
-var labelled := false
+var registered: bool = false
+var labelled: bool = false
+var _base_pos: Vector2 = Vector2.ZERO
+var _has_base_pos: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,8 +31,15 @@ func _register_with_map() -> void:
 func adjust_position() -> void:
 #	var tp = $"%Label".text.left(5)
 #	print('tp: %s, gpos: %s, lpos: %s, size: %s, vp: %s' % [tp, get_global_transform().origin, rect_position, rect_size, get_viewport_rect().size])
+	if !_has_base_pos:
+		_base_pos = position
+		_has_base_pos = true
+	position = _base_pos
 	var pos: Vector2 = get_global_transform().origin
-	var tooltip_size: Vector2 = size
+	var tooltip_size: Vector2 = Vector2(
+		max(size.x, get_combined_minimum_size().x),
+		max(size.y, get_combined_minimum_size().y)
+	)
 	var vp: Vector2 = get_viewport_rect().size
 	var left: float = pos.x
 	var right: float = pos.x + tooltip_size.x
@@ -54,7 +63,7 @@ func adjust_position() -> void:
 ## Named show_tooltip/hide_tooltip: native CanvasItem.show/hide cannot be
 ## overridden (static calls bind to the native), so shadowing them crashes.
 func show_tooltip(duration: float = -1.0) -> void:
-#	adjust_position()
+	adjust_position()
 	visible = true
 	if duration != 0.0:
 		$VisibilityTimer.start(duration)

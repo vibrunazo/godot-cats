@@ -31,6 +31,7 @@ def capture(
     output: str,
     wait_frames: int = 180,
     pause_after_frames: int = -1,
+    tooltip_button_index: int = -1,
     timeout: float = 120.0,
     godot: str | None = None,
     resolution: str | None = None,
@@ -52,6 +53,8 @@ def capture(
     args += [f"scene={scene}", f"output={res_output}", f"wait_frames={wait_frames}"]
     if pause_after_frames >= 0:
         args.append(f"pause_after_frames={pause_after_frames}")
+    if tooltip_button_index >= 0:
+        args.append(f"tooltip_button_index={tooltip_button_index}")
     if resolution:
         args = ["--resolution", resolution] + args
     if extra_args:
@@ -81,6 +84,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--output", required=True, help="Output PNG path")
     parser.add_argument("--wait-frames", type=int, default=180)
     parser.add_argument("--pause-after-frames", type=int, default=-1, help="Frames to wait before pausing scene (-1 for no pause)")
+    parser.add_argument("--tooltip-button-index", type=int, default=-1, help="Button index to show tooltip on (-1 for none)")
     parser.add_argument("--timeout", type=float, default=120.0)
     parser.add_argument("--godot", default=None)
     parser.add_argument("--resolution", default=None, help="WxH, e.g. 1664x768")
@@ -90,6 +94,7 @@ def main(argv: list[str] | None = None) -> int:
         output=args.output,
         wait_frames=args.wait_frames,
         pause_after_frames=args.pause_after_frames,
+        tooltip_button_index=args.tooltip_button_index,
         timeout=args.timeout,
         godot=args.godot,
         resolution=args.resolution,

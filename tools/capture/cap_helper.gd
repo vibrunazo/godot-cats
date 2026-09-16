@@ -7,6 +7,7 @@ var _scene: String = "res://scenes/maps/MainScene.tscn"
 var _output: String = "captures/new/capture.png"
 var _wait_frames: int = 120
 var _pause_after_frames: int = -1
+var _tooltip_button_index: int = -1
 
 
 func _init() -> void:
@@ -19,6 +20,8 @@ func _init() -> void:
 			_wait_frames = int(arg.trim_prefix("wait_frames="))
 		elif arg.begins_with("pause_after_frames="):
 			_pause_after_frames = int(arg.trim_prefix("pause_after_frames="))
+		elif arg.begins_with("tooltip_button_index="):
+			_tooltip_button_index = int(arg.trim_prefix("tooltip_button_index="))
 	call_deferred("_run")
 
 
@@ -51,6 +54,13 @@ func _run() -> void:
 	else:
 		for i: int in range(_wait_frames):
 			await process_frame
+
+	if _tooltip_button_index >= 0:
+		var action_buttons: Variant = inst.get("action_buttons")
+		if action_buttons != null and _tooltip_button_index < action_buttons.size():
+			inst.call("show_tooltip_on", action_buttons[_tooltip_button_index])
+			for i: int in range(10):
+				await process_frame
 	# Two extra frames so the viewport texture is fully rendered.
 	await process_frame
 	await process_frame

@@ -190,6 +190,7 @@ func register_new_tooltip(tip: Tooltip) -> void:
 	$UI/Tooltips.add_child(tip)
 	tip.set_global_position(pos)
 	tip.registered = true
+	tip.adjust_position()
 
 func button_entered(button: CircleButton) -> void:
 	if Config.confirm and button.confirm: return
