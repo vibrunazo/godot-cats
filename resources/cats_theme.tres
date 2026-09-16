@@ -1,24 +1,20 @@
-[gd_resource type="Theme" load_steps=9 format=2]
+[gd_resource type="Theme" format=3 uid="uid://cue2ofj6l5vge"]
 
-[ext_resource path="res://resources/Merienda_font.tres" type="FontVariation" id=1]
-[ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="FontFile" id=2]
-[ext_resource path="res://assets/x-small.png" type="Texture2D" id=3]
-[ext_resource path="res://resources/TooltipPanelbg.tres" type="StyleBox" id=4]
-[ext_resource path="res://assets/x-small-hl.png" type="Texture2D" id=5]
+[ext_resource type="FontVariation" path="res://resources/Merienda_font.tres" id="1"]
+[ext_resource type="FontFile" uid="uid://bqmy4wfhy8ovy" path="res://assets/fonts/Merienda-Regular.ttf" id="2"]
+[ext_resource type="Texture2D" uid="uid://dwujqwctq0haj" path="res://assets/x-small.png" id="3"]
+[ext_resource type="StyleBox" path="res://resources/TooltipPanelbg.tres" id="4"]
+[ext_resource type="Texture2D" uid="uid://d3fjvt8vexrmo" path="res://assets/x-small-hl.png" id="5"]
 
-[sub_resource type="FontVariation" id=3]
-base_font = ExtResource( 2 )
-[sub_resource type="FontVariation" id=2]
-base_font = ExtResource( 2 )
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.905882, 0.682353, 0.0901961, 1 )
+[sub_resource type="StyleBoxFlat" id="1"]
+bg_color = Color(0.905882, 0.682353, 0.0901961, 1)
 draw_center = false
-skew = Vector2( 0.3, 0 )
+skew = Vector2(0.3, 0)
 border_width_left = 8
 border_width_top = 8
 border_width_right = 8
 border_width_bottom = 8
-border_color = Color( 0.85098, 0.894118, 0.0666667, 0.768627 )
+border_color = Color(0.85098, 0.894118, 0.0666667, 0.768627)
 border_blend = true
 corner_radius_top_left = 8
 corner_radius_top_right = 8
@@ -27,39 +23,45 @@ corner_radius_bottom_left = 8
 corner_detail = 4
 expand_margin_left = 10.0
 expand_margin_right = 10.0
-shadow_color = Color( 0.917647, 0.945098, 0.0313726, 0.831373 )
+shadow_color = Color(0.917647, 0.945098, 0.0313726, 0.831373)
 shadow_size = 10
 
+[sub_resource type="FontVariation" id="3"]
+base_font = ExtResource("2")
+
+[sub_resource type="FontVariation" id="2"]
+base_font = ExtResource("2")
+
 [resource]
-default_font = ExtResource( 1 )
+default_font = ExtResource("1")
 default_font_size = 40
-Label/colors/font_color = Color( 0.882353, 0.407843, 0.854902, 1 )
-Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
-Label/colors/font_outline_color = Color( 0, 0, 0, 1 )
-Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
-Label/constants/outline_size = 4
+Button/colors/font_color = Color(0.8, 0.8, 0.8, 0.862745)
+Button/colors/font_color_disabled = Color(0.9, 0.95, 1, 0.3)
+Button/colors/font_color_focus = Color(0.941176, 0.941176, 0.941176, 1)
+Button/colors/font_color_hover = Color(0.94, 0.94, 0.94, 1)
+Button/colors/font_color_pressed = Color(0.921569, 0.94902, 0.0941176, 1)
+Button/styles/focus = SubResource("1")
+Label/colors/font_color = Color(0.882353, 0.407843, 0.854902, 1)
+Label/colors/font_color_shadow = Color(0, 0, 0, 0)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_outline_modulate = Color(1, 1, 1, 1)
 Label/constants/line_spacing = 3
+Label/constants/outline_size = 4
 Label/constants/shadow_as_outline = 0
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/styles/normal = null
-RichTextLabel/colors/default_color = Color( 0.9, 0.8997, 0.891, 1 )
-RichTextLabel/fonts/bold_font = SubResource( 3 )
-RichTextLabel/fonts/italics_font = ExtResource( 1 )
-RichTextLabel/fonts/normal_font = SubResource( 2 )
+RichTextLabel/colors/default_color = Color(0.9, 0.8997, 0.891, 1)
 RichTextLabel/font_sizes/bold_font_size = 30
 RichTextLabel/font_sizes/normal_font_size = 28
-Button/colors/font_color = Color( 0.8, 0.8, 0.8, 0.862745 )
-Button/colors/font_color_disabled = Color( 0.9, 0.95, 1, 0.3 )
-Button/colors/font_color_focus = Color( 0.941176, 0.941176, 0.941176, 1 )
-Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
-Button/colors/font_color_pressed = Color( 0.921569, 0.94902, 0.0941176, 1 )
-Button/styles/focus = SubResource( 1 )
-Window/colors/title_color = Color( 0.631373, 0.776471, 0.101961, 1 )
+RichTextLabel/fonts/bold_font = SubResource("3")
+RichTextLabel/fonts/italics_font = ExtResource("1")
+RichTextLabel/fonts/normal_font = SubResource("2")
+Window/colors/title_color = Color(0.631373, 0.776471, 0.101961, 1)
 Window/constants/close_h_ofs = 32
 Window/constants/close_v_ofs = 6
 Window/constants/scaleborder_size = 4
 Window/constants/title_height = 50
-Window/icons/close = ExtResource( 3 )
-Window/icons/close_highlight = ExtResource( 5 )
-Window/styles/panel = ExtResource( 4 )
+Window/icons/close = ExtResource("3")
+Window/icons/close_highlight = ExtResource("5")
+Window/styles/panel = ExtResource("4")
