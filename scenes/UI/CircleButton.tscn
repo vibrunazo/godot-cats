@@ -194,7 +194,8 @@ custom_minimum_size = Vector2( 128, 128 )
 pivot_offset = Vector2( 64, 64 )
 theme = ExtResource( 2 )
 texture_normal = ExtResource( 1 )
-expand_icon = true
+ignore_texture_size = true
+stretch_mode = 0
 script = ExtResource( 3 )
 
 [node name="CenterContainer" type="MarginContainer" parent="."]
@@ -232,8 +233,8 @@ pivot_offset = Vector2( 64, 32 )
 theme_type_variation = "money"
 theme_override_colors/font_color = Color( 0.294118, 0.741176, 0.301961, 1 )
 text = "$10"
-align = 1
-valign = 2
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="Tooltip" parent="." instance=ExtResource( 5 )]
 unique_name_in_owner = true

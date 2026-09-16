@@ -21,3 +21,6 @@ For standalone diagnostic scripts executed with the -s flag, inherit from SceneT
 
 If you find a helper python script could be helpful, write them to tools/ and keep it there for future features and future agents.
 
+We have screenshot and recording tools at tools/capture/ if you need to take screenshots of record movies of gameplay for debugging, consider using those tools. If those tools are not sufficient for your use case, consider adding or improving these tools to help future agents with similar needs.
+
+Tests should focus on generalized mechanics and not hardcoded values. Consider that designers might change game balance. Good test: if damage is X then was final health after taking damage the expected value?  Bad test: is damage set to 4?
