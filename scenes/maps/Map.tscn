@@ -887,7 +887,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource( 3 )
 expand_mode = 1
-stretch_mode = 1
+stretch_mode = 5
 flip_h = true
 
 [node name="LifeBar" type="ProgressBar" parent="UI/HUD/TopBar"]
@@ -961,7 +961,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource( 11 )
 expand_mode = 1
-stretch_mode = 1
+stretch_mode = 5
 
 [node name="Tooltips" type="Control" parent="UI"]
 offset_right = 40.0
