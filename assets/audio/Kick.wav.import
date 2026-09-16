@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Kick.wav-701b062bd340acd81ccf1c4c4b968d84.sample"
+type="AudioStreamWAV"
+uid="uid://crsp3uu5ggwyt"
+path="res://.godot/imported/Kick.wav-701b062bd340acd81ccf1c4c4b968d84.sample"
 
 [deps]
 
 source_file="res://assets/audio/Kick.wav"
-dest_files=[ "res://.import/Kick.wav-701b062bd340acd81ccf1c4c4b968d84.sample" ]
+dest_files=["res://.godot/imported/Kick.wav-701b062bd340acd81ccf1c4c4b968d84.sample"]
 
 [params]
 

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/bfh1_glass_breaking_02.wav-c8b202ffeeca334d07a9ff7a2d18dfb6.sample"
+type="AudioStreamWAV"
+uid="uid://by1g73cejkp4o"
+path="res://.godot/imported/bfh1_glass_breaking_02.wav-c8b202ffeeca334d07a9ff7a2d18dfb6.sample"
 
 [deps]
 
 source_file="res://assets/audio/bfh1_glass_breaking_02.wav"
-dest_files=[ "res://.import/bfh1_glass_breaking_02.wav-c8b202ffeeca334d07a9ff7a2d18dfb6.sample" ]
+dest_files=["res://.godot/imported/bfh1_glass_breaking_02.wav-c8b202ffeeca334d07a9ff7a2d18dfb6.sample"]
 
 [params]
 

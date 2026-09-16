@@ -2,70 +2,81 @@ extends PanelContainer
 
 class_name Tooltip
 
-onready var el_label: Label = $"%Label"
-onready var el_desc: RichTextLabel = $"%DescriptionLabel"
+@onready var el_label: Label = $"%Label"
+@onready var el_desc: RichTextLabel = $"%DescriptionLabel"
 var registered := false
 var labelled := false
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	visible = false
 
 # registers this tooltip on the map, so the map can place it in the appropriate layer
 # called by the CircleButton, or the Cat
-func register_tooltip():
-	var root = get_tree().current_scene
+func register_tooltip() -> void:
+	call_deferred("_register_with_map")
+
+
+func _register_with_map() -> void:
+	var root: Node = get_tree().current_scene
+	if root == null:
+		return
+	if !root.has_method("register_new_tooltip"):
+		return
 	root.call_deferred("register_new_tooltip", self)
 
 # adjust the position of the tooltip to fit inside the screen if it's being cut off
-func adjust_position():
+func adjust_position() -> void:
 #	var tp = $"%Label".text.left(5)
 #	print('tp: %s, gpos: %s, lpos: %s, size: %s, vp: %s' % [tp, get_global_transform().origin, rect_position, rect_size, get_viewport_rect().size])
-	var pos := get_global_transform().origin
-	var size := rect_size
-	var vp := get_viewport_rect().size
-	var left = pos.x 
-	var right = pos.x + size.x 
+	var pos: Vector2 = get_global_transform().origin
+	var tooltip_size: Vector2 = size
+	var vp: Vector2 = get_viewport_rect().size
+	var left: float = pos.x
+	var right: float = pos.x + tooltip_size.x
 #	var top = pos.y
-	var bot = pos.y + size.y
+	var bot: float = pos.y + tooltip_size.y
 #	if top < 0:
 #		var delta = -top
 #		rect_position.y += delta
-	if left < 0:
-		var delta = -left
-		rect_position.x += delta
+	if left < 0.0:
+		var delta_left: float = -left
+		position.x += delta_left
 	if right > vp.x:
-		var delta = right - vp.x
-		rect_position.x -= delta
+		var delta_right: float = right - vp.x
+		position.x -= delta_right
 	if bot > vp.y:
-		var delta = bot - vp.y
-		rect_position.y -= delta
+		var delta_bot: float = bot - vp.y
+		position.y -= delta_bot
 #	print('tooltip moved to g: %s, l: %s' % [pos, rect_position])
 
-func show(duration: float = -1):
+## Shows the tooltip, optionally auto-hiding after `duration` seconds.
+## Named show_tooltip/hide_tooltip: native CanvasItem.show/hide cannot be
+## overridden (static calls bind to the native), so shadowing them crashes.
+func show_tooltip(duration: float = -1.0) -> void:
 #	adjust_position()
 	visible = true
-	if duration != 0:
+	if duration != 0.0:
 		$VisibilityTimer.start(duration)
 
-func hide():
+func hide_tooltip() -> void:
 	visible = false
 
-func set_label(hint: String, desc: String = ''):
+func set_label(hint: String, desc: String = '') -> void:
 	labelled = true
 	el_label.text = hint
-	el_desc.bbcode_text = desc
+	el_desc.text = desc
 	if desc.length() > 0:
-		el_desc.fit_content_height = true
+		el_desc.fit_content = true
 #		if desc.length() > 30:
-#			el_desc.rect_min_size.x = 460
+#			el_desc.custom_minimum_size.x = 460
 	else:
-		el_desc.fit_content_height = false
+		el_desc.fit_content = false
 
-func _on_VisibilityTimer_timeout():
-	hide()
+func _on_VisibilityTimer_timeout() -> void:
+	hide_tooltip()
 
-func _on_Tooltip_resized():
+func _on_Tooltip_resized() -> void:
 	if !registered or !labelled: return
 #	print('tooltip resized to %s' % rect_size)
 	adjust_position()

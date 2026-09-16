@@ -1,6 +1,9 @@
 extends Node
 
-onready var cat_data = {
+## Static cat definitions and preloaded cat scenes.
+## Plain member vars (not @onready) so autoload data is available to maps.
+
+var cat_data: Dictionary = {
 	"Cat1": {
 		'id': 0,
 		'full_name': 'cat1',
@@ -20,7 +23,7 @@ onready var cat_data = {
 		'cost': 20
 	}
 }
-var cat_scenes = [
+var cat_scenes: Array[PackedScene] = [
 	preload("res://scenes/cats/Cat01.tscn"),
 	preload("res://scenes/cats/Cat02.tscn"),
 	preload("res://scenes/cats/Cat03.tscn")
@@ -33,15 +36,15 @@ var cat_scenes = [
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	print('gamedata ready')
 	pass # Replace with function body.
-	
-func get_cat_data(name: String):
-	return cat_data[name]
 
-func get_cat_scene(name: String):
-	return cat_scenes[cat_data[name]['id']]
+func get_cat_data(cat_key: String) -> Dictionary:
+	return cat_data[cat_key]
+
+func get_cat_scene(cat_key: String) -> PackedScene:
+	return cat_scenes[cat_data[cat_key]['id']]
 	
 
 

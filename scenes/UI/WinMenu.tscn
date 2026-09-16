@@ -1,27 +1,21 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/UI/GameOverMenu.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="FontFile" id=2]
 [ext_resource path="res://assets/audio/OMS - pause start.mp3" type="AudioStream" id=4]
 [ext_resource path="res://scenes/UI/MenuToolButton.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Gradient" id=2]
 interpolation_mode = 2
-colors = PoolColorArray( 0.831373, 0.901961, 0.0901961, 0.54902, 0.568627, 0.6, 0.239216, 0.156863 )
+colors = PackedColorArray( 0.831373, 0.901961, 0.0901961, 0.54902, 0.568627, 0.6, 0.239216, 0.156863 )
 
 [sub_resource type="GradientTexture2D" id=3]
 gradient = SubResource( 2 )
 fill_to = Vector2( -0.5, 0 )
 repeat = 2
 
-[sub_resource type="DynamicFont" id=1]
-resource_local_to_scene = true
-size = 60
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 2 )
-
+[sub_resource type="FontVariation" id=1]
+base_font = ExtResource( 2 )
 [node name="WinMenu" instance=ExtResource( 1 )]
 focus_name = "NextButton"
 
@@ -32,27 +26,30 @@ texture = SubResource( 3 )
 anchor_bottom = 0.5
 
 [node name="Paused" parent="HBoxContainer" index="0"]
-custom_colors/font_color = Color( 0.890196, 0.913725, 0.121569, 1 )
-custom_fonts/font = SubResource( 1 )
+theme_override_colors/font_color = Color( 0.890196, 0.913725, 0.121569, 1 )
+theme_override_fonts/font = SubResource( 1 )
+theme_override_font_sizes/font_size = 60
+theme_override_constants/outline_size = 2
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
 text = "menu_win"
 
 [node name="ResumeButton" parent="HBoxContainer" index="2"]
-margin_right = 343.0
+offset_right = 343.0
 text = "Next!"
 
 [node name="NextButton" parent="HBoxContainer" index="3" groups=["button"] instance=ExtResource( 5 )]
-margin_top = 156.0
-margin_right = 480.0
-margin_bottom = 223.0
+offset_top = 156.0
+offset_right = 480.0
+offset_bottom = 223.0
 text = "menu_next"
 
 [node name="RestartButton" parent="HBoxContainer" index="4"]
-margin_top = 227.0
-margin_bottom = 294.0
+offset_top = 227.0
+offset_bottom = 294.0
 
 [node name="ExitButton" parent="HBoxContainer" index="5"]
-margin_top = 298.0
-margin_bottom = 365.0
+offset_top = 298.0
+offset_bottom = 365.0
 
 [node name="AudioStreamPlayer" parent="." index="3"]
 stream = ExtResource( 4 )

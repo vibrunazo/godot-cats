@@ -6,100 +6,13 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "Node",
-"class": "Action",
-"language": "GDScript",
-"path": "res://scenes/Action.gd"
-}, {
-"base": "Node2D",
-"class": "Blast",
-"language": "GDScript",
-"path": "res://scenes/blast/Blast.gd"
-}, {
-"base": "Node2D",
-"class": "Bullet",
-"language": "GDScript",
-"path": "res://scenes/Bullet.gd"
-}, {
-"base": "Node2D",
-"class": "Cat",
-"language": "GDScript",
-"path": "res://scenes/cats/Cat.gd"
-}, {
-"base": "Node2D",
-"class": "Cat2",
-"language": "GDScript",
-"path": "res://scenes/cats/Cat02.gd"
-}, {
-"base": "Cat",
-"class": "Cat3",
-"language": "GDScript",
-"path": "res://scenes/cats/Cat03.gd"
-}, {
-"base": "Camera2D",
-"class": "CatCam",
-"language": "GDScript",
-"path": "res://scenes/CatCam.gd"
-}, {
-"base": "ConfirmationDialog",
-"class": "CatDialog",
-"language": "GDScript",
-"path": "res://scenes/UI/CatDialog.gd"
-}, {
-"base": "TextureButton",
-"class": "CircleButton",
-"language": "GDScript",
-"path": "res://scenes/UI/CircleButton.gd"
-}, {
-"base": "Node2D",
-"class": "Map",
-"language": "GDScript",
-"path": "res://scenes/maps/Map.gd"
-}, {
-"base": "ToolButton",
-"class": "MenuToolButton",
-"language": "GDScript",
-"path": "res://scenes/UI/MenuToolButton.gd"
-}, {
-"base": "PathFollow2D",
-"class": "Mouse",
-"language": "GDScript",
-"path": "res://scenes/Mouse.gd"
-}, {
-"base": "Control",
-"class": "PauseMenu",
-"language": "GDScript",
-"path": "res://scenes/UI/PauseMenu.gd"
-}, {
-"base": "PanelContainer",
-"class": "Tooltip",
-"language": "GDScript",
-"path": "res://scenes/UI/Tooltip.gd"
-} ]
-_global_script_class_icons={
-"Action": "",
-"Blast": "",
-"Bullet": "res://assets/ball.png",
-"Cat": "res://assets/cat01.png",
-"Cat2": "res://assets/cat02.png",
-"Cat3": "res://assets/cat03.png",
-"CatCam": "",
-"CatDialog": "",
-"CircleButton": "res://assets/button_circle.png",
-"Map": "",
-"MenuToolButton": "",
-"Mouse": "res://assets/mouse01.png",
-"PauseMenu": "",
-"Tooltip": ""
-}
+config_version=5
 
 [application]
 
 config/name="Cats"
 run/main_scene="res://scenes/maps/MainScene.tscn"
+config/features=PackedStringArray("4.7")
 config/icon="res://assets/cat01.png"
 config/name_pt_BR="Gatos"
 
@@ -109,12 +22,14 @@ Global="*res://scripts/Global.gd"
 GameData="*res://scripts/GameData.gd"
 Config="*res://scripts/Config.gd"
 
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+
 [display]
 
-window/size/width=1664
-window/size/height=768
-window/size/test_width=800
-window/size/test_height=400
+window/size/viewport_width=1664
+window/size/viewport_height=768
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
@@ -124,30 +39,30 @@ icon=false
 
 [gui]
 
-common/drop_mouse_on_gui_input_disabled=true
 timers/tooltip_delay_sec=0.2
+common/drop_mouse_on_gui_input_disabled=true
 
 [input]
 
 ui_accept={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777222,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
- ]
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
 }
 pause={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":80,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777217,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
 }
 
 [locale]
 
-translations=PoolStringArray( "res://locale/Cats translations - locale.en.translation", "res://locale/Cats translations - locale.pt_BR.translation" )
+translations=PackedStringArray("res://locale/Cats translations - locale.en.translation", "res://locale/Cats translations - locale.pt_BR.translation")
 
 [physics]
 
@@ -155,6 +70,6 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+environment/defaults/default_clear_color=Color(0.6, 0.301961, 0.6, 1)
+environment/defaults/default_environment="res://default_env.tres"
 vram_compression/import_etc=true
-environment/default_clear_color=Color( 0.6, 0.301961, 0.6, 1 )
-environment/default_environment="res://default_env.tres"

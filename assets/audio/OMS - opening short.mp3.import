@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/OMS - opening short.mp3-115792e6083239d5b5768ab556e31965.mp3str"
+uid="uid://bl0cv71lg0vob"
+path="res://.godot/imported/OMS - opening short.mp3-115792e6083239d5b5768ab556e31965.mp3str"
 
 [deps]
 
 source_file="res://assets/audio/OMS - opening short.mp3"
-dest_files=[ "res://.import/OMS - opening short.mp3-115792e6083239d5b5768ab556e31965.mp3str" ]
+dest_files=["res://.godot/imported/OMS - opening short.mp3-115792e6083239d5b5768ab556e31965.mp3str"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

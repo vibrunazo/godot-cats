@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/gatinho02.wav-4f85adbc257155852b6f841c7f1a1812.sample"
+type="AudioStreamWAV"
+uid="uid://ddtybip2fd8ac"
+path="res://.godot/imported/gatinho02.wav-4f85adbc257155852b6f841c7f1a1812.sample"
 
 [deps]
 
 source_file="res://assets/audio/gatinho02.wav"
-dest_files=[ "res://.import/gatinho02.wav-4f85adbc257155852b6f841c7f1a1812.sample" ]
+dest_files=["res://.godot/imported/gatinho02.wav-4f85adbc257155852b6f841c7f1a1812.sample"]
 
 [params]
 

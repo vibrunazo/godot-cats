@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/Distance - Anno Domini Beats [vbr].mp3-4527711125d9cfecaa15c57cea3d47ef.mp3str"
+uid="uid://d0e7x5jcp74ji"
+path="res://.godot/imported/Distance - Anno Domini Beats [vbr].mp3-4527711125d9cfecaa15c57cea3d47ef.mp3str"
 
 [deps]
 
 source_file="res://assets/audio/music/Distance - Anno Domini Beats [vbr].mp3"
-dest_files=[ "res://.import/Distance - Anno Domini Beats [vbr].mp3-4527711125d9cfecaa15c57cea3d47ef.mp3str" ]
+dest_files=["res://.godot/imported/Distance - Anno Domini Beats [vbr].mp3-4527711125d9cfecaa15c57cea3d47ef.mp3str"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

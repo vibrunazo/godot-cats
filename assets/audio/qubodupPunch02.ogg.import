@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/qubodupPunch02.ogg-fe8de494545c141c7490c8a9129de385.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dsvr6ibpnne4e"
+path="res://.godot/imported/qubodupPunch02.ogg-fe8de494545c141c7490c8a9129de385.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/audio/qubodupPunch02.ogg"
-dest_files=[ "res://.import/qubodupPunch02.ogg-fe8de494545c141c7490c8a9129de385.oggstr" ]
+dest_files=["res://.godot/imported/qubodupPunch02.ogg-fe8de494545c141c7490c8a9129de385.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

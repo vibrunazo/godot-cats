@@ -3,17 +3,17 @@
 [ext_resource path="res://scenes/cats/Cat02.gd" type="Script" id=1]
 [ext_resource path="res://scenes/cats/Cat.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/audio/meow02.wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/cat02_head.png" type="Texture" id=5]
-[ext_resource path="res://assets/cat02_hand.png" type="Texture" id=6]
-[ext_resource path="res://assets/cat02_body.png" type="Texture" id=7]
-[ext_resource path="res://assets/cat02_tail.png" type="Texture" id=8]
-[ext_resource path="res://assets/radial.png" type="Texture" id=9]
+[ext_resource path="res://assets/cat02_head.png" type="Texture2D" id=5]
+[ext_resource path="res://assets/cat02_hand.png" type="Texture2D" id=6]
+[ext_resource path="res://assets/cat02_body.png" type="Texture2D" id=7]
+[ext_resource path="res://assets/cat02_tail.png" type="Texture2D" id=8]
+[ext_resource path="res://assets/radial.png" type="Texture2D" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 resource_local_to_scene = true
 radius = 200.0
 
-[sub_resource type="AudioStreamRandomPitch" id=2]
+[sub_resource type="AudioStreamRandomizer" id=2]
 audio_stream = ExtResource( 3 )
 random_pitch = 1.3
 
@@ -34,7 +34,7 @@ scale = Vector2( 0.6, 0.6 )
 [node name="BulletSprite" parent="Turret/SpriteRoot/SpawnPosition" index="0"]
 modulate = Color( 0.84, 0.45, 0.9, 0.694118 )
 
-[node name="BulletGlowSprite" type="Sprite" parent="Turret/SpriteRoot/SpawnPosition/BulletSprite" index="0"]
+[node name="BulletGlowSprite" type="Sprite2D" parent="Turret/SpriteRoot/SpawnPosition/BulletSprite" index="0"]
 modulate = Color( 0.984314, 0.596078, 0.976471, 1 )
 show_behind_parent = true
 scale = Vector2( 1.4, 1.4 )

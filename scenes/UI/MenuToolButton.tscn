@@ -26,14 +26,14 @@ shadow_size = 10
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:custom_styles/focus:shadow_size")
+tracks/0/path = NodePath(".:theme_override_styles/focus:shadow_size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 10 ]
 }
@@ -42,23 +42,24 @@ tracks/0/keys = {
 resource_name = "focus"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:custom_styles/focus:shadow_size")
+tracks/0/path = NodePath(".:theme_override_styles/focus:shadow_size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5, 1 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ 10, 5, 10 ]
 }
 
-[node name="MenuToolButton" type="ToolButton"]
-margin_right = 12.0
-margin_bottom = 22.0
+[node name="MenuToolButton" type="Button"]
+offset_right = 12.0
+offset_bottom = 22.0
 theme = ExtResource( 2 )
-custom_styles/focus = SubResource( 1 )
+flat = true
+theme_override_styles/focus = SubResource( 1 )
 text = "test"
 script = ExtResource( 1 )
 

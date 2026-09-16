@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/punch01.wav-234cbff915d10660ed70d006a510b687.sample"
+type="AudioStreamWAV"
+uid="uid://baeistnkixvvy"
+path="res://.godot/imported/punch01.wav-234cbff915d10660ed70d006a510b687.sample"
 
 [deps]
 
 source_file="res://assets/audio/punch01.wav"
-dest_files=[ "res://.import/punch01.wav-234cbff915d10660ed70d006a510b687.sample" ]
+dest_files=["res://.godot/imported/punch01.wav-234cbff915d10660ed70d006a510b687.sample"]
 
 [params]
 

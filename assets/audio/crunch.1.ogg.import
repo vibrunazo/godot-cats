@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/crunch.1.ogg-0296e621299f6529307fe629d85af24f.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dshtojf6ww760"
+path="res://.godot/imported/crunch.1.ogg-0296e621299f6529307fe629d85af24f.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/audio/crunch.1.ogg"
-dest_files=[ "res://.import/crunch.1.ogg-0296e621299f6529307fe629d85af24f.oggstr" ]
+dest_files=["res://.godot/imported/crunch.1.ogg-0296e621299f6529307fe629d85af24f.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

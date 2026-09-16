@@ -1,27 +1,15 @@
 [gd_resource type="Theme" load_steps=9 format=2]
 
-[ext_resource path="res://resources/Merienda_font.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/x-small.png" type="Texture" id=3]
+[ext_resource path="res://resources/Merienda_font.tres" type="FontVariation" id=1]
+[ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="FontFile" id=2]
+[ext_resource path="res://assets/x-small.png" type="Texture2D" id=3]
 [ext_resource path="res://resources/TooltipPanelbg.tres" type="StyleBox" id=4]
-[ext_resource path="res://assets/x-small-hl.png" type="Texture" id=5]
+[ext_resource path="res://assets/x-small-hl.png" type="Texture2D" id=5]
 
-[sub_resource type="DynamicFont" id=3]
-resource_local_to_scene = true
-size = 30
-outline_size = 1
-outline_color = Color( 0.768627, 0.662745, 0.0745098, 1 )
-use_filter = true
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=2]
-resource_local_to_scene = true
-size = 28
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 2 )
-
+[sub_resource type="FontVariation" id=3]
+base_font = ExtResource( 2 )
+[sub_resource type="FontVariation" id=2]
+base_font = ExtResource( 2 )
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.905882, 0.682353, 0.0901961, 1 )
 draw_center = false
@@ -44,9 +32,12 @@ shadow_size = 10
 
 [resource]
 default_font = ExtResource( 1 )
+default_font_size = 40
 Label/colors/font_color = Color( 0.882353, 0.407843, 0.854902, 1 )
 Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_color = Color( 0, 0, 0, 1 )
 Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/outline_size = 2
 Label/constants/line_spacing = 3
 Label/constants/shadow_as_outline = 0
 Label/constants/shadow_offset_x = 1
@@ -56,17 +47,19 @@ RichTextLabel/colors/default_color = Color( 0.9, 0.8997, 0.891, 1 )
 RichTextLabel/fonts/bold_font = SubResource( 3 )
 RichTextLabel/fonts/italics_font = ExtResource( 1 )
 RichTextLabel/fonts/normal_font = SubResource( 2 )
-ToolButton/colors/font_color = Color( 0.8, 0.8, 0.8, 0.862745 )
-ToolButton/colors/font_color_disabled = Color( 0.9, 0.95, 1, 0.3 )
-ToolButton/colors/font_color_focus = Color( 0.941176, 0.941176, 0.941176, 1 )
-ToolButton/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
-ToolButton/colors/font_color_pressed = Color( 0.921569, 0.94902, 0.0941176, 1 )
-ToolButton/styles/focus = SubResource( 1 )
-WindowDialog/colors/title_color = Color( 0.631373, 0.776471, 0.101961, 1 )
-WindowDialog/constants/close_h_ofs = 32
-WindowDialog/constants/close_v_ofs = 6
-WindowDialog/constants/scaleborder_size = 4
-WindowDialog/constants/title_height = 50
-WindowDialog/icons/close = ExtResource( 3 )
-WindowDialog/icons/close_highlight = ExtResource( 5 )
-WindowDialog/styles/panel = ExtResource( 4 )
+RichTextLabel/font_sizes/bold_font_size = 30
+RichTextLabel/font_sizes/normal_font_size = 28
+Button/colors/font_color = Color( 0.8, 0.8, 0.8, 0.862745 )
+Button/colors/font_color_disabled = Color( 0.9, 0.95, 1, 0.3 )
+Button/colors/font_color_focus = Color( 0.941176, 0.941176, 0.941176, 1 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 0.921569, 0.94902, 0.0941176, 1 )
+Button/styles/focus = SubResource( 1 )
+Window/colors/title_color = Color( 0.631373, 0.776471, 0.101961, 1 )
+Window/constants/close_h_ofs = 32
+Window/constants/close_v_ofs = 6
+Window/constants/scaleborder_size = 4
+Window/constants/title_height = 50
+Window/icons/close = ExtResource( 3 )
+Window/icons/close_highlight = ExtResource( 5 )
+Window/styles/panel = ExtResource( 4 )

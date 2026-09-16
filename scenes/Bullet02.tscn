@@ -13,11 +13,11 @@ aoe = true
 sounds = [  ]
 blast_scene = ExtResource( 4 )
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 self_modulate = Color( 0.886275, 0.313726, 0.85098, 0.737255 )
 scale = Vector2( 0.8, 0.8 )
 
-[node name="ShadowSprite" parent="Sprite" index="0"]
+[node name="ShadowSprite" parent="Sprite2D" index="0"]
 modulate = Color( 0.984314, 0.596078, 0.976471, 1 )
 scale = Vector2( 0.625, 0.625 )
 

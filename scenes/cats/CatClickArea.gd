@@ -6,7 +6,7 @@ extends Area2D
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	pass # Replace with function body.
 
 
@@ -15,8 +15,8 @@ func _ready():
 #	pass
 #func _unhandled_input(event):
 #	print('unhandled input')
-	
-func _input_event(_viewport, event: InputEvent, _shape_idx):
+
+func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and !event.is_pressed():
 		if !get_parent().is_building():
 			get_parent().emit_signal("clicked")

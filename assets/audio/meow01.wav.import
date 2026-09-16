@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/meow01.wav-7d8b29e18af866b5ebbcbf00b90303bc.sample"
+type="AudioStreamWAV"
+uid="uid://ct2hk54r0pgvx"
+path="res://.godot/imported/meow01.wav-7d8b29e18af866b5ebbcbf00b90303bc.sample"
 
 [deps]
 
 source_file="res://assets/audio/meow01.wav"
-dest_files=[ "res://.import/meow01.wav-7d8b29e18af866b5ebbcbf00b90303bc.sample" ]
+dest_files=["res://.godot/imported/meow01.wav-7d8b29e18af866b5ebbcbf00b90303bc.sample"]
 
 [params]
 

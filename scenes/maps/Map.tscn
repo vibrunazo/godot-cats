@@ -1,85 +1,73 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://scenes/UI/CircleButton.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/cat02.png" type="Texture" id=2]
-[ext_resource path="res://assets/cheese.png" type="Texture" id=3]
-[ext_resource path="res://assets/whiterect.png" type="Texture" id=4]
-[ext_resource path="res://resources/Merienda_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/cat02.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/cheese.png" type="Texture2D" id=3]
+[ext_resource path="res://assets/whiterect.png" type="Texture2D" id=4]
+[ext_resource path="res://resources/Merienda_font.tres" type="FontVariation" id=5]
 [ext_resource path="res://resources/cats_theme.tres" type="Theme" id=6]
 [ext_resource path="res://scenes/maps/Map.gd" type="Script" id=7]
 [ext_resource path="res://scenes/Cheese.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/terrain.png" type="Texture" id=9]
-[ext_resource path="res://assets/cat01.png" type="Texture" id=10]
-[ext_resource path="res://assets/mouse01.png" type="Texture" id=11]
-[ext_resource path="res://assets/bg-radial.png" type="Texture" id=12]
-[ext_resource path="res://assets/cog.png" type="Texture" id=13]
+[ext_resource path="res://assets/terrain.png" type="Texture2D" id=9]
+[ext_resource path="res://assets/cat01.png" type="Texture2D" id=10]
+[ext_resource path="res://assets/mouse01.png" type="Texture2D" id=11]
+[ext_resource path="res://assets/bg-radial.png" type="Texture2D" id=12]
+[ext_resource path="res://assets/cog.png" type="Texture2D" id=13]
 [ext_resource path="res://scenes/UI/PauseMenu.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/UI/GameOverMenu.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/UI/WinMenu.tscn" type="PackedScene" id=16]
 [ext_resource path="res://resources/size_curve.tres" type="Curve" id=17]
-[ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="FontFile" id=18]
 [ext_resource path="res://assets/audio/music/Mall - Komiku.mp3" type="AudioStream" id=19]
-[ext_resource path="res://assets/cat03.png" type="Texture" id=20]
+[ext_resource path="res://assets/cat03.png" type="Texture2D" id=20]
 [ext_resource path="res://scenes/CatCam.gd" type="Script" id=21]
-[ext_resource path="res://assets/play.png" type="Texture" id=22]
-[ext_resource path="res://resources/Merienda_small_font.tres" type="DynamicFont" id=23]
-[ext_resource path="res://assets/play2.png" type="Texture" id=24]
-[ext_resource path="res://assets/play4.png" type="Texture" id=25]
+[ext_resource path="res://assets/play.png" type="Texture2D" id=22]
+[ext_resource path="res://resources/Merienda_small_font.tres" type="FontVariation" id=23]
+[ext_resource path="res://assets/play2.png" type="Texture2D" id=24]
+[ext_resource path="res://assets/play4.png" type="Texture2D" id=25]
 
-[sub_resource type="TileSet" id=1]
-0/name = "grass"
-0/texture = ExtResource( 9 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 640, 256 )
-0/tile_mode = 1
-0/autotile/bitmask_mode = 1
-0/autotile/bitmask_flags = [ Vector2( 0, 0 ), 511, Vector2( 0, 1 ), 511, Vector2( 1, 0 ), 511, Vector2( 1, 1 ), 511, Vector2( 2, 0 ), 511, Vector2( 2, 1 ), 511, Vector2( 3, 0 ), 511, Vector2( 3, 1 ), 511, Vector2( 4, 0 ), 511, Vector2( 4, 1 ), 511 ]
-0/autotile/icon_coordinate = Vector2( 0, 0 )
-0/autotile/tile_size = Vector2( 128, 128 )
-0/autotile/spacing = 0
-0/autotile/occluder_map = [  ]
-0/autotile/navpoly_map = [  ]
-0/autotile/priority_map = [  ]
-0/autotile/z_index_map = [  ]
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
+[sub_resource type="TileSetAtlasSource" id="Atlas_grass"]
+texture = ExtResource( 9 )
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
 
-[sub_resource type="TileSet" id=2]
-0/name = "road"
-0/texture = ExtResource( 9 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 256, 384, 512 )
-0/tile_mode = 1
-0/autotile/bitmask_mode = 1
-0/autotile/bitmask_flags = [ Vector2( 0, 0 ), 56, Vector2( 0, 1 ), 146, Vector2( 0, 2 ), 48, Vector2( 1, 0 ), 176, Vector2( 1, 1 ), 50, Vector2( 1, 2 ), 24, Vector2( 2, 0 ), 152, Vector2( 2, 1 ), 26, Vector2( 2, 2 ), 144, Vector2( 2, 3 ), 18 ]
-0/autotile/icon_coordinate = Vector2( 0, 0 )
-0/autotile/tile_size = Vector2( 128, 128 )
-0/autotile/spacing = 0
-0/autotile/occluder_map = [  ]
-0/autotile/navpoly_map = [  ]
-0/autotile/priority_map = [  ]
-0/autotile/z_index_map = [  ]
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape_one_way = false
-0/shape_one_way_margin = 0.0
-0/shapes = [  ]
-0/z_index = 0
+[sub_resource type="TileSet" id="TileSet_grass"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource( "Atlas_grass" )
+
+[sub_resource type="TileSetAtlasSource" id="Atlas_road"]
+texture = ExtResource( 9 )
+texture_region_size = Vector2i(128, 128)
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_road"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource( "Atlas_road" )
 
 [sub_resource type="Curve2D" id=3]
 resource_local_to_scene = true
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 64, 128, 0, 0, 0, 0, 288, 128, 0, 0, 0, 0, 320, 160, 0, 0, 0, 0, 320, 608, 0, 0, 0, 0, 352, 640, 0, 0, 0, 0, 544, 640, 0, 0, 0, 0, 576, 608, 0, 0, 0, 0, 576, 160, 0, 0, 0, 0, 608, 128, 0, 0, 0, 0, 1056, 128, 0, 0, 0, 0, 1088, 160, 0, 0, 0, 0, 1088, 480, 0, 0, 0, 0, 1056, 512, 0, 0, 0, 0, 864, 512, 0, 0, 0, 0, 832, 544, 0, 0, 0, 0, 832, 608, 0, 0, 0, 0, 864, 640, 0, 0, 0, 0, 1320, 640, 0, 0, 0, 0, 1344, 616, 0, 0, 0, 0, 1344, 560 )
+"points": PackedVector2Array( 0, 0, 0, 0, 64, 128, 0, 0, 0, 0, 288, 128, 0, 0, 0, 0, 320, 160, 0, 0, 0, 0, 320, 608, 0, 0, 0, 0, 352, 640, 0, 0, 0, 0, 544, 640, 0, 0, 0, 0, 576, 608, 0, 0, 0, 0, 576, 160, 0, 0, 0, 0, 608, 128, 0, 0, 0, 0, 1056, 128, 0, 0, 0, 0, 1088, 160, 0, 0, 0, 0, 1088, 480, 0, 0, 0, 0, 1056, 512, 0, 0, 0, 0, 864, 512, 0, 0, 0, 0, 832, 544, 0, 0, 0, 0, 832, 608, 0, 0, 0, 0, 864, 640, 0, 0, 0, 0, 1320, 640, 0, 0, 0, 0, 1344, 616, 0, 0, 0, 0, 1344, 560 )
 }
 
 [sub_resource type="StyleBoxEmpty" id=8]
@@ -99,20 +87,20 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:rect_scale")
+tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
@@ -123,8 +111,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -138,20 +126,20 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.61, 0.61, 0.61, 0.8 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:rect_scale")
+tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ) ]
 }
@@ -162,8 +150,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -177,20 +165,20 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 0.6, 0.6, 0.6, 0.784314 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:rect_scale")
+tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
 }
@@ -201,8 +189,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -218,20 +206,20 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.25, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.25, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.956863, 0.980392, 0.184314, 1 ), Color( 0.956863, 0.980392, 0.184314, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:rect_scale")
+tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.05, 0.25 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.25 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 1, 1 ) ]
 }
@@ -242,8 +230,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.15 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.15 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "_on_pressed_mid_point"
@@ -256,8 +244,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -271,20 +259,20 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:rect_scale")
+tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
@@ -295,8 +283,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -310,20 +298,20 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.61, 0.61, 0.61, 0.8 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:rect_scale")
+tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ) ]
 }
@@ -334,8 +322,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -349,20 +337,20 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 0.6, 0.6, 0.6, 0.784314 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:rect_scale")
+tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
 }
@@ -373,8 +361,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -390,20 +378,20 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.25, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.25, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.956863, 0.980392, 0.184314, 1 ), Color( 0.956863, 0.980392, 0.184314, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:rect_scale")
+tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.05, 0.25 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.25 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 1, 1 ) ]
 }
@@ -414,8 +402,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.15 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.15 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "_on_pressed_mid_point"
@@ -428,8 +416,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -517,22 +505,10 @@ expand_margin_top = 3.0
 expand_margin_bottom = 3.0
 shadow_size = 5
 
-[sub_resource type="DynamicFont" id=14]
-resource_local_to_scene = true
-size = 60
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 18 )
-
-[sub_resource type="DynamicFont" id=13]
-resource_local_to_scene = true
-size = 60
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 18 )
-
+[sub_resource type="FontVariation" id=14]
+base_font = ExtResource( 18 )
+[sub_resource type="FontVariation" id=13]
+base_font = ExtResource( 18 )
 [node name="Map" type="Node2D"]
 script = ExtResource( 7 )
 coins = 55
@@ -540,18 +516,16 @@ life = 50
 size_curve = ExtResource( 17 )
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 1 )
-cell_size = Vector2( 128, 128 )
-format = 1
-tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, 65535, 0, 0, 0, 0, 2, 1, 0, 2, 2, 0, 65539, 3, 0, 0, 4, 0, 1, 5, 0, 0, 6, 0, 65538, 7, 0, 1, 8, 0, 65537, 9, 0, 0, 10, 0, 65539, 11, 0, 3, 12, 0, 65536, 13, 0, 3, 14, 0, 0, 15, 0, 0, 16, 0, 3, 17, 0, 0, 131071, 0, 0, 65536, 0, 1, 65537, 0, 3, 65538, 0, 2, 65539, 0, 65539, 65540, 0, 2, 65541, 0, 65537, 65542, 0, 2, 65543, 0, 2, 65544, 0, 65538, 65545, 0, 65539, 65546, 0, 65537, 65547, 0, 2, 65548, 0, 65536, 65549, 0, 2, 65550, 0, 1, 65551, 0, 65537, 65552, 0, 65539, 65553, 0, 0, 196607, 0, 0, 131072, 0, 2, 131073, 0, 65539, 131074, 0, 1, 131075, 0, 65538, 131076, 0, 65537, 131077, 0, 65538, 131078, 0, 0, 131079, 0, 65536, 131080, 0, 65537, 131081, 0, 3, 131082, 0, 0, 131083, 0, 65539, 131084, 0, 0, 131085, 0, 65537, 131086, 0, 2, 131087, 0, 65538, 131088, 0, 1, 131089, 0, 0, 262143, 0, 0, 196608, 0, 65536, 196609, 0, 2, 196610, 0, 65536, 196611, 0, 65536, 196612, 0, 65539, 196613, 0, 2, 196614, 0, 65537, 196615, 0, 65536, 196616, 0, 2, 196617, 0, 65539, 196618, 0, 0, 196619, 0, 1, 196620, 0, 0, 196621, 0, 3, 196622, 0, 3, 196623, 0, 1, 196624, 0, 0, 196625, 0, 0, 327679, 0, 0, 262144, 0, 1, 262145, 0, 1, 262146, 0, 0, 262147, 0, 65539, 262148, 0, 65538, 262149, 0, 0, 262150, 0, 2, 262151, 0, 2, 262152, 0, 65538, 262153, 0, 1, 262154, 0, 65537, 262155, 0, 65538, 262156, 0, 65538, 262157, 0, 65536, 262158, 0, 2, 262159, 0, 65537, 262160, 0, 65538, 262161, 0, 0, 393215, 0, 0, 327680, 0, 65536, 327681, 0, 0, 327682, 0, 1, 327683, 0, 65539, 327684, 0, 1, 327685, 0, 65536, 327686, 0, 65539, 327687, 0, 65539, 327688, 0, 65538, 327689, 0, 3, 327690, 0, 3, 327691, 0, 65536, 327692, 0, 0, 327693, 0, 3, 327694, 0, 2, 327695, 0, 2, 327696, 0, 65537, 327697, 0, 0, 458751, 0, 0, 393216, 0, 65537, 393217, 0, 2, 393218, 0, 65537, 393219, 0, 65538, 393220, 0, 65539, 393221, 0, 65536, 393222, 0, 65537, 393223, 0, 3, 393224, 0, 1, 393225, 0, 1, 393226, 0, 65536, 393227, 0, 3, 393228, 0, 65539, 393229, 0, 2, 393230, 0, 1, 393231, 0, 0, 393232, 0, 2, 393233, 0, 0, 524287, 0, 0, 458752, 0, 3, 458753, 0, 65537, 458754, 0, 65538, 458755, 0, 65536, 458756, 0, 65539, 458757, 0, 3, 458758, 0, 65537, 458759, 0, 3, 458760, 0, 2, 458761, 0, 65537, 458762, 0, 1, 458763, 0, 1, 458764, 0, 65538, 458765, 0, 1, 458766, 0, 65539, 458767, 0, 65539, 458768, 0, 3, 458769, 0, 0, 589823, 0, 0, 524288, 0, 65538, 524289, 0, 65536, 524290, 0, 2, 524291, 0, 65538, 524292, 0, 2, 524293, 0, 1, 524294, 0, 0, 524295, 0, 2, 524296, 0, 2, 524297, 0, 65538, 524298, 0, 3, 524299, 0, 3, 524300, 0, 65538, 524301, 0, 2, 524302, 0, 3, 524303, 0, 65539, 524304, 0, 65537, 524305, 0, 0, 655359, 0, 0, 589824, 0, 65537, 589825, 0, 3, 589826, 0, 65538, 589827, 0, 2, 589828, 0, 0, 589829, 0, 2, 589830, 0, 2, 589831, 0, 0, 589832, 0, 65536, 589833, 0, 0, 589834, 0, 65538, 589835, 0, 2, 589836, 0, 1, 589837, 0, 65537, 589838, 0, 65539, 589839, 0, 1, 589840, 0, 0, 589841, 0, 0, 720895, 0, 0, 655360, 0, 0, 655361, 0, 2, 655362, 0, 4, 655363, 0, 3, 655364, 0, 2, 655365, 0, 3, 655366, 0, 3, 655367, 0, 65538, 655368, 0, 1, 655369, 0, 65539, 655370, 0, 65539, 655371, 0, 65536, 655372, 0, 65540, 655373, 0, 1, 655374, 0, 4, 655375, 0, 4, 655376, 0, 1, 655377, 0, 0, 786431, 0, 0, 720896, 0, 65536, 720897, 0, 65536, 720898, 0, 2, 720899, 0, 65538, 720900, 0, 65537, 720901, 0, 65539, 720902, 0, 65540, 720903, 0, 4, 720904, 0, 0, 720905, 0, 3, 720906, 0, 65538, 720907, 0, 1, 720908, 0, 65538, 720909, 0, 65538, 720910, 0, 3, 720911, 0, 2, 720912, 0, 0, 720913, 0, 0, 851967, 0, 0, 786432, 0, 4, 786433, 0, 65539, 786434, 0, 4, 786435, 0, 1, 786436, 0, 3, 786437, 0, 3, 786438, 0, 65536, 786439, 0, 2, 786440, 0, 65537, 786441, 0, 65540, 786442, 0, 2, 786443, 0, 2, 786444, 0, 4, 786445, 0, 0, 786446, 0, 2, 786447, 0, 4, 786448, 0, 65537, 786449, 0, 0, 917503, 0, 0, 851968, 0, 1, 851969, 0, 3, 851970, 0, 65540, 851971, 0, 65539, 851972, 0, 3, 851973, 0, 65540, 851974, 0, 3, 851975, 0, 2, 851976, 0, 4, 851977, 0, 1, 851978, 0, 2, 851979, 0, 65538, 851980, 0, 0, 851981, 0, 65540, 851982, 0, 2, 851983, 0, 65536, 851984, 0, 65538, 851985, 0, 0, 983039, 0, 0, 917504, 0, 3, 917505, 0, 2, 917506, 0, 65540, 917507, 0, 65539, 917508, 0, 2, 917509, 0, 65536, 917510, 0, 4, 917511, 0, 65539, 917512, 0, 0, 917513, 0, 65537, 917514, 0, 4, 917515, 0, 1, 917516, 0, 65540, 917517, 0, 3, 917518, 0, 2, 917519, 0, 1, 917520, 0, 65537, 917521, 0, 0, 1048575, 0, 0, 983040, 0, 2, 983041, 0, 65536, 983042, 0, 65539, 983043, 0, 65536, 983044, 0, 4, 983045, 0, 65538, 983046, 0, 65536, 983047, 0, 3, 983048, 0, 0, 983049, 0, 3, 983050, 0, 4, 983051, 0, 65540, 983052, 0, 65536, 983053, 0, 0, 983054, 0, 3, 983055, 0, 3, 983056, 0, 65537, 983057, 0, 0, 1114111, 0, 0, 1048576, 0, 0, 1048577, 0, 2, 1048578, 0, 65539, 1048579, 0, 65539, 1048580, 0, 3, 1048581, 0, 4, 1048582, 0, 2, 1048583, 0, 0, 1048584, 0, 1, 1048585, 0, 65537, 1048586, 0, 1, 1048587, 0, 2, 1048588, 0, 3, 1048589, 0, 65540, 1048590, 0, 65539, 1048591, 0, 65538, 1048592, 0, 1, 1048593, 0, 0, 1179647, 0, 0, 1114112, 0, 1, 1114113, 0, 65536, 1114114, 0, 3, 1114115, 0, 65539, 1114116, 0, 0, 1114117, 0, 65537, 1114118, 0, 65538, 1114119, 0, 65539, 1114120, 0, 65540, 1114121, 0, 0, 1114122, 0, 65540, 1114123, 0, 65536, 1114124, 0, 65539, 1114125, 0, 65538, 1114126, 0, 65538, 1114127, 0, 65538, 1114128, 0, 65537, 1114129, 0, 0, 1245183, 0, 0, 1179648, 0, 65536, 1179649, 0, 0, 1179650, 0, 2, 1179651, 0, 65536, 1179652, 0, 65537, 1179653, 0, 65538, 1179654, 0, 4, 1179655, 0, 0, 1179656, 0, 0, 1179657, 0, 1, 1179658, 0, 65539, 1179659, 0, 65538, 1179660, 0, 4, 1179661, 0, 65540, 1179662, 0, 65536, 1179663, 0, 65538, 1179664, 0, 3, 1179665, 0, 0, 1310719, 0, 0, 1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0, 1245187, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245193, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1245196, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0 )
+tile_set = SubResource( "TileSet_grass" )
+format = 2
+layer_0/tile_data = PackedInt32Array(-65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -1, 0, 0, 0, 131072, 0, 1, 131072, 0, 2, 196608, 1, 3, 0, 0, 4, 65536, 0, 5, 0, 0, 6, 131072, 1, 7, 65536, 0, 8, 65536, 1, 9, 0, 0, 10, 196608, 1, 11, 196608, 0, 12, 0, 1, 13, 196608, 0, 14, 0, 0, 15, 0, 0, 16, 196608, 0, 17, 0, 0, 65535, 0, 0, 65536, 65536, 0, 65537, 196608, 0, 65538, 131072, 0, 65539, 196608, 1, 65540, 131072, 0, 65541, 65536, 1, 65542, 131072, 0, 65543, 131072, 0, 65544, 131072, 1, 65545, 196608, 1, 65546, 65536, 1, 65547, 131072, 0, 65548, 0, 1, 65549, 131072, 0, 65550, 65536, 0, 65551, 65536, 1, 65552, 196608, 1, 65553, 0, 0, 131071, 0, 0, 131072, 131072, 0, 131073, 196608, 1, 131074, 65536, 0, 131075, 131072, 1, 131076, 65536, 1, 131077, 131072, 1, 131078, 0, 0, 131079, 0, 1, 131080, 65536, 1, 131081, 196608, 0, 131082, 0, 0, 131083, 196608, 1, 131084, 0, 0, 131085, 65536, 1, 131086, 131072, 0, 131087, 131072, 1, 131088, 65536, 0, 131089, 0, 0, 196607, 0, 0, 196608, 0, 1, 196609, 131072, 0, 196610, 0, 1, 196611, 0, 1, 196612, 196608, 1, 196613, 131072, 0, 196614, 65536, 1, 196615, 0, 1, 196616, 131072, 0, 196617, 196608, 1, 196618, 0, 0, 196619, 65536, 0, 196620, 0, 0, 196621, 196608, 0, 196622, 196608, 0, 196623, 65536, 0, 196624, 0, 0, 196625, 0, 0, 262143, 0, 0, 262144, 65536, 0, 262145, 65536, 0, 262146, 0, 0, 262147, 196608, 1, 262148, 131072, 1, 262149, 0, 0, 262150, 131072, 0, 262151, 131072, 0, 262152, 131072, 1, 262153, 65536, 0, 262154, 65536, 1, 262155, 131072, 1, 262156, 131072, 1, 262157, 0, 1, 262158, 131072, 0, 262159, 65536, 1, 262160, 131072, 1, 262161, 0, 0, 327679, 0, 0, 327680, 0, 1, 327681, 0, 0, 327682, 65536, 0, 327683, 196608, 1, 327684, 65536, 0, 327685, 0, 1, 327686, 196608, 1, 327687, 196608, 1, 327688, 131072, 1, 327689, 196608, 0, 327690, 196608, 0, 327691, 0, 1, 327692, 0, 0, 327693, 196608, 0, 327694, 131072, 0, 327695, 131072, 0, 327696, 65536, 1, 327697, 0, 0, 393215, 0, 0, 393216, 65536, 1, 393217, 131072, 0, 393218, 65536, 1, 393219, 131072, 1, 393220, 196608, 1, 393221, 0, 1, 393222, 65536, 1, 393223, 196608, 0, 393224, 65536, 0, 393225, 65536, 0, 393226, 0, 1, 393227, 196608, 0, 393228, 196608, 1, 393229, 131072, 0, 393230, 65536, 0, 393231, 0, 0, 393232, 131072, 0, 393233, 0, 0, 458751, 0, 0, 458752, 196608, 0, 458753, 65536, 1, 458754, 131072, 1, 458755, 0, 1, 458756, 196608, 1, 458757, 196608, 0, 458758, 65536, 1, 458759, 196608, 0, 458760, 131072, 0, 458761, 65536, 1, 458762, 65536, 0, 458763, 65536, 0, 458764, 131072, 1, 458765, 65536, 0, 458766, 196608, 1, 458767, 196608, 1, 458768, 196608, 0, 458769, 0, 0, 524287, 0, 0, 524288, 131072, 1, 524289, 0, 1, 524290, 131072, 0, 524291, 131072, 1, 524292, 131072, 0, 524293, 65536, 0, 524294, 0, 0, 524295, 131072, 0, 524296, 131072, 0, 524297, 131072, 1, 524298, 196608, 0, 524299, 196608, 0, 524300, 131072, 1, 524301, 131072, 0, 524302, 196608, 0, 524303, 196608, 1, 524304, 65536, 1, 524305, 0, 0, 589823, 0, 0, 589824, 65536, 1, 589825, 196608, 0, 589826, 131072, 1, 589827, 131072, 0, 589828, 0, 0, 589829, 131072, 0, 589830, 131072, 0, 589831, 0, 0, 589832, 0, 1, 589833, 0, 0, 589834, 131072, 1, 589835, 131072, 0, 589836, 65536, 0, 589837, 65536, 1, 589838, 196608, 1, 589839, 65536, 0, 589840, 0, 0, 589841, 0, 0, 655359, 0, 0, 655360, 0, 0, 655361, 131072, 0, 655362, 262144, 0, 655363, 196608, 0, 655364, 131072, 0, 655365, 196608, 0, 655366, 196608, 0, 655367, 131072, 1, 655368, 65536, 0, 655369, 196608, 1, 655370, 196608, 1, 655371, 0, 1, 655372, 262144, 1, 655373, 65536, 0, 655374, 262144, 0, 655375, 262144, 0, 655376, 65536, 0, 655377, 0, 0, 720895, 0, 0, 720896, 0, 1, 720897, 0, 1, 720898, 131072, 0, 720899, 131072, 1, 720900, 65536, 1, 720901, 196608, 1, 720902, 262144, 1, 720903, 262144, 0, 720904, 0, 0, 720905, 196608, 0, 720906, 131072, 1, 720907, 65536, 0, 720908, 131072, 1, 720909, 131072, 1, 720910, 196608, 0, 720911, 131072, 0, 720912, 0, 0, 720913, 0, 0, 786431, 0, 0, 786432, 262144, 0, 786433, 196608, 1, 786434, 262144, 0, 786435, 65536, 0, 786436, 196608, 0, 786437, 196608, 0, 786438, 0, 1, 786439, 131072, 0, 786440, 65536, 1, 786441, 262144, 1, 786442, 131072, 0, 786443, 131072, 0, 786444, 262144, 0, 786445, 0, 0, 786446, 131072, 0, 786447, 262144, 0, 786448, 65536, 1, 786449, 0, 0, 851967, 0, 0, 851968, 65536, 0, 851969, 196608, 0, 851970, 262144, 1, 851971, 196608, 1, 851972, 196608, 0, 851973, 262144, 1, 851974, 196608, 0, 851975, 131072, 0, 851976, 262144, 0, 851977, 65536, 0, 851978, 131072, 0, 851979, 131072, 1, 851980, 0, 0, 851981, 262144, 1, 851982, 131072, 0, 851983, 0, 1, 851984, 131072, 1, 851985, 0, 0, 917503, 0, 0, 917504, 196608, 0, 917505, 131072, 0, 917506, 262144, 1, 917507, 196608, 1, 917508, 131072, 0, 917509, 0, 1, 917510, 262144, 0, 917511, 196608, 1, 917512, 0, 0, 917513, 65536, 1, 917514, 262144, 0, 917515, 65536, 0, 917516, 262144, 1, 917517, 196608, 0, 917518, 131072, 0, 917519, 65536, 0, 917520, 65536, 1, 917521, 0, 0, 983039, 0, 0, 983040, 131072, 0, 983041, 0, 1, 983042, 196608, 1, 983043, 0, 1, 983044, 262144, 0, 983045, 131072, 1, 983046, 0, 1, 983047, 196608, 0, 983048, 0, 0, 983049, 196608, 0, 983050, 262144, 0, 983051, 262144, 1, 983052, 0, 1, 983053, 0, 0, 983054, 196608, 0, 983055, 196608, 0, 983056, 65536, 1, 983057, 0, 0, 1048575, 0, 0, 1048576, 0, 0, 1048577, 131072, 0, 1048578, 196608, 1, 1048579, 196608, 1, 1048580, 196608, 0, 1048581, 262144, 0, 1048582, 131072, 0, 1048583, 0, 0, 1048584, 65536, 0, 1048585, 65536, 1, 1048586, 65536, 0, 1048587, 131072, 0, 1048588, 196608, 0, 1048589, 262144, 1, 1048590, 196608, 1, 1048591, 131072, 1, 1048592, 65536, 0, 1048593, 0, 0, 1114111, 0, 0, 1114112, 65536, 0, 1114113, 0, 1, 1114114, 196608, 0, 1114115, 196608, 1, 1114116, 0, 0, 1114117, 65536, 1, 1114118, 131072, 1, 1114119, 196608, 1, 1114120, 262144, 1, 1114121, 0, 0, 1114122, 262144, 1, 1114123, 0, 1, 1114124, 196608, 1, 1114125, 131072, 1, 1114126, 131072, 1, 1114127, 131072, 1, 1114128, 65536, 1, 1114129, 0, 0, 1179647, 0, 0, 1179648, 0, 1, 1179649, 0, 0, 1179650, 131072, 0, 1179651, 0, 1, 1179652, 65536, 1, 1179653, 131072, 1, 1179654, 262144, 0, 1179655, 0, 0, 1179656, 0, 0, 1179657, 65536, 0, 1179658, 196608, 1, 1179659, 131072, 1, 1179660, 262144, 0, 1179661, 262144, 1, 1179662, 0, 1, 1179663, 131072, 1, 1179664, 196608, 0, 1179665, 0, 0, 1245183, 0, 0, 1245184, 0, 0, 1245185, 0, 0, 1245186, 0, 0, 1245187, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245190, 0, 0, 1245191, 0, 0, 1245192, 0, 0, 1245193, 0, 0, 1245194, 0, 0, 1245195, 0, 0, 1245196, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0, 1310719, 0, 0)
 
 [node name="TileRoad" type="TileMap" parent="."]
-tile_set = SubResource( 2 )
-cell_size = Vector2( 128, 128 )
-format = 1
-tile_data = PoolIntArray( 65537, 0, 131072, 65538, 0, 0, 65539, 0, 2, 65541, 0, 1, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 2, 131075, 0, 65536, 131077, 0, 65536, 131081, 0, 65536, 196611, 0, 65536, 196613, 0, 65536, 196617, 0, 65536, 262147, 0, 65536, 262149, 0, 65536, 262151, 0, 1, 262152, 0, 0, 262153, 0, 65538, 262155, 0, 131074, 327683, 0, 65537, 327684, 0, 0, 327685, 0, 65538, 327687, 0, 65537, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 65538 )
+tile_set = SubResource( "TileSet_road" )
+format = 2
+layer_0/tile_data = PackedInt32Array(65537, 0, 4, 65538, 0, 2, 65539, 131072, 2, 65541, 65536, 2, 65542, 0, 2, 65543, 0, 2, 65544, 0, 2, 65545, 131072, 2, 131075, 0, 3, 131077, 0, 3, 131081, 0, 3, 196611, 0, 3, 196613, 0, 3, 196617, 0, 3, 262147, 0, 3, 262149, 0, 3, 262151, 65536, 2, 262152, 0, 2, 262153, 131072, 3, 262155, 131072, 4, 327683, 65536, 3, 327684, 0, 2, 327685, 131072, 3, 327687, 65536, 3, 327688, 0, 2, 327689, 0, 2, 327690, 0, 2, 327691, 131072, 3)
 
-[node name="bg-radial" type="Sprite" parent="."]
+[node name="bg-radial" type="Sprite2D" parent="."]
 modulate = Color( 0.101961, 0.0196078, 0.101961, 0.352941 )
 __meta__ = {
 "_edit_lock_": true
@@ -560,39 +534,39 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="bg-radial"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 1663.0
-margin_bottom = 767.0
+offset_right = 1663.0
+offset_bottom = 767.0
 mouse_filter = 2
 texture = ExtResource( 12 )
-expand = true
+expand_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="bg-radial"]
-margin_left = 1664.0
-margin_right = 2112.0
-margin_bottom = 2048.0
+offset_left = 1664.0
+offset_right = 2112.0
+offset_bottom = 2048.0
 texture = ExtResource( 4 )
-expand = true
+expand_mode = 1
 
 [node name="TextureRect4" type="TextureRect" parent="bg-radial"]
-margin_left = -448.0
-margin_bottom = 2048.0
-rect_pivot_offset = Vector2( 192, 1312 )
+offset_left = -448.0
+offset_bottom = 2048.0
+pivot_offset = Vector2( 192, 1312 )
 texture = ExtResource( 4 )
-expand = true
+expand_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="bg-radial"]
-margin_top = 768.0
-margin_right = 1664.0
-margin_bottom = 2048.0
+offset_top = 768.0
+offset_right = 1664.0
+offset_bottom = 2048.0
 texture = ExtResource( 4 )
-expand = true
+expand_mode = 1
 
 [node name="TextureRect5" type="TextureRect" parent="bg-radial"]
-margin_left = -448.0
-margin_top = -384.0
-margin_right = 2112.0
+offset_left = -448.0
+offset_top = -384.0
+offset_right = 2112.0
 texture = ExtResource( 4 )
-expand = true
+expand_mode = 1
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2( 128, 64 )
@@ -611,7 +585,7 @@ position = Vector2( 1472, 576 )
 z_index = 10
 
 [node name="UI" type="CanvasLayer" parent="."]
-pause_mode = 2
+process_mode = 3
 
 [node name="HUD" type="Control" parent="UI"]
 anchor_right = 1.0
@@ -627,151 +601,161 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -300.0
-margin_top = -384.0
-margin_bottom = 232.0
-rect_min_size = Vector2( 300, 40 )
+offset_left = -300.0
+offset_top = -384.0
+offset_bottom = 232.0
+custom_minimum_size = Vector2( 300, 40 )
 mouse_filter = 2
-custom_constants/separation = -10
+theme_override_constants/separation = -10
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/ActionBar"]
-margin_right = 300.0
-margin_bottom = 136.0
+offset_right = 300.0
+offset_bottom = 136.0
 
 [node name="MarginSettings" type="MarginContainer" parent="UI/HUD/ActionBar/HBoxContainer"]
-margin_right = 140.0
-margin_bottom = 136.0
+offset_right = 140.0
+offset_bottom = 136.0
 mouse_filter = 2
 
-[node name="SettingsButton" type="ToolButton" parent="UI/HUD/ActionBar/HBoxContainer/MarginSettings"]
-pause_mode = 2
+[node name="SettingsButton" type="Button" parent="UI/HUD/ActionBar/HBoxContainer/MarginSettings"]
+flat = true
+process_mode = 3
 unique_name_in_owner = true
-margin_right = 140.0
-margin_bottom = 136.0
+offset_right = 140.0
+offset_bottom = 136.0
 focus_mode = 0
-custom_styles/pressed = SubResource( 8 )
+theme_override_styles/pressed = SubResource( 8 )
 icon = ExtResource( 13 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/HUD/ActionBar/HBoxContainer"]
-margin_left = 144.0
-margin_right = 215.0
-margin_bottom = 136.0
+offset_left = 144.0
+offset_right = 215.0
+offset_bottom = 136.0
 alignment = 1
 
 [node name="SpeedBar" type="MarginContainer" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer"]
-margin_top = 39.0
-margin_right = 71.0
-margin_bottom = 97.0
+offset_top = 39.0
+offset_right = 71.0
+offset_bottom = 97.0
 mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar"]
-margin_right = 71.0
-margin_bottom = 58.0
+offset_right = 71.0
+offset_bottom = 58.0
 mouse_filter = 2
 alignment = 1
 
-[node name="ButtonSpeed1" type="ToolButton" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer"]
+[node name="ButtonSpeed1" type="Button" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer"]
 unique_name_in_owner = true
-margin_right = 71.0
-margin_bottom = 58.0
-rect_min_size = Vector2( 50, 50 )
+offset_right = 71.0
+offset_bottom = 58.0
+custom_minimum_size = Vector2( 50, 50 )
 focus_mode = 0
-custom_constants/hseparation = -1
-custom_fonts/font = ExtResource( 23 )
-enabled_focus_mode = 0
+theme_override_constants/h_separation = -1
+theme_override_fonts/font = ExtResource( 23 )
+theme_override_font_sizes/font_size = 34
+theme_override_constants/outline_size = 2
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
+focus_mode = 0
 group = SubResource( 19 )
 text = "1"
 icon = ExtResource( 22 )
 
-[node name="ButtonSpeed2" type="ToolButton" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer"]
+[node name="ButtonSpeed2" type="Button" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer"]
 visible = false
-margin_left = 56.0
-margin_right = 109.0
-margin_bottom = 67.0
-rect_min_size = Vector2( 50, 50 )
+offset_left = 56.0
+offset_right = 109.0
+offset_bottom = 67.0
+custom_minimum_size = Vector2( 50, 50 )
 focus_mode = 0
-custom_constants/hseparation = -2
-custom_fonts/font = ExtResource( 23 )
+theme_override_constants/h_separation = -2
+theme_override_fonts/font = ExtResource( 23 )
+theme_override_font_sizes/font_size = 34
+theme_override_constants/outline_size = 2
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
 toggle_mode = true
-enabled_focus_mode = 0
+focus_mode = 0
 group = SubResource( 19 )
 text = "2"
 icon = ExtResource( 24 )
 
-[node name="ButtonSpeed4" type="ToolButton" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer"]
+[node name="ButtonSpeed4" type="Button" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer"]
 visible = false
-margin_left = 56.0
-margin_right = 116.0
-margin_bottom = 67.0
-rect_min_size = Vector2( 50, 50 )
+offset_left = 56.0
+offset_right = 116.0
+offset_bottom = 67.0
+custom_minimum_size = Vector2( 50, 50 )
 focus_mode = 0
-custom_constants/hseparation = -1
-custom_fonts/font = ExtResource( 23 )
+theme_override_constants/h_separation = -1
+theme_override_fonts/font = ExtResource( 23 )
+theme_override_font_sizes/font_size = 34
+theme_override_constants/outline_size = 2
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
 toggle_mode = true
-enabled_focus_mode = 0
+focus_mode = 0
 group = SubResource( 19 )
 text = "4"
 icon = ExtResource( 25 )
 
 [node name="CheeseHBox" type="HBoxContainer" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer"]
 visible = false
-margin_right = 104.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 50, 60 )
+offset_right = 104.0
+offset_bottom = 60.0
+custom_minimum_size = Vector2( 50, 60 )
 
 [node name="CheeseTex" type="TextureRect" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/CheeseHBox"]
-margin_right = 50.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 50, 50 )
+offset_right = 50.0
+offset_bottom = 60.0
+custom_minimum_size = Vector2( 50, 50 )
 texture = ExtResource( 3 )
-expand = true
+expand_mode = 1
 
 [node name="CheeseRoot" type="Control" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/CheeseHBox"]
-margin_left = 54.0
-margin_right = 104.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 50, 50 )
+offset_left = 54.0
+offset_right = 104.0
+offset_bottom = 60.0
+custom_minimum_size = Vector2( 50, 50 )
 
 [node name="CheeseLabel" type="Label" parent="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/CheeseHBox/CheeseRoot"]
 unique_name_in_owner = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_colors/font_color = Color( 0.917647, 0.905882, 0.196078, 1 )
+theme_override_colors/font_color = Color( 0.917647, 0.905882, 0.196078, 1 )
 text = "20"
 align = 1
 
 [node name="Separator" type="Control" parent="UI/HUD/ActionBar"]
-margin_top = 126.0
-margin_right = 300.0
-margin_bottom = 126.0
+offset_top = 126.0
+offset_right = 300.0
+offset_bottom = 126.0
 
 [node name="CoinLabel" type="Label" parent="UI/HUD/ActionBar"]
 unique_name_in_owner = true
-margin_top = 116.0
-margin_right = 300.0
-margin_bottom = 175.0
-custom_colors/font_color = Color( 0.28, 0.7, 0.287, 1 )
+offset_top = 116.0
+offset_right = 300.0
+offset_bottom = 175.0
+theme_override_colors/font_color = Color( 0.28, 0.7, 0.287, 1 )
 text = "$100"
 align = 1
 
 [node name="M1" type="MarginContainer" parent="UI/HUD/ActionBar"]
-margin_top = 165.0
-margin_right = 300.0
-margin_bottom = 325.0
+offset_top = 165.0
+offset_right = 300.0
+offset_bottom = 325.0
 
 [node name="Cat1" parent="UI/HUD/ActionBar/M1" groups=["action_button"] instance=ExtResource( 1 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 70.0
-margin_top = 0.0
-margin_right = 230.0
-margin_bottom = 160.0
-rect_min_size = Vector2( 160, 160 )
+offset_left = 70.0
+offset_top = 0.0
+offset_right = 230.0
+offset_bottom = 160.0
+custom_minimum_size = Vector2( 160, 160 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
 action_mode = 0
@@ -783,28 +767,28 @@ __meta__ = {
 }
 
 [node name="TextureRect" parent="UI/HUD/ActionBar/M1/Cat1/CenterContainer" index="0"]
-margin_left = 35.0
-margin_top = 35.0
-margin_right = 125.0
-margin_bottom = 125.0
-rect_min_size = Vector2( 90, 90 )
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 125.0
+offset_bottom = 125.0
+custom_minimum_size = Vector2( 90, 90 )
 texture = ExtResource( 10 )
 
 [node name="M2" type="MarginContainer" parent="UI/HUD/ActionBar"]
-margin_top = 315.0
-margin_right = 300.0
-margin_bottom = 475.0
+offset_top = 315.0
+offset_right = 300.0
+offset_bottom = 475.0
 
 [node name="Cat2" parent="UI/HUD/ActionBar/M2" groups=["action_button"] instance=ExtResource( 1 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 70.0
-margin_top = 0.0
-margin_right = 230.0
-margin_bottom = 160.0
-rect_min_size = Vector2( 160, 160 )
+offset_left = 70.0
+offset_top = 0.0
+offset_right = 230.0
+offset_bottom = 160.0
+custom_minimum_size = Vector2( 160, 160 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
 action_mode = 0
@@ -816,11 +800,11 @@ __meta__ = {
 }
 
 [node name="TextureRect" parent="UI/HUD/ActionBar/M2/Cat2/CenterContainer" index="0"]
-margin_left = 35.0
-margin_top = 35.0
-margin_right = 125.0
-margin_bottom = 125.0
-rect_min_size = Vector2( 90, 90 )
+offset_left = 35.0
+offset_top = 35.0
+offset_right = 125.0
+offset_bottom = 125.0
+custom_minimum_size = Vector2( 90, 90 )
 texture = ExtResource( 2 )
 
 [node name="Label" parent="UI/HUD/ActionBar/M2/Cat2" index="1"]
@@ -833,20 +817,20 @@ anims/enabled = SubResource( 6 )
 anims/pressed = SubResource( 7 )
 
 [node name="M3" type="MarginContainer" parent="UI/HUD/ActionBar"]
-margin_top = 465.0
-margin_right = 300.0
-margin_bottom = 625.0
+offset_top = 465.0
+offset_right = 300.0
+offset_bottom = 625.0
 
 [node name="Cat3" parent="UI/HUD/ActionBar/M3" groups=["action_button"] instance=ExtResource( 1 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 70.0
-margin_top = 0.0
-margin_right = 230.0
-margin_bottom = 160.0
-rect_min_size = Vector2( 160, 160 )
+offset_left = 70.0
+offset_top = 0.0
+offset_right = 230.0
+offset_bottom = 160.0
+custom_minimum_size = Vector2( 160, 160 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
 action_mode = 0
@@ -858,11 +842,11 @@ __meta__ = {
 }
 
 [node name="TextureRect" parent="UI/HUD/ActionBar/M3/Cat3/CenterContainer" index="0"]
-margin_left = 30.0
-margin_top = 30.0
-margin_right = 160.0
-margin_bottom = 160.0
-rect_min_size = Vector2( 130, 130 )
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 160.0
+offset_bottom = 160.0
+custom_minimum_size = Vector2( 130, 130 )
 texture = ExtResource( 20 )
 
 [node name="Label" parent="UI/HUD/ActionBar/M3/Cat3" index="1"]
@@ -877,112 +861,114 @@ anims/pressed = SubResource( 18 )
 [node name="TopBar" type="HBoxContainer" parent="UI/HUD"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -390.0
-margin_right = 390.0
-margin_bottom = 60.0
+offset_left = -390.0
+offset_right = 390.0
+offset_bottom = 60.0
 mouse_filter = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-custom_constants/separation = 30
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="LifeIconRoot" type="MarginContainer" parent="UI/HUD/TopBar"]
-margin_right = 50.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 50, 50 )
-custom_constants/margin_right = -70
+offset_right = 50.0
+offset_bottom = 60.0
+custom_minimum_size = Vector2( 50, 50 )
+theme_override_constants/margin_right = -70
 
 [node name="LifeIcon" type="TextureRect" parent="UI/HUD/TopBar/LifeIconRoot"]
-margin_left = 30.0
-margin_right = 90.0
-margin_bottom = 60.0
+offset_left = 30.0
+offset_right = 90.0
+offset_bottom = 60.0
 grow_horizontal = 0
 grow_vertical = 2
-rect_min_size = Vector2( 60, 60 )
+custom_minimum_size = Vector2( 60, 60 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource( 3 )
-expand = true
+expand_mode = 1
 stretch_mode = 1
 flip_h = true
 
 [node name="LifeBar" type="ProgressBar" parent="UI/HUD/TopBar"]
 unique_name_in_owner = true
-margin_left = 80.0
-margin_top = 20.0
-margin_right = 320.0
-margin_bottom = 40.0
+offset_left = 80.0
+offset_top = 20.0
+offset_right = 320.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_min_size = Vector2( 240, 20 )
+custom_minimum_size = Vector2( 240, 20 )
 mouse_filter = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_styles/fg = SubResource( 9 )
-custom_styles/bg = SubResource( 10 )
+theme_override_styles/fill = SubResource( 9 )
+theme_override_styles/background = SubResource( 10 )
 value = 80.0
-percent_visible = false
+show_percentage = false
 
 [node name="TimeLabel" type="Label" parent="UI/HUD/TopBar"]
 unique_name_in_owner = true
-margin_left = 350.0
-margin_right = 430.0
-margin_bottom = 59.0
-rect_min_size = Vector2( 80, 0 )
-custom_fonts/font = ExtResource( 5 )
+offset_left = 350.0
+offset_right = 430.0
+offset_bottom = 59.0
+custom_minimum_size = Vector2( 80, 0 )
+theme_override_fonts/font = ExtResource( 5 )
+theme_override_font_sizes/font_size = 40
+theme_override_constants/outline_size = 2
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
 text = "000"
 align = 1
 
 [node name="MouseBarRoot" type="Control" parent="UI/HUD/TopBar"]
-margin_left = 460.0
-margin_right = 700.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 240, 20 )
+offset_left = 460.0
+offset_right = 700.0
+offset_bottom = 60.0
+custom_minimum_size = Vector2( 240, 20 )
 
 [node name="MouseBar" type="ProgressBar" parent="UI/HUD/TopBar/MouseBarRoot"]
 unique_name_in_owner = true
-margin_top = 20.0
-margin_right = 240.0
-margin_bottom = 40.0
+offset_top = 20.0
+offset_right = 240.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_min_size = Vector2( 240, 20 )
-rect_scale = Vector2( -1, 1 )
-rect_pivot_offset = Vector2( 120, 0 )
+custom_minimum_size = Vector2( 240, 20 )
+fill_mode = 1
 mouse_filter = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-custom_styles/fg = SubResource( 11 )
-custom_styles/bg = SubResource( 12 )
+theme_override_styles/fill = SubResource( 11 )
+theme_override_styles/background = SubResource( 12 )
 value = 80.0
-percent_visible = false
+show_percentage = false
 
 [node name="MouseIconRoot" type="MarginContainer" parent="UI/HUD/TopBar"]
-margin_left = 730.0
-margin_right = 780.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 50, 50 )
-custom_constants/margin_left = -100
+offset_left = 730.0
+offset_right = 780.0
+offset_bottom = 60.0
+custom_minimum_size = Vector2( 50, 50 )
+theme_override_constants/margin_left = -100
 
 [node name="MouseIcon" type="TextureRect" parent="UI/HUD/TopBar/MouseIconRoot"]
-margin_left = -55.0
-margin_right = 5.0
-margin_bottom = 60.0
+offset_left = -55.0
+offset_right = 5.0
+offset_bottom = 60.0
 grow_horizontal = 0
 grow_vertical = 2
-rect_min_size = Vector2( 60, 60 )
+custom_minimum_size = Vector2( 60, 60 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource( 11 )
-expand = true
+expand_mode = 1
 stretch_mode = 1
 
 [node name="Tooltips" type="Control" parent="UI"]
-margin_right = 40.0
-margin_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Menus" type="Control" parent="UI"]
-pause_mode = 2
+process_mode = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -997,7 +983,10 @@ __meta__ = {
 }
 
 [node name="Paused" parent="UI/Menus/PauseMenu/HBoxContainer" index="0"]
-custom_fonts/font = SubResource( 14 )
+theme_override_fonts/font = SubResource( 14 )
+theme_override_font_sizes/font_size = 60
+theme_override_constants/outline_size = 2
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
 
 [node name="GameOverMenu" parent="UI/Menus" instance=ExtResource( 15 )]
 unique_name_in_owner = true
@@ -1006,19 +995,22 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="Paused" parent="UI/Menus/WinMenu/HBoxContainer" index="0"]
-custom_fonts/font = SubResource( 13 )
+theme_override_fonts/font = SubResource( 13 )
+theme_override_font_sizes/font_size = 60
+theme_override_constants/outline_size = 2
+theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
 
 [node name="AudioStreamPlayer" parent="UI/Menus/WinMenu" index="3"]
 bus = "Master"
 
 [node name="AudioMusic" type="AudioStreamPlayer" parent="."]
-pause_mode = 2
+process_mode = 3
 stream = ExtResource( 19 )
 bus = "music"
 
-[node name="Camera" type="Camera2D" parent="."]
+[node name="Camera3D" type="Camera2D" parent="."]
 anchor_mode = 0
-current = true
+enabled = true
 script = ExtResource( 21 )
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

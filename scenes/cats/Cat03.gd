@@ -1,3 +1,4 @@
+@icon("res://assets/cat03.png")
 extends Cat
 
-class_name Cat3, "res://assets/cat03.png"
+class_name Cat3

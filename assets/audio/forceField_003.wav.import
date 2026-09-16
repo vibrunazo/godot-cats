@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/forceField_003.wav-29cc7e95734d7af7e2e83ffcbf04517f.sample"
+type="AudioStreamWAV"
+uid="uid://bcx05op4bhl65"
+path="res://.godot/imported/forceField_003.wav-29cc7e95734d7af7e2e83ffcbf04517f.sample"
 
 [deps]
 
 source_file="res://assets/audio/forceField_003.wav"
-dest_files=[ "res://.import/forceField_003.wav-29cc7e95734d7af7e2e83ffcbf04517f.sample" ]
+dest_files=["res://.godot/imported/forceField_003.wav-29cc7e95734d7af7e2e83ffcbf04517f.sample"]
 
 [params]
 
