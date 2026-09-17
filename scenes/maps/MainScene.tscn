@@ -633,7 +633,6 @@ offset_bottom = 384.0
 [node name="Title" parent="CanvasLayer/LevelSelectMenu/VBox" index="0"]
 theme_override_fonts/font = SubResource( 8 )
 theme_override_font_sizes/font_size = 60
-theme_override_constants/outline_size = 2
 theme_override_colors/font_outline_color = Color( 0, 0, 0, 1 )
 
 [node name="VBoxContainer" parent="CanvasLayer/LevelSelectMenu/VBox/ScrollContainer" index="0"]
