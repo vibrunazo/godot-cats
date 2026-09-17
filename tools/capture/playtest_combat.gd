@@ -8,7 +8,14 @@ var _failures: int = 0
 
 
 func _init() -> void:
+	_safety_timeout()
 	call_deferred("_run")
+
+
+func _safety_timeout() -> void:
+	await create_timer(25.0, true, false, true).timeout
+	print("PLAYTEST TIMEOUT: process exceeded safety limit")
+	quit(1)
 
 
 func _check(cond: bool, label: String) -> void:
@@ -58,10 +65,17 @@ func _run() -> void:
 	map.toggle_pause()
 	await process_frame
 	_check(!paused, "unpause releases tree pause")
-	# Mid-combat screenshot for visual review.
-	var img: Image = root.get_texture().get_image()
-	var err: Error = img.save_png("res://captures/new/combat.png")
-	_check(err == OK, "combat screenshot saved")
+	# Mid-combat screenshot for visual review (skipped in headless mode).
+	var tex: ViewportTexture = root.get_texture()
+	if tex != null:
+		var img: Image = tex.get_image()
+		if img != null:
+			var err: Error = img.save_png("res://captures/new/combat.png")
+			_check(err == OK, "combat screenshot saved")
+		else:
+			print("PLAYTEST info: viewport texture image is null (headless mode), skipping screenshot")
+	else:
+		print("PLAYTEST info: viewport texture is null (headless mode), skipping screenshot")
 	if is_instance_valid(current_scene):
 		current_scene.queue_free()
 		current_scene = null

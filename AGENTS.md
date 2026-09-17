@@ -2,7 +2,11 @@
 - **Engine**: Godot 4.7.2 stable official (Windows, Android).
 - **Genre**: 2D Top-Down tower defense game.
 
-## 2. Mandatory Coding Guidelines
+This project was originally made in Godot 3 and has been migrated into Godot 4. When fixing issues consider the regression might have been caused by differences between Godot 3 and 4.
+
+
+
+## 2. Coding Guidelines
 1. **Strict GDScript Typing**:
    - `warnings/untyped_declaration=1` is enforced in `project.godot`.
    - Every variable, parameter, and function return type must be explicitly typed (e.g. `var x: float = 0.0`, `func foo(bar: int) -> void:`).
@@ -10,6 +14,11 @@
    - Preserve and maintain all docstrings (`## ...`) and comments on classes, exported variables, and functions.
 3. **Git Commits**:
    - The user manages git commits. **Never run `git commit` or `git push` unless explicitly told so by the user**.
+
+
+## 3. General suggestions:
+
+When writting to this AGENTS.md file or any documentation to future agents, avoid using strict language like "always", "never" or "must". These are supposed to be suggestions and recommendations, not hard rules set in stone. Consider there might be exceptions you didn't consider.
 
 Wrap headless Godot invocations in an external process runner (such as Python) configured with a hard timeout parameter to avoid hanging when scripts hit compilation issues, cyclic preloads, or runtime exceptions.  
 
@@ -30,6 +39,9 @@ Tests should focus on generalized mechanics and not hardcoded values. Consider t
 - When window rendering is needed for visual captures (without `--headless`), pairing commands with an engine frame budget like `--quit-after 300` provides a fallback so errors or await stalls do not leave the engine waiting indefinitely on user interaction.
 - Standalone `-s` scripts inherit from `SceneTree` so Godot's main loop starts properly, and deferring entry point logic with `call_deferred("_run")` allows engine autoloads (`Global`, `GameData`, `Config`) to initialize before script logic accesses them.
 - Subprocess runners should use `shell=False` and argument lists so OS timeouts can terminate the process tree cleanly without leaving pipe handles open.
+- On Windows, dynamic resolution like `shutil.which("godot")` can return a `.cmd` or `.bat` wrapper. Running batch files creates an intermediate `cmd.exe` process; if timed out, the underlying engine can become an orphaned process holding open I/O pipes. Resolving directly to the underlying engine executable (such as `Godot*_console.exe` or `Godot*.exe`) allows subprocess timeouts to terminate the engine directly.
+- In `--headless` mode, Godot utilizes a dummy rendering server where viewport textures are not produced, causing `root.get_texture().get_image()` to return `null`. Checking for `null` before accessing image methods prevents runtime exceptions that would otherwise halt execution before `quit()` is reached.
+- Adding an in-script safety timer (such as `create_timer(seconds, true, false, true).timeout -> quit(1)`) in standalone test scripts helps ensure the process exits cleanly even if unhandled exceptions interrupt normal completion.
 - For inspecting UI scenes or dialogs, prefer driving them through a runner script instead of targeting the UI component file directly with `-s`.
 
 

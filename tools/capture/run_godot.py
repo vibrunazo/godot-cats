@@ -7,6 +7,7 @@ preloads, or runtime exceptions cannot block callers.
 
 from __future__ import annotations
 
+import os
 import shutil
 import subprocess
 from dataclasses import dataclass
@@ -30,6 +31,24 @@ def resolve_godot(godot: str | None = None) -> str:
         raise FileNotFoundError(
             "Godot binary not found. Install Godot 4.7+ or pass --godot <path>."
         )
+    # If on Windows and found is a batch wrapper (.cmd / .bat), resolve the underlying
+    # .exe so that process timeouts terminate the engine directly rather than leaving
+    # orphaned child processes holding open redirected pipe handles.
+    if found.lower().endswith((".cmd", ".bat")):
+        parent_dir: str = os.path.dirname(found)
+        for candidate in (
+            "Godot_v4.7.2-stable_win64_console.exe",
+            "Godot_v4.7.2-stable_win64.exe",
+        ):
+            candidate_path: str = os.path.join(parent_dir, candidate)
+            if os.path.isfile(candidate_path):
+                return candidate_path
+        try:
+            for fname in os.listdir(parent_dir):
+                if fname.lower().startswith("godot") and fname.lower().endswith(".exe"):
+                    return os.path.join(parent_dir, fname)
+        except OSError:
+            pass
     return found
 
 
@@ -51,7 +70,10 @@ def run_godot(
         RunResult with combined output and a timed_out flag.
     """
     binary: str = resolve_godot(godot)
-    cmd: list[str] = [binary] + list(args)
+    cmd_args: list[str] = list(args)
+    if "--headless" in cmd_args and not any(arg.startswith("--audio-driver") for arg in cmd_args):
+        cmd_args.extend(["--audio-driver", "Dummy"])
+    cmd: list[str] = [binary] + cmd_args
     try:
         proc: subprocess.CompletedProcess[str] = subprocess.run(
             cmd,

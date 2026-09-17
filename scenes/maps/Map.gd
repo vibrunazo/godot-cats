@@ -119,6 +119,10 @@ func _ready() -> void:
 	update_life()
 	pause_game(false)
 	play_music()
+	var next_btn: Button = el_win.get_node_or_null("HBoxContainer/NextButton") as Button
+	if next_btn != null and !next_btn.pressed.is_connected(_on_NextButton_pressed):
+		next_btn.pressed.connect(_on_NextButton_pressed)
+
 
 func _physics_process(_delta: float) -> void:
 	if cat_building != null:
@@ -481,9 +485,11 @@ func _on_EllapsedTimer_timeout() -> void:
 
 
 func _on_NextButton_pressed() -> void:
+	el_win.pause(false)
 	pause_game(false)
 # warning-ignore:return_value_discarded
 	get_tree().change_scene_to_file("res://scenes/maps/%s.tscn" % next_map)
+
 
 
 func _on_ButtonSpeed1_pressed() -> void:

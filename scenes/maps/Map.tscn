@@ -1097,7 +1097,10 @@ script = ExtResource("21")
 [connection signal="pressed" from="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer/ButtonSpeed1" to="." method="_on_ButtonSpeed1_pressed"]
 [connection signal="pressed" from="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer/ButtonSpeed2" to="." method="_on_ButtonSpeed2_pressed"]
 [connection signal="pressed" from="UI/HUD/ActionBar/HBoxContainer/VBoxContainer/SpeedBar/HBoxContainer/ButtonSpeed4" to="." method="_on_ButtonSpeed4_pressed"]
+[connection signal="pressed" from="UI/Menus/WinMenu/HBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
 
 [editable path="UI/HUD/ActionBar/M1/Cat1"]
 [editable path="UI/HUD/ActionBar/M2/Cat2"]
 [editable path="UI/HUD/ActionBar/M3/Cat3"]
+[editable path="UI/Menus/WinMenu"]
+
