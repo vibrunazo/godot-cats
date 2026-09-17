@@ -4,6 +4,8 @@
 
 This project was originally made in Godot 3 and has been migrated into Godot 4. When fixing issues consider the regression might have been caused by differences between Godot 3 and 4.
 
+If you ever need to compare current build with the latest Godot 3 build, the latest Godot 3 commit was b1d5736546667f745c.
+
 
 
 ## 2. Coding Guidelines
