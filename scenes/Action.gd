@@ -15,6 +15,10 @@ func get_desc() -> String:
 	var dic: Dictionary = {}
 	var i: int = 0
 	for b: Variant in binds:
-		dic[i] = '[color=#ee1]%s[/color]' % b
+		var val: Variant = b
+		if b is float and is_equal_approx(b, floor(b)):
+			val = int(b)
+		dic[i] = '[color=#ee1]%s[/color]' % str(val)
 		i += 1
 	return tr(description).format(dic)
+
