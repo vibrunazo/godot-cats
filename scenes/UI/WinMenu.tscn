@@ -18,6 +18,7 @@ repeat = 2
 base_font = ExtResource( 2 )
 [node name="WinMenu" instance=ExtResource( 1 )]
 focus_name = "NextButton"
+escape_closes = false
 
 [node name="TextureRect" parent="." index="0"]
 texture = SubResource( 3 )

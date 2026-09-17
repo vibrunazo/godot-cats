@@ -5,12 +5,26 @@ class_name PauseMenu
 ## Name of the button that receives focus when the menu opens.
 @export var focus_name: String = 'ResumeButton'
 
+## When true, pressing ui_cancel (Escape) closes this menu while the game is
+## actually paused. Game Over and Win screens override this to false so
+## Escape cannot skip them, and the main menu stays inert because the tree
+## is not paused there.
+@export var escape_closes: bool = true
+
 
 ## Grabs focus for the default button so keyboard/gamepad works.
 func set_focus() -> void:
 	var button: Button = get_node("HBoxContainer/%s" % focus_name)
 	button.grab_focus()
 	print('focused on %s, name is %s' % [button.name, focus_name])
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not escape_closes or not visible or not get_tree().paused:
+		return
+	if event.is_action_pressed("ui_cancel"):
+		pause(false)
+		get_viewport().set_input_as_handled()
 
 
 func toogle() -> void:

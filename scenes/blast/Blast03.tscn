@@ -212,17 +212,17 @@ gradient = SubResource( 3 )
 
 [sub_resource type="ParticleProcessMaterial" id=2]
 lifetime_randomness = 0.5
-flag_disable_z = true
+particle_flag_disable_z = true
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
-initial_velocity = 120.0
-initial_velocity_random = 1.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-damping = 180.0
-angle = 720.0
-angle_random = 1.0
-angle_curve = SubResource( 7 )
+initial_velocity_min = 0.0
+initial_velocity_max = 120.0
+damping_min = 180.0
+damping_max = 180.0
+angle_min = 0.0
+angle_max = 720.0
+angular_velocity_min = 0.0
+angular_velocity_max = 165.0
 color_ramp = SubResource( 4 )
 
 [node name="Blast" instance=ExtResource( 1 )]

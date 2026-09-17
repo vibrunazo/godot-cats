@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/cats_theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/fonts/Merienda-Regular.ttf" type="FontFile" id=2]
 
 [sub_resource type="FontVariation" id=1]
 base_font = ExtResource( 2 )
+[sub_resource type="Shortcut" id="Shortcut_back"]
+events = [Object(InputEventAction,"resource_local_to_scene":false,"resource_name":"","device":0,"action":"ui_cancel","pressed":false,"pressed_script":false,"script":null)]
+
 [node name="LevelSelectMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -204,6 +207,8 @@ offset_left = -429.0
 offset_right = -106.0
 offset_bottom = 67.0
 size_flags_horizontal = 4
+shortcut = SubResource("Shortcut_back")
+shortcut_in_tooltip = false
 text = "levelmenu_back"
 
 [node name="Margin2" type="MarginContainer" parent="."]
