@@ -41,6 +41,11 @@ func adjust_position() -> void:
 		max(size.y, get_combined_minimum_size().y)
 	)
 	var vp: Vector2 = get_viewport_rect().size
+	if vp.x <= 100.0 or vp.y <= 100.0:
+		vp = Vector2(
+			ProjectSettings.get_setting("display/window/size/viewport_width", 1664),
+			ProjectSettings.get_setting("display/window/size/viewport_height", 768)
+		)
 	var left: float = pos.x
 	var right: float = pos.x + tooltip_size.x
 #	var top = pos.y
@@ -70,6 +75,21 @@ func show_tooltip(duration: float = -1.0) -> void:
 
 func hide_tooltip() -> void:
 	visible = false
+
+## Shows and centers the panel within the current viewport rect.
+func popup_centered() -> void:
+	visible = true
+	var vp_size: Vector2 = get_viewport_rect().size
+	if vp_size.x <= 100.0 or vp_size.y <= 100.0:
+		vp_size = Vector2(
+			ProjectSettings.get_setting("display/window/size/viewport_width", 1664),
+			ProjectSettings.get_setting("display/window/size/viewport_height", 768)
+		)
+	var self_size: Vector2 = get_combined_minimum_size()
+	size = self_size
+	position = (vp_size - self_size) / 2.0
+
+
 
 func set_label(hint: String, desc: String = '') -> void:
 	labelled = true

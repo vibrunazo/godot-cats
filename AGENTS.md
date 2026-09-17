@@ -25,12 +25,13 @@ We have screenshot and recording tools at tools/capture/ if you need to take scr
 
 Tests should focus on generalized mechanics and not hardcoded values. Consider that designers might change game balance. Good test: if damage is X then was final health after taking damage the expected value?  Bad test: is damage set to 4?
 
-### Godot CLI & Script Execution - consider these recommendations to avoid scripts hanving forever:
+### Godot CLI & Script Execution - consider these recommendations to avoid scripts hanging indefinitely:
 - Include `--headless` and `--path .` on terminal commands to ensure the engine initializes the project directory without waiting on window servers.
-- Pair standalone scripts (`-s`) with an engine frame budget like `--quit-after 300` as a fallback in case a runtime error or signal prevents `quit()` from executing.
-- Standalone `-s` scripts need to inherit from `SceneTree` so Godot's main loop starts properly.
+- When window rendering is needed for visual captures (without `--headless`), pairing commands with an engine frame budget like `--quit-after 300` provides a fallback so errors or await stalls do not leave the engine waiting indefinitely on user interaction.
+- Standalone `-s` scripts inherit from `SceneTree` so Godot's main loop starts properly, and deferring entry point logic with `call_deferred("_run")` allows engine autoloads (`Global`, `GameData`, `Config`) to initialize before script logic accesses them.
 - Subprocess runners should use `shell=False` and argument lists so OS timeouts can terminate the process tree cleanly without leaving pipe handles open.
 - For inspecting UI scenes or dialogs, prefer driving them through a runner script instead of targeting the UI component file directly with `-s`.
+
 
 ## 3. Tooling & Workflow Recommendations
 - **UI Diagnostics**: For inspecting control positions, anchors, and bounding rects at runtime, consider using `tools/inspect_ui.py <scene.tscn> [--node <path>]` before making manual scene adjustments.

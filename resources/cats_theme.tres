@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://bqmy4wfhy8ovy" path="res://assets/fonts/Merienda-Regular.ttf" id="2"]
 [ext_resource type="Texture2D" uid="uid://dwujqwctq0haj" path="res://assets/x-small.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://d3fjvt8vexrmo" path="res://assets/x-small-hl.png" id="5"]
-[ext_resource type="StyleBox" uid="uid://cd58jui8rd5m2" path="res://resources/DialogPanelbg.tres" id="6"]
+[ext_resource type="StyleBox" path="res://resources/TooltipPanelbg.tres" id="6"]
 
 [sub_resource type="StyleBoxFlat" id="1"]
 bg_color = Color(0.905882, 0.682353, 0.0901961, 1)
@@ -37,7 +37,6 @@ base_font = ExtResource("2")
 [resource]
 default_font = ExtResource("1")
 default_font_size = 40
-AcceptDialog/styles/panel = ExtResource("6")
 Button/colors/font_color = Color(0.8, 0.8, 0.8, 0.862745)
 Button/colors/font_color_disabled = Color(0.9, 0.95, 1, 0.3)
 Button/colors/font_color_focus = Color(0.941176, 0.941176, 0.941176, 1)

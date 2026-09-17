@@ -1,84 +1,104 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=11 format=3]
 
-[ext_resource type="Script" path="res://scenes/UI/CatDialog.gd" id="1"]
-[ext_resource type="Texture2D" path="res://assets/trash.png" id="2"]
-[ext_resource type="Theme" path="res://resources/cats_theme.tres" id="3"]
-[ext_resource type="StyleBox" path="res://resources/DialogPanelhl.tres" id="4"]
-[ext_resource type="FontFile" path="res://assets/fonts/Merienda-Regular.ttf" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/UI/Tooltip.tscn" id="1"]
+[ext_resource type="Script" path="res://scenes/UI/CatDialog.gd" id="2"]
+[ext_resource type="Texture2D" path="res://assets/trash.png" id="3"]
+[ext_resource type="Texture2D" path="res://assets/x-small.png" id="4"]
+[ext_resource type="Texture2D" path="res://assets/x-small-hl.png" id="5"]
+[ext_resource type="FontVariation" path="res://resources/Merienda_font.tres" id="6"]
+[ext_resource type="StyleBox" path="res://resources/DialogButton_normal.tres" id="7"]
+[ext_resource type="StyleBox" path="res://resources/DialogButton_hover.tres" id="8"]
+[ext_resource type="StyleBox" path="res://resources/DialogButton_pressed.tres" id="9"]
 
-[sub_resource type="FontVariation" id="1"]
-base_font = ExtResource("5")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
 
-[node name="CatDialog" type="ConfirmationDialog"]
-transparent = true
-transparent_bg = true
-title = ""
-size = Vector2i(580, 240)
-min_size = Vector2i(500, 200)
-theme = ExtResource("3")
-script = ExtResource("1")
+[node name="CatDialog" instance=ExtResource("1")]
+custom_minimum_size = Vector2(580, 240)
+mouse_filter = 0
+script = ExtResource("2")
 
-[node name="PanelHighlight" type="Panel" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 6.0
-offset_right = -6.0
-offset_bottom = -80.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/panel = ExtResource("4")
+[node name="Label" parent="Margin/VBoxContainer" index="0"]
+text = "Action "
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 12.0
-offset_top = 10.0
-offset_right = -12.0
-offset_bottom = -80.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="Icon" type="TextureRect" parent="Margin/VBoxContainer/ContentContainer" index="0"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
-texture = ExtResource("2")
+texture = ExtResource("3")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="DescriptionLabel" parent="Margin/VBoxContainer/ContentContainer" index="1"]
+custom_minimum_size = Vector2(440, 50)
+text = "Do you agree with my proposition?"
+
+[node name="Buttons" type="HBoxContainer" parent="Margin/VBoxContainer" index="2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Spacer1" type="Control" parent="Margin/VBoxContainer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
 
-[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="CancelButton" type="Button" parent="Margin/VBoxContainer/Buttons"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 48)
 layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("1")
-theme_override_font_sizes/font_size = 34
+focus_mode = 0
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 0.392157)
-text = "Action "
-vertical_alignment = 1
+theme_override_fonts/font = ExtResource("6")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/normal = ExtResource("7")
+theme_override_styles/hover = ExtResource("8")
+theme_override_styles/pressed = ExtResource("9")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "Cancel"
 
-[node name="Text" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Spacer2" type="Control" parent="Margin/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="OkButton" type="Button" parent="Margin/VBoxContainer/Buttons"]
 unique_name_in_owner = true
-clip_contents = false
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(100, 48)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("6")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/normal = ExtResource("7")
+theme_override_styles/hover = ExtResource("8")
+theme_override_styles/pressed = ExtResource("9")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "OK"
+
+[node name="Spacer3" type="Control" parent="Margin/VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CloseOverlay" type="Control" parent="." index="3"]
 layout_mode = 2
 mouse_filter = 2
-size_flags_horizontal = 3
-bbcode_enabled = true
-text = "Do you agree with my proposition?"
-scroll_active = false
+
+[node name="CloseButton" type="TextureButton" parent="CloseOverlay"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -38.0
+offset_top = 8.0
+offset_right = -10.0
+offset_bottom = 36.0
+grow_horizontal = 0
+texture_normal = ExtResource("4")
+texture_pressed = ExtResource("5")
+texture_hover = ExtResource("5")
+ignore_texture_size = true
+stretch_mode = 5
