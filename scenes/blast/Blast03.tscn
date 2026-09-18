@@ -1,265 +1,336 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene format=3 uid="uid://caaccd0ucldi7"]
 
-[ext_resource path="res://scenes/blast/Blast.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/circle.png" type="Texture2D" id=2]
-[ext_resource path="res://assets/blast02.png" type="Texture2D" id=3]
-[ext_resource path="res://assets/smoke01.png" type="Texture2D" id=4]
-[ext_resource path="res://assets/thread.png" type="Texture2D" id=5]
+[ext_resource type="PackedScene" path="res://scenes/blast/Blast.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://dnrnh3rruf3vo" path="res://assets/circle.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cufiyum517nyb" path="res://assets/blast02.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://b7s25asvr3r3j" path="res://assets/smoke01.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://kr0cnbb6jyws" path="res://assets/thread.png" id="5"]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id="1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteRoot/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteRoot/Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpriteRoot/Sprite2D:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="2"]
+resource_name = "boom"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteRoot/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1, 1), Vector2(0.8, 0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteRoot/Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0.980392, 0.980392, 0.980392, 0.627451), Color(0.94902, 0.94902, 0.94902, 0.501961), Color(0.27, 0.27, 0.27, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ydgrq"]
 resource_name = "boom2"
 length = 0.4
 step = 0.01
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("SpriteRoot/Sprite2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.05, 0.06, 0.07, 0.12 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.05, 0.06, 0.07, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [ Vector2( 0.8, 0.8 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 0.6, 0.6 ) ]
+"values": [Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(1, 1), Vector2(0.8, 0.8), Vector2(0.6, 0.6)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("SpriteRoot/Sprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.02, 0.06, 0.12 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.02, 0.06, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 0.7, 0.7, 0.7, 0 ), Color( 0.8, 0.8, 0.8, 0.588235 ), Color( 0.25098, 0.25098, 0.25098, 0 ) ]
+"values": [Color(1, 1, 1, 0), Color(0.7, 0.7, 0.7, 0), Color(0.8, 0.8, 0.8, 0.588235), Color(0.25098, 0.25098, 0.25098, 0)]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("SpriteRoot/SpriteSpikes:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.02, 0.04, 0.07, 0.17 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.07, 0.17),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1.2, 0.2 ), Vector2( 1.15, 0.15 ), Vector2( 1.1, 0.8 ), Vector2( 1e-05, 1e-05 ) ]
+"values": [Vector2(1e-05, 1e-05), Vector2(1.2, 0.2), Vector2(1.15, 0.15), Vector2(1.1, 0.8), Vector2(1e-05, 1e-05)]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("SpriteRoot/SpriteSpikes:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0, 0.1, 0.17 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.17),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ 0.0, 0.0, 30.0 ]
+"values": [0.0, 0.0, 30.0]
 }
 tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("SpriteRoot/SpriteSmoke:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0, 0.4 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ 0.0, 30.0 ]
+"values": [0.0, 30.0]
 }
 tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("SpriteRoot/SpriteSmoke:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.08, 0.12, 0.4 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.08, 0.12, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 0.5, 0.5 ), Vector2( 0.4, 0.4 ) ]
+"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(0.5, 0.5), Vector2(0.4, 0.4)]
 }
 tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/path = NodePath("SpriteRoot/SpriteSmoke:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0, 0.08, 0.12, 0.4 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.08, 0.12, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 0.55, 0.55, 0.55, 0 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(0.55, 0.55, 0.55, 0)]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id="5"]
 resource_name = "boom3"
 length = 1.3
 step = 0.01
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("SpriteRoot/Sprite2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.05, 0.06, 0.07, 0.12 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.05, 0.06, 0.07, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [ Vector2( 0.8, 0.8 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 0.6, 0.6 ) ]
+"values": [Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(1, 1), Vector2(0.8, 0.8), Vector2(0.6, 0.6)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("SpriteRoot/Sprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.02, 0.06, 0.12 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.02, 0.06, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 0.7, 0.7, 0.7, 0 ), Color( 0.8, 0.8, 0.8, 0.588235 ), Color( 0.25098, 0.25098, 0.25098, 0 ) ]
+"values": [Color(1, 1, 1, 0), Color(0.7, 0.7, 0.7, 0), Color(0.8, 0.8, 0.8, 0.588235), Color(0.25098, 0.25098, 0.25098, 0)]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("SpriteRoot/SpriteSpikes:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.02, 0.04, 0.07, 0.17 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.07, 0.17),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1.2, 0.2 ), Vector2( 1.15, 0.15 ), Vector2( 1.1, 0.8 ), Vector2( 1e-05, 1e-05 ) ]
+"values": [Vector2(1e-05, 1e-05), Vector2(1.2, 0.2), Vector2(1.15, 0.15), Vector2(1.1, 0.8), Vector2(1e-05, 1e-05)]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("SpriteRoot/SpriteSpikes:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0, 0.1, 0.17 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.17),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ 0.0, 0.0, 30.0 ]
+"values": [0.0, 0.0, 30.0]
 }
 tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("SpriteRoot/SpriteSmoke:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0, 0.4 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ 0.0, 30.0 ]
+"values": [0.0, 30.0]
 }
 tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("SpriteRoot/SpriteSmoke:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0, 0.08, 0.12, 0.4 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.08, 0.12, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 0.5, 0.5 ), Vector2( 0.4, 0.4 ) ]
+"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(0.5, 0.5), Vector2(0.4, 0.4)]
 }
 tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/path = NodePath("SpriteRoot/SpriteSmoke:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0, 0.08, 0.12, 0.4 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.08, 0.12, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 0.55, 0.55, 0.55, 0 ) ]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(0.55, 0.55, 0.55, 0)]
 }
 tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
 tracks/7/path = NodePath("GPUParticles2D:emitting")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
 tracks/7/keys = {
-"times": PackedFloat32Array( 0.01, 0.25 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0.01, 0.25),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ true, false ]
+"values": [true, false]
 }
 
-[sub_resource type="Curve" id=6]
-max_value = 200.0
-_data = [ Vector2( 0, 0 ), 0.0, 783.239, 0, 0, Vector2( 0.764444, 200 ), 0.0, 0.0, 0, 0, Vector2( 1, 200 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5rakc"]
+_data = {
+&"RESET": SubResource("1"),
+&"boom": SubResource("2"),
+&"boom2": SubResource("Animation_ydgrq"),
+&"boom3": SubResource("5")
+}
 
-[sub_resource type="CurveTexture" id=7]
-curve = SubResource( 6 )
+[sub_resource type="Curve" id="8"]
+resource_name = "SpinDamp"
+_data = [Vector2(0, 1), 0.0, -2.27409, 0, 0, Vector2(0.764444, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="Gradient" id=3]
-offsets = PackedFloat32Array( 0.514852, 1 )
-colors = PackedColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+[sub_resource type="CurveTexture" id="9"]
+curve = SubResource("8")
 
-[sub_resource type="GradientTexture2D" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="Gradient" id="3"]
+offsets = PackedFloat32Array(0.514852, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="ParticleProcessMaterial" id=2]
+[sub_resource type="GradientTexture2D" id="4"]
+gradient = SubResource("3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c1pgk"]
 lifetime_randomness = 0.5
 particle_flag_disable_z = true
+angle_max = 720.0
 spread = 180.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity_min = 0.0
 initial_velocity_max = 120.0
+angular_velocity_min = -20.000015
+angular_velocity_max = 19.999983
+angular_velocity_curve = SubResource("9")
+gravity = Vector3(0, 0, 0)
 damping_min = 180.0
 damping_max = 180.0
-angle_min = 0.0
-angle_max = 720.0
-angular_velocity_min = 0.0
-angular_velocity_max = 165.0
-color_ramp = SubResource( 4 )
+color_ramp = SubResource("4")
 
-[node name="Blast" instance=ExtResource( 1 )]
+[node name="Blast" unique_id=137789969 instance=ExtResource("1")]
 anim = "boom3"
 rand_rot = false
 
 [node name="SpriteRoot" parent="." index="0"]
-modulate = Color( 0.9, 0.82125, 0.585, 1 )
-scale = Vector2( 1.5, 1.5 )
+modulate = Color(0.9, 0.82125, 0.585, 1)
+scale = Vector2(1.5, 1.5)
 
 [node name="Sprite2D" parent="SpriteRoot" index="0"]
-texture = ExtResource( 2 )
+texture = ExtResource("2")
 
-[node name="SpriteSpikes" type="Sprite2D" parent="SpriteRoot" index="1"]
-modulate = Color( 0.9, 0.9, 0.9, 0.823529 )
-scale = Vector2( 1e-05, 1e-05 )
+[node name="SpriteSpikes" type="Sprite2D" parent="SpriteRoot" index="1" unique_id=564154930]
+modulate = Color(0.9, 0.9, 0.9, 0.823529)
 z_index = 20
-texture = ExtResource( 3 )
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("3")
 
-[node name="SpriteSmoke" type="Sprite2D" parent="SpriteRoot" index="2"]
-self_modulate = Color( 0.8, 0.8, 0.8, 1 )
-scale = Vector2( 1e-05, 1e-05 )
-texture = ExtResource( 4 )
-__meta__ = {
-"_editor_description_": ""
-}
+[node name="SpriteSmoke" type="Sprite2D" parent="SpriteRoot" index="2" unique_id=1826547040]
+self_modulate = Color(0.8, 0.8, 0.8, 1)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("4")
 
 [node name="AnimationPlayer" parent="." index="1"]
-playback_speed = 0.7
-anims/boom2 = SubResource( 1 )
-anims/boom3 = SubResource( 5 )
+libraries/ = SubResource("AnimationLibrary_5rakc")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2" unique_id=1971452249]
 emitting = false
+texture = ExtResource("5")
 lifetime = 1.2
 one_shot = true
 explosiveness = 1.0
 randomness = 1.0
-process_material = SubResource( 2 )
-texture = ExtResource( 5 )
+process_material = SubResource("ParticleProcessMaterial_c1pgk")

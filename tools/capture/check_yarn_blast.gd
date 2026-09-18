@@ -11,6 +11,7 @@ extends SceneTree
 const EXPECTED: Dictionary = {
 	"res://scenes/blast/Blast03.tscn": {
 		"initial_velocity": Vector2(0.0, 120.0),
+		"angular_velocity": Vector2(0.0, 200.0),
 		"damping": Vector2(180.0, 180.0),
 		"angle": Vector2(0.0, 720.0),
 	},
@@ -50,6 +51,14 @@ func _run() -> void:
 				# angle curve (which becomes a multiplier in Godot 4).
 				assert(material.angle_curve == null, "Yarn still uses the old angle multiplier")
 				assert(material.angular_velocity_min <= material.angular_velocity_max)
+				# Spin damp: threads spin fast at blast start, then slow to a
+				# stop over their lifetime via an angular velocity curve.
+				var spin_curve: CurveTexture = material.angular_velocity_curve as CurveTexture
+				assert(spin_curve != null, "Yarn lost its spin damp curve")
+				assert(spin_curve.curve != null, "Yarn spin damp curve has no Curve")
+				assert(is_equal_approx(spin_curve.curve.sample_baked(0.0), 1.0), "Yarn spin damp should start at full speed")
+				assert(spin_curve.curve.sample_baked(0.4) < 0.9, "Yarn spin damp should be fading by mid life")
+				assert(is_zero_approx(spin_curve.curve.sample_baked(1.0)), "Yarn spin damp should reach zero by end of lifetime")
 				print("Yarn spin range (degrees/s): ", material.angular_velocity_min, " to ", material.angular_velocity_max)
 			_check_range(material, "initial_velocity", EXPECTED[path]["initial_velocity"])
 			if EXPECTED[path].has("damping"):
