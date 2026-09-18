@@ -208,8 +208,9 @@ tracks/1/keys = {
 }
 
 [sub_resource type="AudioStreamRandomizer" id=6]
-audio_stream = ExtResource( 4 )
 random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource( 4 )
 
 [node name="Mouse" type="PathFollow2D" groups=["mice"]]
 loop = false

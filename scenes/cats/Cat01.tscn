@@ -16,8 +16,9 @@ radius = 200.0
 
 [sub_resource type="AudioStreamRandomizer" id=2]
 resource_local_to_scene = true
-audio_stream = ExtResource( 2 )
 random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource( 2 )
 
 [node name="Cat" instance=ExtResource( 1 )]
 script = ExtResource( 3 )

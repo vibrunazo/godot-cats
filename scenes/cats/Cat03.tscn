@@ -43,7 +43,8 @@ color_ramp = SubResource( 4 )
 
 [sub_resource type="AudioStreamRandomizer" id=2]
 resource_local_to_scene = true
-audio_stream = ExtResource( 7 )
+streams_count = 1
+stream_0/stream = ExtResource( 7 )
 
 [node name="Cat03" instance=ExtResource( 1 )]
 script = ExtResource( 6 )
