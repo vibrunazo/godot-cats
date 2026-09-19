@@ -54,6 +54,7 @@ func _ready() -> void:
 	$UIroot.visible = true
 	$SelectRoot.visible = true
 	$ClickArea.visible = true
+	$AnimationPlayer.animation_started.connect(_on_animation_started)
 	total_cost = int(map_ref.data[cat_name]['cost'])
 	update_worth(total_cost)
 #	var full_name = GameData.cat_data[cat_name].full_name
@@ -415,6 +416,20 @@ func on_eat_finished() -> void:
 		$AudioPurr.play()
 	else:
 		$AnimationPlayer.play("idle")
+
+func _on_animation_started(anim_name: StringName) -> void:
+	var eyes: Sprite2D = get_node_or_null("Turret/SpriteRoot/head/eyes") as Sprite2D
+	var z: GPUParticles2D = get_node_or_null("Turret/SpriteRoot/head/ZParticles") as GPUParticles2D
+	if anim_name == &"sleeping":
+		if eyes != null:
+			eyes.visible = false
+		if z != null:
+			z.emitting = true
+	else:
+		if eyes != null:
+			eyes.visible = true
+		if z != null:
+			z.emitting = false
 
 # updates how much the Cat is worth 
 # based on the costs of all upgrades
