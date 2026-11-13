@@ -1,0 +1,196 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" uid="uid://bbsagqwxhh84p" path="res://scenes/maps/Map.tscn" id="1_map"]
+[ext_resource type="AudioStream" uid="uid://d0e7x5jcp74ji" path="res://assets/audio/music/Distance - Anno Domini Beats [vbr].mp3" id="2_music"]
+
+[sub_resource type="Curve2D" id="Curve2D_map04"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 64, 128, 0, 0, 0, 0, 288, 128, 0, 0, 0, 0, 320, 160, 0, 0, 0, 0, 320, 352, 0, 0, 0, 0, 288, 384, 0, 0, 0, 0, 96, 384, 0, 0, 0, 0, 64, 416, 0, 0, 0, 0, 64, 608, 0, 0, 0, 0, 96, 640, 0, 0, 0, 0, 544, 640, 0, 0, 0, 0, 576, 608, 0, 0, 0, 0, 576, 160, 0, 0, 0, 0, 608, 128, 0, 0, 0, 0, 1056, 128, 0, 0, 0, 0, 1088, 160, 0, 0, 0, 0, 1088, 352, 0, 0, 0, 0, 1056, 384, 0, 0, 0, 0, 864, 384, 0, 0, 0, 0, 832, 416, 0, 0, 0, 0, 832, 608, 0, 0, 0, 0, 864, 640, 0, 0, 0, 0, 1312, 640)
+}
+point_count = 22
+
+[node name="Map" instance=ExtResource("1_map")]
+next_map = "MainScene"
+life = 40.0
+wave_list = [{
+"cooldown": 3.0,
+"size_max": 80,
+"size_min": 50,
+"spawns": 10,
+"start": 3
+}, {
+"cooldown": 1.8,
+"size_max": 100,
+"size_min": 60,
+"spawns": 10,
+"start": 20
+}, {
+"cooldown": 3.2,
+"size_max": 220,
+"size_min": 170,
+"spawns": 6,
+"start": 42
+}, {
+"cooldown": 0.08,
+"size_max": 8,
+"size_min": 1,
+"spawns": 15,
+"start": 46
+}, {
+"cooldown": 1.6,
+"size_max": 120,
+"size_min": 70,
+"spawns": 10,
+"start": 54
+}, {
+"cooldown": 1.6,
+"size_max": 150,
+"size_min": 110,
+"spawns": 14,
+"start": 74
+}, {
+"cooldown": 0.05,
+"size_max": 8,
+"size_min": 1,
+"spawns": 25,
+"start": 76
+}, {
+"cooldown": 0.05,
+"size_max": 8,
+"size_min": 1,
+"spawns": 25,
+"start": 80
+}, {
+"cooldown": 0.05,
+"size_max": 8,
+"size_min": 1,
+"spawns": 25,
+"start": 84
+}, {
+"cooldown": 0.08,
+"size_max": 8,
+"size_min": 1,
+"spawns": 25,
+"start": 88
+}, {
+"cooldown": 0.08,
+"size_max": 8,
+"size_min": 1,
+"spawns": 25,
+"start": 92
+}, {
+"cooldown": 1.1,
+"size_max": 140,
+"size_min": 110,
+"spawns": 18,
+"start": 104
+}, {
+"cooldown": 0.7,
+"size_max": 45,
+"size_min": 25,
+"spawns": 24,
+"start": 107
+}, {
+"cooldown": 1.6,
+"size_max": 400,
+"size_min": 340,
+"spawns": 10,
+"start": 109
+}, {
+"cooldown": 1.1,
+"size_max": 480,
+"size_min": 420,
+"spawns": 16,
+"start": 140
+}, {
+"cooldown": 0.65,
+"size_max": 80,
+"size_min": 40,
+"spawns": 30,
+"start": 142
+}, {
+"cooldown": 0.05,
+"size_max": 8,
+"size_min": 1,
+"spawns": 25,
+"start": 148
+}, {
+"cooldown": 1.2,
+"size_max": 950,
+"size_min": 750,
+"spawns": 20,
+"start": 174
+}, {
+"cooldown": 0.7,
+"size_max": 180,
+"size_min": 120,
+"spawns": 30,
+"start": 175
+}, {
+"cooldown": 0.05,
+"size_max": 8,
+"size_min": 1,
+"spawns": 30,
+"start": 179
+}, {
+"cooldown": 0.05,
+"size_max": 8,
+"size_min": 1,
+"spawns": 30,
+"start": 185
+}, {
+"cooldown": 0.05,
+"size_max": 8,
+"size_min": 1,
+"spawns": 30,
+"start": 193
+}, {
+"cooldown": 0.05,
+"size_max": 8,
+"size_min": 1,
+"spawns": 30,
+"start": 201
+}, {
+"cooldown": 1.3,
+"size_max": 2000,
+"size_min": 1500,
+"spawns": 16,
+"start": 218
+}, {
+"cooldown": 0.7,
+"size_max": 320,
+"size_min": 220,
+"spawns": 30,
+"start": 220
+}, {
+"cooldown": 1.4,
+"size_max": 3200,
+"size_min": 2400,
+"spawns": 12,
+"start": 236
+}, {
+"cooldown": 0.05,
+"size_max": 8,
+"size_min": 1,
+"spawns": 30,
+"start": 238
+}, {
+"cooldown": 0.05,
+"size_max": 8,
+"size_min": 1,
+"spawns": 30,
+"start": 245
+}]
+
+[node name="TileRoad" parent="."]
+layer_0/tile_data = PackedInt32Array(65537, 0, 4, 65538, 0, 2, 65539, 131072, 2, 131075, 0, 3, 196611, 131072, 3, 196610, 0, 2, 196609, 65536, 2, 262145, 0, 3, 327681, 65536, 3, 327682, 0, 2, 327683, 0, 2, 327684, 0, 2, 327685, 131072, 3, 262149, 0, 3, 196613, 0, 3, 131077, 0, 3, 65541, 65536, 2, 65542, 0, 2, 65543, 0, 2, 65544, 0, 2, 65545, 131072, 2, 131081, 0, 3, 196617, 131072, 3, 196616, 0, 2, 196615, 65536, 2, 262151, 0, 3, 327687, 65536, 3, 327688, 0, 2, 327689, 0, 2, 327690, 0, 2, 327691, 65536, 4)
+
+[node name="Path2D" parent="."]
+curve = SubResource("Curve2D_map04")
+
+[node name="Cheese" parent="."]
+position = Vector2(1472, 704)
+
+[node name="AudioMusic" parent="."]
+stream = ExtResource("2_music")

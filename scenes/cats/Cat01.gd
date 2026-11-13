@@ -27,9 +27,11 @@ func up_yarn(value: float = 25.0) -> void:
 	bullet_scene = preload("res://scenes/BulletYarn.tscn")
 
 
-## Teacup upgrade: harder hits with fast teacup bullets.
+## Teacup upgrade: harder hits with fast teacup bullets, knocked off with a tap-tap-push.
 func up_teacup(value: float = 25.0) -> void:
 	damage += value
+	attack_anim = "knock_over"
+	whoosh_on_shoot = true
 	shot_speed = 400
 	spawn_position.scale = Vector2(1.0, 1.0)
 	bullet_sprite.modulate = Color.WHITE

@@ -56,3 +56,10 @@ Both print `PLAYTEST* ... ok` lines and finish with `RESULT: PASS`.
 - `check_log.py` — headless error/warning gate (filters engine-shutdown
   audio noise by default; `--strict-noise` disables the filter).
 - `playtest_combat.gd`, `playtest_upgrades.gd` — gameplay regression harnesses.
+- `playtest_teacup.gd` — teacup cat fights in Map01; checks it uses its own attack
+  animation and releases one cup per attack. Add `--write-movie captures/new/x.avi
+  --fixed-fps 30` to record it (Godot's movie writer may crash on exit after saving;
+  the file is still fine), then crop with ffmpeg.
+- `anim_frames.py` / `anim_frames.gd` — contact sheet of one cat animation at chosen
+  times, without a level (e.g. `python tools/capture/anim_frames.py --anim knock_over
+  --call up_teacup --times 0,0.14,0.3,0.62`). Handy for tuning keyframes.

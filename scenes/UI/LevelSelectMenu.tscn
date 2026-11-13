@@ -98,7 +98,6 @@ offset_right = 280.0
 offset_bottom = 294.0
 mouse_filter = 1
 size_flags_horizontal = 4
-disabled = true
 text = "Level 04"
 
 [node name="Map05" type="Button" parent="VBox/ScrollContainer/VBoxContainer" groups=["level"]]

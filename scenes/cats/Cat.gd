@@ -23,6 +23,8 @@ enum FocusType {FURTHEST, HEALTH}
 @export var shot_speed: int = 400
 @export var turn_speed: float = 3.5
 @export var attack_anim: String = "attack"
+## Play the throw whoosh when the bullet leaves instead of when the attack starts (for wind-up anims).
+@export var whoosh_on_shoot: bool = false
 # Meows every X shots
 @export var meow_every: int = 0
 @export var focus: FocusType = FocusType.FURTHEST
@@ -353,15 +355,32 @@ func attack() -> void:
 #		locked_target.on_finished_eaten()
 	locked_target = target
 	play_attack_anim()
-	$AudioShoot.pitch_scale = randf_range(0.8, 1.2)
-	$AudioShoot.play()
+	if !whoosh_on_shoot:
+		play_whoosh()
 	if meow_every > 0 and randi() % meow_every == 0:
 		$AudioSpawn.play()
 
+func play_whoosh() -> void:
+	$AudioShoot.pitch_scale = randf_range(0.8, 1.2)
+	$AudioShoot.play()
+
+# called by the attack animation when the bullet leaves the paw
 func shoot() -> void:
+	# wind-up animations (knock_over) shoot late, after the initial target may have changed or died
+	if is_instance_valid(target) and target.is_ready():
+		locked_target = target
+	elif !is_instance_valid(locked_target) or !locked_target.is_ready():
+		return
+	if whoosh_on_shoot:
+		play_whoosh()
 	var bullet := bullet_scene.instantiate() as Bullet
 	map_ref.get_node("Actors").call_deferred("add_child", bullet)
-	bullet.position = spawn_position.global_position
+	# from the held bullet sprite center, so a pushed cup leaves seamlessly from where it was pushed to
+	bullet.position = bullet_sprite.to_global(bullet_sprite.offset)
+	bullet.global_rotation = $Turret.global_rotation
+	var proj_sprite: Sprite2D = bullet.get_node_or_null("Sprite2D") as Sprite2D
+	if proj_sprite != null:
+		proj_sprite.global_rotation = bullet_sprite.global_rotation
 	bullet.damage = damage
 	bullet.speed = shot_speed
 	bullet.set_target(locked_target)

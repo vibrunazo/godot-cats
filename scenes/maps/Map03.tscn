@@ -16,7 +16,7 @@ base_font = ExtResource( 2 )
 [sub_resource type="FontVariation" id=4]
 base_font = ExtResource( 2 )
 [node name="Map" instance=ExtResource( 1 )]
-next_map = "MainScene"
+next_map = "Map04"
 wave_list = [ {
 "cooldown": 4.0,
 "size_max": 60,
