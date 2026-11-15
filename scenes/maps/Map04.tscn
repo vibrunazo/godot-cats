@@ -11,7 +11,7 @@ _data = {
 point_count = 18
 
 [node name="Map" instance=ExtResource("1_map")]
-next_map = "MainScene"
+next_map = "Map05"
 life = 40.0
 wave_list = [{
 "cooldown": 3.0,
